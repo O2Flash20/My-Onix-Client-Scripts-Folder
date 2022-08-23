@@ -1,0 +1,8 @@
+{
+    "Lua.diagnostics.globals": [
+        "zSearch"
+    ],
+    "Lua.diagnostics.disable": [
+        "lowercase-global"
+    ]
+}
