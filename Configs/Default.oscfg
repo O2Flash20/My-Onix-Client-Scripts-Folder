@@ -33,7 +33,7 @@ Arrow Hit:1:
    r:6:0.000000
    type:4:7
    g:6:1.000000
-   a:6:1.000000
+   a:6:0.531867
    rainbow:2:false
   showTrail:1:
    type:4:1
@@ -41,7 +41,7 @@ Arrow Hit:1:
   renderBehind:1:
    type:4:1
    value:2:true
- enabled:2:false
+ enabled:2:true
 Death Coordinates:1:
  settings:1:
   Key:1:
@@ -385,7 +385,7 @@ Win Particles:1:
   color:1:
    rainbow_speed:6:0.003000
    b:6:0.000000
-   r:6:0.757998
+   r:6:0.721997
    type:4:7
    g:6:1.000000
    a:6:1.000000

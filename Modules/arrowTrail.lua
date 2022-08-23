@@ -1,6 +1,6 @@
 -- CONTROLS
 MaxXVelocity = 3.87
-MaxYVelocity = 3.4
+MaxYVelocity = 3.55
 GravityAcceleration = 0.025
 AirDrag = 0.99
 --
