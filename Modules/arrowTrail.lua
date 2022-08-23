@@ -5,6 +5,11 @@ GravityAcceleration = 0.025
 AirDrag = 0.99
 --
 
+positionX = 0
+positionY = 0
+sizeX = 10
+sizeY = 10
+
 name = "Arrow Hit"
 description = "Shows where your arrow will hit"
 
@@ -12,7 +17,7 @@ showTrail = true
 client.settings.addBool("Show arrow trail", "showTrail")
 renderBehind = false
 client.settings.addBool("Render behind", "renderBehind")
-color = { 0, 255, 255 }
+color = { 0, 255, 255, 100 }
 client.settings.addColor("Color", "color")
 
 importLib("renderthreeD")
