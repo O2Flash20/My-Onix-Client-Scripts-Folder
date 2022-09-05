@@ -1,7 +1,5 @@
---simple file managing library by MCBE Craft
-
 function readFile(file)
-    if os.rename(file, file) then
+    if fileExists(file) then
         local lines = io.lines(file)
         local result = {}
         for line in lines do 
@@ -14,21 +12,34 @@ function readFile(file)
 end
 
 function readWholeFile(file)
-    if os.rename(file, file) then
-        local f = assert(io.open(file, "rb"))
-        local content = f:read("*all")
+    local f = io.open(file, "r")
+    if f then
+        local content = f:read("a")
         f:close()
         return content
     else
-        return nil
+        return ""
+    end
+end
+
+function createFile(file)
+    if fileExists(file) then
+        return false
+    else
+        writeFile(file, "")
+        return true
     end
 end
 
 function writeFile(file, text)
-    wrFile = io.open(file, "w")
-    io.output(wrFile)
-    io.write(text)
-    io.close(wrFile)
+    local wrFile = io.open(file, "w")
+    if wrFile then
+        io.output(wrFile)
+        io.write(text)
+        io.close(wrFile)
+        return true
+    end
+    return false
 end
 
 function jsonLoad(file)
@@ -37,7 +48,7 @@ function jsonLoad(file)
 end
 
 function jsonDump(json, file)
-    writeFile(file, tableToJson(json))
+    writeFile(file, tableToJson(json, true))
 end
 
 function split(str, splitter)
@@ -49,5 +60,5 @@ function split(str, splitter)
 end
 
 function fileExists(file)
-    return os.rename(file, file)
+    return fs.exist(file)
 end
