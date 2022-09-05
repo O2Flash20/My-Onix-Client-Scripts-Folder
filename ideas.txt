@@ -1,2 +1,3 @@
 blocks around you display
 structure thing
+win/loss ratio for cubecraft

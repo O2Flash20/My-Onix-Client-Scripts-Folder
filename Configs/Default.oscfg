@@ -1,53 +1,22 @@
-ChatLogger:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
- enabled:2:true
-Dev Block Leaker:1:
- settings:1:
-  Sv:1:
-   type:4:1
-   value:2:true
-  Key:1:
-   type:4:4
-   key:4:0
-  HighlightRadius:1:
-   type:4:2
-   value:4:4
-  B:1:
-   type:4:1
-   value:2:true
-  Lb:1:
-   type:4:1
-   value:2:true
- enabled:2:true
-Arrow Hit:1:
+Arrow Trajectory:1:
  settings:1:
   Key:1:
    type:4:4
    key:4:90
   color:1:
    rainbow_speed:6:0.003000
-   b:6:0.180392
+   b:6:1.000000
    r:6:0.000000
    type:4:7
    g:6:1.000000
-   a:6:0.116222
+   a:6:0.392157
    rainbow:2:false
   showTrail:1:
    type:4:1
-   value:2:true
-  scale:1:
-   type:4:3
-   value:6:1.000000
+   value:2:false
   renderBehind:1:
    type:4:1
    value:2:true
-  position:1:
-   type:4:5
-   x:6:0.000000
-   y:6:0.000000
  enabled:2:true
 Death Coordinates:1:
  settings:1:
@@ -162,7 +131,7 @@ Block Map:1:
  settings:1:
   lightEnabled:1:
    type:4:1
-   value:2:false
+   value:2:true
   Key:1:
    type:4:4
    key:4:0
@@ -171,18 +140,42 @@ Block Map:1:
    value:6:1.106944
   gridR:1:
    type:4:2
-   value:4:13
+   value:4:50
   position:1:
    type:4:5
    x:6:11.666656
    y:6:67.417984
   checkLimit:1:
    type:4:2
-   value:4:9
+   value:4:12
   checkFrequency:1:
    type:4:2
-   value:4:1
+   value:4:50
  enabled:2:false
+ChatLogger:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:true
+Dev Block Leaker:1:
+ settings:1:
+  Sv:1:
+   type:4:1
+   value:2:true
+  Key:1:
+   type:4:4
+   key:4:0
+  HighlightRadius:1:
+   type:4:2
+   value:4:4
+  B:1:
+   type:4:1
+   value:2:true
+  Lb:1:
+   type:4:1
+   value:2:true
+ enabled:2:true
 custom chat:1:
  settings:1:
   Key:1:
@@ -317,7 +310,7 @@ FPS:1:
   scale:1:
    type:4:3
    value:6:1.000000
- enabled:2:true
+ enabled:2:false
 Fulldark:1:
  settings:1:
   Key:1:
@@ -336,6 +329,12 @@ Item Held Info:1:
   scale:1:
    type:4:3
    value:6:1.000000
+ enabled:2:true
+Lag Switch:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
  enabled:2:true
 Logger:1:
  settings:1:
@@ -391,10 +390,10 @@ Win Particles:1:
    key:4:0
   color:1:
    rainbow_speed:6:0.003000
-   b:6:0.761970
-   r:6:1.000000
+   b:6:0.000000
+   r:6:0.307994
    type:4:7
-   g:6:0.000000
+   g:6:1.000000
    a:6:1.000000
    rainbow:2:true
  enabled:2:true
