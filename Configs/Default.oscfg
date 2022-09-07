@@ -17,7 +17,7 @@ Arrow Trajectory:1:
   renderBehind:1:
    type:4:1
    value:2:true
- enabled:2:true
+ enabled:2:false
 Death Coordinates:1:
  settings:1:
   Key:1:
@@ -140,17 +140,17 @@ Block Map:1:
    value:6:1.106944
   gridR:1:
    type:4:2
-   value:4:50
+   value:4:22
   position:1:
    type:4:5
    x:6:11.666656
    y:6:67.417984
   checkLimit:1:
    type:4:2
-   value:4:12
+   value:4:13
   checkFrequency:1:
    type:4:2
-   value:4:50
+   value:4:1
  enabled:2:false
 ChatLogger:1:
  settings:1:
@@ -347,17 +347,17 @@ Logger:1:
    r:6:0.200000
    type:4:7
    g:6:0.200000
-   a:6:0.717422
+   a:6:0.895556
    rainbow:2:false
   showNumber:1:
    type:4:1
    value:2:false
   wRatio:1:
    type:4:3
-   value:6:0.430952
+   value:6:0.360714
   tScale:1:
    type:4:3
-   value:6:0.827381
+   value:6:0.845238
   foreColor:1:
    rainbow_speed:6:0.003000
    b:6:1.000000
@@ -368,12 +368,25 @@ Logger:1:
    rainbow:2:false
   position:1:
    type:4:5
-   x:6:393.333313
-   y:6:49.476013
+   x:6:398.428589
+   y:6:53.219437
   scale:1:
    type:4:3
    value:6:0.633337
- enabled:2:false
+ enabled:2:true
+Mini Map:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  position:1:
+   type:4:5
+   x:6:0.000000
+   y:6:100.000000
+  scale:1:
+   type:4:3
+   value:6:1.000000
+ enabled:2:true
 Motion blur:1:
  settings:1:
   Key:1:
@@ -391,9 +404,9 @@ Win Particles:1:
   color:1:
    rainbow_speed:6:0.003000
    b:6:0.000000
-   r:6:0.307994
+   r:6:1.000000
    type:4:7
-   g:6:1.000000
+   g:6:0.306000
    a:6:1.000000
    rainbow:2:true
  enabled:2:true
