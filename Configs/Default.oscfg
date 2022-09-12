@@ -13,7 +13,7 @@ Arrow Trajectory:1:
    rainbow:2:false
   showTrail:1:
    type:4:1
-   value:2:false
+   value:2:true
   renderBehind:1:
    type:4:1
    value:2:true
@@ -131,7 +131,7 @@ Block Map:1:
  settings:1:
   lightEnabled:1:
    type:4:1
-   value:2:true
+   value:2:false
   Key:1:
    type:4:4
    key:4:0
@@ -140,7 +140,7 @@ Block Map:1:
    value:6:1.106944
   gridR:1:
    type:4:2
-   value:4:22
+   value:4:49
   position:1:
    type:4:5
    x:6:11.666656
@@ -379,13 +379,19 @@ Mini Map:1:
   Key:1:
    type:4:4
    key:4:0
+  radius:1:
+   type:4:2
+   value:4:73
   position:1:
    type:4:5
-   x:6:0.000000
-   y:6:100.000000
+   x:6:13.000008
+   y:6:13.160004
+  checkLimit:1:
+   type:4:2
+   value:4:21
   scale:1:
    type:4:3
-   value:6:1.000000
+   value:6:1.319445
  enabled:2:true
 Motion blur:1:
  settings:1:
@@ -396,6 +402,19 @@ Motion blur:1:
    type:4:2
    value:4:26
  enabled:2:false
+noise:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  position:1:
+   type:4:5
+   x:6:0.000000
+   y:6:100.000000
+  scale:1:
+   type:4:3
+   value:6:1.000000
+ enabled:2:false
 Win Particles:1:
  settings:1:
   Key:1:
@@ -403,10 +422,10 @@ Win Particles:1:
    key:4:0
   color:1:
    rainbow_speed:6:0.003000
-   b:6:0.000000
+   b:6:0.527968
    r:6:1.000000
    type:4:7
-   g:6:0.306000
+   g:6:0.000000
    a:6:1.000000
    rainbow:2:true
  enabled:2:true
