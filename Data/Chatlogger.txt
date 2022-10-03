@@ -30332,3 +30332,981 @@ Press T or RETURN to open chat
 Press T or RETURN to open chat
 You have been teleported to 1000.50, 80.00, 0.50
 Teleported O2Flash20 to 1000.50, 80.00, 0.50
+Press T or RETURN to open chat
+Press T or RETURN to open chat
+Press T or RETURN to open chat
+Press T or RETURN to open chat
+Press T or RETURN to open chat
+You have been teleported to 0.50, 100.00, 0.50
+Teleported O2Flash20 to 0.50, 100.00, 0.50
+Press T or RETURN to open chat
+Press T or RETURN to open chat
+§r§cAlready connecting to this server!
+§r§cYou are already connected to the target server!
+§r§aYour party invitation to §r§b§r§bRameegoo§r§a has been sent!
+§r§7[§r§dParty§r§7] [§r§a+§r§7] §r§6Rameegoo§r§7 joined the party.
+§r§6Party chat is now §r§aenabled§r§6!§r§6
+§r§7Use §r§d/p chat§r§7 to disable §r§dparty chat§r§7!
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8GlowsyMay§r§7§7 joined your game (§r§7§73§r§7§7/§r§7§712§r§7§7).§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lOverpowered§r§a§a§l §r§e§e§r§e§eitems§r§e§e.§r§e§e §r§7§71 vote§r
+§7§7[§r§a§a+§r§7§7] §r§8§8EzMijel§r§7§7 joined your game (§r§7§74§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§9§9IgnTrek§r§7§7 joined your game (§r§7§75§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§f§fIgnDog XI§r§7§7 joined your game (§r§7§76§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§9§9MarvelNerd1776§r§7§7 joined your game (§r§7§77§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§b§bHuntingAxis415§r§7§7 joined your game (§r§7§78§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8FabianSolorzano§r§7§7 joined your game (§r§7§79§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Marty mcfly7349§r§7§7 joined your game (§r§7§710§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8FusionFire5314§r§7§7 joined your game (§r§7§711§r§7§7/§r§7§712§r§7§7).§r
+§6§6Server is now §r§6§6§lFULL§r§6§6! Game starting in §r§e§e§r§e§e10§r§e§e seconds§r§6§6!§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Holasi12§r§7§7 joined your game (§r§7§712§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§9§9IgnTrek§r§7§7 left your game (§r§7§711§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§f§fIgnDog XI§r§7§7 left your game (§r§7§710§r§7§7/§r§7§712§r§7§7).§r
+§9§9MarvelNerd1776§r§9§9 §r§e§evoted for §r§a§a§l§r§a§a§lOverpowered§r§a§a§l §r§e§e§r§e§eitems§r§e§e.§r§e§e §r§7§7§r§7§72§r§7§7 votes§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§f§f §r
+§e§eSelected §r§a§a§l§r§a§a§lOverpowered§r§a§a§l §r§e§e§r§e§eitems§r§e§e!§r§e§e §r§7§7§r§7§72§r§7§7 votes§r§7§7.§r
+§f§f §r
+§e§eTeam §r§6§6§r§6§6Orange§r§6§6's §r§e§eegg has been §r§e§e§leaten§r§e§e by §r§a§aHuntingAxis415§r
+§e§eTeam §r§e§e§r§e§eYellow§r§e§e's §r§e§eegg has been §r§e§e§lejected§r§e§e by §r§3§3O2Flash20§r
+§a§aHuntingAxis415§r§e§e§r§e§e UwU'd §r§6§6MarvelNerd1776§r§e§e§r§e§e to death!§r
+§c§c§r§c§cMarvelNerd1776§r§c§c has been eliminated from the game.§r
+§e§eGlowsyMay§r§e§e§r§e§e died in the void§r§e§e while escaping §r§3§3Rameegoo§r§e§e§r§e§e.§r
+§c§c§r§c§cGlowsyMay§r§c§c has been eliminated from the game.§r
+§e§eEzMijel§r§e§e§r§e§e died in the void§r§e§e while escaping §r§3§3Rameegoo§r§e§e§r§e§e.§r
+§c§c§r§c§cEzMijel§r§c§c has been eliminated from the game.§r
+§f§f
+§r§c§cThe §r§e§e§r§e§eYellow§r§c§c team has been eliminated.§r§c§c
+§r
+§6§6FusionFire5314§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§a§aMarty mcfly7349§r§e§e§r§e§e.§r
+§c§c§r§c§cFusionFire5314§r§c§c has been eliminated from the game.§r
+§f§f
+§r§c§cThe §r§6§6§r§6§6Orange§r§c§c team has been eliminated.§r§c§c
+§r
+§r
+§r§4[SENTINEL ANNOUNCEMENT]§r
+§r§7Cheating will result in a ban.§r
+§r§7You can report rule breakers at §r§bcbecrft.net/BedrockReports§r
+§r§b §r
+§e§eTeam §r§a§a§r§a§aGreen§r§a§a's §r§e§eegg has been §r§e§e§lejected§r§e§e by §r§3§3O2Flash20§r
+§e§eTeam §r§c§c§r§c§cRed§r§c§c's §r§e§eegg has been §r§e§e§leaten§r§e§e by §r§a§aHuntingAxis415§r
+§a§aHuntingAxis415§r§e§e§r§e§e picked up §r§c§cFabianSolorzano§r§e§e§r§e§e and threw them into the void.§r
+§c§c§r§c§cFabianSolorzano§r§c§c has been eliminated from the game.§r
+§c§cYou need §r§e§e§r§e§e16§r§c§c more §r§7§7Iron§r§c§c to purchase this item!§r
+§a§aHuntingAxis415§r§e§e§r§e§e tripped §r§c§cHolasi12§r§e§e§r§e§e into the void.§r
+§c§c§r§c§cHolasi12§r§c§c has been eliminated from the game.§r
+§f§f
+§r§c§cThe §r§c§c§r§c§cRed§r§c§c team has been eliminated.§r§c§c
+§r
+§a§aHuntingAxis415§r§e§e§r§e§e sent §r§3§3O2Flash20§r§e§e§r§e§e to the underworld.§r
+§a§aMarty mcfly7349§r§e§e§r§e§e died in the void§r§e§e while escaping §r§3§3Rameegoo§r§e§e§r§e§e.§r
+§c§c§r§c§cMarty mcfly7349§r§c§c has been eliminated from the game.§r
+§b§bYour egg has brought you new life!§r
+§c§cYou are now invincible for §r§c§c10§r§c§c seconds.§r
+§6§6You have been given your kit! You have to wait 1 minute 30 seconds before you can get your kit again.§r
+§a§aHuntingAxis415§r§e§e§r§e§e was smacked into next week by §r§3§3O2Flash20§r§e§e§r§e§e.§r
+§c§c§r§c§cHuntingAxis415§r§c§c has been eliminated from the game.§r
+§f§f
+§r§c§cThe §r§a§a§r§a§aGreen§r§c§c team has been eliminated.§r§c§c
+§r
+§7§7-------------------------------§r
+§e§e§r§3§3§r§3§3Cyan§r§a§a won the game!§r
+§7§7-------------------------------§r
+§a§aCongratulations, you win!§r
+§d§d+§r§d§d250§r§d§d Experience.§r
+§7§7-------------------------------§r
+§8§8- §r§7§7§r§7§7Game length§r§7§7: §r§e§e§r§e§e2§r§e§e minutes§r§e§e, §r§e§e12§r§e§e seconds§r
+§8§8- §r§7§7§r§7§7Kills§r§7§7: §r§e§e§r§e§e1§r
+§8§8- §r§7§7§r§7§7Deaths§r§7§7: §r§e§e§r§e§e1§r
+§8§8- §r§7§7§r§7§7K/D§r§7§7: §r§e§e§r§e§e1.0§r
+§8§8- §r§7§7§r§7§7Eggs broken§r§7§7: §r§e§e§r§e§e2§r
+§8§8- §r§7§7§r§7§7Eliminations§r§7§7: §r§e§e§r§e§e1§r
+§7§7-------------------------------§r
+§7§5Alberto Jr5245§f: §7he has people who carry him through the games for wins
+§7[§r§f§lSalty§r§7] §8z§7p§fs§7i§7f§f: §7dam
+§r§5[§d§lVoider§r§5]§r §5PierceGamer5016§f: §7EntPierce livee on youtube
+§7[§r§f§lSalty§r§7] §8z§7p§fs§7i§7f§f: §7is that true
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§71§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§6§6Rameegoo§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8IrvingGamer997§r§7§7 joined your game (§r§7§73§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Rojo2344§r§7§7 joined your game (§r§7§74§r§7§7/§r§7§712§r§7§7).§r
+§r§aSending you to the Lobby...§r
+§7§5Alberto Jr5245§f: §7mostly
+§r§e[§6§lBurger§r§e]§r §6ZKITTLZZ§f: §7no op
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§712§r§7§7).§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lOverpowered§r§a§a§l §r§e§e§r§e§eitems§r§e§e.§r§e§e §r§7§71 vote§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Diego pro9414§r§7§7 joined your game (§r§7§73§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Calabacin121§r§7§7 joined your game (§r§7§74§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8OceanSideRN§r§7§7 joined your game (§r§7§75§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Madhamster7§r§7§7 joined your game (§r§7§76§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8nicoLeon0815§r§7§7 joined your game (§r§7§77§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8FreshBubble229§r§7§7 joined your game (§r§7§78§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Gamer Rangor§r§7§7 joined your game (§r§7§79§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8LGC Bullet§r§7§7 joined your game (§r§7§710§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§2§2PinScorpion4247§r§7§7 joined your game (§r§7§711§r§7§7/§r§7§712§r§7§7).§r
+§6§6Server is now §r§6§6§lFULL§r§6§6! Game starting in §r§e§e§r§e§e10§r§e§e seconds§r§6§6!§r
+§7§7[§r§a§a+§r§7§7] §r§3§3Cam§r§b§bpz1§r§f§f510§r§7§7 joined your game (§r§7§712§r§7§7/§r§7§712§r§7§7).§r
+§3§3Cam§r§b§bpz1§r§f§f510§r§f§f §r§e§evoted for §r§a§a§l§r§a§a§lOverpowered§r§a§a§l §r§e§e§r§e§eitems§r§e§e.§r§e§e §r§7§7§r§7§72§r§7§7 votes§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§f§f §r
+§e§eSelected §r§a§a§l§r§a§a§lOverpowered§r§a§a§l §r§e§e§r§e§eitems§r§e§e!§r§e§e §r§7§7§r§7§72§r§7§7 votes§r§7§7.§r
+§f§f §r
+§3§3nicoLeon0815§r§e§e§r§e§e died in the void§r§e§e.§r
+§3§3nicoLeon0815§r§e§e§r§e§e was slain§r§e§e by §r§1§1OceanSideRN§r§e§e§r§e§e.§r
+§e§eTeam §r§d§d§r§d§dPink§r§d§d's §r§e§eegg has been destroyed by §r§c§cRameegoo§r
+§e§eTeam §r§3§3§r§3§3Cyan§r§3§3's §r§e§eegg has been destroyed by §r§1§1OceanSideRN§r
+§3§3nicoLeon0815§r§e§e§r§e§e was slain§r§e§e by §r§1§1OceanSideRN§r§e§e§r§e§e.§r
+§c§c§r§c§cnicoLeon0815§r§c§c has been eliminated from the game.§r
+§3§3FreshBubble229§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§1§1OceanSideRN§r§e§e§r§e§e.§r
+§c§c§r§c§cFreshBubble229§r§c§c has been eliminated from the game.§r
+§f§f
+§r§c§cThe §r§3§3§r§3§3Cyan§r§c§c team has been eliminated.§r§c§c
+§r
+§e§eCalabacin121§r§e§e§r§e§e died in the void§r§e§e while escaping §r§1§1Madhamster7§r§e§e§r§e§e.§r
+§e§eTeam §r§6§6§r§6§6Orange§r§6§6's §r§e§eegg has been §r§e§e§lejected§r§e§e by §r§c§cO2Flash20§r
+§e§eTeam §r§e§e§r§e§eYellow§r§e§e's §r§e§eegg has been destroyed by §r§1§1Madhamster7§r
+§d§dPinScorpion4247§r§e§e§r§e§e died in the void§r§e§e while escaping §r§c§cRameegoo§r§e§e§r§e§e.§r
+§c§c§r§c§cPinScorpion4247§r§c§c has been eliminated from the game.§r
+§e§eCalabacin121§r§e§e§r§e§e was slain§r§e§e by §r§1§1Madhamster7§r§e§e§r§e§e.§r
+§c§c§r§c§cCalabacin121§r§c§c has been eliminated from the game.§r
+§c§cO2Flash20§r§e§e§r§e§e scared §r§6§6LGC Bullet§r§e§e§r§e§e into the void.§r
+§c§c§r§c§cLGC Bullet§r§c§c has been eliminated from the game.§r
+§d§dCampz1510§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§c§cRameegoo§r§e§e§r§e§e.§r
+§c§c§r§c§cCampz1510§r§c§c has been eliminated from the game.§r
+§f§f
+§r§c§cThe §r§d§d§r§d§dPink§r§c§c team has been eliminated.§r§c§c
+§r
+§e§eDiego pro9414§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§1§1OceanSideRN§r§e§e§r§e§e.§r
+§c§c§r§c§cDiego pro9414§r§c§c has been eliminated from the game.§r
+§f§f
+§r§c§cThe §r§e§e§r§e§eYellow§r§c§c team has been eliminated.§r§c§c
+§r
+§c§cO2Flash20§r§e§e§r§e§e was slain§r§e§e by §r§6§6Gamer Rangor§r§e§e§r§e§e.§r
+§b§bYour egg has brought you new life!§r
+§c§cYou are now invincible for §r§c§c10§r§c§c seconds.§r
+§6§6You have been given your kit! You have to wait 1 minute 30 seconds before you can get your kit again.§r
+§e§eTeam §r§c§c§r§c§cRed§r§c§c's §r§e§eegg has been destroyed by §r§1§1OceanSideRN§r
+§r§f§4§lYour egg has been destroyed!§r
+§c§cO2Flash20§r§e§e§r§e§e kicked §r§1§1OceanSideRN§r§e§e§r§e§e into the void.§r
+§6§6Gamer Rangor§r§e§e§r§e§e was slain§r§e§e by §r§1§1Madhamster7§r§e§e§r§e§e.§r
+§c§c§r§c§cGamer Rangor§r§c§c has been eliminated from the game.§r
+§f§f
+§r§c§cThe §r§6§6§r§6§6Orange§r§c§c team has been eliminated.§r§c§c
+§r
+§1§1OceanSideRN§r§e§e§r§e§e thought they could survive in the void§r§e§e.§r
+§1§1Madhamster7§r§e§e§r§e§e died in the void§r§e§e.§r
+§r§f§r§7Found a §r§4§lcheater§r§7 on our network? Use §r§6/sr§r§7 to report them!
+§4§4[§r§4§4§lGlobal§r§4§4]§r§f§f§r§1§1§r§1§1 OceanSideRN§r§f§f: §r§7§7§r§7§7omgg§r
+§4§4[§r§4§4§lGlobal§r§4§4]§r§f§f§r§1§1§r§1§1 OceanSideRN§r§f§f: §r§7§7§r§7§7so scaryy§r
+§e§eTeam §r§1§1§r§1§1Dark Blue§r§1§1's §r§e§eegg has been destroyed by §r§c§cRameegoo§r
+§4§4[§r§4§4§lGlobal§r§4§4]§r§f§f§r§c§c§l§r§c§c§l O2Flash20§r§f§f: §r§7§7§r§7§7ong ong§r
+§4§4[§r§4§4§lGlobal§r§4§4]§r§f§f§r§c§c§l§r§c§c§l O2Flash20§r§f§f: §r§7§7§r§7§7fr§r
+§c§cO2Flash20§r§e§e§r§e§e was slain§r§e§e by §r§1§1Madhamster7§r§e§e§r§e§e.§r
+§c§c§r§c§cO2Flash20§r§c§c has been eliminated from the game.§r
+§7§7-------------------------------§r
+§8§8- §r§7§7§r§7§7Game length§r§7§7: §r§e§e§r§e§e3§r§e§e minutes§r§e§e, §r§e§e28§r§e§e seconds§r
+§8§8- §r§7§7§r§7§7Kills§r§7§7: §r§e§e§r§e§e2§r
+§8§8- §r§7§7§r§7§7Deaths§r§7§7: §r§e§e§r§e§e2§r
+§8§8- §r§7§7§r§7§7K/D§r§7§7: §r§e§e§r§e§e1.0§r
+§8§8- §r§7§7§r§7§7Eggs broken§r§7§7: §r§e§e§r§e§e1§r
+§8§8- §r§7§7§r§7§7Eliminations§r§7§7: §r§e§e§r§e§e1§r
+§7§7-------------------------------§r
+§c§cWaiting for your Party Members to finish their game first, then you can §r§a§aPlay Again§r
+§4§4[§r§4§4§lGlobal§r§4§4]§r§f§f§r§1§1§r§1§1 OceanSideRN§r§f§f: §r§7§7§r§7§7so u scared?§r
+§4§4[§r§4§4§lGlobal§r§4§4]§r§f§f§r§1§1§r§1§1 OceanSideRN§r§f§f: §r§7§7§r§7§7ur the one hiding up there§r
+§1§1Madhamster7§r§e§e§r§e§e died in the void§r§e§e while escaping §r§c§cRameegoo§r§e§e§r§e§e.§r
+§c§c§r§c§cMadhamster7§r§c§c has been eliminated from the game.§r
+§1§1OceanSideRN§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§c§cRameegoo§r§e§e§r§e§e.§r
+§c§c§r§c§cOceanSideRN§r§c§c has been eliminated from the game.§r
+§f§f
+§r§c§cThe §r§1§1§r§1§1Dark Blue§r§c§c team has been eliminated.§r§c§c
+§r
+§7§7-------------------------------§r
+§e§e§r§c§c§r§c§cRed§r§a§a won the game!§r
+§7§7-------------------------------§r
+§a§aCongratulations, you win!§r
+§d§d+§r§d§d250§r§d§d Experience.§r
+§9§9[§r§b§b§lDrenched§r§9§9]§r§f§f §r§b§bO2Flash20§r§f§f: §r§7§7§r§7§7!omggg§r
+§6§6[Pumpkin Hunt 2020] §r§8§8OceanSideRN§r§f§f: §r§7§7§r§7§7so trash§r
+§r§7[§r§dParty§r§7]§r§7 §r§8§r§8Rameegoo§r§f: §r§f§r§flolll
+§r§5[§f§lThe E§6§lgg G§f§lod§r§5]§r §8XxGODXx3529§f: §7xd
+§r§f[§f§lFri§6§led E§f§lgg§r§f]§r §fDogyLover632§f: §7but idt u should break the friend zone
+§r§5[§f§lThe E§6§lgg G§f§lod§r§5]§r §6DawdlingHydra41§f: §7gtg talk to her bye
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§71§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§6§6Rameegoo§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§712§r§7§7).§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lOverpowered§r§a§a§l §r§e§e§r§e§eitems§r§e§e.§r§e§e §r§7§71 vote§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Isv6862§r§7§7 joined your game (§r§7§73§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8EL1TE GH0ST6408§r§7§7 joined your game (§r§7§74§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8S0ccerPl4yer§r§7§7 joined your game (§r§7§75§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Dss Forwater§r§7§7 joined your game (§r§7§76§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§8§8Dss Forwater§r§7§7 left your game (§r§7§75§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§8§8S0ccerPl4yer§r§7§7 left your game (§r§7§74§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8S0ccerPl4yer§r§7§7 joined your game (§r§7§75§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Dss Forwater§r§7§7 joined your game (§r§7§76§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§4§4zlunql§r§7§7 joined your game (§r§7§77§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8biggietonka§r§7§7 joined your game (§r§7§78§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8SwimLake2152§r§7§7 joined your game (§r§7§79§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8RutilantTea1618§r§7§7 joined your game (§r§7§710§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8CrypticShine§r§7§7 joined your game (§r§7§711§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§8§8S0ccerPl4yer§r§7§7 left your game (§r§7§710§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§8§8Dss Forwater§r§7§7 left your game (§r§7§79§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§4§4zlunql§r§7§7 left your game (§r§7§78§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8HissingKarma898§r§7§7 joined your game (§r§7§79§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Gran dudv§r§7§7 joined your game (§r§7§710§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Drem2217§r§7§7 joined your game (§r§7§711§r§7§7/§r§7§712§r§7§7).§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e minute§r§9§9.§r
+§6§6Server is now §r§6§6§lFULL§r§6§6! Game starting in §r§e§e§r§e§e10§r§e§e seconds§r§6§6!§r
+§7§7[§r§a§a+§r§7§7] §r§4§4zlunql§r§7§7 joined your game (§r§7§712§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§4§4zlunql§r§7§7 left your game (§r§7§711§r§7§7/§r§7§712§r§7§7).§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§f§f §r
+§e§eSelected §r§a§a§l§r§a§a§lOverpowered§r§a§a§l §r§e§e§r§e§eitems§r§e§e!§r§e§e §r§7§71 vote§r§7§7.§r
+§f§f §r
+§e§eDrem2217§r§e§e§r§e§e died in the void§r§e§e.§r
+§5§5SwimLake2152§r§e§e§r§e§e died in the void§r§e§e.§r
+§e§eTeam §r§c§c§r§c§cRed§r§c§c's §r§e§eegg has been §r§e§e§lejected§r§e§e by §r§b§bO2Flash20§r
+§e§eTeam §r§6§6§r§6§6Orange§r§6§6's §r§e§eegg has been destroyed by §r§b§bRameegoo§r
+§b§bRameegoo§r§e§e§r§e§e couldn't fly§r§e§e while escaping §r§6§6biggietonka§r§e§e§r§e§e.§r
+§e§eTeam §r§5§5§r§5§5Purple§r§5§5's §r§e§eegg has been destroyed by §r§a§aGran dudv§r
+§a§aHissingKarma898§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§5§5SwimLake2152§r§e§e§r§e§e.§r
+§e§eTeam §r§a§a§r§a§aGreen§r§a§a's §r§e§eegg has been destroyed by §r§5§5SwimLake2152§r
+§c§cIsv6862§r§e§e§r§e§e tried to escape §r§b§bO2Flash20§r§e§e§r§e§e by jumping into the void.§r
+§c§c§r§c§cIsv6862§r§c§c has been eliminated from the game.§r
+§e§eTeam §r§b§b§r§b§bLight Blue§r§b§b's §r§e§eegg has been destroyed by §r§6§6biggietonka§r
+§r§f§4§lYour egg has been destroyed!§r
+§b§bO2Flash20§r§e§e§r§e§e was slain§r§e§e by §r§c§cEL1TE GH0ST6408§r§e§e§r§e§e.§r
+§c§c§r§c§cO2Flash20§r§c§c has been eliminated from the game.§r
+§7§7-------------------------------§r
+§8§8- §r§7§7§r§7§7Game length§r§7§7: §r§e§e§r§e§e1 minute§r§e§e, §r§e§e26§r§e§e seconds§r
+§8§8- §r§7§7§r§7§7Kills§r§7§7: §r§e§e§r§e§e1§r
+§8§8- §r§7§7§r§7§7Deaths§r§7§7: §r§e§e§r§e§e1§r
+§8§8- §r§7§7§r§7§7K/D§r§7§7: §r§e§e§r§e§e1.0§r
+§8§8- §r§7§7§r§7§7Eggs broken§r§7§7: §r§e§e§r§e§e1§r
+§8§8- §r§7§7§r§7§7Eliminations§r§7§7: §r§e§e§r§e§e1§r
+§7§7-------------------------------§r
+§c§cWaiting for your Party Members to finish their game first, then you can §r§a§aPlay Again§r
+§5§5RutilantTea1618§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§a§aHissingKarma898§r§e§e§r§e§e.§r
+§c§c§r§c§cRutilantTea1618§r§c§c has been eliminated from the game.§r
+§a§aGran dudv§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§5§5RutilantTea1618§r§e§e§r§e§e.§r
+§c§c§r§c§cGran dudv§r§c§c has been eliminated from the game.§r
+§6§6biggietonka§r§e§e§r§e§e thought they could survive in the void§r§e§e.§r
+§c§c§r§c§cbiggietonka§r§c§c has been eliminated from the game.§r
+§5§5SwimLake2152§r§e§e§r§e§e died in the void§r§e§e while escaping §r§a§aHissingKarma898§r§e§e§r§e§e.§r
+§c§c§r§c§cSwimLake2152§r§c§c has been eliminated from the game.§r
+§f§f
+§r§c§cThe §r§5§5§r§5§5Purple§r§c§c team has been eliminated.§r§c§c
+§r
+§b§bRameegoo§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§c§cEL1TE GH0ST6408§r§e§e§r§e§e.§r
+§c§c§r§c§cRameegoo§r§c§c has been eliminated from the game.§r
+§f§f
+§r§c§cThe §r§b§b§r§b§bLight Blue§r§c§c team has been eliminated.§r§c§c
+§r
+§6§6CrypticShine§r§e§e§r§e§e was slain§r§e§e by §r§c§cEL1TE GH0ST6408§r§e§e§r§e§e.§r
+§c§c§r§c§cCrypticShine§r§c§c has been eliminated from the game.§r
+§f§f
+§r§c§cThe §r§6§6§r§6§6Orange§r§c§c team has been eliminated.§r§c§c
+§r
+§e§eDrem2217§r§e§e§r§e§e was slain§r§e§e by §r§a§aHissingKarma898§r§e§e§r§e§e.§r
+§e§eTeam §r§e§e§r§e§eYellow§r§e§e's §r§e§eegg has been destroyed by §r§a§aHissingKarma898§r
+§c§cPlease wait for your Party members in your game to finish before doing that!§r
+§c§cPlease wait for your Party members in your game to finish before doing that!§r
+§r§d[§lChonker§r§d]§r §5Clovate§f: §7mb it was full
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§717§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§6§6Rameegoo§r§7§7 joined your game (§r§7§718§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8El MaxiTube§r§7§7 joined your game (§r§7§719§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8secondwind08§r§7§7 joined your game (§r§7§720§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8RentedDolphin65§r§7§7 joined your game (§r§7§721§r§7§7/§r§7§740§r§7§7).§r
+§a§aTheCholo218717§r§a§a §r§e§evoted for §r§a§a§l§r§a§a§lOverpowered§r§a§a§l §r§e§e§r§e§echest items§r§e§e.§r§e§e §r§7§71 vote§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Ghost EF5§r§7§7 joined your game (§r§7§722§r§7§7/§r§7§740§r§7§7).§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lDay time§r§e§e.§r§e§e §r§7§71 vote§r
+§7§7[§r§a§a+§r§7§7] §r§8§8EmergingRobin21§r§7§7 joined your game (§r§7§723§r§7§7/§r§7§740§r§7§7).§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e.§r§e§e §r§7§71 vote§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Instant Soup699§r§7§7 joined your game (§r§7§724§r§7§7/§r§7§740§r§7§7).§r
+§a§aTheCholo218717§r§a§a §r§e§evoted for §r§a§a§l§r§a§a§lDay time§r§e§e.§r§e§e §r§7§7§r§7§72§r§7§7 votes§r
+§7§7[§r§a§a+§r§7§7] §r§8§8PikachuBleader§r§7§7 joined your game (§r§7§725§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8BattingTable753§r§7§7 joined your game (§r§7§726§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8ArkhamUS2200§r§7§7 joined your game (§r§7§727§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8PsychoSkate264§r§7§7 joined your game (§r§7§728§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Nathan178504§r§7§7 joined your game (§r§7§729§r§7§7/§r§7§740§r§7§7).§r
+§8§8El MaxiTube§r§8§8 §r§e§evoted for §r§a§a§l§r§a§a§lBasic§r§a§a§l §r§e§e§r§e§echest items§r§e§e.§r§e§e §r§7§71 vote§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Mario409851§r§7§7 joined your game (§r§7§730§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§8§8PsychoSkate264§r§7§7 left your game (§r§7§729§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§8§8Nathan178504§r§7§7 left your game (§r§7§728§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Lippy Newman§r§7§7 joined your game (§r§7§729§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§4§4elfnarozaBM§r§7§7 joined your game (§r§7§730§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8duckymoemoe911§r§7§7 joined your game (§r§7§731§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Mossygoats8§r§7§7 joined your game (§r§7§732§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8SonicMOH§r§7§7 joined your game (§r§7§733§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§8§8Vlzkz§r§7§7 left your game (§r§7§732§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8LevelUp2468§r§7§7 joined your game (§r§7§733§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§8§8Lippy Newman§r§7§7 left your game (§r§7§732§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Gomi141404§r§7§7 joined your game (§r§7§733§r§7§7/§r§7§740§r§7§7).§r
+§8§8El MaxiTube§r§8§8 §r§e§evoted for §r§a§a§l§r§a§a§lSunset§r§e§e.§r§e§e §r§7§71 vote§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Montazer7511§r§7§7 joined your game (§r§7§734§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Whither1314682§r§7§7 joined your game (§r§7§735§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Hinatarou55§r§7§7 joined your game (§r§7§736§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8TraveledOwl6433§r§7§7 joined your game (§r§7§737§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Peusve§r§7§7 joined your game (§r§7§738§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§8§8secondwind08§r§7§7 left your game (§r§7§737§r§7§7/§r§7§740§r§7§7).§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e minute§r§9§9.§r
+§7§7[§r§a§a+§r§7§7] §r§8§8minecallbattle3§r§7§7 joined your game (§r§7§738§r§7§7/§r§7§740§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8SunnyToaster422§r§7§7 joined your game (§r§7§739§r§7§7/§r§7§740§r§7§7).§r
+§6§6Server is now §r§6§6§lFULL§r§6§6! Game starting in §r§e§e§r§e§e10§r§e§e seconds§r§6§6!§r
+§7§7[§r§a§a+§r§7§7] §r§8§8batminetin§r§7§7 joined your game (§r§7§740§r§7§7/§r§7§740§r§7§7).§r
+§8§8Peusve§r§8§8 §r§e§evoted for §r§a§a§l§r§a§a§lOverpowered§r§a§a§l §r§e§e§r§e§echest items§r§e§e.§r§e§e §r§7§7§r§7§72§r§7§7 votes§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§f§f §r
+§e§eSelected §r§a§a§l§r§a§a§lOverpowered§r§a§a§l §r§e§e§r§e§echest items§r§e§e!§r§e§e §r§7§7§r§7§72§r§7§7 votes§r§7§7.§r
+§e§eSelected §r§a§a§l§r§a§a§lDay time§r§e§e!§r§e§e §r§7§7§r§7§72§r§7§7 votes§r§7§7.§r
+§f§f §r
+§9§9Let the games begin!§r
+§c§cYou cannot break chests within the first 20 seconds of the game§r
+§c§cYou cannot break chests within the first 20 seconds of the game§r
+§c§cYou cannot break chests within the first 20 seconds of the game§r
+§6§6SunnyToaster422§r§e§e§r§e§e died in the void§r§e§e.§r
+§6§6El MaxiTube§r§e§e§r§e§e thought they could survive in the void§r§e§e.§r
+§6§6TraveledOwl6433§r§e§e§r§e§e died in the void§r§e§e.§r
+§6§6Timelost122§r§e§e§r§e§e blew up§r§e§e.§r
+§6§6BoldAntelope296§r§e§e§r§e§e blew up§r§e§e.§r
+§6§6Itachigg15§r§e§e§r§e§e died§r§e§e.§r
+§6§6SoftPlate450654§r§e§e§r§e§e died in the void§r§e§e.§r
+§6§6Whither1314682§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6Ghost EF5§r§e§e§r§e§e.§r
+§6§6O2Flash20§r§e§e§r§e§e blew §r§6§6Lisanotz§r§e§e§r§e§e into the void.§r
+§6§6elfnarozaBM§r§e§e§r§e§e was slain§r§e§e by §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§r§f§r§7Want to join our §r§9§lDiscord§r§7? Come join our community at §r§6discord.gg/cubecraft§r§7!
+§6§6EmergingRobin21§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6O2Flash20§r§e§e§r§e§e.§r
+§6§6Thiagotladzinsk§r§e§e§r§e§e was slain§r§e§e by §r§e§ea§r§e§e §r§6§6wolf§r§e§e§r§e§e.§r
+§6§6O2Flash20§r§e§e§r§e§e scared §r§6§6RentedDolphin65§r§e§e§r§e§e into the void.§r
+§6§6Montazer7511§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6ArkhamUS2200§r§e§e§r§e§e.§r
+§6§6Mossygoats8§r§e§e§r§e§e was shot§r§e§e by §r§6§6Ghost EF5§r§e§e§r§e§e.§r
+§6§6Gomi141404§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§6§6JDMLacross§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6duckymoemoe911§r§e§e§r§e§e.§r
+§6§6O2Flash20§r§e§e§r§e§e OwO'd §r§6§6Instant Soup699§r§e§e§r§e§e to death!§r
+§6§6SonicMOH§r§e§e§r§e§e was slain§r§e§e by §r§6§6BattingTable753§r§e§e§r§e§e.§r
+§6§6Hinatarou55§r§e§e§r§e§e was slain§r§e§e by §r§6§6sWiux224yt§r§e§e§r§e§e.§r
+§6§6Graby125§r§e§e§r§e§e was slain§r§e§e by §r§6§6duckymoemoe911§r§e§e§r§e§e.§r
+§6§6PikachuBleader§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6KGB StarFox§r§e§e§r§e§e.§r
+§6§6akaWildKid§r§e§e§r§e§e was slain§r§e§e by §r§6§6duckymoemoe911§r§e§e§r§e§e.§r
+§6§6O2Flash20§r§e§e§r§e§e sent §r§6§6ArkhamUS2200§r§e§e§r§e§e into the Upside Down.§r
+§6§6O2Flash20§r§e§e§r§e§e sent §r§6§6Ghost EF5§r§e§e§r§e§e into the Upside Down.§r
+§6§6evwiley0523§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6sWiux224yt§r§e§e§r§e§e.§r
+§6§6O2Flash20§r§e§e§r§e§e pushed §r§6§6Mario409851§r§e§e§r§e§e into the void.§r
+§6§6TheCholo218717§r§e§e§r§e§e got sent into the void by §r§6§6O2Flash20§r§e§e§r§e§e.§r
+§6§6Viniciusnemn§r§e§e§r§e§e thought they could survive in the void§r§e§e.§r
+§6§6KGB StarFox§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§6§6duckymoemoe911§r§e§e§r§e§e.§r
+§6§6minecallbattle3§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6batminetin§r§e§e§r§e§e.§r
+§6§6Progamer23428§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e1§r§c§c has been eliminated.§r
+§6§6O2Flash20§r§e§e§r§e§e "accidentally" tripped §r§6§6duckymoemoe911§r§e§e§r§e§e into the void.§r
+§6§6O2Flash20§r§e§e§r§e§e assisted §r§6§6Peusve§r§e§e§r§e§e with their void-trauma.§r
+§6§6O2Flash20§r§e§e§r§e§e died in the void§r§e§e.§r
+§7§7-------------------------------§r
+§8§8- §r§7§7§r§7§7Game length§r§7§7: §r§e§e§r§e§e4§r§e§e minutes§r§e§e, §r§e§e28§r§e§e seconds§r
+§8§8- §r§7§7§r§7§7Kills§r§7§7: §r§e§e§r§e§e10§r
+§8§8- §r§7§7§r§7§7Assists§r§7§7: §r§e§e§r§e§e1§r
+§8§8- §r§7§7§r§7§7Accuracy§r§7§7: §r§e§e§r§e§e57§r
+§7§7-------------------------------§r
+§c§cWaiting for your Party Members to finish their game first, then you can §r§a§aPlay Again§r
+§a§aChests are being refilled§r
+§6§6BattingTable753§r§e§e§r§e§e couldn't fly§r§e§e while escaping §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e3§r§c§c has been eliminated.§r
+§6§6LevelUp2468§r§e§e§r§e§e died in the void§r§e§e.§r
+§6§6batminetin§r§e§e§r§e§e was slain§r§e§e by §r§6§6sWiux224yt§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e4§r§c§c has been eliminated.§r
+§7§7-------------------------------§r
+§e§e§r§e§e§r§e§eTeam §r§e§e2§r§a§a won the game!§r
+§7§7-------------------------------§r
+§a§aCongratulations, you win!§r
+§d§d+§r§d§d125§r§d§d Experience.§r
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§79§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§6§6Rameegoo§r§7§7 joined your game (§r§7§710§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8TaylorC2536§r§7§7 joined your game (§r§7§711§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Bananeers§r§7§7 joined your game (§r§7§712§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Doritos4000§r§7§7 joined your game (§r§7§713§r§7§7/§r§7§716§r§7§7).§r
+§r§aSending you to the Lobby...§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Eyadmsh§r§7§7 joined your game (§r§7§714§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§71§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§6§6Rameegoo§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§716§r§7§7).§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lDay time§r§e§e.§r§e§e §r§7§71 vote§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e.§r§e§e §r§7§71 vote§r
+§7§7[§r§a§a+§r§7§7] §r§8§8CoolHyperSpeed9§r§7§7 joined your game (§r§7§73§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8YEETboy20083292§r§7§7 joined your game (§r§7§74§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Mivox0345§r§7§7 joined your game (§r§7§75§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8BastiGHG6917§r§7§7 joined your game (§r§7§76§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8mmoonnkkeeyy228§r§7§7 joined your game (§r§7§77§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8y1sfs§r§7§7 joined your game (§r§7§78§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8LuckyClover430§r§7§7 joined your game (§r§7§79§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8FlipperRiver21§r§7§7 joined your game (§r§7§710§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8CopperyWord9285§r§7§7 joined your game (§r§7§711§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8BRABOYES§r§7§7 joined your game (§r§7§712§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Coornpops2229§r§7§7 joined your game (§r§7§713§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8sleeptime3293§r§7§7 joined your game (§r§7§714§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8BenitoCamela386§r§7§7 joined your game (§r§7§715§r§7§7/§r§7§716§r§7§7).§r
+§6§6Server is now §r§6§6§lFULL§r§6§6! Game starting in §r§e§e§r§e§e10§r§e§e seconds§r§6§6!§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Paquoe§r§7§7 joined your game (§r§7§716§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§8§8BastiGHG6917§r§7§7 left your game (§r§7§715§r§7§7/§r§7§716§r§7§7).§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§f§f §r
+§e§eSelected §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e!§r§e§e §r§7§71 vote§r§7§7.§r
+§e§eSelected §r§a§a§l§r§a§a§lDay time§r§e§e!§r§e§e §r§7§71 vote§r§7§7.§r
+§f§f §r
+§9§9Let the games begin!§r
+§6§6O2Flash20§r§e§e§r§e§e kicked §r§6§6FlipperRiver21§r§e§e§r§e§e into the void.§r
+§6§6O2Flash20§r§e§e§r§e§e screamed "This is Sparta!" before kicking §r§6§6BenitoCamela386§r§e§e§r§e§e into the void.§r
+§6§6LuckyClover430§r§e§e§r§e§e was slain§r§e§e by §r§6§6BRABOYES§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e5§r§c§c has been eliminated.§r
+§6§6O2Flash20§r§e§e§r§e§e was slain§r§e§e by §r§6§6YEETboy20083292§r§e§e§r§e§e.§r
+§7§7-------------------------------§r
+§8§8- §r§7§7§r§7§7Game length§r§7§7: §r§e§e§r§e§e52§r§e§e seconds§r
+§8§8- §r§7§7§r§7§7Kills§r§7§7: §r§e§e§r§e§e2§r
+§7§7-------------------------------§r
+§c§cWaiting for your Party Members to finish their game first, then you can §r§a§aPlay Again§r
+§6§6Rameegoo§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6CoolHyperSpeed9§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e1§r§c§c has been eliminated.§r
+§c§cPlease wait for your Party members in your game to finish before doing that!§r
+§c§cPlease wait for your Party members in your game to finish before doing that!§r
+§r§fUnknown command. Type "/help" for help.§r
+§r§cThe party has been disbanded!
+§r§7You are now no longer in a party.
+§r§7[§r§eFriend§r§7] [§r§c-§r§7] §r§6§r§6Rameegoo§r§6 §r§7left the network.
+Press T or RETURN to open chat
+§r§aYour party invitation to §r§b§r§bRameegoo§r§a has been sent!
+§r§7[§r§dParty§r§7] [§r§a+§r§7] §r§6Rameegoo§r§7 joined the party.
+§r§6Party chat is now §r§aenabled§r§6!§r§6
+§r§7Use §r§d/p chat§r§7 to disable §r§dparty chat§r§7!
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§71§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§6§6Rameegoo§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8master3490jp§r§7§7 joined your game (§r§7§73§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8torresTM94§r§7§7 joined your game (§r§7§74§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Gigous145§r§7§7 joined your game (§r§7§75§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8PapiSandia2005§r§7§7 joined your game (§r§7§76§r§7§7/§r§7§716§r§7§7).§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lDay time§r§e§e.§r§e§e §r§7§71 vote§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e.§r§e§e §r§7§71 vote§r
+§7§7[§r§a§a+§r§7§7] §r§8§8SKL xRadid§r§7§7 joined your game (§r§7§77§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8LemonAtol570232§r§7§7 joined your game (§r§7§78§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§8§8Gigous145§r§7§7 left your game (§r§7§77§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8ObjectedGnome59§r§7§7 joined your game (§r§7§78§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Kayke51§r§7§7 joined your game (§r§7§79§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8SuperMasterUwU§r§7§7 joined your game (§r§7§710§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Darfex3900§r§7§7 joined your game (§r§7§711§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8A4Trez2§r§7§7 joined your game (§r§7§712§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Samidonis23§r§7§7 joined your game (§r§7§713§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Thronedsix815§r§7§7 joined your game (§r§7§714§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8NorbleSnorfter§r§7§7 joined your game (§r§7§715§r§7§7/§r§7§716§r§7§7).§r
+§6§6Server is now §r§6§6§lFULL§r§6§6! Game starting in §r§e§e§r§e§e10§r§e§e seconds§r§6§6!§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Santiagoeze4884§r§7§7 joined your game (§r§7§716§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§8§8ObjectedGnome59§r§7§7 left your game (§r§7§715§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§8§8Kayke51§r§7§7 left your game (§r§7§714§r§7§7/§r§7§716§r§7§7).§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§7§7[§r§a§a+§r§7§7] §r§8§8SOYJunixYT§r§7§7 joined your game (§r§7§715§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8DunixYT§r§7§7 joined your game (§r§7§716§r§7§7/§r§7§716§r§7§7).§r
+§9§9Let the games begin!§r
+§f§f §r
+§e§eSelected §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e!§r§e§e §r§7§71 vote§r§7§7.§r
+§e§eSelected §r§a§a§l§r§a§a§lDay time§r§e§e!§r§e§e §r§7§71 vote§r§7§7.§r
+§f§f §r
+§9§9Let the games begin!§r
+§c§cYou cannot break chests within the first 20 seconds of the game§r
+§6§6DunixYT§r§e§e§r§e§e died§r§e§e.§r
+§6§6SOYJunixYT§r§e§e§r§e§e died§r§e§e.§r
+§6§6torresTM94§r§e§e§r§e§e thought they could survive in the void§r§e§e.§r
+§6§6PapiSandia2005§r§e§e§r§e§e was slain§r§e§e by §r§6§6LemonAtol570232§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e3§r§c§c has been eliminated.§r
+§6§6NorbleSnorfter§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§6§6Samidonis23§r§e§e§r§e§e.§r
+§6§6SuperMasterUwU§r§e§e§r§e§e was slapped into the void by §r§6§6O2Flash20§r§e§e§r§e§e.§r
+§6§6Santiagoeze4884§r§e§e§r§e§e was shot§r§e§e by §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e8§r§c§c has been eliminated.§r
+§6§6SKL xRadid§r§e§e§r§e§e was sucked into a black hole while §r§6§6O2Flash20§r§e§e§r§e§e watched.§r
+§6§6LemonAtol570232§r§e§e§r§e§e was sucked into a black hole while §r§6§6O2Flash20§r§e§e§r§e§e watched.§r
+§e§e§r§e§eTeam §r§e§e4§r§c§c has been eliminated.§r
+§6§6master3490jp§r§e§e§r§e§e died in the void§r§e§e.§r
+§6§6Thronedsix815§r§e§e§r§e§e thought they could survive in the void§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e2§r§c§c has been eliminated.§r
+§6§6Darfex3900§r§e§e§r§e§e died in the void§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e6§r§c§c has been eliminated.§r
+§a§aThere are two §r§a§ateams§r§a§a left. You received a player tracker.§r
+§6§6O2Flash20§r§e§e§r§e§e assisted §r§6§6Samidonis23§r§e§e§r§e§e with their void-trauma.§r
+§6§6A4Trez2§r§e§e§r§e§e was pulled into the void by §r§6§6O2Flash20§r§e§e§r§e§e's pet space kraken.§r
+§e§e§r§e§eTeam §r§e§e7§r§c§c has been eliminated.§r
+§7§7-------------------------------§r
+§e§e§r§e§e§r§e§eTeam §r§e§e1§r§a§a won the game!§r
+§7§7-------------------------------§r
+§a§aCongratulations, you win!§r
+§d§d+§r§d§d125§r§d§d Experience.§r
+§7§7-------------------------------§r
+§8§8- §r§7§7§r§7§7Game length§r§7§7: §r§e§e§r§e§e3§r§e§e minutes§r§e§e, §r§e§e3§r§e§e seconds§r
+§8§8- §r§7§7§r§7§7Kills§r§7§7: §r§e§e§r§e§e5§r
+§8§8- §r§7§7§r§7§7Assists§r§7§7: §r§e§e§r§e§e1§r
+§8§8- §r§7§7§r§7§7Accuracy§r§7§7: §r§e§e§r§e§e20§r
+§7§7-------------------------------§r
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§71§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§6§6Rameegoo§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§716§r§7§7).§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lDay time§r§e§e.§r§e§e §r§7§71 vote§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e.§r§e§e §r§7§71 vote§r
+§7§7[§r§a§a+§r§7§7] §r§8§8She be big§r§7§7 joined your game (§r§7§73§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§1§1victorzens§r§7§7 joined your game (§r§7§74§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8wilbervg§r§7§7 joined your game (§r§7§75§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8juancarv§r§7§7 joined your game (§r§7§76§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Edu1043§r§7§7 joined your game (§r§7§77§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Silver3352377§r§7§7 joined your game (§r§7§78§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8AddyTheHuman604§r§7§7 joined your game (§r§7§79§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8oe Axeel§r§7§7 joined your game (§r§7§710§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8D4rK ArcH3rG§r§7§7 joined your game (§r§7§711§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Camstr257§r§7§7 joined your game (§r§7§712§r§7§7/§r§7§716§r§7§7).§r
+§1§1victorzens§r§1§1 §r§e§evoted for §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e.§r§e§e §r§7§7§r§7§72§r§7§7 votes§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Cjart1234§r§7§7 joined your game (§r§7§713§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8KJacks04§r§7§7 joined your game (§r§7§714§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Patitooo09§r§7§7 joined your game (§r§7§715§r§7§7/§r§7§716§r§7§7).§r
+§6§6Server is now §r§6§6§lFULL§r§6§6! Game starting in §r§e§e§r§e§e10§r§e§e seconds§r§6§6!§r
+§7§7[§r§a§a+§r§7§7] §r§8§8MaxCH10§r§7§7 joined your game (§r§7§716§r§7§7/§r§7§716§r§7§7).§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§f§f §r
+§e§eSelected §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e!§r§e§e §r§7§7§r§7§72§r§7§7 votes§r§7§7.§r
+§e§eSelected §r§a§a§l§r§a§a§lDay time§r§e§e!§r§e§e §r§7§71 vote§r§7§7.§r
+§f§f §r
+§9§9Let the games begin!§r
+§6§6KJacks04§r§e§e§r§e§e was shot§r§e§e by §r§6§6oe Axeel§r§e§e§r§e§e.§r
+§6§6Edu1043§r§e§e§r§e§e thought they could survive in the void§r§e§e.§r
+§6§6Silver3352377§r§e§e§r§e§e thought they could survive in the void§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e4§r§c§c has been eliminated.§r
+§6§6oe Axeel§r§e§e§r§e§e died in the void§r§e§e.§r
+§6§6O2Flash20§r§e§e§r§e§e "accidentally" made §r§6§6victorzens§r§e§e§r§e§e fall into the void.§r
+§6§6She be big§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e2§r§c§c has been eliminated.§r
+§r§7[§r§dParty§r§7]§r§7 §r§8§r§8O2Flash20§r§f: §r§f§r§fletss gooo
+§r§7[§r§dParty§r§7]§r§7 §r§8§r§8Rameegoo§r§f: §r§f§r§fLFGGG
+§6§6AddyTheHuman604§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§6§6Camstr257§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e5§r§c§c has been eliminated.§r
+§6§6juancarv§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§6§6Camstr257§r§e§e§r§e§e.§r
+§6§6Cjart1234§r§e§e§r§e§e got turned into dust by §r§6§6O2Flash20§r§e§e§r§e§e.§r
+§6§6Camstr257§r§e§e§r§e§e suffocated§r§e§e while fighting §r§6§6O2Flash20§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e7§r§c§c has been eliminated.§r
+§6§6O2Flash20§r§e§e§r§e§e sent §r§6§6MaxCH10§r§e§e§r§e§e into the Upside Down.§r
+§6§6wilbervg§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e3§r§c§c has been eliminated.§r
+§6§6O2Flash20§r§e§e§r§e§e "accidentally" tripped §r§6§6Patitooo09§r§e§e§r§e§e into the void.§r
+§e§e§r§e§eTeam §r§e§e8§r§c§c has been eliminated.§r
+§a§aThere are two §r§a§ateams§r§a§a left. You received a player tracker.§r
+§r§f§r§7Interact with our community on our §r§5§lforums§r§7: §r§6cubecraft.net§r§7 - introduce yourself, make suggestions and read up on what our community are up to!
+§6§6D4rK ArcH3rG§r§e§e§r§e§e was slain§r§e§e by §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e6§r§c§c has been eliminated.§r
+§7§7-------------------------------§r
+§e§e§r§e§e§r§e§eTeam §r§e§e1§r§a§a won the game!§r
+§7§7-------------------------------§r
+§a§aCongratulations, you win!§r
+§d§d+§r§d§d125§r§d§d Experience.§r
+§7§7-------------------------------§r
+§8§8- §r§7§7§r§7§7Game length§r§7§7: §r§e§e§r§e§e4§r§e§e minutes§r
+§8§8- §r§7§7§r§7§7Kills§r§7§7: §r§e§e§r§e§e5§r
+§7§7-------------------------------§r
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§71§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§6§6Rameegoo§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8KJacks04§r§7§7 joined your game (§r§7§73§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Doge otaku8635§r§7§7 joined your game (§r§7§74§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Diego909008837§r§7§7 joined your game (§r§7§75§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Richy Torres851§r§7§7 joined your game (§r§7§76§r§7§7/§r§7§716§r§7§7).§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lDay time§r§e§e.§r§e§e §r§7§71 vote§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e.§r§e§e §r§7§71 vote§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Jorgecoss5916§r§7§7 joined your game (§r§7§77§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Gae1219948§r§7§7 joined your game (§r§7§78§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Maverick2967§r§7§7 joined your game (§r§7§79§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Luckann9065§r§7§7 joined your game (§r§7§710§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8JOKERcRAZY N64§r§7§7 joined your game (§r§7§711§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8IamTadeo0607§r§7§7 joined your game (§r§7§712§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8WizardEgg126130§r§7§7 joined your game (§r§7§713§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Not Rspect§r§7§7 joined your game (§r§7§714§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8sleeptime3293§r§7§7 joined your game (§r§7§715§r§7§7/§r§7§716§r§7§7).§r
+§6§6Server is now §r§6§6§lFULL§r§6§6! Game starting in §r§e§e§r§e§e10§r§e§e seconds§r§6§6!§r
+§7§7[§r§a§a+§r§7§7] §r§8§8EvolvedVIPER151§r§7§7 joined your game (§r§7§716§r§7§7/§r§7§716§r§7§7).§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§f§f §r
+§e§eSelected §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e!§r§e§e §r§7§71 vote§r§7§7.§r
+§e§eSelected §r§a§a§l§r§a§a§lDay time§r§e§e!§r§e§e §r§7§71 vote§r§7§7.§r
+§f§f §r
+§9§9Let the games begin!§r
+§6§6Maverick2967§r§e§e§r§e§e was slain§r§e§e by §r§6§6Richy Torres851§r§e§e§r§e§e.§r
+§6§6WizardEgg126130§r§e§e§r§e§e died in the void§r§e§e.§r
+§6§6Richy Torres851§r§e§e§r§e§e was slain§r§e§e by §r§6§6Jorgecoss5916§r§e§e§r§e§e.§r
+§6§6Diego909008837§r§e§e§r§e§e was slain§r§e§e by §r§6§6Jorgecoss5916§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e3§r§c§c has been eliminated.§r
+§6§6Not Rspect§r§e§e§r§e§e died in the void§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e7§r§c§c has been eliminated.§r
+§6§6EvolvedVIPER151§r§e§e§r§e§e was finished by §r§6§6O2Flash20§r§e§e§r§e§e. Fatality!§r
+§6§6Rameegoo§r§e§e§r§e§e died in the void§r§e§e.§r
+§6§6O2Flash20§r§e§e§r§e§e kicked §r§6§6Doge otaku8635§r§e§e§r§e§e into the abyss.§r
+§6§6KJacks04§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6JOKERcRAZY N64§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e1§r§c§c has been eliminated.§r
+§6§6IamTadeo0607§r§e§e§r§e§e tried being a ninja against §r§6§6O2Flash20§r§e§e§r§e§e but it didn't turn out so well...§r
+§6§6Jorgecoss5916§r§e§e§r§e§e was slain§r§e§e by §r§6§6Gae1219948§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e4§r§c§c has been eliminated.§r
+§6§6JOKERcRAZY N64§r§e§e§r§e§e was tossed into the void by §r§6§6O2Flash20§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e6§r§c§c has been eliminated.§r
+§6§6sleeptime3293§r§e§e§r§e§e was shot§r§e§e by §r§6§6Luckann9065§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e8§r§c§c has been eliminated.§r
+§a§aThere are two §r§a§ateams§r§a§a left. You received a player tracker.§r
+§6§6O2Flash20§r§e§e§r§e§e used §r§6§6Luckann9065§r§e§e§r§e§e as a punching bag.§r
+§6§6Gae1219948§r§e§e§r§e§e tried to escape §r§6§6O2Flash20§r§e§e§r§e§e by jumping into the void.§r
+§e§e§r§e§eTeam §r§e§e5§r§c§c has been eliminated.§r
+§7§7-------------------------------§r
+§e§e§r§e§e§r§e§eTeam §r§e§e2§r§a§a won the game!§r
+§7§7-------------------------------§r
+§a§aCongratulations, you win!§r
+§d§d+§r§d§d125§r§d§d Experience.§r
+§7§7-------------------------------§r
+§8§8- §r§7§7§r§7§7Game length§r§7§7: §r§e§e§r§e§e3§r§e§e minutes§r§e§e, §r§e§e9§r§e§e seconds§r
+§8§8- §r§7§7§r§7§7Kills§r§7§7: §r§e§e§r§e§e6§r
+§7§7-------------------------------§r
+§r
+§r§4[SENTINEL ANNOUNCEMENT]§r
+§r§7Avoid drag clicking or modifying click debounce times.§r
+§r§7Doing so can result in a cheating ban.§r
+§r§7 §r
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§71§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§6§6Rameegoo§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§3§3Master85354§r§7§7 joined your game (§r§7§73§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§c§cLucidsAlt221075§r§7§7 joined your game (§r§7§74§r§7§7/§r§7§716§r§7§7).§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lDay time§r§e§e.§r§e§e §r§7§71 vote§r
+§c§cLucidsAlt221075§r§c§c §r§e§evoted for §r§a§a§l§r§a§a§lDay time§r§e§e.§r§e§e §r§7§7§r§7§72§r§7§7 votes§r
+§3§3Master85354§r§3§3 §r§e§evoted for §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e.§r§e§e §r§7§71 vote§r
+§c§cLucidsAlt221075§r§c§c §r§e§evoted for §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e.§r§e§e §r§7§7§r§7§72§r§7§7 votes§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e.§r§e§e §r§7§7§r§7§73§r§7§7 votes§r
+§7§7[§r§a§a+§r§7§7] §r§8§8SolePrism914604§r§7§7 joined your game (§r§7§75§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Lima1686§r§7§7 joined your game (§r§7§76§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Bronco0rang3§r§7§7 joined your game (§r§7§77§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8AIRAM8868§r§7§7 joined your game (§r§7§78§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8MadNinja727§r§7§7 joined your game (§r§7§79§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8SAZRI79§r§7§7 joined your game (§r§7§710§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Abraval1404§r§7§7 joined your game (§r§7§711§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Kevinpro9931§r§7§7 joined your game (§r§7§712§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8agustin0921§r§7§7 joined your game (§r§7§713§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8GACIAONE§r§7§7 joined your game (§r§7§714§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8XBorregatziX§r§7§7 joined your game (§r§7§715§r§7§7/§r§7§716§r§7§7).§r
+§6§6Server is now §r§6§6§lFULL§r§6§6! Game starting in §r§e§e§r§e§e10§r§e§e seconds§r§6§6!§r
+§7§7[§r§a§a+§r§7§7] §r§8§8i lSoUk vz§r§7§7 joined your game (§r§7§716§r§7§7/§r§7§716§r§7§7).§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§f§f §r
+§e§eSelected §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e!§r§e§e §r§7§7§r§7§73§r§7§7 votes§r§7§7.§r
+§e§eSelected §r§a§a§l§r§a§a§lDay time§r§e§e!§r§e§e §r§7§7§r§7§72§r§7§7 votes§r§7§7.§r
+§f§f §r
+§9§9Let the games begin!§r
+§6§6i lSoUk vz§r§e§e§r§e§e thought they could survive in the void§r§e§e.§r
+§6§6GACIAONE§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§6§6Abraval1404§r§e§e§r§e§e.§r
+§6§6MadNinja727§r§e§e§r§e§e thought they could survive in the void§r§e§e.§r
+§6§6Lima1686§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§6§6Bronco0rang3§r§e§e§r§e§e.§r
+§6§6AIRAM8868§r§e§e§r§e§e thought they could survive in the void§r§e§e.§r
+§6§6O2Flash20§r§e§e§r§e§e betrayed §r§6§6Master85354§r§e§e§r§e§e.§r
+§6§6O2Flash20§r§e§e§r§e§e picked up §r§6§6LucidsAlt221075§r§e§e§r§e§e and threw them into the void.§r
+§e§e§r§e§eTeam §r§e§e2§r§c§c has been eliminated.§r
+§6§6SAZRI79§r§e§e§r§e§e thought they could survive in the void§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e5§r§c§c has been eliminated.§r
+§6§6Bronco0rang3§r§e§e§r§e§e thought they could survive in the void§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e4§r§c§c has been eliminated.§r
+§6§6O2Flash20§r§e§e§r§e§e screamed "This is Sparta!" before kicking §r§6§6agustin0921§r§e§e§r§e§e into the void.§r
+§e§e§r§e§eTeam §r§e§e7§r§c§c has been eliminated.§r
+§6§6XBorregatziX§r§e§e§r§e§e was slain§r§e§e by §r§6§6Abraval1404§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e8§r§c§c has been eliminated.§r
+§6§6Kevinpro9931§r§e§e§r§e§e was slain§r§e§e by §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§6§6Abraval1404§r§e§e§r§e§e was RKO'd out of nowhere by §r§6§6O2Flash20§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e6§r§c§c has been eliminated.§r
+§a§aThere are two §r§a§ateams§r§a§a left. You received a player tracker.§r
+§r§f§r§7Interested in becoming a §r§d§lHelper§r§7? Take a look at our applications at §r§6cbecrft.net/staff§r§7!
+§6§6SolePrism914604§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e3§r§c§c has been eliminated.§r
+§7§7-------------------------------§r
+§e§e§r§e§e§r§e§eTeam §r§e§e1§r§a§a won the game!§r
+§7§7-------------------------------§r
+§a§aCongratulations, you win!§r
+§d§d+§r§d§d125§r§d§d Experience.§r
+§7§7-------------------------------§r
+§8§8- §r§7§7§r§7§7Game length§r§7§7: §r§e§e§r§e§e2§r§e§e minutes§r§e§e, §r§e§e50§r§e§e seconds§r
+§8§8- §r§7§7§r§7§7Kills§r§7§7: §r§e§e§r§e§e4§r
+§8§8- §r§7§7§r§7§7Assists§r§7§7: §r§e§e§r§e§e1§r
+§8§8- §r§7§7§r§7§7Accuracy§r§7§7: §r§e§e§r§e§e50§r
+§7§7-------------------------------§r
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§71§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§6§6Rameegoo§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Griffindobb§r§7§7 joined your game (§r§7§73§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8TOXICBEAST1726§r§7§7 joined your game (§r§7§74§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Eminem8471§r§7§7 joined your game (§r§7§75§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8sebsgs72§r§7§7 joined your game (§r§7§76§r§7§7/§r§7§716§r§7§7).§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lDay time§r§e§e.§r§e§e §r§7§71 vote§r
+§7§7[§r§a§a+§r§7§7] §r§8§8itbeglob§r§7§7 joined your game (§r§7§77§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8AlexSprite1445§r§7§7 joined your game (§r§7§78§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Antons high§r§7§7 joined your game (§r§7§79§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Beccas high§r§7§7 joined your game (§r§7§710§r§7§7/§r§7§716§r§7§7).§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e.§r§e§e §r§7§71 vote§r
+§7§7[§r§c§c-§r§7§7] §r§8§8Eminem8471§r§7§7 left your game (§r§7§79§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§8§8sebsgs72§r§7§7 left your game (§r§7§78§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8VoicingApe48279§r§7§7 joined your game (§r§7§79§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8C3rbralassassin§r§7§7 joined your game (§r§7§710§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8TSMChapi§r§7§7 joined your game (§r§7§711§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Sebastianruiz86§r§7§7 joined your game (§r§7§712§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8FacedLoki228566§r§7§7 joined your game (§r§7§713§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Dimi09schwitzer§r§7§7 joined your game (§r§7§714§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Compot5492§r§7§7 joined your game (§r§7§715§r§7§7/§r§7§716§r§7§7).§r
+§6§6Server is now §r§6§6§lFULL§r§6§6! Game starting in §r§e§e§r§e§e10§r§e§e seconds§r§6§6!§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Kaiky games7146§r§7§7 joined your game (§r§7§716§r§7§7/§r§7§716§r§7§7).§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§f§f §r
+§e§eSelected §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e!§r§e§e §r§7§71 vote§r§7§7.§r
+§e§eSelected §r§a§a§l§r§a§a§lDay time§r§e§e!§r§e§e §r§7§71 vote§r§7§7.§r
+§f§f §r
+§9§9Let the games begin!§r
+§c§cYou cannot break chests within the first 20 seconds of the game§r
+§c§cYou cannot break chests within the first 20 seconds of the game§r
+§c§cYou cannot break chests within the first 20 seconds of the game§r
+§6§6itbeglob§r§e§e§r§e§e was slain§r§e§e by §r§6§6VoicingApe48279§r§e§e§r§e§e.§r
+§6§6Compot5492§r§e§e§r§e§e was slain§r§e§e by §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§6§6Dimi09schwitzer§r§e§e§r§e§e was slain§r§e§e by §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e8§r§c§c has been eliminated.§r
+§6§6Sebastianruiz86§r§e§e§r§e§e was slain§r§e§e by §r§6§6FacedLoki228566§r§e§e§r§e§e.§r
+§6§6VoicingApe48279§r§e§e§r§e§e was slain§r§e§e by §r§6§6TOXICBEAST1726§r§e§e§r§e§e.§r
+§6§6FacedLoki228566§r§e§e§r§e§e thought they could survive in the void§r§e§e.§r
+§6§6TOXICBEAST1726§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6C3rbralassassin§r§e§e§r§e§e.§r
+§6§6Griffindobb§r§e§e§r§e§e was slain§r§e§e by §r§6§6C3rbralassassin§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e2§r§c§c has been eliminated.§r
+§6§6TSMChapi§r§e§e§r§e§e was slain§r§e§e by §r§6§6Kaiky games7146§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e6§r§c§c has been eliminated.§r
+§6§6Beccas high§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§6§6AlexSprite1445§r§e§e§r§e§e was slain§r§e§e by §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e4§r§c§c has been eliminated.§r
+§6§6C3rbralassassin§r§e§e§r§e§e tried being a ninja against §r§6§6O2Flash20§r§e§e§r§e§e but it didn't turn out so well...§r
+§e§e§r§e§eTeam §r§e§e3§r§c§c has been eliminated.§r
+§6§6Antons high§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e5§r§c§c has been eliminated.§r
+§a§aThere are two §r§a§ateams§r§a§a left. You received a player tracker.§r
+§6§6Kaiky games7146§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e7§r§c§c has been eliminated.§r
+§7§7-------------------------------§r
+§e§e§r§e§e§r§e§eTeam §r§e§e1§r§a§a won the game!§r
+§7§7-------------------------------§r
+§a§aCongratulations, you win!§r
+§d§d+§r§d§d125§r§d§d Experience.§r
+§7§7-------------------------------§r
+§8§8- §r§7§7§r§7§7Game length§r§7§7: §r§e§e§r§e§e4§r§e§e minutes§r§e§e, §r§e§e46§r§e§e seconds§r
+§8§8- §r§7§7§r§7§7Kills§r§7§7: §r§e§e§r§e§e1§r
+§8§8- §r§7§7§r§7§7Assists§r§7§7: §r§e§e§r§e§e3§r
+§8§8- §r§7§7§r§7§7Accuracy§r§7§7: §r§e§e§r§e§e60§r
+§7§7-------------------------------§r
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§71§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§6§6Rameegoo§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§716§r§7§7).§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lDay time§r§e§e.§r§e§e §r§7§71 vote§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e.§r§e§e §r§7§71 vote§r
+§7§7[§r§a§a+§r§7§7] §r§8§8El Vaguiben1047§r§7§7 joined your game (§r§7§73§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8DarkBlade090526§r§7§7 joined your game (§r§7§74§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§1§1Envy Smoky§r§7§7 joined your game (§r§7§75§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Anonwos§r§7§7 joined your game (§r§7§76§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Sir7l§r§7§7 joined your game (§r§7§77§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8anti poo54h45h4§r§7§7 joined your game (§r§7§78§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Soufake666§r§7§7 joined your game (§r§7§79§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8LSZOCKE052010§r§7§7 joined your game (§r§7§710§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Meister geiridd§r§7§7 joined your game (§r§7§711§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8ARAY420HUSTLER§r§7§7 joined your game (§r§7§712§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Ikan888Ik§r§7§7 joined your game (§r§7§713§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8sleeptime3293§r§7§7 joined your game (§r§7§714§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8epic8855§r§7§7 joined your game (§r§7§715§r§7§7/§r§7§716§r§7§7).§r
+§6§6Server is now §r§6§6§lFULL§r§6§6! Game starting in §r§e§e§r§e§e10§r§e§e seconds§r§6§6!§r
+§7§7[§r§a§a+§r§7§7] §r§8§8SuperSPYPER§r§7§7 joined your game (§r§7§716§r§7§7/§r§7§716§r§7§7).§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§f§f §r
+§e§eSelected §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e!§r§e§e §r§7§71 vote§r§7§7.§r
+§e§eSelected §r§a§a§l§r§a§a§lDay time§r§e§e!§r§e§e §r§7§71 vote§r§7§7.§r
+§f§f §r
+§9§9Let the games begin!§r
+§6§6Anonwos§r§e§e§r§e§e was slain§r§e§e by §r§6§6anti poo54h45h4§r§e§e§r§e§e.§r
+§6§6Envy Smoky§r§e§e§r§e§e was slain§r§e§e by §r§6§6anti poo54h45h4§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e3§r§c§c has been eliminated.§r
+§6§6Rameegoo§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6anti poo54h45h4§r§e§e§r§e§e.§r
+§6§6O2Flash20§r§e§e§r§e§e was slain§r§e§e by §r§6§6anti poo54h45h4§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e1§r§c§c has been eliminated.§r
+§7§7-------------------------------§r
+§8§8- §r§7§7§r§7§7Game length§r§7§7: §r§e§e§r§e§e52§r§e§e seconds§r
+§7§7-------------------------------§r
+§6§6sleeptime3293§r§e§e§r§e§e fell to their death§r§e§e while escaping §r§6§6anti poo54h45h4§r§e§e§r§e§e.§r
+§a§aYour report on §r§e§e§r§e§eanti poo54h45h4§r§e§e §r§a§afor §r§e§e§r§e§e[ANTI_KNOCKBACK, FLY, KILL_AURA, AUTO_CLICKER, SPEED]§r§e§e §r§a§awas completed and will be looked into by our Staff team as soon as possible.§r
+§c§cPlease wait for your Party members in your game to finish before doing that!§r
+§6§6Ikan888Ik§r§e§e§r§e§e was slain§r§e§e by §r§6§6anti poo54h45h4§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e7§r§c§c has been eliminated.§r
+§c§cPlease wait for your Party members in your game to finish before doing that!§r
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§71§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§6§6Rameegoo§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8CLEITAO99§r§7§7 joined your game (§r§7§73§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8CindyGaming133§r§7§7 joined your game (§r§7§74§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Lavadragon3585§r§7§7 joined your game (§r§7§75§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8El Vaguiben1047§r§7§7 joined your game (§r§7§76§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8DarkBlade090526§r§7§7 joined your game (§r§7§77§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Keystondnn7345§r§7§7 joined your game (§r§7§78§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Reorvitalxd§r§7§7 joined your game (§r§7§79§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8ChikenYellow270§r§7§7 joined your game (§r§7§710§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§b§bDarKzeKa6147§r§7§7 joined your game (§r§7§711§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8maja99879652§r§7§7 joined your game (§r§7§712§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Harixdy1231889§r§7§7 joined your game (§r§7§713§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8guztavocuzper§r§7§7 joined your game (§r§7§714§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Doritos4000§r§7§7 joined your game (§r§7§715§r§7§7/§r§7§716§r§7§7).§r
+§6§6Server is now §r§6§6§lFULL§r§6§6! Game starting in §r§e§e§r§e§e10§r§e§e seconds§r§6§6!§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Rulfren§r§7§7 joined your game (§r§7§716§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§8§8Rulfren§r§7§7 left your game (§r§7§715§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Keyzi32§r§7§7 joined your game (§r§7§716§r§7§7/§r§7§716§r§7§7).§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§f§f §r
+§e§eSelected §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e!§r§e§e §r§7§7Selected due to no votes.§r
+§e§eSelected §r§a§a§l§r§a§a§lNight time§r§e§e!§r§e§e §r§7§7Selected due to no votes.§r
+§f§f §r
+§9§9Let the games begin!§r
+§c§cYou cannot break chests within the first 20 seconds of the game§r
+§c§cYou cannot break chests within the first 20 seconds of the game§r
+§c§cYou cannot break chests within the first 20 seconds of the game§r
+§c§cYou cannot break chests within the first 20 seconds of the game§r
+§6§6ChikenYellow270§r§e§e§r§e§e died in the void§r§e§e.§r
+§6§6CindyGaming133§r§e§e§r§e§e died in the void§r§e§e.§r
+§6§6DarkBlade090526§r§e§e§r§e§e was slain§r§e§e by §r§6§6Lavadragon3585§r§e§e§r§e§e.§r
+§6§6Keystondnn7345§r§e§e§r§e§e was pulled into the void by §r§6§6DarKzeKa6147§r§e§e§r§e§e's pet space kraken.§r
+§e§e§r§e§eTeam §r§e§e5§r§c§c has been eliminated.§r
+§6§6Lavadragon3585§r§e§e§r§e§e fell to their death§r§e§e while escaping §r§6§6El Vaguiben1047§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e3§r§c§c has been eliminated.§r
+§6§6El Vaguiben1047§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e4§r§c§c has been eliminated.§r
+§6§6O2Flash20§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§6§6Reorvitalxd§r§e§e§r§e§e.§r
+§7§7-------------------------------§r
+§8§8- §r§7§7§r§7§7Game length§r§7§7: §r§e§e§r§e§e1 minute§r§e§e, §r§e§e5§r§e§e seconds§r
+§7§7-------------------------------§r
+§c§cWaiting for your Party Members to finish their game first, then you can §r§a§aPlay Again§r
+§c§cPlease wait for your Party members in your game to finish before doing that!§r
+§6§6guztavocuzper§r§e§e§r§e§e died in the void§r§e§e.§r
+§6§6DarKzeKa6147§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§6§6Rameegoo§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6Reorvitalxd§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e1§r§c§c has been eliminated.§r
+§c§cPlease wait for your Party members in your game to finish before doing that!§r
+§c§cPlease wait for your Party members in your game to finish before doing that!§r
+§6§6Doritos4000§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6Harixdy1231889§r§e§e§r§e§e.§r
+§r§f§r§7Found a §r§4§lcheater§r§7 on our network? Use §r§6/sr§r§7 to report them!
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§71§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§6§6Rameegoo§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§716§r§7§7).§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lDay time§r§e§e.§r§e§e §r§7§71 vote§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e.§r§e§e §r§7§71 vote§r
+§7§7[§r§a§a+§r§7§7] §r§8§8KJacks04§r§7§7 joined your game (§r§7§73§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8orejaskccm§r§7§7 joined your game (§r§7§74§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8ALFONSO2502162y§r§7§7 joined your game (§r§7§75§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Kaleb3400§r§7§7 joined your game (§r§7§76§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8JWxJAND§r§7§7 joined your game (§r§7§77§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8morgan0113§r§7§7 joined your game (§r§7§78§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Ikoniko2012§r§7§7 joined your game (§r§7§79§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Scoby2011Me§r§7§7 joined your game (§r§7§710§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8TeamSebasGG§r§7§7 joined your game (§r§7§711§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8FavoriteSiul§r§7§7 joined your game (§r§7§712§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8SweatierCorgi16§r§7§7 joined your game (§r§7§713§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8ScarFace4207054§r§7§7 joined your game (§r§7§714§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Killerboy979051§r§7§7 joined your game (§r§7§715§r§7§7/§r§7§716§r§7§7).§r
+§6§6Server is now §r§6§6§lFULL§r§6§6! Game starting in §r§e§e§r§e§e10§r§e§e seconds§r§6§6!§r
+§7§7[§r§a§a+§r§7§7] §r§8§8CheapCrayon0516§r§7§7 joined your game (§r§7§716§r§7§7/§r§7§716§r§7§7).§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9SkyWars§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§f§f §r
+§e§eSelected §r§a§a§l§r§a§a§lNormal§r§a§a§l §r§e§e§r§e§echest items§r§e§e!§r§e§e §r§7§71 vote§r§7§7.§r
+§e§eSelected §r§a§a§l§r§a§a§lDay time§r§e§e!§r§e§e §r§7§71 vote§r§7§7.§r
+§f§f §r
+§9§9Let the games begin!§r
+§r§7[§r§eFriend§r§7] [§r§a+§r§7] §r§3§r§3Syaanide§r§3 §r§7joined the network.
+§6§6KJacks04§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§6§6morgan0113§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e2§r§c§c has been eliminated.§r
+§6§6CheapCrayon0516§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6ScarFace4207054§r§e§e§r§e§e.§r
+§6§6Killerboy979051§r§e§e§r§e§e was slain§r§e§e by §r§6§6SweatierCorgi16§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e8§r§c§c has been eliminated.§r
+§6§6FavoriteSiul§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6O2Flash20§r§e§e§r§e§e.§r
+§6§6TeamSebasGG§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6Ikoniko2012§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e6§r§c§c has been eliminated.§r
+§6§6O2Flash20§r§e§e§r§e§e kicked §r§6§6Ikoniko2012§r§e§e§r§e§e into the abyss.§r
+§6§6Scoby2011Me§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e5§r§c§c has been eliminated.§r
+§6§6JWxJAND§r§e§e§r§e§e died in the void§r§e§e while escaping §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§6§6O2Flash20§r§e§e§r§e§e assisted §r§6§6Kaleb3400§r§e§e§r§e§e with their void-trauma.§r
+§e§e§r§e§eTeam §r§e§e4§r§c§c has been eliminated.§r
+§6§6O2Flash20§r§e§e§r§e§e "accidentally" made §r§6§6orejaskccm§r§e§e§r§e§e fall into the void.§r
+§6§6ALFONSO2502162y§r§e§e§r§e§e was slain§r§e§e by §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§e§e§r§e§eTeam §r§e§e3§r§c§c has been eliminated.§r
+§a§aThere are two §r§a§ateams§r§a§a left. You received a player tracker.§r
+§6§6ScarFace4207054§r§e§e§r§e§e thought they could survive in the void§r§e§e while escaping §r§6§6Rameegoo§r§e§e§r§e§e.§r
+§6§6O2Flash20§r§e§e§r§e§e tripped §r§6§6SweatierCorgi16§r§e§e§r§e§e into the void.§r
+§e§e§r§e§eTeam §r§e§e7§r§c§c has been eliminated.§r
+§7§7-------------------------------§r
+§e§e§r§e§e§r§e§eTeam §r§e§e1§r§a§a won the game!§r
+§7§7-------------------------------§r
+§a§aCongratulations, you win!§r
+§d§d+§r§d§d125§r§d§d Experience.§r
+§7§7-------------------------------§r
+§8§8- §r§7§7§r§7§7Game length§r§7§7: §r§e§e§r§e§e3§r§e§e minutes§r§e§e, §r§e§e55§r§e§e seconds§r
+§8§8- §r§7§7§r§7§7Kills§r§7§7: §r§e§e§r§e§e5§r
+§8§8- §r§7§7§r§7§7Assists§r§7§7: §r§e§e§r§e§e3§r
+§8§8- §r§7§7§r§7§7Accuracy§r§7§7: §r§e§e§r§e§e50§r
+§7§7-------------------------------§r
+§r§cThe party has been disbanded!
+§r§7You are now no longer in a party.
+§r§7[§r§eFriend§r§7] [§r§c-§r§7] §r§6§r§6Rameegoo§r§6 §r§7left the network.
+§r§f§r§7Want to join our §r§9§lDiscord§r§7? Come join our community at §r§6discord.gg/cubecraft§r§7!
+§6§6There are §r§c§c§r§c§c39§r§6§6 players online: §r§b§b[GENTLEMAN EGG SKIN]§r§f§f §r§b§bheeheeeeee12345§r§f§f, §r§d§d[BIRTHDAY]§r§f§f §r§d§dParayeet167§r§f§f, §r§8§8:Stone: §r§8§8Rey del caos125§r§f§f, §r§8§8:Stone: §r§8§8EIncognito§r§f§f, §r§d§d[BIRTHDAY]§r§f§f §r§d§dVarath23§r§f§f, §r§6§6[§r§4§4FESTIVE §r§2§2BUNDLE§r§6§6]§r§f§f §r§4§4kaiiteem§r§f§f, §r§8§8:Stone: §r§8§8Calli721§r§f§f, §r§6§6[Summer]§r§f§f §r§6§6SeparateTax2179§r§f§f, §r§8§8:Stone: §r§8§8Vichoprojsosjd§r§f§f, §r§a§a[EGGWARS RANK]§r§f§f §r§a§aLuvOtterPops§r§f§f, §r§8§8:Stone: §r§8§8Evinetic§r§f§f, §r§a§a[EGGWARS RANK]§r§f§f §r§a§aReneBoss28§r§f§f, §r§6§6[Summer]§r§f§f §r§6§6PYITE Wilson§r§f§f, §r§8§8:Stone: §r§8§8Kico1234e§r§f§f, §r§8§8:Stone: §r§8§8uknowjad§r§f§f, §r§8§8:Stone: §r§8§8aridzy1117§r§f§f, §r§b§b[DOG EGG SKIN]§r§f§f §r§b§bKittycakes5§r§f§f, §r§2§2[§r§4§4PARKOUR§r§6§6]§r§f§f §r§2§2lgnMega§r§f§f, §r§b§b[EWHALLOWEENBUNDLE]§r§e§eWikki5024§r§f§f, §r§a§a[EGGWARS RANK]§r§f§f §r§a§aRioqrfn§r§f§f, §r§8§8:Stone: §r§8§8D3stroy3r293216§r§f§f, §r§8§8:Stone: §r§8§8Tofuuu2668§r§f§f, §r§8§8:Stone: §r§8§8IntentZero11833§r§f§f, §r§8§8:Stone: §r§8§8Quesadilla2668§r§f§f, §r§8§8:Stone: §r§8§8PilotFeather824§r§f§f, §r§8§8:Stone: §r§8§8Macncheese2249§r§f§f, §r§9§9[WALKIN WARDROBE CAGE]§r§f§f §r§e§eSgtRealDeal1111§r§f§f, §r§d§d[SKYWARS RANK]§r§f§f §r§d§dO2Flash20§r§f§f, §r§8§8:Stone: §r§8§8Sebas2Sc§r§f§f, §r§8§8:Stone: §r§8§8SchweeneyTodd§r§f§f, §r§8§8:Stone: §r§8§8piercegamer5§r§f§f, §r§8§8:Stone: §r§8§8Ricksonyt2727g§r§f§f, §r§8§8:Stone: §r§8§8Lolikpyn§r§f§f, §r§a§a[EGGWARS RANK]§r§f§f §r§a§acoconetas§r§f§f, §r§8§8:Stone: §r§8§8Isaac el vro§r§f§f, §r§6§6[§r§4§4BATTLE ARENA§r§6§6]§r§f§f §r§4§4WoodMonster2233§r§f§f, §r§9§9[BLOCKWARS RANK]§r§f§f §r§9§9XShadow666X5528§r§f§f, §r§b§b[EWHALLOWEENBUNDLE]§r§e§eDextrousSleet87§r§f§f, §r§8§8:Stone: §r§8§8Destructor94448§r§f§f§r
+Press T or RETURN to open chat
+Press T or RETURN to open chat

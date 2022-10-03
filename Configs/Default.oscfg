@@ -1,16 +1,22 @@
+ThreeD View:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:true
 Arrow Trajectory:1:
  settings:1:
   Key:1:
    type:4:4
    key:4:90
   color:1:
-   rainbow_speed:6:0.003000
    b:6:1.000000
    r:6:0.000000
    type:4:7
    g:6:1.000000
    a:6:0.392157
    rainbow:2:false
+   chroma:2:true
   showTrail:1:
    type:4:1
    value:2:true
@@ -36,69 +42,69 @@ Better Hunger:1:
    type:4:4
    key:4:0
   canEatC:1:
-   rainbow_speed:6:0.003000
    b:6:0.000000
    r:6:0.000000
    type:4:7
    g:6:0.000000
    a:6:1.000000
    rainbow:2:false
+   chroma:2:true
   backgroundC:1:
-   rainbow_speed:6:0.003000
    b:6:0.200000
    r:6:0.200000
    type:4:7
    g:6:0.200000
    a:6:1.000000
    rainbow:2:false
+   chroma:2:true
   hungerPreviewC:1:
-   rainbow_speed:6:0.003000
    b:6:0.000000
    r:6:0.000000
    type:4:7
    g:6:1.000000
    a:6:1.000000
    rainbow:2:false
+   chroma:2:true
   noSprintC:1:
-   rainbow_speed:6:0.003000
    b:6:0.000000
    r:6:0.392157
    type:4:7
    g:6:0.000000
    a:6:1.000000
    rainbow:2:false
+   chroma:2:true
   hungerC:1:
-   rainbow_speed:6:0.003000
    b:6:0.359492
    r:6:0.910400
    type:4:7
    g:6:0.359492
    a:6:1.000000
    rainbow:2:false
+   chroma:2:true
   saturationC:1:
-   rainbow_speed:6:0.003000
    b:6:0.003922
    r:6:0.933333
    type:4:7
    g:6:0.901961
    a:6:1.000000
    rainbow:2:false
+   chroma:2:true
   saturationPreviewC:1:
-   rainbow_speed:6:0.003000
    b:6:0.000000
    r:6:0.588235
    type:4:7
    g:6:1.000000
    a:6:1.000000
    rainbow:2:false
+   chroma:2:true
   cantEatC:1:
-   rainbow_speed:6:0.003000
    b:6:0.000000
    r:6:0.568978
    type:4:7
    g:6:0.000000
    a:6:1.000000
    rainbow:2:false
+   chroma:2:true
   position:1:
    type:4:5
    x:6:329.000000
@@ -113,13 +119,13 @@ Bridge Overlay:1:
    type:4:4
    key:4:0
   color:1:
-   rainbow_speed:6:0.069000
    b:6:0.000000
    r:6:1.000000
    type:4:7
    g:6:0.666667
    a:6:1.000000
    rainbow:2:false
+   chroma:2:true
   height:1:
    type:4:2
    value:4:87
@@ -152,12 +158,6 @@ Block Map:1:
    type:4:2
    value:4:1
  enabled:2:false
-ChatLogger:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
- enabled:2:true
 Dev Block Leaker:1:
  settings:1:
   Sv:1:
@@ -176,6 +176,12 @@ Dev Block Leaker:1:
    type:4:1
    value:2:true
  enabled:2:true
+ChatLogger:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:true
 custom chat:1:
  settings:1:
   Key:1:
@@ -188,40 +194,40 @@ custom chat:1:
    type:4:4
    key:4:190
   backgroundColor:1:
-   rainbow_speed:6:0.003000
    b:6:0.003922
    r:6:0.003922
    type:4:7
    g:6:0.003922
    a:6:0.498039
    rainbow:2:false
+   chroma:2:true
   chatboxColor:1:
-   rainbow_speed:6:0.003000
    b:6:0.003922
    r:6:0.003922
    type:4:7
    g:6:0.003922
    a:6:0.498039
    rainbow:2:false
+   chroma:2:true
   cursorColor:1:
-   rainbow_speed:6:0.003000
    b:6:0.003922
    r:6:0.003922
    type:4:7
    g:6:0.003922
    a:6:0.784314
    rainbow:2:false
+   chroma:2:true
   clearClose:1:
    type:4:1
    value:2:false
   textColor:1:
-   rainbow_speed:6:0.003000
    b:6:0.996078
    r:6:0.996078
    type:4:7
    g:6:0.996078
    a:6:0.996078
    rainbow:2:false
+   chroma:2:true
   AlwaysShowChat:1:
    type:4:1
    value:2:true
@@ -288,21 +294,21 @@ FPS:1:
    type:4:3
    value:6:861903.812500
   background:1:
-   rainbow_speed:6:0.003000
    b:6:0.000000
    r:6:0.000000
    type:4:7
    g:6:0.000000
    a:6:0.498039
    rainbow:2:false
+   chroma:2:true
   color:1:
-   rainbow_speed:6:0.003000
    b:6:1.000000
    r:6:0.000000
    type:4:7
    g:6:0.933333
    a:6:1.000000
    rainbow:2:false
+   chroma:2:true
   position:1:
    type:4:5
    x:6:563.000000
@@ -325,7 +331,7 @@ Item Held Info:1:
   position:1:
    type:4:5
    x:6:413.166656
-   y:6:318.482025
+   y:6:321.822021
   scale:1:
    type:4:3
    value:6:1.000000
@@ -334,7 +340,7 @@ Lag Switch:1:
  settings:1:
   Key:1:
    type:4:4
-   key:4:0
+   key:4:77
  enabled:2:true
 Logger:1:
  settings:1:
@@ -342,13 +348,13 @@ Logger:1:
    type:4:4
    key:4:0
   backColor:1:
-   rainbow_speed:6:0.003000
    b:6:0.200000
    r:6:0.200000
    type:4:7
    g:6:0.200000
    a:6:0.895556
    rainbow:2:false
+   chroma:2:true
   showNumber:1:
    type:4:1
    value:2:false
@@ -359,13 +365,13 @@ Logger:1:
    type:4:3
    value:6:0.845238
   foreColor:1:
-   rainbow_speed:6:0.003000
    b:6:1.000000
    r:6:1.000000
    type:4:7
    g:6:1.000000
    a:6:1.000000
    rainbow:2:false
+   chroma:2:true
   position:1:
    type:4:5
    x:6:398.428589
@@ -381,18 +387,18 @@ Mini Map:1:
    key:4:0
   radius:1:
    type:4:2
-   value:4:73
+   value:4:75
   position:1:
    type:4:5
    x:6:13.000008
    y:6:13.160004
   checkLimit:1:
    type:4:2
-   value:4:21
+   value:4:18
   scale:1:
    type:4:3
    value:6:1.319445
- enabled:2:true
+ enabled:2:false
 Motion blur:1:
  settings:1:
   Key:1:
@@ -402,32 +408,19 @@ Motion blur:1:
    type:4:2
    value:4:26
  enabled:2:false
-noise:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
-  position:1:
-   type:4:5
-   x:6:0.000000
-   y:6:100.000000
-  scale:1:
-   type:4:3
-   value:6:1.000000
- enabled:2:false
 Win Particles:1:
  settings:1:
   Key:1:
    type:4:4
    key:4:0
   color:1:
-   rainbow_speed:6:0.003000
-   b:6:0.527968
+   b:6:0.000000
    r:6:1.000000
    type:4:7
-   g:6:0.000000
+   g:6:0.936001
    a:6:1.000000
-   rainbow:2:true
+   rainbow:2:false
+   chroma:2:true
  enabled:2:true
 Redstone Utility Power Level:1:
  settings:1:
