@@ -31361,3 +31361,25 @@ Press T or RETURN to open chat
 Press T or RETURN to open chat
 Press T or RETURN to open chat
 Press T or RETURN to open chat
+Press T or RETURN to open chat
+You have been teleported to 0.50, 0.00, 0.50
+Teleported O2Flash20 to 0.50, 0.00, 0.50
+You have been teleported to 377.50, 76.00, 2007.50
+Teleported O2Flash20 to 377.50, 76.00, 2007.50
+Press T or RETURN to open chat
+You have been teleported to 377.50, 79.00, 2006.50
+Teleported O2Flash20 to 377.50, 79.00, 2006.50
+Press T or RETURN to open chat
+Press T or RETURN to open chat
+e
+e
+r
+You have been teleported to 377.50, 76.00, 2007.50
+Teleported O2Flash20 to 377.50, 76.00, 2007.50
+e
+e
+§cUnknown command: s. Please check that the command exists and that you have permission to use it.
+You have been teleported to 0.50, 0.00, 0.50
+Teleported O2Flash20 to 0.50, 0.00, 0.50
+You have been teleported to 377.50, 76.00, 2007.50
+Teleported O2Flash20 to 377.50, 76.00, 2007.50

@@ -5,8 +5,8 @@ ThreeD View:1:
    key:4:0
   position:1:
    type:4:5
-   x:6:192.333328
-   y:6:17.367989
+   x:6:36.000015
+   y:6:18.035995
   scale:1:
    type:4:3
    value:6:1.260000
@@ -386,7 +386,7 @@ Logger:1:
   scale:1:
    type:4:3
    value:6:0.633337
- enabled:2:false
+ enabled:2:true
 Mini Map:1:
  settings:1:
   Key:1:
