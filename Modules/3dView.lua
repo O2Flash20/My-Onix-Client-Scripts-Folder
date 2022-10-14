@@ -278,7 +278,7 @@ function blockIsTransparent(block)
         "carpet", "glass_pane",
         "stained_glass_pane", "ladder", "reeds", "waterlily", "moss_carpet", "snow_layer", "banner", "cave_vines", "vine",
         "tallgrass", "double_plant", "brown_mushroom", "red_mushroom", "torch", "chest", "melon_stem", "wheat",
-        "brewing_stand", "wall_banner", "standing_banner", "bed", "rail", "chain" }
+        "brewing_stand", "wall_banner", "standing_banner", "bed", "rail", "chain", "pointed_dripstone" }
 
     for i = 1, #transparentBlocks, 1 do
         if block.name == transparentBlocks[i] then
@@ -352,7 +352,7 @@ end
 
 -- returns the visible faces of a block and their color
 -- adds 40 to each z value returned so that the scene can be away from the camera
--- CHANGE COLOR BASED ON DIRECITON
+-- CHANGE COLOR BASED ON THE FACE'S NORMAL
 local distAway = 40
 function getBlockVisibleFaces(x, y, z, grid)
     local gridRadius = (#grid - 1) / 2
@@ -459,6 +459,110 @@ function rotateAllFaces(facesArray, originX, originZ, angle)
     return output
 end
 
+-- gets the point at the center of a face
+function getFaceCenter(face)
+    local avgX = 0
+    local avgY = 0
+    local avgZ = 0
+
+    -- for each point
+    for i = 1, 4, 1 do
+        avgX = avgX + face[i][1]
+        avgY = avgY + face[i][2]
+        avgZ = avgZ + face[i][3]
+    end
+
+    avgX = avgX / 4
+    avgY = avgY / 4
+    avgZ = avgZ / 4
+
+    return { avgX, avgY, avgZ }
+end
+
+-- casts a ray towards the camera to see if the quad is visible, returns true if it is
+function isFaceVisible(face, grid, rotOriginX, rotOriginZ, rotAngle)
+    local gridRadius = (#grid - 1) / 2
+
+    -- get the coords of the starting position (the face's center)
+    local origin = getFaceCenter(face)
+    local oX = origin[1]
+    local oY = origin[2]
+    local oZ = origin[3]
+
+    -- the distance from the camera to the center of the face
+    local vectToCameraLength = math.sqrt(oX * oX + oY * oY + oZ * oZ)
+
+    -- x, y, z are the components of a normalized vector towards the camera
+    local x = -oX / vectToCameraLength
+    local y = -oY / vectToCameraLength
+    local z = -oZ / vectToCameraLength
+
+    -- un-rotate the origin so that it is aligned with the grid
+    oX, oZ = rotatePoint(oX, oZ, rotOriginX, rotOriginZ, rotAngle)
+    -- un-rotate the vector so that it is aligned with the grid
+    x, z = rotatePoint(x, z, 0, 0, rotAngle)
+
+    -- transform the origin so that it can become an index of the grid
+    oX = oX + gridRadius + 1
+    oY = oY + gridRadius + 1
+    oZ = oZ + gridRadius + 1 - 40
+
+    -- one block at a time, step the ray forward and see if it hits anything
+    local raySteps = 1
+    while raySteps <= 5 do
+        -- start at the origin and move along the vector raySteps amount of times
+        -- then do math.floor so that the variables can be indices to the grid
+        local thisX = math.floor(oX + (raySteps * x))
+        local thisY = math.floor(oY + (raySteps * y))
+        local thisZ = math.floor(oZ + (raySteps * z))
+
+        -- check if the point is in range of the grid, if it is and it lands on a block, return false (not visible)
+        if grid[thisX] ~= nil then
+            if grid[thisX][thisY] ~= nil then
+                if grid[thisX][thisY][thisZ] ~= nil then
+                    if grid[thisX][thisY][thisZ] == 1 then
+                        return false
+                    end
+                end
+            end
+        end
+
+        raySteps = raySteps + 1
+    end
+
+    -- hasnt hit anything, return true
+    return true
+end
+
+-- gets the surface normal for a face (use for lighting?)
+function getFaceNormal(face)
+
+end
+
+-- inputs the faces array, sorts all the faces from furthest to closest and then returns the faces and facesColors arrays in that order (to be ready to render)
+function sortFaces(faces, facesColors)
+    local distsTable = {}
+    for i = 1, #faces, 1 do
+        local center = getFaceCenter(faces[i])
+        local dist = center[1] * center[1] + center[2] * center[2] + center[3] * center[3]
+
+        table.insert(distsTable, dist)
+    end
+
+    local indicesOrder = insertionSort(distsTable)
+    local outFaces = {}
+    local outColors = {}
+
+    for i = 1, #indicesOrder, 1 do
+        table.insert(outFaces, faces[indicesOrder[i]])
+        table.insert(outColors, facesColors[indicesOrder[i]])
+    end
+
+    return faces, facesColors
+end
+
+-- {..., ..., {{x, y, z}, {x, y, z}, {x, y, z}, {x, y, z}}, ..., ...}
+
 local radius = 10
 local iterations = 0
 function render(dt)
@@ -536,6 +640,24 @@ function update()
     end
 
     faces = rotateAllFaces(faces, originX, originZ, angle)
+
+    local i = 1
+    while i <= #faces do
+        if isFaceVisible(faces[i], blocksGrid, originX, originZ, angle) == false then
+            -- delete
+            table.remove(faces, i)
+            table.remove(faceColors, i)
+        else
+            -- move on to the next one
+            i = i + 1
+        end
+    end
+
+    faces, faceColors = sortFaces(faces, faceColors)
+
+    -- local t = { 1, 2, 3 }
+    -- table.remove(t, 2)
+    -- log(t)
 end
 
 --[[
@@ -552,7 +674,7 @@ end
 
     ---function to rotate every face in an array
 
-    for every face, cast a ray towards the camera (0, 0, 0)
+    -- (still have to make it check all the 4 corners, not just the center) for every face, cast a ray towards the camera (0, 0, 0)
         move the ray 1 block each time, if it ends up at a position that is marked as 1 in the grid, save that,  and if all the faces hit a 1, delete that face
 
     every face is ordered from furthest to closest and then rendered in that order
