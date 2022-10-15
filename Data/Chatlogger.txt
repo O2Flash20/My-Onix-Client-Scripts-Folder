@@ -33317,3 +33317,22 @@ You have been teleported to 377.50, 49.00, 2007.50
 Teleported O2Flash20 to 377.50, 49.00, 2007.50
 You have been teleported to 377.50, 76.00, 2007.50
 Teleported O2Flash20 to 377.50, 76.00, 2007.50
+Press T or RETURN to open chat
+You have been teleported to 377.50, 86.05, 2007.50
+Teleported O2Flash20 to 377.50, 86.05, 2007.50
+You have been teleported to 377.50, 76.00, 2006.50
+Teleported O2Flash20 to 377.50, 76.00, 2006.50
+Press T or RETURN to open chat
+
+Press T or RETURN to open chat
+ 
+
+Press T or RETURN to open chat
+ 
+§cUnknown command: lua. Please check that the command exists and that you have permission to use it.
+Game rule doweathercycle has been updated to false
+Changing to clear weather
+You have been teleported to 377.50, 76.00, 2007.50
+Teleported O2Flash20 to 377.50, 76.00, 2007.50
+Game rule dodaylightcycle has been updated to false
+Set the time to 73000

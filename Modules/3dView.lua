@@ -352,17 +352,17 @@ end
 
 -- returns the visible faces of a block and their color
 -- adds 40 to each z value returned so that the scene can be away from the camera
--- CHANGE COLOR BASED ON THE FACE'S NORMAL
 local distAway = 40
 function getBlockVisibleFaces(x, y, z, grid)
     local gridRadius = (#grid - 1) / 2
 
     local faces = {}
     local facesColors = {}
+    local normals = {}
 
     -- no block there, return nothing
     if grid[x + gridRadius + 1][y + gridRadius + 1][z + gridRadius + 1] == 0 then
-        return {}, {}
+        return {}, {}, {}
     end
 
     local px, py, pz = player.position()
@@ -371,77 +371,148 @@ function getBlockVisibleFaces(x, y, z, grid)
     -- if the block is on the border, return the face on the border, if not but the face is exposed to air, still return that face
     if x == -gridRadius then
         table.insert(faces,
-            { { x, y, z + distAway }, { x, y + 1, z + distAway }, { x, y, z + 1 + distAway },
-                { x, y + 1, z + 1 + distAway } })
+            {
+                { x, y, z + distAway },
+                { x, y + 1, z + distAway },
+                { x, y, z + 1 + distAway },
+                { x, y + 1, z + 1 + distAway }
+            })
         table.insert(facesColors, thisColor)
+        table.insert(normals, { -1, 0, 0 })
+
     elseif grid[x + gridRadius + 1 - 1][y + gridRadius + 1][z + gridRadius + 1] == 0 then
         table.insert(faces,
-            { { x, y, z + distAway }, { x, y + 1, z + distAway }, { x, y, z + 1 + distAway },
-                { x, y + 1, z + 1 + distAway } })
+            {
+                { x, y, z + distAway },
+                { x, y + 1, z + distAway },
+                { x, y, z + 1 + distAway },
+                { x, y + 1, z + 1 + distAway }
+            })
         table.insert(facesColors, thisColor)
+        table.insert(normals, { -1, 0, 0 })
     end
+
 
     if x == gridRadius then
         table.insert(faces,
-            { { x + 1, y, z + distAway }, { x + 1, y + 1, z + distAway }, { x + 1, y, z + 1 + distAway },
-                { x + 1, y + 1, z + 1 + distAway } })
+            {
+                { x + 1, y, z + distAway },
+                { x + 1, y + 1, z + distAway },
+                { x + 1, y, z + 1 + distAway },
+                { x + 1, y + 1, z + 1 + distAway }
+            })
         table.insert(facesColors, thisColor)
+        table.insert(normals, { 1, 0, 0 })
+
     elseif grid[x + gridRadius + 1 + 1][y + gridRadius + 1][z + gridRadius + 1] == 0 then
         table.insert(faces,
-            { { x + 1, y, z + distAway }, { x + 1, y + 1, z + distAway }, { x + 1, y, z + 1 + distAway },
-                { x + 1, y + 1, z + 1 + distAway } })
+            {
+                { x + 1, y, z + distAway },
+                { x + 1, y + 1, z + distAway },
+                { x + 1, y, z + 1 + distAway },
+                { x + 1, y + 1, z + 1 + distAway }
+            })
         table.insert(facesColors, thisColor)
+        table.insert(normals, { 1, 0, 0 })
     end
+
 
     if y == -gridRadius then
         table.insert(faces,
-            { { x, y, z + distAway }, { x + 1, y, z + distAway }, { x, y, z + 1 + distAway },
-                { x + 1, y, z + 1 + distAway } })
+            {
+                { x, y, z + distAway },
+                { x + 1, y, z + distAway },
+                { x, y, z + 1 + distAway },
+                { x + 1, y, z + 1 + distAway }
+            })
         table.insert(facesColors, thisColor)
+        table.insert(normals, { 0, -1, 0 })
+
     elseif grid[x + gridRadius + 1][y + gridRadius + 1 - 1][z + gridRadius + 1] == 0 then
         table.insert(faces,
-            { { x, y, z + distAway }, { x + 1, y, z + distAway }, { x, y, z + 1 + distAway },
-                { x + 1, y, z + 1 + distAway } })
+            {
+                { x, y, z + distAway },
+                { x + 1, y, z + distAway },
+                { x, y, z + 1 + distAway },
+                { x + 1, y, z + 1 + distAway }
+            })
         table.insert(facesColors, thisColor)
+        table.insert(normals, { 0, -1, 0 })
     end
+
 
     if y == gridRadius then
         table.insert(faces,
-            { { x, y + 1, z + distAway }, { x + 1, y + 1, z + distAway }, { x, y + 1, z + 1 + distAway },
-                { x + 1, y + 1, z + 1 + distAway } })
+            {
+                { x, y + 1, z + distAway },
+                { x + 1, y + 1, z + distAway },
+                { x, y + 1, z + 1 + distAway },
+                { x + 1, y + 1, z + 1 + distAway }
+            })
         table.insert(facesColors, thisColor)
+        table.insert(normals, { 0, 1, 0 })
+
     elseif grid[x + gridRadius + 1][y + gridRadius + 1 + 1][z + gridRadius + 1] == 0 then
         table.insert(faces,
-            { { x, y + 1, z + distAway }, { x + 1, y + 1, z + distAway }, { x, y + 1, z + 1 + distAway },
-                { x + 1, y + 1, z + 1 + distAway } })
+            {
+                { x, y + 1, z + distAway },
+                { x + 1, y + 1, z + distAway },
+                { x, y + 1, z + 1 + distAway },
+                { x + 1, y + 1, z + 1 + distAway }
+            })
         table.insert(facesColors, thisColor)
+        table.insert(normals, { 0, 1, 0 })
     end
+
 
     if z == -gridRadius then
         table.insert(faces,
-            { { x, y, z + distAway }, { x + 1, y, z + distAway }, { x + 1, y + 1, z + distAway },
-                { x, y + 1, z + distAway } })
+            {
+                { x, y, z + distAway },
+                { x + 1, y, z + distAway },
+                { x + 1, y + 1, z + distAway },
+                { x, y + 1, z + distAway }
+            })
         table.insert(facesColors, thisColor)
+        table.insert(normals, { 0, 0, -1 })
+
     elseif grid[x + gridRadius + 1][y + gridRadius + 1][z + gridRadius + 1 - 1] == 0 then
         table.insert(faces,
-            { { x, y, z + distAway }, { x + 1, y, z + distAway }, { x + 1, y + 1, z + distAway },
-                { x, y + 1, z + distAway } })
+            {
+                { x, y, z + distAway },
+                { x + 1, y, z + distAway },
+                { x + 1, y + 1, z + distAway },
+                { x, y + 1, z + distAway }
+            })
         table.insert(facesColors, thisColor)
+        table.insert(normals, { 0, 0, -1 })
     end
+
 
     if z == gridRadius then
         table.insert(faces,
-            { { x, y, z + 1 + distAway }, { x + 1, y, z + 1 + distAway }, { x + 1, y + 1, z + 1 + distAway },
-                { x, y + 1, z + 1 + distAway } })
+            {
+                { x, y, z + 1 + distAway },
+                { x + 1, y, z + 1 + distAway },
+                { x + 1, y + 1, z + 1 + distAway },
+                { x, y + 1, z + 1 + distAway }
+            })
         table.insert(facesColors, thisColor)
+        table.insert(normals, { 0, 0, 1 })
+
     elseif grid[x + gridRadius + 1][y + gridRadius + 1][z + gridRadius + 1 - 1] == 0 then
         table.insert(faces,
-            { { x, y, z + 1 + distAway }, { x + 1, y, z + 1 + distAway }, { x + 1, y + 1, z + 1 + distAway },
-                { x, y + 1, z + 1 + distAway } })
+            {
+                { x, y, z + 1 + distAway },
+                { x + 1, y, z + 1 + distAway },
+                { x + 1, y + 1, z + 1 + distAway },
+                { x, y + 1, z + 1 + distAway }
+            })
         table.insert(facesColors, thisColor)
+        table.insert(normals, { 0, 0, 1 })
     end
 
-    return faces, facesColors
+    return faces, facesColors, normals
 end
 
 -- rotates every face face in the array
@@ -456,6 +527,17 @@ function rotateAllFaces(facesArray, originX, originZ, angle)
             table.insert(output[i], { newX, p[2], newY })
         end
     end
+    return output
+end
+
+-- rotates all the normals in an array
+function rotateAllNormals(normalsArray, angle)
+    local output = {}
+    for i = 1, #normalsArray, 1 do
+        local newX, newZ = rotatePoint(normalsArray[i][1], normalsArray[i][3], 0, 0, angle)
+        table.insert(output, { newX, normalsArray[i][2], newZ })
+    end
+
     return output
 end
 
@@ -480,6 +562,7 @@ function getFaceCenter(face)
 end
 
 -- casts a ray towards the camera to see if the quad is visible, returns true if it is
+-- CHECK ALL 4 POINTS, NOT JUST MIDDLE
 function isFaceVisible(face, grid, rotOriginX, rotOriginZ, rotAngle)
     local gridRadius = (#grid - 1) / 2
 
@@ -505,10 +588,10 @@ function isFaceVisible(face, grid, rotOriginX, rotOriginZ, rotAngle)
     -- transform the origin so that it can become an index of the grid
     oX = oX + gridRadius + 1
     oY = oY + gridRadius + 1
-    oZ = oZ + gridRadius + 1 - 40
+    oZ = oZ + gridRadius + 1 - distAway
 
     -- one block at a time, step the ray forward and see if it hits anything
-    local raySteps = 1
+    local raySteps = 2
     while raySteps <= 5 do
         -- start at the origin and move along the vector raySteps amount of times
         -- then do math.floor so that the variables can be indices to the grid
@@ -536,11 +619,25 @@ end
 
 -- gets the surface normal for a face (use for lighting?)
 function getFaceNormal(face)
+    local p1 = face[1]
+    local p2 = face[2]
+    local p3 = face[3]
 
+    local dirX = (p2[1] - p1[1]) * (p3[1] - p1[1])
+    local dirY = (p2[2] - p1[2]) * (p3[2] - p1[2])
+    local dirZ = (p2[3] - p1[3]) * (p3[3] - p1[3])
+
+    local length = math.sqrt(dirX * dirX + dirY * dirY + dirZ * dirZ)
+
+    local normX = dirX / length
+    local normY = dirY / length
+    local normZ = dirZ / length
+
+    return { normX, normY, normZ }
 end
 
 -- inputs the faces array, sorts all the faces from furthest to closest and then returns the faces and facesColors arrays in that order (to be ready to render)
-function sortFaces(faces, facesColors)
+function sortFaces(faces, facesColors, normals)
     local distsTable = {}
     for i = 1, #faces, 1 do
         local center = getFaceCenter(faces[i])
@@ -552,18 +649,35 @@ function sortFaces(faces, facesColors)
     local indicesOrder = insertionSort(distsTable)
     local outFaces = {}
     local outColors = {}
+    local outNormals = {}
 
-    for i = 1, #indicesOrder, 1 do
+    for i = #indicesOrder, 1, -1 do
         table.insert(outFaces, faces[indicesOrder[i]])
         table.insert(outColors, facesColors[indicesOrder[i]])
+        table.insert(outNormals, normals[indicesOrder[i]])
     end
 
-    return faces, facesColors
+    return outFaces, outColors, outNormals
+end
+
+-- gets the dot product of 2 vectors, if the vectors are parrallel, returns one, if perperdicular or worse, returns 0
+function dotProduct3D(vec1, vec2, minVal)
+    local val = (vec1[1] * vec2[1]) + (vec1[2] * vec2[2]) + (vec1[3] * vec2[3])
+    if val <= minVal then
+        return minVal
+    else
+        return val
+    end
+end
+
+-- maps a value from one range to another
+function map(val, min1, max1, min2, max2)
+    return (val - min1) * (max2 - min2) / (max1 - min1) + max2
 end
 
 -- {..., ..., {{x, y, z}, {x, y, z}, {x, y, z}, {x, y, z}}, ..., ...}
 
-local radius = 10
+local radius = 8
 local iterations = 0
 function render(dt)
     -- UpdateMapTools()
@@ -600,8 +714,17 @@ function render(dt)
     for i = 1, #faces, 1 do
         local thisQuad = faces[i]
         local thisCol = faceColors[i]
+        local thisNorm = normals[i]
 
-        gfx.color(thisCol[1], thisCol[2], thisCol[3])
+        -- gfx.color(thisCol[1], thisCol[2], thisCol[3])
+        local dot = dotProduct3D(thisNorm, { -1, 1, -1 }, 0.5)
+        gfx.color(
+            thisCol[1] * dot * map((i / #faces), 0, 1, 0.2, 0.8),
+            thisCol[2] * dot * map((i / #faces), 0, 1, 0.2, 0.8),
+            thisCol[3] * dot * map((i / #faces), 0, 1, 0.2, 0.8))
+        -- gfx.color(thisNorm[1] * 255, thisNorm[2] * 255, thisNorm[3] * -255)
+        -- gfx.color(i, i, i)
+
         projectQuad(thisQuad[1][1], thisQuad[1][2], thisQuad[1][3], thisQuad[2][1], thisQuad[2][2], thisQuad[2][3],
             thisQuad[3][1], thisQuad[3][2], thisQuad[3][3], thisQuad[4][1], thisQuad[4][2], thisQuad[4][3])
     end
@@ -611,14 +734,16 @@ end
 
 faces = {}
 faceColors = {}
+normals = {}
 function update()
     UpdateMapTools()
 
     faces = {}
     faceColors = {}
+    normals = {}
 
     local originX = 0
-    local originZ = 40
+    local originZ = distAway
     local angle = math.rad(iterations)
 
     local blocksGrid = getBlocksGrid(radius)
@@ -626,7 +751,7 @@ function update()
         for y = -radius, radius, 1 do
             for z = -radius, radius, 1 do
 
-                local thisBlock, thisColors = getBlockVisibleFaces(x, y, z, blocksGrid)
+                local thisBlock, thisColors, thisNormals = getBlockVisibleFaces(x, y, z, blocksGrid)
                 -- add all of the block's faces to the overall array
                 for i = 1, #thisBlock, 1 do
                     table.insert(faces, thisBlock[i])
@@ -634,12 +759,16 @@ function update()
                 for i = 1, #thisColors, 1 do
                     table.insert(faceColors, thisColors[i])
                 end
+                for i = 1, #thisNormals, 1 do
+                    table.insert(normals, thisNormals[i])
+                end
 
             end
         end
     end
 
     faces = rotateAllFaces(faces, originX, originZ, angle)
+    normals = rotateAllNormals(normals, angle)
 
     local i = 1
     while i <= #faces do
@@ -647,17 +776,14 @@ function update()
             -- delete
             table.remove(faces, i)
             table.remove(faceColors, i)
+            table.remove(normals, i)
         else
             -- move on to the next one
             i = i + 1
         end
     end
 
-    faces, faceColors = sortFaces(faces, faceColors)
-
-    -- local t = { 1, 2, 3 }
-    -- table.remove(t, 2)
-    -- log(t)
+    faces, faceColors, normals = sortFaces(faces, faceColors, normals)
 end
 
 --[[
@@ -677,7 +803,8 @@ end
     -- (still have to make it check all the 4 corners, not just the center) for every face, cast a ray towards the camera (0, 0, 0)
         move the ray 1 block each time, if it ends up at a position that is marked as 1 in the grid, save that,  and if all the faces hit a 1, delete that face
 
-    every face is ordered from furthest to closest and then rendered in that order
+    --- every face is ordered from furthest to closest and then rendered in that order
 ]]
 
 -- make a global player position
+-- move all the faces coordinates down 5
