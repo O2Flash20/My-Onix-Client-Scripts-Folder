@@ -86,11 +86,12 @@ function projectPoint(x, y, z)
 end
 
 -- draws a quad (turns 3d coords to 2d and renders)
+local distDown = 5
 function projectQuad(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4)
-    local p1 = projectPoint(x1, y1, z1)
-    local p2 = projectPoint(x2, y2, z2)
-    local p3 = projectPoint(x3, y3, z3)
-    local p4 = projectPoint(x4, y4, z4)
+    local p1 = projectPoint(x1, y1 - distDown, z1)
+    local p2 = projectPoint(x2, y2 - distDown, z2)
+    local p3 = projectPoint(x3, y3 - distDown, z3)
+    local p4 = projectPoint(x4, y4 - distDown, z4)
 
     smartQuad(p1[1], p1[2], p2[1], p2[2], p3[1], p3[2], p4[1], p4[2])
 end
@@ -500,7 +501,7 @@ function getBlockVisibleFaces(x, y, z, grid)
         table.insert(facesColors, thisColor)
         table.insert(normals, { 0, 0, 1 })
 
-    elseif grid[x + gridRadius + 1][y + gridRadius + 1][z + gridRadius + 1 - 1] == 0 then
+    elseif grid[x + gridRadius + 1][y + gridRadius + 1][z + gridRadius + 1 + 1] == 0 then
         table.insert(faces,
             {
                 { x, y, z + 1 + distAway },
@@ -562,7 +563,7 @@ function getFaceCenter(face)
 end
 
 -- casts a ray towards the camera to see if the quad is visible, returns true if it is
--- CHECK ALL 4 POINTS, NOT JUST MIDDLE
+-- NOT PERFECT
 function isFaceVisible(face, grid, rotOriginX, rotOriginZ, rotAngle)
     local gridRadius = (#grid - 1) / 2
 
@@ -572,9 +573,24 @@ function isFaceVisible(face, grid, rotOriginX, rotOriginZ, rotAngle)
     local oY = origin[2]
     local oZ = origin[3]
 
+    local p1X = face[1][1]
+    local p1Y = face[1][2]
+    local p1Z = face[1][3]
+
+    local p2X = face[2][1]
+    local p2Y = face[2][2]
+    local p2Z = face[2][3]
+
+    local p3X = face[3][1]
+    local p3Y = face[3][2]
+    local p3Z = face[3][3]
+
+    local p4X = face[4][1]
+    local p4Y = face[4][2]
+    local p4Z = face[4][3]
+
     -- the distance from the camera to the center of the face
     local vectToCameraLength = math.sqrt(oX * oX + oY * oY + oZ * oZ)
-
     -- x, y, z are the components of a normalized vector towards the camera
     local x = -oX / vectToCameraLength
     local y = -oY / vectToCameraLength
@@ -582,6 +598,11 @@ function isFaceVisible(face, grid, rotOriginX, rotOriginZ, rotAngle)
 
     -- un-rotate the origin so that it is aligned with the grid
     oX, oZ = rotatePoint(oX, oZ, rotOriginX, rotOriginZ, rotAngle)
+    -- un-rotate all the points too
+    p1X, p1Z = rotatePoint(p1X, p1Z, rotOriginX, rotOriginZ, -rotAngle)
+    p2X, p2Z = rotatePoint(p2X, p2Z, rotOriginX, rotOriginZ, -rotAngle)
+    p3X, p3Z = rotatePoint(p3X, p3Z, rotOriginX, rotOriginZ, -rotAngle)
+    p4X, p4Z = rotatePoint(p4X, p4Z, rotOriginX, rotOriginZ, -rotAngle)
     -- un-rotate the vector so that it is aligned with the grid
     x, z = rotatePoint(x, z, 0, 0, rotAngle)
 
@@ -590,23 +611,56 @@ function isFaceVisible(face, grid, rotOriginX, rotOriginZ, rotAngle)
     oY = oY + gridRadius + 1
     oZ = oZ + gridRadius + 1 - distAway
 
+    -- do the same with the 4 points
+    p1X = p1X + gridRadius + 1
+    p1Y = p1Y + gridRadius + 1
+    p1Z = p1Z + gridRadius + 1 - distAway
+
+    p2X = p2X + gridRadius + 1
+    p2Y = p2Y + gridRadius + 1
+    p2Z = p2Z + gridRadius + 1 - distAway
+
+    p3X = p3X + gridRadius + 1
+    p3Y = p3Y + gridRadius + 1
+    p3Z = p3Z + gridRadius + 1 - distAway
+
+    p4X = p4X + gridRadius + 1
+    p4Y = p4Y + gridRadius + 1
+    p4Z = p4Z + gridRadius + 1 - distAway
+
     -- one block at a time, step the ray forward and see if it hits anything
-    local raySteps = 2
+    local raySteps = 1
     while raySteps <= 5 do
         -- start at the origin and move along the vector raySteps amount of times
         -- then do math.floor so that the variables can be indices to the grid
-        local thisX = math.floor(oX + (raySteps * x))
-        local thisY = math.floor(oY + (raySteps * y))
-        local thisZ = math.floor(oZ + (raySteps * z))
+        local centerX = math.floor(oX + (raySteps * x))
+        local centerY = math.floor(oY + (raySteps * y))
+        local centerZ = math.floor(oZ + (raySteps * z))
 
         -- check if the point is in range of the grid, if it is and it lands on a block, return false (not visible)
-        if grid[thisX] ~= nil then
-            if grid[thisX][thisY] ~= nil then
-                if grid[thisX][thisY][thisZ] ~= nil then
-                    if grid[thisX][thisY][thisZ] == 1 then
-                        return false
-                    end
-                end
+        if checkIsBlockInGrid(grid, centerX, centerY, centerZ) then
+            -- the center has collided with something, if the edges have all done too, the face is not visible
+            if checkIsBlockInGrid(grid,
+                math.floor(p1X + (raySteps * x)),
+                math.floor(p1Y + (raySteps * y)),
+                math.floor(p1Z + (raySteps * z)))
+                and
+                checkIsBlockInGrid(grid,
+                    math.floor(p2X + (raySteps * x)),
+                    math.floor(p2Y + (raySteps * y)),
+                    math.floor(p2Z + (raySteps * z)))
+                and
+                checkIsBlockInGrid(grid,
+                    math.floor(p3X + (raySteps * x)),
+                    math.floor(p3Y + (raySteps * y)),
+                    math.floor(p3Z + (raySteps * z)))
+                and
+                checkIsBlockInGrid(grid,
+                    math.floor(p4X + (raySteps * x)),
+                    math.floor(p4Y + (raySteps * y)),
+                    math.floor(p4Z + (raySteps * z)))
+            then
+                return false
             end
         end
 
@@ -615,6 +669,20 @@ function isFaceVisible(face, grid, rotOriginX, rotOriginZ, rotAngle)
 
     -- hasnt hit anything, return true
     return true
+end
+
+-- a helper function for the one above
+function checkIsBlockInGrid(grid, x, y, z)
+    if grid[x] ~= nil then
+        if grid[x][y] ~= nil then
+            if grid[x][y][z] ~= nil then
+                if grid[x][y][z] == 1 then
+                    return true
+                end
+            end
+        end
+    end
+    return false
 end
 
 -- gets the surface normal for a face (use for lighting?)
@@ -677,7 +745,7 @@ end
 
 -- {..., ..., {{x, y, z}, {x, y, z}, {x, y, z}, {x, y, z}}, ..., ...}
 
-local radius = 8
+local radius = 10
 local iterations = 0
 function render(dt)
     -- UpdateMapTools()
@@ -717,11 +785,14 @@ function render(dt)
         local thisNorm = normals[i]
 
         -- gfx.color(thisCol[1], thisCol[2], thisCol[3])
+
+        -- the epic lighting
         local dot = dotProduct3D(thisNorm, { -1, 1, -1 }, 0.5)
         gfx.color(
-            thisCol[1] * dot * map((i / #faces), 0, 1, 0.2, 0.8),
-            thisCol[2] * dot * map((i / #faces), 0, 1, 0.2, 0.8),
-            thisCol[3] * dot * map((i / #faces), 0, 1, 0.2, 0.8))
+            thisCol[1] * dot * map((i / #faces), 0, 1, 0.1, 0.8),
+            thisCol[2] * dot * map((i / #faces), 0, 1, 0.1, 0.8),
+            thisCol[3] * dot * map((i / #faces), 0, 1, 0.1, 0.8))
+
         -- gfx.color(thisNorm[1] * 255, thisNorm[2] * 255, thisNorm[3] * -255)
         -- gfx.color(i, i, i)
 
@@ -735,55 +806,60 @@ end
 faces = {}
 faceColors = {}
 normals = {}
+updates = 0
 function update()
-    UpdateMapTools()
+    if updates % 20 == 0 then
+        UpdateMapTools()
 
-    faces = {}
-    faceColors = {}
-    normals = {}
+        faces = {}
+        faceColors = {}
+        normals = {}
 
-    local originX = 0
-    local originZ = distAway
-    local angle = math.rad(iterations)
+        local originX = 0
+        local originZ = distAway
+        local angle = math.rad(iterations)
 
-    local blocksGrid = getBlocksGrid(radius)
-    for x = -radius, radius, 1 do
-        for y = -radius, radius, 1 do
-            for z = -radius, radius, 1 do
+        local blocksGrid = getBlocksGrid(radius)
+        for x = -radius, radius, 1 do
+            for y = -radius, radius, 1 do
+                for z = -radius, radius, 1 do
 
-                local thisBlock, thisColors, thisNormals = getBlockVisibleFaces(x, y, z, blocksGrid)
-                -- add all of the block's faces to the overall array
-                for i = 1, #thisBlock, 1 do
-                    table.insert(faces, thisBlock[i])
+                    local thisBlock, thisColors, thisNormals = getBlockVisibleFaces(x, y, z, blocksGrid)
+                    -- add all of the block's faces to the overall array
+                    for i = 1, #thisBlock, 1 do
+                        table.insert(faces, thisBlock[i])
+                    end
+                    for i = 1, #thisColors, 1 do
+                        table.insert(faceColors, thisColors[i])
+                    end
+                    for i = 1, #thisNormals, 1 do
+                        table.insert(normals, thisNormals[i])
+                    end
+
                 end
-                for i = 1, #thisColors, 1 do
-                    table.insert(faceColors, thisColors[i])
-                end
-                for i = 1, #thisNormals, 1 do
-                    table.insert(normals, thisNormals[i])
-                end
-
             end
         end
-    end
 
-    faces = rotateAllFaces(faces, originX, originZ, angle)
-    normals = rotateAllNormals(normals, angle)
+        faces = rotateAllFaces(faces, originX, originZ, angle)
+        normals = rotateAllNormals(normals, angle)
 
-    local i = 1
-    while i <= #faces do
-        if isFaceVisible(faces[i], blocksGrid, originX, originZ, angle) == false then
-            -- delete
-            table.remove(faces, i)
-            table.remove(faceColors, i)
-            table.remove(normals, i)
-        else
-            -- move on to the next one
-            i = i + 1
+        local i = 1
+        while i <= #faces do
+            if isFaceVisible(faces[i], blocksGrid, originX, originZ, angle) == false then
+                -- delete
+                table.remove(faces, i)
+                table.remove(faceColors, i)
+                table.remove(normals, i)
+            else
+                -- move on to the next one
+                i = i + 1
+            end
         end
+
+        faces, faceColors, normals = sortFaces(faces, faceColors, normals)
     end
 
-    faces, faceColors, normals = sortFaces(faces, faceColors, normals)
+    updates = updates + 1
 end
 
 --[[
@@ -807,4 +883,4 @@ end
 ]]
 
 -- make a global player position
--- move all the faces coordinates down 5
+-- USE COROUTINE ON UPDATE FUNCITON

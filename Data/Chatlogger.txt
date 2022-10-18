@@ -33336,3 +33336,22 @@ You have been teleported to 377.50, 76.00, 2007.50
 Teleported O2Flash20 to 377.50, 76.00, 2007.50
 Game rule dodaylightcycle has been updated to false
 Set the time to 73000
+Press T or RETURN to open chat
+Press T or RETURN to open chat
+Press T or RETURN to open chat
+You have been teleported to 377.50, 76.00, 2007.50
+Teleported O2Flash20 to 377.50, 76.00, 2007.50
+Set game difficulty to PEACEFUL
+Press T or RETURN to open chat
+You have been teleported to 377.50, 76.00, 2007.50
+Teleported O2Flash20 to 377.50, 76.00, 2007.50
+You have been teleported to 0.50, 200.00, 0.50
+Teleported O2Flash20 to 0.50, 200.00, 0.50
+Press T or RETURN to open chat
+§r
+§r§4[SENTINEL ANNOUNCEMENT]§r
+§r§bIn the past 24 hours, a total of §r§e§l741 §r§bplayers have been banned by Sentinel.§r
+§r§bOverall, Sentinel has banned §r§e§l1,167,859 §r§bplayers for cheating.§r
+§r§cCheating will result in a punishment!§r
+§r§c §r
+§r§f§r§7Want to join our §r§9§lDiscord§r§7? Come join our community at §r§6discord.gg/cubecraft§r§7!
