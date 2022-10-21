@@ -10,7 +10,7 @@ ThreeD View:1:
   scale:1:
    type:4:3
    value:6:1.260000
- enabled:2:true
+ enabled:2:false
 Arrow Trajectory:1:
  settings:1:
   Key:1:
@@ -31,18 +31,15 @@ Arrow Trajectory:1:
    type:4:1
    value:2:true
  enabled:2:false
-Death Coordinates:1:
+Cosmetics:1:
  settings:1:
   Key:1:
    type:4:4
    key:4:0
-  waypoint_style:1:
+  cosmeticNum:1:
    type:4:2
    value:4:1
-  waypoint_message:1:
-   type:4:1
-   value:2:true
- enabled:2:false
+ enabled:2:true
 Better Hunger:1:
  settings:1:
   Key:1:
@@ -260,6 +257,18 @@ custom chat:1:
   scale:1:
    type:4:3
    value:6:1.000000
+ enabled:2:false
+Death Coordinates:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  waypoint_style:1:
+   type:4:2
+   value:4:1
+  waypoint_message:1:
+   type:4:1
+   value:2:true
  enabled:2:false
 Direct Message:1:
  settings:1:

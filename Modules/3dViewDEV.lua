@@ -6,6 +6,7 @@ positionY = 100
 sizeX = 200
 sizeY = 200
 
+importLib("logger")
 importLib("MinimapBlockTools")
 
 -- puts the points of a quad in correct order to render
@@ -134,6 +135,104 @@ function insertionSort(arr)
     return indices
 end
 
+-- ! takes in the 8 points of a cube in correct render order and renders its quads
+function projectCube(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, x5, y5, z5, x6, y6, z6, x7, y7, z7, x8, y8, z8,
+                     color)
+    -- top, front, back, left, right, bottom
+    -- parameters 1-4: top face
+    -- parameters 5-8: bottom face
+    -- parameters 1/2, 5/6: front face
+    -- parameters 3/4, 7/8: back face
+    -- parameters 1/3, 5/7: left face
+    -- parameters 2/4, 6,8: right face
+
+    -- get the 3d middle of a quad and render then furthest ones first
+
+    local faces = {
+        -- top
+        { x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4 },
+        -- front
+        { x1, y1, z1, x2, y2, z2, x5, y5, z5, x6, y6, z6 },
+        -- back
+        { x3, y3, z3, x4, y4, z4, x7, y7, z7, x8, y8, z8 },
+        -- left
+        { x1, y1, z1, x3, y3, z3, x5, y5, z5, x7, y7, z7 },
+        -- right
+        { x2, y2, z2, x4, y4, z4, x6, y6, z6, x8, y8, z8 },
+        -- bottom
+        { x5, y5, z5, x6, y6, z6, x7, y7, z7, x8, y8, z8 }
+    }
+
+    local topDist = getDistSquaredToQuad(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4)
+    local frontDist = getDistSquaredToQuad(x1, y1, z1, x2, y2, z2, x5, y5, z5, x6, y6, z6)
+    local backDist = getDistSquaredToQuad(x3, y3, z3, x4, y4, z4, x7, y7, z7, x8, y8, z8)
+    local leftDist = getDistSquaredToQuad(x1, y1, z1, x3, y3, z3, x5, y5, z5, x7, y7, z7)
+    local rightDist = getDistSquaredToQuad(x2, y2, z2, x4, y4, z4, x6, y6, z6, x8, y8, z8)
+    local bottomDist = getDistSquaredToQuad(x5, y5, z5, x6, y6, z6, x7, y7, z7, x8, y8, z8)
+
+    local dists = { topDist, frontDist, backDist, leftDist, rightDist, bottomDist }
+    dists = insertionSort(dists)
+
+    for i = #dists, 1, -1 do
+        local faceNum = dists[i]
+        local face = faces[faceNum]
+
+        -- different faces are darkened differently so that the individual faces are easier to see
+        local faceColorOffsets = { 1, 0.8, 0.8, 0.7, 0.7, 1 }
+        local thisColorOffset = faceColorOffsets[faceNum]
+
+        gfx.color(color[1] * thisColorOffset, color[2] * thisColorOffset, color[3] * thisColorOffset)
+
+        projectQuad(face[1], face[2], face[3], face[4], face[5], face[6], face[7], face[8], face[9], face[10], face[11],
+            face[12])
+    end
+end
+
+-- ! uses x, y, z and width, height, depth and converts them to the 8 points (in corect render order)
+function getCubePoints(x, y, z, width, height, depth)
+    local top = { x, y + height, z, x + width, y + height, z, x, y + height, z + depth, x + width, y + height, z + depth }
+    -- local front = { x, y + height, z, x + width, y + height, z, x, y, z, x + width, y, z }
+    -- local back = { x, y + height, z + depth, x + width, y + height, z + depth, x, y, z + depth, x + width, y, z + depth }
+    -- local left = { x, y + height, z, x, y + height, z + depth, x, y, z, x, y, z + depth }
+    -- local right = { x + width, y + height, z, x + width, y + height, z + depth, x + width, y, z, x + width, y, z + depth }
+    local bottom = { x, y, z, x + width, y, z, x, y, z + depth, x + width, y, z + depth }
+
+    -- projectCube(top[1], top[2], top[3], top[4], top[5], top[6], top[7], top[8], top[9], top[10], top[11], top[12],
+    --     bottom[1], bottom[2], bottom[3], bottom[4], bottom[5], bottom[6], bottom[7], bottom[8], bottom[9], bottom[10],
+    --     bottom[11], bottom[12])
+
+    return top[1], top[2], top[3], top[4], top[5], top[6], top[7], top[8], top[9], top[10], top[11], top[12],
+        bottom[1], bottom[2], bottom[3], bottom[4], bottom[5], bottom[6], bottom[7], bottom[8], bottom[9], bottom[10],
+        bottom[11], bottom[12]
+end
+
+-- ! inputs the an array of all the points of all the cubes and outputs the order at which to render them
+function sortCubes(arr)
+    -- for each of the 8 entries of arr, average all their points to get the center point
+    -- get an array of the 8 distances (one for each vertex)
+    -- sort the array to get the indices which correspond to the largest dist -> smallest
+    -- return the above array
+
+    -- arr has *the amount of cubes* entries, each of those has 24 entries (8 xyz triplets)
+    -- x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, x5, y5, z5, x6, y6, z6, x7, y7, z7, x8, y8, z8
+
+    -- *the amount of cubes* entries, each the dist of that cube (unordered for now)
+    local dists = {}
+
+    for i = 1, #arr, 1 do
+        local avgX = (arr[i][1] + arr[i][4] + arr[i][7] + arr[i][10] + arr[i][13] + arr[i][16] + arr[i][19] + arr[i][22]
+            ) / 8
+        local avgY = (arr[i][2] + arr[i][5] + arr[i][8] + arr[i][11] + arr[i][14] + arr[i][17] + arr[i][20] + arr[i][23]
+            ) / 8
+        local avgZ = (arr[i][3] + arr[i][6] + arr[i][9] + arr[i][12] + arr[i][15] + arr[i][18] + arr[i][21] + arr[i][24]
+            ) / 8
+
+        table.insert(dists, avgX * avgX + avgY * avgY + avgZ * avgZ)
+    end
+
+    return insertionSort(dists)
+end
+
 -- rotates a 2d point around an origin
 function rotatePoint(posX, posZ, originX, originZ, angle)
     local pX = posX - originX
@@ -150,6 +249,22 @@ function rotatePoint(posX, posZ, originX, originZ, angle)
     pY = pY + originZ
 
     return pX, pY
+end
+
+-- ! rotates all the points of a cube
+function rotateCube(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, x5, y5, z5, x6, y6, z6, x7, y7, z7, x8, y8, z8,
+                    originX, originZ, yaw)
+    local rX1, rZ1 = rotatePoint(x1, z1, originX, originZ, yaw)
+    local rX2, rZ2 = rotatePoint(x2, z2, originX, originZ, yaw)
+    local rX3, rZ3 = rotatePoint(x3, z3, originX, originZ, yaw)
+    local rX4, rZ4 = rotatePoint(x4, z4, originX, originZ, yaw)
+    local rX5, rZ5 = rotatePoint(x5, z5, originX, originZ, yaw)
+    local rX6, rZ6 = rotatePoint(x6, z6, originX, originZ, yaw)
+    local rX7, rZ7 = rotatePoint(x7, z7, originX, originZ, yaw)
+    local rX8, rZ8 = rotatePoint(x8, z8, originX, originZ, yaw)
+
+    return { rX1, y1, rZ1, rX2, y2, rZ2, rX3, y3, rZ3, rX4, y4, rZ4, rX5, y5, rZ5, rX6, y6, rZ6, rX7, y7, rZ7, rX8,
+        y8, rZ8 }
 end
 
 -- returns a color given a block
@@ -172,6 +287,43 @@ function blockIsTransparent(block)
         end
     end
     return false
+end
+
+-- ! takes in a radius and outputs the cubes and colors arrays for rendering
+function getCubesFromWorld(radius)
+    local px, py, pz = player.position()
+    local cubes = {}
+    local colors = {}
+
+    for x = -radius, radius, 1 do
+        for y = -radius, radius, 1 do
+            for z = -radius, radius, 1 do
+                local block = dimension.getBlock(px + x, py + y, pz + z)
+
+                if blockIsTransparent(block) == false then
+                    -- is on border
+                    if x == -radius or x == radius or y == -radius or y == radius or z == -radius or z == radius then
+                        table.insert(cubes, { getCubePoints(x, y - 5, z + 40, 1, 1, 1) })
+                        table.insert(colors, getColor(block))
+
+                        -- not on border, check if visible anyways
+                    else if blockIsTransparent(dimension.getBlock(px + x + 1, py + y, pz + z)) or
+                            blockIsTransparent(dimension.getBlock(px + x - 1, py + y, pz + z)) or
+                            blockIsTransparent(dimension.getBlock(px + x, py + y + 1, pz + z)) or
+                            blockIsTransparent(dimension.getBlock(px + x, py + y - 1, pz + z)) or
+                            blockIsTransparent(dimension.getBlock(px + x, py + y, pz + z + 1)) or
+                            blockIsTransparent(dimension.getBlock(px + x, py + y, pz + z - 1))
+                        then
+                            table.insert(cubes, { getCubePoints(x, y - 5, z + 40, 1, 1, 1) })
+                            table.insert(colors, getColor(block))
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    return cubes, colors
 end
 
 -- scans the entire area in minecraft and returns 1 if there's a solid block there, to get a coord out of it, do ([x+radius+1][y+radius+1][z+radius+1]) because the array starts at (0, 0, 0) and not -radius
@@ -478,7 +630,7 @@ function isFaceVisible(face, grid, rotOriginX, rotOriginZ, rotAngle)
 
     -- one block at a time, step the ray forward and see if it hits anything
     local raySteps = 1
-    while raySteps <= 15 do
+    while raySteps <= 50 do
         -- start at the origin and move along the vector raySteps amount of times
         -- then do math.floor so that the variables can be indices to the grid
 
@@ -597,6 +749,37 @@ end
 local radius = 8
 local iterations = 0
 function render(dt)
+    -- UpdateMapTools()
+
+    -- gfx.color(51, 51, 51, 120)
+    -- gfx.rect(0, 0, sizeX, sizeY)
+
+    -- local px, py, pz = player.pposition()
+
+    -- -- adding in all the cubes
+    -- local cubes, colors = getCubesFromWorld(10)
+
+    -- local originX = 0
+    -- local originZ = 40
+    -- local yaw = iterations / 20
+
+    -- for i = 1, #cubes, 1 do
+    --     local c = cubes[i]
+    --     cubes[i] = rotateCube(c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9], c[10], c[11], c[12], c[13], c[14],
+    --         c[15],
+    --         c[16], c[17], c[18], c[19], c[20], c[21], c[22], c[23], c[24], originX, originZ, yaw)
+    -- end
+
+    -- -- rendering the cubes the right way around
+    -- local renderOrder = sortCubes(cubes)
+    -- for i = #renderOrder, 1, -1 do
+    --     local c = cubes[renderOrder[i]]
+    --     local color = colors[renderOrder[i]]
+    --     projectCube(c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9], c[10], c[11], c[12], c[13], c[14], c[15],
+    --         c[16], c[17], c[18], c[19], c[20], c[21], c[22], c[23], c[24], color)
+    -- end
+
+
     for i = 1, #faces, 1 do
         local thisQuad = faces[i]
         local thisCol = faceColors[i]
@@ -661,21 +844,46 @@ function update()
         faces = rotateAllFaces(faces, originX, originZ, angle)
         normals = rotateAllNormals(normals, angle)
 
-        local i = 1
-        while i <= #faces do
-            if isFaceVisible(faces[i], blocksGrid, originX, originZ, angle) == false then
-                -- delete
-                table.remove(faces, i)
-                table.remove(faceColors, i)
-                table.remove(normals, i)
-            else
-                -- move on to the next one
-                i = i + 1
-            end
-        end
+        -- local i = 1
+        -- while i <= #faces do
+        --     if isFaceVisible(faces[i], blocksGrid, originX, originZ, angle) == false then
+        --         -- delete
+        --         table.remove(faces, i)
+        --         table.remove(faceColors, i)
+        --         table.remove(normals, i)
+        --     else
+        --         -- move on to the next one
+        --         i = i + 1
+        --     end
+        -- end
 
         faces, faceColors, normals = sortFaces(faces, faceColors, normals)
     end
 
     updates = updates + 1
+
+    -- log(#faces)
 end
+
+--[[
+    ---function that:
+        scans the entire area in minecraft and returns 1 if there's a solid block there
+        returns it an a big 3d (?) array]
+
+    --- function that:
+        inputs a minecraft world coordinate
+        check the previous function's (^) array to see on what sides there is something in front of it
+        if it is not hidden, table.insert that side's face (4 points)
+
+    ---scan every block add all the visible faces into one array
+
+    ---function to rotate every face in an array
+
+    -- (still have to make it check all the 4 corners, not just the center) for every face, cast a ray towards the camera (0, 0, 0)
+        move the ray 1 block each time, if it ends up at a position that is marked as 1 in the grid, save that,  and if all the faces hit a 1, delete that face
+
+    --- every face is ordered from furthest to closest and then rendered in that order
+]]
+
+-- make a global player position
+-- USE COROUTINE ON UPDATE FUNCITON
