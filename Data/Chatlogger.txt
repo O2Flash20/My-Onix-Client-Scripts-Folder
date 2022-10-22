@@ -33392,3 +33392,4 @@ Press T or RETURN to open chat
 Press T or RETURN to open chat
 You have been teleported to 1000.50, 100.00, 0.50
 Teleported O2Flash20 to 1000.50, 100.00, 0.50
+Press T or RETURN to open chat
