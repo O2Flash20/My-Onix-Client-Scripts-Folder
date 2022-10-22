@@ -1,8 +1,38 @@
 name = "Cosmetics"
 description = "Crown and halo cosmetics for Onix Client"
 
+importLib("logger")
+
+-- Some more controls
+animationSpeed = 1.5
+haloHeightAbovePlayer = 0.5
+haloBobAmount = 0.1
+--
+
 cosmeticNum = 1
 client.settings.addInt("Cosmetic:", "cosmeticNum", 1, 2)
+
+client.settings.addAir(10)
+
+haloCol = { 255, 215, 0 }
+client.settings.addColor("Halo Color", "haloCol")
+
+client.settings.addAir(10)
+
+crownCol = { 255, 215, 0 }
+client.settings.addColor("Crown Color", "crownCol")
+
+gemCol1 = { 0, 255, 0 }
+client.settings.addColor("Gem Color 1", "gemCol1")
+
+gemCol2 = { 0, 0, 255 }
+client.settings.addColor("Gem Color 2", "gemCol2")
+
+gemCol3 = { 255, 0, 0 }
+client.settings.addColor("Gem Color 3", "gemCol3")
+
+gemCol4 = { 255, 0, 255 }
+client.settings.addColor("Gem Color 4", "gemCol4")
 
 -- "p" inputs are all a table of {x, y, z}
 function noCullingTriangle(p1, p2, p3)
@@ -95,56 +125,67 @@ function renderPrism3d(prism)
     end
 end
 
-iterations = 0
 function render3d()
-
     if player.perspective() == 0 then return end
 
     px, py, pz = player.pposition()
     pYaw, pPitch = player.rotation()
 
+    -- Corrects py if the player is crouching
     if player.getFlag(1) then
         py = py - 0.25
     end
 
     local x, y, z, oX, oY, oZ, rPitch, rYaw, prism
 
-    -- ----------------------------------------------------------------
+    local t = os.clock() * animationSpeed
+
+    -- HALO --
     if cosmeticNum == 1 then
+        -- The starting point for the prisms' positions. Allows you to easily move the whole thing around without changing the values for every prism. Notice how all getPrism3ds use x, y, z as a base, then make small additions or subtractions.
         x = px
-        y = py + 0.5 + math.sin(iterations / 100) / 10
+        y = py + haloHeightAbovePlayer + math.sin(t) * haloBobAmount
         z = pz
 
+        -- Used as the rotation origin point. This "attaches" all your prisms to the head. For all cosmetics attached to the head, it should be px, py-0.2, pz or else when you look up or down it won't match up with your head.
         oX = px
         oY = py - 0.2
         oZ = pz
 
+        -- Getting the player's rotation so that the cosmetic can match
         rPitch = math.rad(-pPitch)
         rYaw = math.rad(-pYaw - 90)
 
-        gfx.color(255, 215, 0)
+        gfx.color(haloCol.r, haloCol.g, haloCol.b)
 
+        --[[
+            Four steps here:
+            1. getPrism3d creates the actual prism at the position and size you want it. NOTE THAT THE POSITION IS THE CENTER OF THE PRISM, NOT AT AN EDGE.
+            2. For this mod, I wanted the halo to spin on itself, so I set the rotation origin as the center of the halo (not oX, oY, oZ because I don't want it to spin around the head) and used t as a yaw value
+            3. I then used rotatePrism again with oX, oY, oZ, rPitch, rYaw to make the cosmetic match the head rotation. This step should theorectially be done on every cosmetic.
+            4. renderPrism3d, finally renders the prism after being rotated twice
+        ]]
         prism = getPrism3d(x + 0.15, y, z, 0.05, 0.05, 0.25)
-        prism = rotatePrism(prism, x, y, z, 0, iterations / 100)
+        prism = rotatePrism(prism, x, y, z, 0, t)
         prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
         renderPrism3d(prism)
 
         prism = getPrism3d(x - 0.15, y, z, 0.05, 0.05, 0.25)
-        prism = rotatePrism(prism, x, y, z, 0, iterations / 100)
+        prism = rotatePrism(prism, x, y, z, 0, t)
         prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
         renderPrism3d(prism)
 
         prism = getPrism3d(x, y, z + 0.15, 0.25, 0.05, 0.05)
-        prism = rotatePrism(prism, x, y, z, 0, iterations / 100)
+        prism = rotatePrism(prism, x, y, z, 0, t)
         prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
         renderPrism3d(prism)
 
         prism = getPrism3d(x, y, z - 0.15, 0.25, 0.05, 0.05)
-        prism = rotatePrism(prism, x, y, z, 0, iterations / 100)
+        prism = rotatePrism(prism, x, y, z, 0, t)
         prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
         renderPrism3d(prism)
     end
-    -- ----------------------------------------------------------------
+    -- Crown --
     if cosmeticNum == 2 then
         x = px
         y = py + 0.15
@@ -157,13 +198,15 @@ function render3d()
         rPitch = math.rad(-pPitch)
         rYaw = math.rad(-pYaw - 90)
 
-        gfx.color(255, 215, 0)
+        gfx.color(crownCol.r, crownCol.g, crownCol.b)
         prism = getPrism3d(x, y, z, 0.55, 0.17, 0.55)
         prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
         renderPrism3d(prism)
 
+        -- I use a for loop here because I know that the crown is going to be symmetrical. I'm essentially just saving lines. If you're not comfortable with doing it, just make each prism its own block and don't use a loop.
+        -- i flips from 1 to -1, which allows he to get that symmetry on both sides of (0, 0)
         for i = -1, 1, 2 do
-            gfx.color(255, 215, 0)
+            gfx.color(crownCol.r, crownCol.g, crownCol.b)
             prism = getPrism3d(x + (0.27 * i), y + 0.08, z - 0.12, 0.05, 0.2, 0.15)
             prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
             renderPrism3d(prism)
@@ -202,7 +245,4 @@ function render3d()
             renderPrism3d(prism)
         end
     end
-    -- ----------------------------------------------------------------
-
-    iterations = iterations + 1
 end

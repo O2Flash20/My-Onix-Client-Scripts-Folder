@@ -33,12 +33,60 @@ Arrow Trajectory:1:
  enabled:2:false
 Cosmetics:1:
  settings:1:
+  gemCol2:1:
+   b:6:1.000000
+   r:6:0.000000
+   type:4:7
+   g:6:0.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
   Key:1:
    type:4:4
    key:4:0
+  gemCol4:1:
+   b:6:1.000000
+   r:6:1.000000
+   type:4:7
+   g:6:0.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
   cosmeticNum:1:
    type:4:2
    value:4:1
+  gemCol3:1:
+   b:6:0.000000
+   r:6:1.000000
+   type:4:7
+   g:6:0.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  haloCol:1:
+   b:6:1.000000
+   r:6:1.000000
+   type:4:7
+   g:6:1.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  crownCol:1:
+   b:6:0.000000
+   r:6:1.000000
+   type:4:7
+   g:6:0.861100
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  gemCol1:1:
+   b:6:0.000000
+   r:6:0.000000
+   type:4:7
+   g:6:1.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
  enabled:2:true
 Better Hunger:1:
  settings:1:
