@@ -1,16 +1,19 @@
 name = "Cosmetics"
 description = "Crown and halo cosmetics for Onix Client"
 
-importLib("logger")
+--[[
+    Made by O2Flash20
+    Sunglasses cosmetic made by rosie
+]]
 
 -- Some more controls
-animationSpeed = 1.5
-haloHeightAbovePlayer = 0.5
-haloBobAmount = 0.1
+animationSpeed = 1
+haloHeightAbovePlayer = 0.6
+haloBobAmount = 0.025
 --
 
 cosmeticNum = 1
-client.settings.addInt("Cosmetic:", "cosmeticNum", 1, 2)
+client.settings.addInt("Cosmetic:", "cosmeticNum", 1, 4)
 
 client.settings.addAir(10)
 
@@ -34,10 +37,16 @@ client.settings.addColor("Gem Color 3", "gemCol3")
 gemCol4 = { 255, 0, 255 }
 client.settings.addColor("Gem Color 4", "gemCol4")
 
--- "p" inputs are all a table of {x, y, z}
-function noCullingTriangle(p1, p2, p3)
+client.settings.addAir(10)
+
+sunglassesHeight = 1
+client.settings.addFloat("Sunglasses Height", "sunglassesHeight", 0.998, 1.004)
+sunglassesColor = { 3, 3, 3 }
+client.settings.addColor("Sunglasses Color", "sunglassesColor")
+
+-- like gfx.triangle but takes in the points as tables {x, y, z}
+function triangle3d(p1, p2, p3)
     gfx.triangle(p1[1], p1[2], p1[3], p2[1], p2[2], p2[3], p3[1], p3[2], p3[3])
-    gfx.triangle(p3[1], p3[2], p3[3], p2[1], p2[2], p2[3], p1[1], p1[2], p1[3])
 end
 
 -- turns dimension of a prism into points
@@ -98,31 +107,25 @@ function rotatePoint(x, y, z, originX, originY, originZ, pitch, yaw)
     return { x, y, z }
 end
 
--- renders an array of points for a prism using triangles
-function renderPrism3d(prism)
-    for i = 1, 8, 4 do
-        -- 1, 2, 3 --- 5, 6, 7
-        noCullingTriangle(prism[i], prism[i + 1], prism[i + 2])
+-- renders the prism array using triangles
+function renderPrism(prism)
+    triangle3d(prism[3], prism[2], prism[1])
+    triangle3d(prism[6], prism[7], prism[5])
 
-        -- 2, 3, 4 --- 6, 7, 8
-        noCullingTriangle(prism[i + 1], prism[i + 2], prism[i + 3])
-    end
+    triangle3d(prism[2], prism[3], prism[4])
+    triangle3d(prism[8], prism[7], prism[6])
 
-    for i = 1, 2, 1 do
-        -- 1, 3, 5 --- 2, 4, 6
-        noCullingTriangle(prism[i], prism[i + 2], prism[i + 4])
+    triangle3d(prism[5], prism[3], prism[1])
+    triangle3d(prism[2], prism[4], prism[6])
 
-        -- 3, 5, 7 --- 4, 6, 8
-        noCullingTriangle(prism[i + 2], prism[i + 4], prism[i + 6])
-    end
+    triangle3d(prism[3], prism[5], prism[7])
+    triangle3d(prism[8], prism[6], prism[4])
 
-    for i = 1, 4, 2 do
-        -- 1, 2, 5 --- 3, 4, 7
-        noCullingTriangle(prism[i], prism[i + 1], prism[i + 4])
+    triangle3d(prism[1], prism[2], prism[5])
+    triangle3d(prism[7], prism[4], prism[3])
 
-        -- 2, 5, 6 --- 4, 7, 8
-        noCullingTriangle(prism[i + 1], prism[i + 4], prism[i + 5])
-    end
+    triangle3d(prism[6], prism[5], prism[2])
+    triangle3d(prism[4], prism[7], prism[8])
 end
 
 function render3d()
@@ -163,27 +166,27 @@ function render3d()
             1. getPrism3d creates the actual prism at the position and size you want it. NOTE THAT THE POSITION IS THE CENTER OF THE PRISM, NOT AT AN EDGE.
             2. For this mod, I wanted the halo to spin on itself, so I set the rotation origin as the center of the halo (not oX, oY, oZ because I don't want it to spin around the head) and used t as a yaw value
             3. I then used rotatePrism again with oX, oY, oZ, rPitch, rYaw to make the cosmetic match the head rotation. This step should theorectially be done on every cosmetic.
-            4. renderPrism3d, finally renders the prism after being rotated twice
+            4. renderPrism, finally renders the prism after being rotated twice
         ]]
         prism = getPrism3d(x + 0.15, y, z, 0.05, 0.05, 0.25)
         prism = rotatePrism(prism, x, y, z, 0, t)
         prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
-        renderPrism3d(prism)
+        renderPrism(prism)
 
         prism = getPrism3d(x - 0.15, y, z, 0.05, 0.05, 0.25)
         prism = rotatePrism(prism, x, y, z, 0, t)
         prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
-        renderPrism3d(prism)
+        renderPrism(prism)
 
         prism = getPrism3d(x, y, z + 0.15, 0.25, 0.05, 0.05)
         prism = rotatePrism(prism, x, y, z, 0, t)
         prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
-        renderPrism3d(prism)
+        renderPrism(prism)
 
         prism = getPrism3d(x, y, z - 0.15, 0.25, 0.05, 0.05)
         prism = rotatePrism(prism, x, y, z, 0, t)
         prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
-        renderPrism3d(prism)
+        renderPrism(prism)
     end
     -- Crown --
     if cosmeticNum == 2 then
@@ -201,7 +204,7 @@ function render3d()
         gfx.color(crownCol.r, crownCol.g, crownCol.b)
         prism = getPrism3d(x, y, z, 0.55, 0.17, 0.55)
         prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
-        renderPrism3d(prism)
+        renderPrism(prism)
 
         -- I use a for loop here because I know that the crown is going to be symmetrical. I'm essentially just saving lines. If you're not comfortable with doing it, just make each prism its own block and don't use a loop.
         -- i flips from 1 to -1, which allows he to get that symmetry on both sides of (0, 0)
@@ -209,40 +212,91 @@ function render3d()
             gfx.color(crownCol.r, crownCol.g, crownCol.b)
             prism = getPrism3d(x + (0.27 * i), y + 0.08, z - 0.12, 0.05, 0.2, 0.15)
             prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
-            renderPrism3d(prism)
+            renderPrism(prism)
 
             prism = getPrism3d(x + (0.27 * i), y + 0.08, z + 0.12, 0.05, 0.2, 0.15)
             prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
-            renderPrism3d(prism)
+            renderPrism(prism)
 
             prism = getPrism3d(x - 0.12, y + 0.08, z + (0.27 * i), 0.15, 0.2, 0.05)
             prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
-            renderPrism3d(prism)
+            renderPrism(prism)
 
             prism = getPrism3d(x + 0.12, y + 0.08, z + (0.27 * i), 0.15, 0.2, 0.05)
             prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
-            renderPrism3d(prism)
+            renderPrism(prism)
 
 
             gfx.color(0, 255, 0)
             prism = getPrism3d(x + (0.27 * i), y + 0.08, z - 0.12, 0.07, 0.07, 0.07)
             prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
-            renderPrism3d(prism)
+            renderPrism(prism)
 
             gfx.color(0, 0, 255)
             prism = getPrism3d(x + (0.27 * i), y + 0.08, z + 0.12, 0.07, 0.07, 0.07)
             prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
-            renderPrism3d(prism)
+            renderPrism(prism)
 
             gfx.color(255, 0, 0)
             prism = getPrism3d(x + 0.12, y + 0.08, z + (0.27 * i), 0.07, 0.07, 0.07)
             prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
-            renderPrism3d(prism)
+            renderPrism(prism)
 
             gfx.color(255, 0, 255)
             prism = getPrism3d(x - 0.12, y + 0.08, z + (0.27 * i), 0.07, 0.07, 0.07)
             prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
-            renderPrism3d(prism)
+            renderPrism(prism)
         end
     end
+    -- Sunglasses --
+    if cosmeticNum == 3 then
+        x = px
+        y = py + 0.15
+        z = pz
+
+        oX = px
+        oY = py - 0.2
+        oZ = pz
+
+        rPitch = math.rad(-pPitch)
+        rYaw = math.rad(-pYaw - 90)
+
+        gfx.color(sunglassesColor.r, sunglassesColor.g, sunglassesColor.b)
+
+        prism = getPrism3d(x + 0.08, (y - 0.19) * sunglassesHeight, z, 0.4, 0.05, 0.55)
+        prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
+        renderPrism(prism)
+
+        gfx.color(0, 0, 255, 10)
+
+        prism = getPrism3d(x + 0.265, (y - 0.24) * sunglassesHeight, z - 0.1, 0.03, 0.06, 0.13)
+        prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
+        renderPrism(prism)
+
+        prism = getPrism3d(x + 0.265, (y - 0.24) * sunglassesHeight, z + 0.1, 0.03, 0.06, 0.13)
+        prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
+        renderPrism(prism)
+    end
+    -- Test --
+    if cosmeticNum == 4 then
+        x = px
+        y = py + 0.15
+        z = pz
+
+        oX = px
+        oY = py - 0.2
+        oZ = pz
+
+        rPitch = math.rad(-pPitch)
+        rYaw = math.rad(-pYaw - 90)
+
+        prism = getPrism3d(x, y + 2, z, 1, 1, 1)
+        prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
+        renderPrism(prism)
+    end
+
+    isTest = cosmeticNum == 3
 end
+
+-- use delta time instead of os.clock
+-- use DependentBoolean library

@@ -54,7 +54,15 @@ Cosmetics:1:
    chroma:2:false
   cosmeticNum:1:
    type:4:2
-   value:4:1
+   value:4:2
+  haloCol:1:
+   b:6:0.000000
+   r:6:1.000000
+   type:4:7
+   g:6:0.843137
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
   gemCol3:1:
    b:6:0.000000
    r:6:1.000000
@@ -63,19 +71,11 @@ Cosmetics:1:
    a:6:1.000000
    rainbow:2:false
    chroma:2:false
-  haloCol:1:
-   b:6:1.000000
-   r:6:1.000000
-   type:4:7
-   g:6:1.000000
-   a:6:1.000000
-   rainbow:2:false
-   chroma:2:false
   crownCol:1:
    b:6:0.000000
    r:6:1.000000
    type:4:7
-   g:6:0.861100
+   g:6:0.843137
    a:6:1.000000
    rainbow:2:false
    chroma:2:false
@@ -84,6 +84,17 @@ Cosmetics:1:
    r:6:0.000000
    type:4:7
    g:6:1.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  sunglassesHeight:1:
+   type:4:3
+   value:6:1.001624
+  sunglassesColor:1:
+   b:6:0.011765
+   r:6:0.011765
+   type:4:7
+   g:6:0.011765
    a:6:1.000000
    rainbow:2:false
    chroma:2:false
@@ -229,6 +240,12 @@ Dev Block Leaker:1:
    value:2:true
  enabled:2:false
 ChatLogger:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:true
+Cosmetics Test:1:
  settings:1:
   Key:1:
    type:4:4
