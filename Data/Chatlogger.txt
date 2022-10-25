@@ -33406,3 +33406,820 @@ e
 e
 e
 Press T or RETURN to open chat
+
+Press T or RETURN to open chat
+ 
+§7§8Epix239200§f: §7dude i can hear you perfectly fine
+§e[§5§lDreamcatcher§r§e]§r §5Zxuriia lol§f: §7Tex
+§e[§5§lDreamcatcher§r§e]§r §5Zxuriia lol§f: §7My amigo
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§73§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8acenix7282§r§7§7 joined your game (§r§7§74§r§7§7/§r§7§716§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Laylasat3000§r§7§7 joined your game (§r§7§75§r§7§7/§r§7§716§r§7§7).§r
+§r§aSending you to the Lobby...§r
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§71§r§7§7/§r§7§712§r§7§7).§r
+§b§bO2Flash20§r§b§b §r§e§evoted for §r§a§a§l§r§a§a§lOverpowered§r§a§a§l §r§e§e§r§e§eitems§r§e§e.§r§e§e §r§7§71 vote§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Jugador06535294§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Lexcesp§r§7§7 joined your game (§r§7§73§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§1§1BidenisKing7778§r§7§7 joined your game (§r§7§74§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8SoulO1290§r§7§7 joined your game (§r§7§75§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Mike8903§r§7§7 joined your game (§r§7§76§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8RACMICHELL§r§7§7 joined your game (§r§7§77§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8saymearturo§r§7§7 joined your game (§r§7§78§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§c§c-§r§7§7] §r§8§8saymearturo§r§7§7 left your game (§r§7§77§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8FunJoseDaniel§r§7§7 joined your game (§r§7§78§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§6§6Ear§r§e§eth§r§f§f2Pi§r§e§esc§r§6§6es§r§7§7 joined your game (§r§7§79§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8CoolCucumber31§r§7§7 joined your game (§r§7§710§r§7§7/§r§7§712§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8CoolerCuc§r§7§7 joined your game (§r§7§711§r§7§7/§r§7§712§r§7§7).§r
+§6§6Ear§r§e§eth§r§f§f2Pi§r§e§esc§r§6§6es§r§6§6 §r§e§evoted for §r§a§a§l§r§a§a§lOverpowered§r§a§a§l §r§e§e§r§e§eitems§r§e§e.§r§e§e §r§7§7§r§7§72§r§7§7 votes§r
+§6§6Server is now §r§6§6§lFULL§r§6§6! Game starting in §r§e§e§r§e§e10§r§e§e seconds§r§6§6!§r
+§7§7[§r§a§a+§r§7§7] §r§8§8RulyMedusa31187§r§7§7 joined your game (§r§7§712§r§7§7/§r§7§712§r§7§7).§r
+§1§1BidenisKing7778§r§1§1 §r§e§evoted for §r§a§a§l§r§a§a§lHardcore§r§a§a§l §r§e§e§r§e§eitems§r§e§e.§r§e§e §r§7§71 vote§r
+§8§8SoulO1290§r§8§8 §r§e§evoted for §r§a§a§l§r§a§a§lHardcore§r§a§a§l §r§e§e§r§e§eitems§r§e§e.§r§e§e §r§7§7§r§7§72§r§7§7 votes§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§1§1BidenisKing7778§r§1§1 §r§e§evoted for §r§a§a§l§r§a§a§lOverpowered§r§a§a§l §r§e§e§r§e§eitems§r§e§e.§r§e§e §r§7§7§r§7§73§r§7§7 votes§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§8§8SoulO1290§r§8§8 §r§e§evoted for §r§a§a§l§r§a§a§lOverpowered§r§a§a§l §r§e§e§r§e§eitems§r§e§e.§r§e§e §r§7§7§r§7§74§r§7§7 votes§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9EggWars§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§f§f §r
+§e§eSelected §r§a§a§l§r§a§a§lOverpowered§r§a§a§l §r§e§e§r§e§eitems§r§e§e!§r§e§e §r§7§7§r§7§74§r§7§7 votes§r§7§7.§r
+§f§f §r
+§d§dBidenisKing7778§r§e§e§r§e§e died in the void§r§e§e.§r
+§e§eTeam §r§e§e§r§e§eYellow§r§e§e's §r§e§eegg has been §r§e§e§lrammed§r§e§e by §r§d§dSoulO1290§r
+§e§eJugador06535294§r§e§e§r§e§e was too scared to fight §r§d§dSoulO1290§r§e§e§r§e§e.§r
+§c§c§r§c§cJugador06535294§r§c§c has been eliminated from the game.§r
+§d§dSoulO1290§r§e§e§r§e§e yeeted §r§e§eLexcesp§r§e§e§r§e§e into the void.§r
+§c§c§r§c§cLexcesp§r§c§c has been eliminated from the game.§r
+§f§f
+§r§c§cThe §r§e§e§r§e§eYellow§r§c§c team has been eliminated.§r§c§c
+§r
+§e§eTeam §r§6§6§r§6§6Orange§r§6§6's §r§e§eegg has been §r§e§e§leaten§r§e§e by §r§a§aEarth2Pisces§r
+§6§6RACMICHELL§r§e§e§r§e§e was slapped into the void by §r§a§aEarth2Pisces§r§e§e§r§e§e.§r
+§c§c§r§c§cRACMICHELL§r§c§c has been eliminated from the game.§r
+§a§aEarth2Pisces§r§e§e§r§e§e UwU'd §r§6§6FunJoseDaniel§r§e§e§r§e§e to death!§r
+§c§c§r§c§cFunJoseDaniel§r§c§c has been eliminated from the game.§r
+§f§f
+§r§c§cThe §r§6§6§r§6§6Orange§r§c§c team has been eliminated.§r§c§c
+§r
+§d§dSoulO1290§r§e§e§r§e§e was too scared to fight §r§3§3O2Flash20§r§e§e§r§e§e.§r
+§e§eTeam §r§a§a§r§a§aGreen§r§a§a's §r§e§eegg has been §r§e§e§leliminated§r§e§e by §r§d§dBidenisKing7778§r
+§d§dBidenisKing7778§r§e§e§r§e§e "accidentally" tripped §r§a§aRulyMedusa31187§r§e§e§r§e§e into the void.§r
+§c§c§r§c§cRulyMedusa31187§r§c§c has been eliminated from the game.§r
+§e§eTeam §r§d§d§r§d§dPink§r§d§d's §r§e§eegg has been §r§e§e§lejected§r§e§e by §r§3§3O2Flash20§r
+§a§aEarth2Pisces§r§e§e§r§e§e was pummelled by §r§d§dBidenisKing7778§r§e§e§r§e§e's Kung Fu moves.§r
+§c§c§r§c§cEarth2Pisces§r§c§c has been eliminated from the game.§r
+§f§f
+§r§c§cThe §r§a§a§r§a§aGreen§r§c§c team has been eliminated.§r§c§c
+§r
+§d§dSoulO1290§r§e§e§r§e§e blew §r§3§3O2Flash20§r§e§e§r§e§e into the void.§r
+§b§bYour egg has brought you new life!§r
+§c§cYou are now invincible for §r§c§c10§r§c§c seconds.§r
+§6§6You have been given your kit! You have to wait 1 minute 30 seconds before you can get your kit again.§r
+§d§dBidenisKing7778§r§e§e§r§e§e scared §r§c§cCoolerCuc§r§e§e§r§e§e into the void.§r
+§d§dBidenisKing7778§r§e§e§r§e§e died in the void§r§e§e while escaping §r§c§cCoolCucumber31§r§e§e§r§e§e.§r
+§c§c§r§c§cBidenisKing7778§r§c§c has been eliminated from the game.§r
+§e§eTeam §r§3§3§r§3§3Cyan§r§3§3's §r§e§eegg has been §r§e§e§lrammed§r§e§e by §r§d§dSoulO1290§r
+§r§f§4§lYour egg has been destroyed!§r
+§e§eTeam §r§c§c§r§c§cRed§r§c§c's §r§e§eegg has been §r§e§e§lejected§r§e§e by §r§3§3O2Flash20§r
+§c§cCoolCucumber31§r§e§e§r§e§e died in the void§r§e§e.§r
+§c§c§r§c§cCoolCucumber31§r§c§c has been eliminated from the game.§r
+§3§3O2Flash20§r§e§e§r§e§e screamed "This is Sparta!" before kicking §r§c§cCoolerCuc§r§e§e§r§e§e into the void.§r
+§c§c§r§c§cCoolerCuc§r§c§c has been eliminated from the game.§r
+§f§f
+§r§c§cThe §r§c§c§r§c§cRed§r§c§c team has been eliminated.§r§c§c
+§r
+§d§dSoulO1290§r§e§e§r§e§e wiped the floor with §r§3§3Mike8903§r§e§e§r§e§e.§r
+§c§c§r§c§cMike8903§r§c§c has been eliminated from the game.§r
+§3§3O2Flash20§r§e§e§r§e§e was ticked to death by §r§d§dSoulO1290§r§e§e§r§e§e.§r
+§c§c§r§c§cO2Flash20§r§c§c has been eliminated from the game.§r
+§f§f
+§r§c§cThe §r§3§3§r§3§3Cyan§r§c§c team has been eliminated.§r§c§c
+§r
+§7§7-------------------------------§r
+§8§8- §r§7§7§r§7§7Game length§r§7§7: §r§e§e§r§e§e3§r§e§e minutes§r§e§e, §r§e§e21§r§e§e seconds§r
+§8§8- §r§7§7§r§7§7Kills§r§7§7: §r§e§e§r§e§e2§r
+§8§8- §r§7§7§r§7§7Deaths§r§7§7: §r§e§e§r§e§e2§r
+§8§8- §r§7§7§r§7§7K/D§r§7§7: §r§e§e§r§e§e1.0§r
+§8§8- §r§7§7§r§7§7Eggs broken§r§7§7: §r§e§e§r§e§e2§r
+§8§8- §r§7§7§r§7§7Eliminations§r§7§7: §r§e§e§r§e§e1§r
+§7§7-------------------------------§r
+§7§7-------------------------------§r
+§e§e§r§d§d§r§d§dPink§r§a§a won the game!§r
+§7§7-------------------------------§r
+
+Press T or RETURN to open chat
+ 
+§3Welcome to §bLife§cboat§3!
+§9You joined the §9Blue team.
+§9> §3Using map: §eOaken Meadow§3 by §erockymine
+§6You have §a0 §6friends online.
+§9You have §a0 §9new friend requests
+§9O2Flash20§r§3 fell out of the world
+§9O2Flash20§r§3 has been knocked into the void by §cPhychobivch§r§3!
+§cwillohjean36§r§3 was shot by §9O2Flash20§r (33 blocks)
+§a§l» §r§8§9GhostedMyself§r§e left the game.
+§a§l» §r§8§9SchlossDaBoss§r§e left the game.
+§a§l» §r§8§cM9R003§r§e left the game.
+§a§l» §r§8§9Pikachu99904918§r§e left the game.
+§a§l» §r§8§cTEOTEOTL20§r§e left the game.
+§a§l» §r§8§9Aidanmatteo0811§r§e left the game.
+§a§l» §r§8§cSixFlounder6867§r§e left the game.
+§a§l» §r§8§9One1nine119§r§e left the game.
+§7§eAll chests have been refilled.
+§7-----------------------------
+§9O2Flash20§r §3captured the §5Purple §3wool for the §9Blue §3team.
+§7-----------------------------
+§a§l» §r§8§ccarvelasquez§r§e left the game.
+§a§l» §r§8§cKeirk0315§r§e left the game.
+§7-----------------------------
+§9reksaki§r §3captured the §aLime §3wool for the §9Blue §3team.
+§7-----------------------------
+§a§l»§8==================
+§aCongratulations, your team won the game!
+§a§l»§8==================
+§a§l» §r§8§cIdonthaveagate§r§e left the game.
+§a§l» §r§8§9ItzaDiamond7§r§e left the game.
+§a§l» §r§8§9Ryker6294§r§e left the game.
+§a§l» §r§8§9ManChosen§r§e left the game.
+§a§l» §r§8§cPhychobivch§r§e left the game.
+§a§l» §r§8§9ECTcheetah1§r§e left the game.
+§a§l» §r§8§cXbox XS1539§r§e left the game.
+§a§l» §r§8§9Pikachu99904918§r§e left the game.
+§a§l» §r§8§9Enderman2003983§r§e left the game.
+§a§l» §r§8§9reksaki§r§e left the game.
+§a§l» §r§8§cVanillaguy2014§r§e left the game.
+§a§l» §r§8§9FaTalErRoR18924§r§e left the game.
+§a§l» §r§8§cCharmlessVenus1§r§e left the game.
+§a§l» §r§8§cJimminy15§r§e left the game.
+§a§l» §r§8§ctyguy5453§r§e left the game.
+§a§l» §r§8§9Wilbursoot56204§r§e left the game.
+§a§l» §r§8§9Stark Moneybag§r§e left the game.
+§a§l» §r§8§cAbeer50915§r§e left the game.
+§a§l» §r§8§9LoMalandro§r§e left the game.
+§a§l» §r§8§cBunkerArms§r§e left the game.
+§a§l» §r§8§cTheGingerGopher§r§e left the game.
+§a§l» §r§8§9Kuejudu§r§e left the game.
+§a§l» §r§8§cThorniestSpoon7§r§e left the game.
+§a§l» §r§8§9buttsandgutts69§r§e left the game.
+§a§l» §r§8§9CyclingEmu54311§r§e left the game.
+§a§l» §r§8§cEdgeQuak3§r§e left the game.
+§a§l» §r§8§9hooloo14§r§e left the game.
+§a§l» §r§8§cSlonck§r§e left the game.
+§a§l» §r§8§cReinaAntivist§r§e left the game.
+§a§l» §r§8§cDanie82761§r§e left the game.
+§a§l» §r§8§cbabysoom§r§e left the game.
+§a§l» §r§8§cKaitiaki3§r§e left the game.
+§a§l» §r§8§9Shadowspy2013§r§e left the game.
+§a§l» §r§8§9Kai2413§r§e left the game.
+§a§l» §r§8§cOne1nine119§r§e left the game.
+§a§l» §r§8§9Nahiaraluna6406§r§e left the game.
+§a§l» §r§8§cwillohjean36§r§e left the game.
+§cYou joined the §cRed team.
+§9> §3Using map: §eGolden Drought§3 by §eReshif§3, with contributions by §eIM_A_H0B0 & magnussvoge
+§6You have §a0 §6friends online.
+§9You have §a0 §9new friend requests
+§a§l» §r§8§cwillohjean36§r§e left the game.
+§a§l» §r§8§9FaTalErRoR18924§r§e left the game.
+§a§l» §r§8§cNightstryker892§r§e left the game.
+§9Salgaming135§r§3 has been knocked into the void by §cO2Flash20§r§3!
+§7§eAll chests have been refilled.
+§9Patator24750§r§3 has been slain by §cO2Flash20§r§3!
+§cO2Flash20§r§3 has been slain by §9Kelleyclan19§r§3!
+§a§l» §r§8§9Shadowspy2013§r§e left the game.
+§a§l» §r§8§cSlonck§r§e left the game.
+§cO2Flash20§r§3 was doomed to fall by §9Patator24750§r§3
+§cO2Flash20§r§3 has been slain by §9Pablo 311942§r§3!
+§cO2Flash20§r§3 was shot by §9GatorSquad13§r (4 blocks)
+§a§l» §r§8§cFaTalErRoR18924§r§e left the game.
+§a§l» §r§8§9Cotton204§r§e left the game.
+§a§l» §r§8§cCornballGoat23§r§e left the game.
+§7§eAll chests have been refilled.
+§9FickleDuke26255§r§3 has been slain by §cO2Flash20§r§3!
+§a§l» §r§8§cXbox XS1539§r§e left the game.
+§a§l» §r§8§9FickleDuke26255§r§e left the game.
+§7-----------------------------
+§9reksaki§r §3captured the §5Purple §3wool for the §9Blue §3team.
+§7-----------------------------
+§7-----------------------------
+§9reksaki§r §3captured the §aLime §3wool for the §9Blue §3team.
+§7-----------------------------
+§aThe §9Blue§a team has won the game!
+§a§l» §r§8§cMampfer39§r§e left the game.
+§a§l» §r§8§9Idonthaveagate§r§e left the game.
+§a§l» §r§8§9ECTcheetah1§r§e left the game.
+§a§l» §r§8§cTylerNitrox§r§e left the game.
+§a§l» §r§8§cCharmlessVenus1§r§e left the game.
+§a§l» §r§8§cPikachu99904918§r§e left the game.
+§a§l» §r§8§cEnderman2003983§r§e left the game.
+§a§l» §r§8§cMikey120120120§r§e left the game.
+§a§l» §r§8§9reksaki§r§e left the game.
+§a§l» §r§8§9Patator24750§r§e left the game.
+§a§l» §r§8§cSeEh dunthat1§r§e left the game.
+§a§l» §r§8§9Ryker6294§r§e left the game.
+§a§l» §r§8§cSchlossDaBoss§r§e left the game.
+§a§l» §r§8§ctyguy5453§r§e left the game.
+§a§l» §r§8§cbabysoom§r§e left the game.
+§a§l» §r§8§cKai2413§r§e left the game.
+§a§l» §r§8§9Rhanlyn3§r§e left the game.
+§a§l» §r§8§9ThorniestSpoon7§r§e left the game.
+§a§l» §r§8§cBuckedBadge5364§r§e left the game.
+§a§l» §r§8§chooloo14§r§e left the game.
+§a§l» §r§8§9Kuejudu§r§e left the game.
+§a§l» §r§8§cTobson0016§r§e left the game.
+§a§l» §r§8§cGatorTag2014§r§e left the game.
+§a§l» §r§8§9MayasGalactic§r§e left the game.
+§a§l» §r§8§cCoolgamer125575§r§e left the game.
+§3Welcome to §bLife§cboat§3!
+§6You have §a0 §6friends online.
+§9You have §a0 §9new friend requests
+§a§l» §r§8§r§8O2Flash20 §r§ajoined the game §8[5/24]
+§aYou are playing §3Chaos Mode - §r§d2 teams of 12
+§c3 Beds Per Team 
+§6You have §a0 §6friends online.
+§9You have §a0 §9new friend requests
+§a§l» §r§8§r§8Surdu Darius §r§ajoined the game §8[6/24]
+§a§l» §r§8§r§8Salgaming135 §r§ajoined the game §8[7/24]
+§a§l» §r§8§r§8ClaspedDrake355 §r§ajoined the game §8[8/24]
+§a§l» §r§8§r§8Mohammed1253be §r§ajoined the game §8[9/24]
+§a§l» §r§8§r§8Best2022Best §r§ajoined the game §8[10/24]
+§a§l» §r§8§r§8Pandafelipe9364 §r§ajoined the game §8[11/24]
+§a§l» §r§8§r§8Agata4380 §r§ajoined the game §8[12/24]
+§a§l» §r§8§r§8chicnugs52 §r§ajoined the game §8[13/24]
+§a§l» §r§8§r§8Dawid6366 §r§ajoined the game §8[14/24]
+§a§l» §r§8§r§8ChanceBoot12445 §r§ajoined the game §8[15/24]
+§a§l» §r§8§r§8The Kocher §r§ajoined the game §8[16/24]
+§a§l» §r§8§r§8Jasiuk2006 §r§ajoined the game §8[17/24]
+§a§l» §r§8§r§8SkArhabHasin §r§ajoined the game §8[18/24]
+§a§l» §r§8§r§8SevenStorm61661 §r§ajoined the game §8[19/24]
+§a§l» §r§8§r§8Assassin01playz §r§ajoined the game §8[20/24]
+§a§l» §r§8§r§8MarcelBru4120 §r§ajoined the game §8[21/24]
+§a§l» §r§8§r§8superpooper34 §r§ajoined the game §8[22/24]
+§a§l» §r§8§r§8Trznadlik §r§ajoined the game §8[23/24]
+§l§d»§aVoting has ended!
+§l§d»§bJapanese§8 map won with §b4§7 votes!
+§a§l» §r§8§aYour team: §9Blue
+§5You are playing §cChaos Mode
+§5There are 2 teams, each team has 3 beds.
+§aThe match started. Good luck!
+§7You are chatting with all teams normally. Type @team to chat with your team!
+§a§l» §r§8§r§8KeyErmine197846 §r§ajoined the game §8[24/24]
+§cMohammed1253be§r§3 suffocated in a wall
+§cnyorosuke8383§r§3 suffocated in a wall
+§a§l» §r§8KeyErmine197846§e left the game.
+§a§l» §r§8§9Surdu Darius§r§e left the game.
+§cSevenStorm61661§r§3 has been knocked into the void by §9The Kocher§r§3!
+§e§a§l» §r§8The bed of §cRed §8has been destroyed by §5§9O2Flash20§r§8!
+§cSalgaming135§r§3 has been slain by §9The Kocher§r§3!
+§cnyorosuke8383§r§3 has been knocked into the void by §9The Kocher§r§3!
+§9Assassin01playz§r§3 has been knocked into the void by §cSevenStorm61661§r§3!
+§cMohammed1253be§r§3 has been knocked into the void by §9The Kocher§r§3!
+§e§a§l» §r§8The bed of §cRed §8has been destroyed by §5§9O2Flash20§r§8!
+§a§l» §r§8§cSalgaming135§r§e left the game.
+§e§a§l» §r§8The bed of §cRed §8has been destroyed by §5§9O2Flash20§r§8!
+§cYou cannot place blocks here.
+§cYou cannot place blocks here.
+§9The Kocher§r§3 has been slain by §cdanyboyshy§r§3!
+§a§l» §r§8§cMarcelBru4120§r§e left the game.
+§eMarcelBru4120§r§3 was doomed to fall by §9O2Flash20§r§3
+§a§l» §r§8§cMohammed1253be§r§e left the game.
+§eMohammed1253be§r§3 has been slain by §9Jasiuk2006§r§3!
+§cYou cannot place blocks here.
+§cYou cannot place blocks here.
+§cYou cannot place blocks here.
+§9Jasiuk2006§r§3 has been slain by §cdanyboyshy§r§3!
+§cYou cannot place blocks here.
+§cYou cannot place blocks here.
+§a§l» §r§8§cSevenStorm61661§r§e left the game.
+§eSevenStorm61661§r§3 has been slain by §9The Kocher§r§3!
+§a§l» §r§8§9Jasiuk2006§r§e left the game.
+§9CerealBug558471§r§3 has been knocked into the void by §cBest2022Best§r§3!
+§a§l» §r§8§cBest2022Best§r§e left the game.
+§eBest2022Best§r§3 has been knocked into the void by §9O2Flash20§r§3!
+§9The Kocher§r§3 fell out of the world
+§9chicnugs52§r§3 has been slain by §cdanyboyshy§r§3!
+§9Trznadlik§r§3 has been slain by §cAgata4380§r§3!
+§9Assassin01playz§r§3 has been knocked into the void by §cdanyboyshy§r§3!
+§9The Kocher§r§3 fell out of the world
+§9SkArhabHasin§r§3 fell out of the world
+§a§l» §r§8§cdanyboyshy§r§e left the game.
+§edanyboyshy§r§3 fell out of the world
+§9ChanceBoot12445§r§3 has been slain by §cnyorosuke8383§r§3!
+§9Pandafelipe9364§r§3 fell out of the world
+§a§l» §r§8§cAgata4380§r§e left the game.
+§eAgata4380§r§3 has been knocked into the void by §9O2Flash20§r§3!
+§cYou cannot place blocks here.
+§a§l» §r§8§cDawid6366§r§e left the game.
+§eDawid6366§r§3 has been knocked into the void by §9O2Flash20§r§3!
+§cYou cannot place blocks here.
+§a§l» §r§8§cLoudresxnox§r§e left the game.
+§eLoudresxnox§r§3 has been slain by §9O2Flash20§r§3!
+§a§l» §r§8§9chicnugs52§r§e left the game.
+§9superpooper34§r§3 fell out of the world
+§a§l» §r§8§9superpooper34§r§e left the game.
+§a§l» §r§8§cClaspedDrake355§r§e left the game.
+§eClaspedDrake355§r§3 has been slain by §9O2Flash20§r§3!
+§9SkArhabHasin§r§3 fell out of the world
+§a§l» §r§8§cnyorosuke8383§r§e left the game.
+§enyorosuke8383§r§3 has been knocked into the void by §9Assassin01playz§r§3!
+§a§l»§8==================
+§aCongratulations, your team won the game!
+§a§l»§8==================
+§a§l» §r§8§9The Kocher§r§e left the game.
+§eCan't add the §r§fParty item. Inventory too full.
+§eCan't add the §r§fFriends item. Inventory too full.
+§a§l» §r§8§9Trznadlik§r§e left the game.
+§a§l» §r§8§9Pandafelipe9364§r§e left the game.
+§a§l» §r§8§9CerealBug558471§r§e left the game.
+§a§l» §r§8§9SkArhabHasin§r§e left the game.
+§a§l» §r§8§r§8O2Flash20 §r§ajoined the game §8[15/16]
+§aYou are playing §3Duos - §r§d8 teams of 2 
+§a§l» §r§8§r§8The VMassiveV §r§ajoined the game §8[16/16]
+§6You have §a0 §6friends online.
+§9You have §a0 §9new friend requests
+§l§d»§aVoting has ended!
+§l§d»§bTown§8 map won with §b1§7 vote!
+§a§l» §r§8§aYour team: §cRed
+§aThe match started. Good luck!
+§fVillager§e shopkeeper has been selected
+§fBed§e bed item has been selected
+§7You are chatting with all teams normally. Type @team to chat with your team!
+§eEmilian71§r: §7hello blue
+§e§a§l» §r§8The bed of §6Orange §8has been destroyed by §5§cBigRalphW§r§8!
+§a§l» §r§8§6rainbow sun5158§r§e left the game.
+§erainbow sun5158§r§3 has been slain by §cBigRalphW§r§3!
+§a§l» §r§8§6The VMassiveV§r§e left the game.
+§eThe VMassiveV§r§3 has been slain by §cO2Flash20§r§3!
+§2ShoTnDisC74§r§3 has been knocked into the void by §aSatinDesert3331§r§3!
+§e§a§l» §r§8The bed of §2Dark Green §8has been destroyed by §5§aSatinDesert3331§r§8!
+§a§l» §r§8§2ShoTnDisC74§r§e left the game.
+§eShoTnDisC74§r§3 has been slain by §aSatinDesert3331§r§3!
+§cYou cannot place blocks here.
+§9Tello9154§r§3 has been slain by §cO2Flash20§r§3!
+§e§a§l» §r§8The bed of §eYellow §8has been destroyed by §5§cO2Flash20§r§8!
+§a§l» §r§8§eBravo062041§r§e left the game.
+§eBravo062041§r§3 has been slain by §cO2Flash20§r§3!
+§9Tello9154§r§3 has been knocked into the void by §cBigRalphW§r§3!
+§cYou cannot place blocks here.
+§cYou cannot place blocks here.
+§a§l» §r§8§eEmilian71§r§e left the game.
+§9Tello9154§r§3 fell out of the world
+§cO2Flash20§r§3 has been slain by §9Essakay17§r§3!
+§9Essakay17§r§3 has been knocked into the void by §cO2Flash20§r§3!
+§9Essakay17§r§3 fell out of the world
+§eUpgrading this spawner costs 4 §eIron.
+§cYou cannot place blocks here.
+§a§l» §r§8§2Tibor091256§r§e left the game.
+§eTibor091256§r§3 has been slain by §cO2Flash20§r§3!
+§bUtoteroLJ§r§3 has been slain by §cBigRalphW§r§3!
+§aZsighu091256§r§3 has been slain by §9Tello9154§r§3!
+§bCheetah188§r§3 has been slain by §cBigRalphW§r§3!
+§bUtoteroLJ§r§3 has been slain by §cBigRalphW§r§3!
+§cYou cannot place blocks here.
+§bCheetah188§r§3 has been slain by §aSatinDesert3331§r§3!
+§9Essakay17§r§3 has been slain by §cBigRalphW§r§3!
+§9Tello9154§r§3 has been slain by §cO2Flash20§r§3!
+§e§a§l» §r§8The bed of §9Blue §8has been destroyed by §5§cO2Flash20§r§8!
+§cYou cannot place blocks here.
+§cYou cannot place blocks here.
+§a§l» §r§8§9Tello9154§r§e left the game.
+§a§l» §r§8§9Essakay17§r§e left the game.
+§eEssakay17§r§3 has been slain by §cO2Flash20§r§3!
+§bCheetah188§r§3 has been slain by §aZsighu091256§r§3!
+§cYou cannot place blocks here.
+§cYou cannot place blocks here.
+§bCheetah188§r§3 fell out of the world
+§e§a§l» §r§8The bed of §aGreen §8has been destroyed by §5§cO2Flash20§r§8!
+§a§l» §r§8§aSatinDesert3331§r§e left the game.
+§eSatinDesert3331§r§3 has been slain by §cO2Flash20§r§3!
+§eYour bed has been destroyed!
+§e§a§l» §r§8The bed of §cRed §8has been destroyed by §5§aZsighu091256§r§8!
+§dFirefox8767808§r§3 has been slain by §cO2Flash20§r§3!
+§bCheetah188§r§3 has been slain by §cBigRalphW§r§3!
+§a§l» §r§8§aZsighu091256§r§e left the game.
+§eZsighu091256§r§3 has been slain by §cBigRalphW§r§3!
+§bUtoteroLJ§r§3 has been knocked into the void by §cBigRalphW§r§3!
+§dFirefox8767808§r§3 has been knocked into the void by §cBigRalphW§r§3!
+§bCheetah188§r§3 has been slain by §cO2Flash20§r§3!
+§e§a§l» §r§8The bed of §dPurple §8has been destroyed by §5§cBigRalphW§r§8!
+§a§l» §r§8§dFirefox8767808§r§e left the game.
+§eFirefox8767808§r§3 has been knocked into the void by §cBigRalphW§r§3!
+§a§l» §r§8§dDeputyToast4275§r§e left the game.
+§eDeputyToast4275§r§3 has been slain by §cBigRalphW§r§3!
+§bCheetah188§r§3 fell out of the world
+§bUtoteroLJ§r§3 has been slain by §cBigRalphW§r§3!
+§bCheetah188§r§3 has been slain by §cBigRalphW§r§3!
+§bCheetah188§r§3 has been slain by §cBigRalphW§r§3!
+§bUtoteroLJ§r§3 fell out of the world
+§e§a§l» §r§8The bed of §bAqua §8has been destroyed by §5§cBigRalphW§r§8!
+§a§l» §r§8§bUtoteroLJ§r§e left the game.
+§eUtoteroLJ§r§3 has been slain by §cBigRalphW§r§3!
+§a§l» §r§8§bCheetah188§r§e left the game.
+§eCheetah188§r§3 was burnt to a crisp whilst fighting §cBigRalphW§r§3
+§a§l»§8==================
+§aCongratulations, your team won the game!
+§a§l»§8==================
+§eCan't add the §r§dNavigator item. Inventory too full.
+§eCan't add the §r§eProfile & Settings item. Inventory too full.
+§eCan't add the §r§aProduct Manager item. Inventory too full.
+§eCan't add the §r§fParty item. Inventory too full.
+§eCan't add the §r§fFriends item. Inventory too full.
+§3Welcome to §bLife§cboat§3!
+§6You have §a0 §6friends online.
+§9You have §a0 §9new friend requests
+§eIsaRocks21§r: §7a
+§5Lifeboat §aPrison
+§6You have §a0 §6friends online.
+§9You have §a0 §9new friend requests
+§bBlocks have been sold for §614 .
+§bBlocks have been sold for §62 .
+§bBlocks have been sold for §62 .
+
+Press  to open chat
+ 
+§r§7Looking §r§7for §r§7a §r§7§fCakeWars§r§7 §r§7server... 
+§r§aConnecting... 
+§r§8Join> §r§8§7O2Flash20§r§8 
+§r§8Join> §r§8§7ajjjjjjj007§r§8 
+
+Press  to open chat
+ 
+§r§8Join> §r§8§7Cjmari88§r§8 
+§77 §eReedyRug7992765§f EZ
+§r§8Join> §r§8§7BeyondDemon3808§r§8 
+§r§8Join> §r§8§7Daks §r§771§r§8 
+§7Receive Strength 1 for 3 seconds and 1.5 hearts every kill!
+§9Game> §r§9§r§7Starting §r§7in §r§710§r§7 §r§7seconds... 
+§9Kit> §r§9§r§7You §r§7equipped §r§7§e§lWarrior§r§7 §r§7Kit. §r§7This §r§7is §r§7now §r§7your §r§7default §r§7selection. 
+§9Game> §r§9§r§7Starting §r§7in §r§75§r§7 §r§7seconds... 
+§9Game> §r§9§r§7Starting §r§7in §r§74§r§7 §r§7seconds... 
+§r§8Quit> §r§8§7Daks §r§771§r§8 
+§9Game> §r§9§r§7Starting §r§7in §r§73§r§7 §r§7seconds... 
+§9Game> §r§9§r§7Starting §r§7in §r§72§r§7 §r§7seconds... 
+§9Game> §r§9§r§7Starting §r§7in §r§71§r§7 §r§7seconds... 
+§2§m==================== 
+§r§aGame §r§a- §r§a§f§lCake §r§f§lWars§r§a 
+ 
+§r§f§l §r§f§l §r§f§l§r§fDefend §r§fyour §r§fcake §r§ffrom §r§fthe §r§fenemy.§r§f§l 
+ 
+§r§aMap §r§a- §r§a§f§lElven §r§f§lVillage §r§f§lBedrock§r§a §r§acreated §r§aby §r§a§f§lpowh§r§a 
+§2§m==================== 
+§9Team> §r§9§r§7You §r§7joined §r§7§aGreen§r§7 §r§7Team 
+§9Game> §r§9§r§7Use §r§7§f#§r§7 §r§7before §r§7your §r§7message §r§7to §r§7use §r§7team §r§7chat! 
+§r§8Quit> §r§8§7Harold361541§r§8 
+§9Game> §7You just purchased §e16 Wool§7.
+§9Game> §7You just purchased §e16 Wool§7.
+§9Game> §cYou can not afford this item.
+§9Game> §a§lGreen§a§l is capturing the Middle Point§a§l!
+§d§lTIP§8> §r§8§fWant §r§fsome §r§f§6Legendary §r§6Items? §r§6§fYou §r§fcan §r§fget §r§fcrates §r§fin §r§fthe §r§f§bMineplex §r§bStore §r§b§fin §r§fthe §r§fpause §r§fmenu 
+§9Game> §e§lYellow§e§l has captured the Middle Point§e§l!
+§9Game> §9§lBlue§9§l is capturing the Yellow-Blue point!§9§l!
+§9Game> §9§lBlue§9§l has captured the Yellow-Blue point!§9§l!
+§9Game> §c§lRed§c§l is capturing the Yellow-Blue point!§c§l!
+§9Game> §9§lBlue§9§l is capturing the Green-Blue point!§9§l!
+§9Game> §c§lRed§c§l has captured the Yellow-Blue point!§c§l!
+§9Game> §9§lBlue§9§l has captured the Green-Blue point!§9§l!
+§9Game> §9§lBlue§9§l has lost the Yellow-Blue point!§9§l!
+§9Game> §e§lYellow§e§l is capturing the Yellow-Blue point!§e§l!
+§9Game> §e§lYellow§e§l has captured the Yellow-Blue point!§e§l!
+§9Death> §r§9§r§7§f§cReedyRug7992765 §r§c+ §r§c1§r§7 §r§7killed§r§7 §r§7you §r§7with §r§7§eIron §r§eSword§r§7. 
+§9Game> §r§9§r§7You §r§7will §r§7respawn §r§7in §r§75§r§7 §r§7seconds! 
+§r§8Quit> §r§8§7BygoneTrash470§r§8 
+§9Game> §e§lYellow§e§l has lost the Yellow-Blue point!§e§l!
+§9Game> §a§lGreen§a§l is capturing the Yellow-Blue point!§a§l!
+§9Game> §a§lGreen§a§l has captured the Yellow-Blue point!§a§l!
+§r§8Quit> §r§8§7excernly§r§8 
+§9Game> §7You just purchased §eIron Sword§7.
+§9Game> §aGreen§a's cake has been eaten. They can no longer respawn.
+§9Death> §r§9§r§7§a§aCjmari88§r§7 §r§7killed§r§7 §r§7by §r§7§a§cReedyRug7992765§r§7§r§7 §r§7with §r§7§eIron §r§eSword§r§7 
+§9Death> §r§9§r§7§a§aO2Flash20§r§7 §r§7killed§r§7 §r§7by §r§7§a§cReedyRug7992765§r§7§r§7 §r§7with §r§7§eIron §r§eSword§r§7 
+§2#0: §r§2§f§eReedyRug7992765§7 §r§7[§e35dmg§r§7] §r§7[§eIron §r§ePickaxe§r§7] §r§7 §r§7[§a0 §r§aseconds §r§aPrior§7] 
+§2§m==================== 
+§r§f§lGame §r§f§lis §r§f§lstill §r§f§lin §r§f§lprogress... 
+§r§f§lYou §r§f§lmay §r§f§learn §r§f§l§aGems§r§f§l §r§f§lwhen §r§f§lits §r§f§lcompleted. 
+§2§m==================== 
+§9Game> §r§9§r§7You §r§7are §r§7out §r§7of §r§7the §r§7game! 
+§9Recharge> §r§9§r§7You §r§7cannot §r§7use §r§7§aSpectate§r§7 §r§7for §r§7§a3 §r§aseconds§r§7. 
+§r§8Quit> §r§8§7Cjmari88§r§8 
+§r§7Looking §r§7for §r§7a §r§7§fCakeWars§r§7 §r§7server... 
+§r§aConnecting... 
+§9Recharge> §r§9§r§7You §r§7can §r§7now §r§7use §r§7§aSpectate§r§7. 
+§r§8Join> §r§8§7O2Flash20§r§8 
+§r§8Join> §r§8§7Santo03212§r§8 
+
+Press  to open chat
+ 
+§9Game> §r§9§r§7Starting §r§7in §r§710§r§7 §r§7seconds... 
+§r§8Quit> §r§8§7SLO §r§7TIARA§r§8 
+§9Game> §r§9§r§7Starting §r§7in §r§75§r§7 §r§7seconds... 
+§9Game> §r§9§r§7Starting §r§7in §r§74§r§7 §r§7seconds... 
+§9Game> §r§9§r§7Starting §r§7in §r§73§r§7 §r§7seconds... 
+§9Game> §r§9§r§7Starting §r§7in §r§72§r§7 §r§7seconds... 
+§9Game> §r§9§r§7Starting §r§7in §r§71§r§7 §r§7seconds... 
+§2§m==================== 
+§r§aGame §r§a- §r§a§f§lCake §r§f§lWars§r§a 
+ 
+§r§f§l §r§f§l §r§f§l§r§fDefend §r§fyour §r§fcake §r§ffrom §r§fthe §r§fenemy.§r§f§l 
+ 
+§r§aMap §r§a- §r§a§f§lbowoilders §r§f§lspowoky §r§f§lgarden§r§a §r§acreated §r§aby §r§a§f§lTeaIsSpilled §r§f§l& §r§f§lxLeopard§r§a 
+§2§m==================== 
+§9Team> §r§9§r§7You §r§7joined §r§7§aGreen§r§7 §r§7Team 
+§9Game> §r§9§r§7Use §r§7§f#§r§7 §r§7before §r§7your §r§7message §r§7to §r§7use §r§7team §r§7chat! 
+§72 §eDoomYTMC§f equipo
+§9Game> §7You just purchased §e16 Wool§7.
+§9Game> §7You just purchased §e16 Wool§7.
+§d§lTIP§8> §r§8§f§fPunch §r§fanother §r§fplayer §r§fto §r§ffind §r§fout §r§fmore §r§fabout §r§fthem, §r§fbecome §r§ffriends, §r§for §r§fparty §r§fup! 
+§9Game> §9§lBlue§9§l is capturing the Middle Point§9§l!
+§9Game> §9§lBlue§9§l has captured the Middle Point§9§l!
+§9Game> §9§lBlue§9§l is capturing the Green-Blue point!§9§l!
+§9Death> §r§9§r§7§f§eDoomYTMC§r§7 §r§7killed§r§7 §r§7you §r§7with §r§7§eIron §r§eSword§r§7. 
+§9Game> §r§9§r§7You §r§7will §r§7respawn §r§7in §r§75§r§7 §r§7seconds! 
+§9Game> §9§lBlue§9§l has captured the Green-Blue point!§9§l!
+§9Game> §9§lBlue§9§l has lost the Middle Point§9§l!
+§9Game> §e§lYellow§e§l is capturing the Middle Point§e§l!
+§9Game> §e§lYellow§e§l has captured the Middle Point§e§l!
+§9Game> §a§lGreen§a§l is capturing the Red-Green point!§a§l!
+§9Game> §9§lBlue§9§l is capturing the Yellow-Blue point!§9§l!
+§9Game> §e§lYellow§e§l has lost the Middle Point§e§l!
+§9Game> §a§lGreen§a§l is capturing the Middle Point§a§l!
+§9Game> §9§lBlue§9§l has captured the Yellow-Blue point!§9§l!
+§9Game> §a§lGreen§a§l has captured the Middle Point§a§l!
+§9Game> §c§lRed§c§l is capturing the Yellow-Green point!§c§l!
+§9Game> §c§lRed§c§l has captured the Yellow-Green point!§c§l!
+§9Game> §a§lGreen§a§l has lost the Middle Point§a§l!
+§9Game> §9§lBlue§9§l is capturing the Middle Point§9§l!
+§9Game> §eYellow§e's cake has been eaten. They can no longer respawn.
+§9Game> §9§lBlue§9§l has captured the Middle Point§9§l!
+§9Game> §7You just purchased §eIron Sword§7.
+§9Death> §r§9§r§7§e§eDoomYTMC§r§7 §r§7killed§r§7 §r§7by §r§7§a§7RobustFlower56§r§7§r§7 §r§7with §r§7§eIron §r§eSword§r§7 
+§9Game> §7You just purchased §eIron Chestplate§7.
+§7§lDead §931 §9RobustFlower56§f ez
+§9Game> §7You just purchased §eIron Leggings§7.
+§9Game> §cYou can not afford this item.
+§9Game> §aA new floating island has spawned! Find it and claim the loot quickly!
+§r§8Quit> §r§8§7DoomYTMC§r§8 
+§9Game> §a§lGreen§a§l has captured the Red-Green point!§a§l!
+§9Game> §7You just purchased §eIron Boots§7.
+§9Game> §7You just purchased §eIron Helmet§7.
+§9Game> §aA new floating island has spawned! Find it and claim the loot quickly!
+§9Game> §9§lBlue§9§l has lost the Middle Point§9§l!
+§9Death> §r§9§r§7§e§ekakarot9251§r§7 §r§7killed§r§7 §r§7by §r§7§a§7RobustFlower56 §r§7+ §r§71§r§7§r§7 §r§7with §r§7§eWooden §r§eSword§r§7 
+§9Game> §a§lGreen§a§l is capturing the Middle Point§a§l!
+§r§8Quit> §r§8§7kakarot9251§r§8 
+§9Game> §a§lGreen§a§l has captured the Middle Point§a§l!
+§r§8Quit> §r§8§7RobustFlower56§r§8 
+§9Death> §r§9§r§7§f§e§eCaitlyn §r§eRae8610§r§7 §r§7killed§r§7 §r§7by §r§7§aVoid.§r§7 
+§9Game> §eAfilado 1§7 was just purchased for your team.
+§r§8Quit> §r§8§7Caitlyn §r§7Rae8610§r§8 
+§d§lTIP§8> §r§8§f§fStay §r§fin §r§ftouch §r§fwith §r§fyour §r§ffriends §r§fusing §r§fthe §r§f§b/friend §r§b§fcommand! 
+§9Game> §7You just purchased §eDiamond Sword§7.
+§9Game> §a§lGreen§a§l has lost the Middle Point§a§l!
+§9Game> §9§lBlue§9§l is capturing the Middle Point§9§l!
+§9Game> §9§lBlue§9§l has captured the Middle Point§9§l!
+§9Game> §eProtection 1§7 was just purchased for your team.
+§9Death> §r§9§r§7You §r§7killed§r§7 §r§7§f§c§cBasic69Soph§r§7 §r§7with §r§7§eDiamond §r§eSword§r§7. 
+§9Game> §9§lBlue§9§l has lost the Middle Point§9§l!
+§9Game> §a§lGreen§a§l is capturing the Middle Point§a§l!
+§9Game> §a§lGreen§a§l has captured the Middle Point§a§l!
+§9Game> §aA new floating island has spawned! Find it and claim the loot quickly!
+§9Death> §r§9§r§7You §r§7were §r§7killed§r§7 §r§7by §r§7§fVoid§r§7. 
+§9Game> §r§9§r§7You §r§7will §r§7respawn §r§7in §r§75§r§7 §r§7seconds! 
+§9Game> §a§lGreen§a§l has lost the Middle Point§a§l!
+§9Game> §9§lBlue§9§l is capturing the Middle Point§9§l!
+§9Game> §aA new floating island has spawned! Find it and claim the loot quickly!
+§r§8Quit> §r§8§7LiableChimp6007§r§8 
+§9Game> §9§lBlue§9§l has captured the Middle Point§9§l!
+§9Game> §7You just purchased §eIron Chestplate§7.
+§9Game> §cYou can not afford this item.
+§9Game> §7You just purchased §eDiamond Sword§7.
+§9Game> §cYou can not afford this item.
+§9Game> §7You just purchased §eIron Helmet§7.
+§9Game> §7You just purchased §e16 Wool§7.
+§9Game> §9§lBlue§9§l has lost the Middle Point§9§l!
+§9Game> §a§lGreen§a§l is capturing the Middle Point§a§l!
+§9Game> §a§lGreen§a§l has captured the Middle Point§a§l!
+§9Game> §7You just purchased §eIron Boots§7.
+§9Game> §7You just purchased §eIron Leggings§7.
+§9Game> §cYou can not afford this item.
+§9Game> §cYou can only upgrade your armor.
+§9Game> §cRed§c's cake has been eaten. They can no longer respawn.
+§9Game> §cYou don't have enough nether stars.
+§9Game> §cYou don't have enough nether stars.
+§9Death> §r§9§r§7§c§cSkiy §r§cchip§r§7 §r§7killed§r§7 §r§7by §r§7§a§aFawnCheese67931 §r§a+ §r§a1§r§7§r§7 §r§7with §r§7§eDiamond §r§eSword§r§7 
+§9Game> §7You just purchased §eEnder Pearl§7.
+§9Game> §7You just purchased §eEmerald§7.
+§9Death> §r§9§r§7§c§cBasic69Soph§r§7 §r§7killed§r§7 §r§7by §r§7§a§7Santo03212§r§7§r§7 §r§7with §r§7§eIron §r§eSword§r§7 
+§d§lTIP§8> §r§8§fBecome §r§fa §r§fstaff §r§fmember §r§fon §r§f§bMineplex §r§bBedrock §r§bEdition§f! §r§fApply §r§fat §r§f§bapply.mineplex.com 
+§r§8Quit> §r§8§7Basic69Soph§r§8 
+§9Game> §7You just purchased §eEmerald§7.
+§r§8Quit> §r§8§7Skiy §r§7chip§r§8 
+§9Game> §7You just purchased §eDiamond Chestplate§7.
+§9Game> §c§lRed§c§l has lost the Yellow-Green point!§c§l!
+§9Game> §a§lGreen§a§l is capturing the Yellow-Green point!§a§l!
+§9Game> §a§lGreen§a§l has captured the Yellow-Green point!§a§l!
+§9Game> §eProtection 2§7 was just purchased for your team.
+§9Game> §a§lGreen§a§l has lost the Middle Point§a§l!
+§9Game> §9§lBlue§9§l is capturing the Middle Point§9§l!
+§9Game> §9§lBlue§9§l has captured the Middle Point§9§l!
+§9Game> §9§lBlue§9§l has lost the Middle Point§9§l!
+§9Game> §a§lGreen§a§l is capturing the Middle Point§a§l!
+§9Game> §a§lGreen§a§l has captured the Middle Point§a§l!
+§9Game> §7You just purchased §eRune of Holding§7.
+§9Game> §eRecursos 1§7 was just purchased for your team.
+§9Game> §7You just purchased §eEmerald§7.
+§9Game> §7You just purchased §eEmerald§7.
+§9Game> §7You just purchased §eEmerald§7.
+§9Game> §7You just purchased §eDiamond Leggings§7.
+§d§lTIP§8> §r§8§fEarn §r§f§bshards §r§b§fand §r§f§agems §r§a§fby §r§fplaying §r§fgames! 
+§r§8Quit> §r§8§7Santo03212§r§8 
+§9Game> §7You just purchased §eDiamond Boots§7.
+§9Game> §eHaste 1§7 was just purchased for your team.
+§9Game> §7You just purchased §eDiamond Helmet§7.
+§9Game> §eSharpness 2§7 was just purchased for your team.
+§9Game> §eResources 2§7 was just purchased for your team.
+§9Game> §c§lEveryone's cake will be destroyed in 5 minutes§c§l. No one will be able to respawn.
+§9Game> §ePower 1§7 was just purchased for your team.
+§9Game> §eHaste 2§7 was just purchased for your team.
+§9Game> §eHealth Station 1§7 was just purchased for your team.
+§9Game> §cYou don't have enough nether stars.
+§9Game> §eHealth Station 2§7 was just purchased for your team.
+§9Game> §7You just purchased §eDiamond Pickaxe§7.
+§9Game> §cTNT Trap
+§9Game> §7You just purchased §eTNT Trap§7.
+§9Game> §cSomeone else already bought this.
+§9Game> §9Blue§9's cake has been eaten. They can no longer respawn.
+§9Death> §r§9§r§7§f§9§9JUVITO10§r§7 §r§7killed§r§7 §r§7by §r§7§aVoid.§r§7 
+§9Game> §7You just purchased §e[TNT] Polly the Sheep§7.
+§9Game> §7You just purchased §e[TNT] Polly the Sheep§7.
+§9Death> §r§9§r§7§9§9DuckierChair607§r§7 §r§7killed§r§7 §r§7by §r§7§a§7FawnCheese67931 §r§7+ §r§71§r§7§r§7 §r§7with §r§7§eDiamond §r§eSword§r§7 
+§9Game> §7You just purchased §e[TNT] Polly the Sheep§7.
+§d§lTIP§8> §r§8§fGot §r§fknocked §r§fout? §r§fFind §r§fa §r§fnew §r§fgame §r§fwith §r§f§b/findgame 
+§r§8Quit> §r§8§7JUVITO10§r§8 
+§r§8Quit> §r§8§7DuckierChair607§r§8 
+§9Game> §7You just purchased §eGolden Apple§7.
+§9Game> §7You just purchased §eObsidian§7.
+§9Game> §7You just purchased §eObsidian§7.
+§9Game> §7You just purchased §eObsidian§7.
+§9Game> §c§lEveryone's cake will be destroyed in 2 minutes§c§l. No one will be able to respawn.
+§9Game> §aA new floating island has spawned! Find it and claim the loot quickly!
+§9Death> §r§9§r§7§f§9§9MegaBloq§r§7 §r§7killed§r§7 §r§7by §r§7§aVoid.§r§7 
+§r§7 
+§2§m==================== 
+§r§aGame §r§a- §r§a§f§lCake §r§f§lWars§r§a 
+§r§7 
+§r§a§l§a§lGreen§r§a§l §r§a§lwon §r§a§lthe §r§a§lgame! 
+§r§7 
+§r§aMap §r§a- §r§a§f§lbowoilders §r§f§lspowoky §r§f§lgarden§r§a §r§acreated §r§aby §r§a§f§lTeaIsSpilled §r§f§l& §r§f§lxLeopard§r§a 
+§2§m==================== 
+§2§m==================== 
+§f§l§r§f§lAchievement §r§f§lProgress 
+ 
+§6§l§r§6§lGem §r§6§lHunter §r§6§l§e0§6/§e12 §r§e§r§a+22 §r§a§e8279 §r§e§r§eto §r§enext §r§elevel 
+§f§r§f+1 §r§ffor §r§fevery §r§fgem §r§fearned §r§fin §r§fany §r§fgame. 
+ 
+§6§l§r§6§lMineplex §r§6§lLevel §r§6§l§e18§6/§e100 §r§e§r§a+2976 §r§a§e1368 §r§e§r§eto §r§enext §r§elevel 
+§f§r§fLevel §r§fup §r§fby §r§fdoing §r§fwell §r§fin §r§fgames! 
+ 
+§2§m==================== 
+§r§8Join> §r§8§7Drey §r§7Mixer§r§8 
+§r§8Join> §r§8§7xMightyThor§r§8 
+§r§8Join> §r§8§7BLACKMANPURSUIT§r§8 
+§r§8Join> §r§8§7Erickjkjjjkl§r§8 
+§r§8Join> §r§8§7BriefStudent296§r§8 
+§r§8Join> §r§8§7XxJohnWickxX123§r§8 
+§r§8Join> §r§8§7XxBryxnxX§r§8 
+§9Game> §r§9§r§7Starting §r§7in §r§740§r§7 §r§7seconds... 
+§r§8Quit> §r§8§7FawnCheese67931§r§8 
+§r§8Join> §r§8§7SleepyFall00791§r§8 
+§r§8Join> §r§8§7Entity §r§73037722§r§8 
+§r§8Join> §r§8§7Guilherme040912§r§8 
+§r§8Join> §r§8§7Deidararyan§r§8 
+§r§8Join> §r§8§7SpotToaster8081§r§8 
+
+Press  to open chat
+ 
+§3Welcome to §bLife§cboat§3!
+§cYou joined the §cRed team.
+§9> §3Using map: §eGolden Drought§3 by §eReshif§3, with contributions by §eIM_A_H0B0 & magnussvoge
+§6You have §a0 §6friends online.
+§9You have §a0 §9new friend requests
+§8[§6VIP§r§8] §f§cJediPancakes1§r: §7§ci§6 §ea§am§9 §1k§5i§cl§6l§ee§ar
+§cO2Flash20§r§3 was doomed to fall by §9MagicEarth81953§r§3
+§a§l» §r§8§9WofulBell876770§r§e left the game.
+§a§l» §r§8§cDarthxBane88§r§e left the game.
+§7§eAll chests have been refilled.
+§a§l» §r§8§9princessqueenG§r§e left the game.
+§a§l» §r§8§9LetCarrot980958§r§e left the game.
+§a§l» §r§8§cHudSnape§r§e left the game.
+§a§l» §r§8§cBryan santos766§r§e left the game.
+§cO2Flash20§r§3 was doomed to fall by §9Vanillaguy2014§r§3
+§a§l» §r§8§8[§6VIP§r§8] §f§cJediPancakes1§r§e left the game.
+§a§l» §r§8§cConman20167282§r§e left the game.
+§a§l» §r§8§cRiley1803§r§e left the game.
+§a§l» §r§8§cCKewl2014§r§e left the game.
+
+Press  to open chat
+ 
+§r§6Welcome to  §r§9§lCubeCraft Bedrock§r§f
+§r§f§aJoined queue§r
+§r§aA group and server has been found!§r
+§r§6Connecting to server n1o03...§r
+§7[§r§c§lWarrior§r§7] §8xKeenji§f: §7fala ae
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§72§r§7§7).§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§6§6O2Flash20§r§e§e§r§e§e was sniped§r§e§e by §r§6§6NightWing8692§r§e§e§r§e§e.§r
+§7§7-------------------------------§r
+§e§e§r§e§eNightWing8692 §r§c§c5.0§r§e§e§r§a§a won the game!§r
+§7§7-------------------------------§r
+§r§f§eNightWing8692§6 denied your rematch duel request.§r
+§7[§r§c§lWarrior§r§7] §8xKeenji§f: §7pq
+§r§f§aJoined queue for map Crystals§r
+§r§aA group and server has been found!§r
+§r§6Connecting to server n1o03...§r
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§72§r§7§7).§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§6§6O2Flash20§r§e§e§r§e§e blew up§r§e§e while fighting §r§6§6Doughnutboy8170§r§e§e§r§e§e.§r
+§7§7-------------------------------§r
+§e§e§r§e§eDoughnutboy8170 §r§c§c0.5§r§e§e§r§a§a won the game!§r
+§7§7-------------------------------§r
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§72§r§7§7).§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§6§6O2Flash20§r§e§e§r§e§e blew up§r§e§e while fighting §r§6§6Doughnutboy8170§r§e§e§r§e§e.§r
+§7§7-------------------------------§r
+§e§e§r§e§eDoughnutboy8170 §r§c§c10.0§r§e§e§r§a§a won the game!§r
+§7§7-------------------------------§r
+§7§8XPleeeX28§f: §7Shut up
+§r§f§aJoined queue for map Crystals§r
+§6[Pumpkin Hunt 2020] §6Wolfiva§f: §7no uwu
+§r§aA group and server has been found!§r
+§r§6Connecting to server n1k07...§r
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§71§r§7§7/§r§7§74§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8fivesenses123§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§74§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8ViruisVall§r§7§7 joined your game (§r§7§73§r§7§7/§r§7§74§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Sk179442§r§7§7 joined your game (§r§7§74§r§7§7/§r§7§74§r§7§7).§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§6§6fivesenses123§r§e§e§r§e§e was slain§r§e§e by §r§6§6Sk179442§r§e§e§r§e§e.§r
+§6§6O2Flash20§r§e§e§r§e§e was slain§r§e§e by §r§6§6Sk179442§r§e§e§r§e§e.§r
+§7§7-------------------------------§r
+§e§e§r§e§eSk179442 §r§c§c10.0§r§e§e, §r§e§eViruisVall §r§c§c1.0§r§e§e§r§a§a won the game!§r
+§7§7-------------------------------§r
+§c§cRematch is not available as other players have left this game.§r
+§r§f§aJoined queue for map OP Warrior§r
+§r§aA group and server has been found!§r
+§r§6Connecting to server n1o03...§r
+§7§7[§r§a§a+§r§7§7] §r§b§bO2Flash20§r§7§7 joined your game (§r§7§72§r§7§7/§r§7§74§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8IRVIN99P§r§7§7 joined your game (§r§7§73§r§7§7/§r§7§74§r§7§7).§r
+§7§7[§r§a§a+§r§7§7] §r§8§8Sax2007§r§7§7 joined your game (§r§7§74§r§7§7/§r§7§74§r§7§7).§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e5§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e4§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e3§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e2§r§e§e seconds§r§9§9.§r
+§9§9§r§9§9PvP§r§9§9 is starting in §r§e§e§r§e§e1§r§e§e second§r§9§9.§r
+§9§9Let the games begin!§r
+§r§f§r§7Interested in becoming a §r§d§lHelper§r§7? Take a look at our applications at §r§6cbecrft.net/staff§r§7!
+§6§6O2Flash20§r§e§e§r§e§e was slain§r§e§e by §r§6§6Sax2007§r§e§e§r§e§e.§r
+
+Press T or RETURN to open chat
+ 
+You have been teleported to 1.50, 1.00, 1.50
+Teleported O2Flash20 to 1.50, 1.00, 1.50
+You have been teleported to 1.00, 1.00, 1.00
+Teleported O2Flash20 to 1.00, 1.00, 1.00
+You have been teleported to 1.00, 1.00, 1.00
+Teleported O2Flash20 to 1.00, 1.00, 1.00
+You have been teleported to 11.00, 21.00, 16.00
+Teleported O2Flash20 to 11.00, 21.00, 16.00
+You have been teleported to 11.00, 21.00, 16.00
+Teleported O2Flash20 to 11.00, 21.00, 16.00
+You have been teleported to 10.00, 20.00, 15.00
+Teleported O2Flash20 to 10.00, 20.00, 15.00
+
+Press T or RETURN to open chat
+ 
+
+Press T or RETURN to open chat
+ 
+
+Press T or RETURN to open chat
+ 

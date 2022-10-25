@@ -98,7 +98,7 @@ Cosmetics:1:
    a:6:1.000000
    rainbow:2:false
    chroma:2:false
- enabled:2:true
+ enabled:2:false
 Better Hunger:1:
  settings:1:
   Key:1:
@@ -249,8 +249,8 @@ Cosmetics Test:1:
  settings:1:
   Key:1:
    type:4:4
-   key:4:0
- enabled:2:true
+   key:4:222
+ enabled:2:false
 custom chat:1:
  settings:1:
   Key:1:
@@ -460,7 +460,7 @@ Logger:1:
   scale:1:
    type:4:3
    value:6:0.633337
- enabled:2:true
+ enabled:2:false
 Mini Map:1:
  settings:1:
   Key:1:
