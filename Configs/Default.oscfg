@@ -249,7 +249,7 @@ Cosmetics Test:1:
  settings:1:
   Key:1:
    type:4:4
-   key:4:222
+   key:4:0
  enabled:2:false
 custom chat:1:
  settings:1:
@@ -323,6 +323,12 @@ custom chat:1:
    type:4:3
    value:6:1.000000
  enabled:2:false
+Onix Bandana:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:true
 Death Coordinates:1:
  settings:1:
   Key:1:
@@ -460,7 +466,7 @@ Logger:1:
   scale:1:
    type:4:3
    value:6:0.633337
- enabled:2:false
+ enabled:2:true
 Mini Map:1:
  settings:1:
   Key:1:

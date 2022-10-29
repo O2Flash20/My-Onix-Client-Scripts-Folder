@@ -1,5 +1,14 @@
 -- Made By O2Flash20
 
+shadingEnabled = false
+function enableShading()
+    shadingEnabled = true
+end
+
+function disableShading()
+    shadingEnabled = false
+end
+
 -- like gfx.triangle but takes in the points as tables {x, y, z}
 function triangle3d(p1, p2, p3)
     gfx.triangle(p1[1], p1[2], p1[3], p2[1], p2[2], p2[3], p3[1], p3[2], p3[3])
@@ -45,8 +54,45 @@ end
 -- updates player position and such
 function updateCosmeticTools()
     px, py, pz = player.pposition()
-    pPitch, pYaw = player.rotation()
-    bodyRotation = player.bodyRotation()
+    pYaw, pPitch = player.rotation()
+    bodyYaw = player.bodyRotation()
+    bodyPitch = 0
+
+    if player.getFlag(1) then
+        py = py - 0.25
+
+        bodyPitch = 30
+    end
+end
+
+-- generates the surface normal of a triangle
+function calculateSurfaceNormalTriangle(p1, p2, p3)
+    local vectorA = { p2[1] - p1[1], p2[2] - p1[2], p2[3] - p1[3] }
+    local vectorB = { p3[1] - p1[1], p3[2] - p1[2], p3[3] - p1[3] }
+
+    local normal = {}
+
+    table.insert(normal, vectorA[2] * vectorB[3] - vectorA[3] * vectorB[2])
+    table.insert(normal, vectorA[3] * vectorB[1] - vectorA[1] * vectorB[3])
+    table.insert(normal, vectorA[1] * vectorB[2] - vectorA[2] * vectorB[1])
+
+    local length = math.sqrt(normal[1] * normal[1] + normal[2] * normal[2] + normal[3] * normal[3])
+
+    normal[1] = normal[1] / length
+    normal[2] = normal[2] / length
+    normal[3] = normal[3] / length
+
+    return normal
+end
+
+-- gets the dot product of two vectors
+function dotProduct3D(vec1, vec2, minVal)
+    local val = (vec1[1] * vec2[1]) + (vec1[2] * vec2[2]) + (vec1[3] * vec2[3])
+    if val <= minVal then
+        return minVal
+    else
+        return val
+    end
 end
 
 Object = {}
@@ -68,14 +114,14 @@ end
 function Object:attachToHead()
     self.attachPosition = { px, py - 0.2, pz }
 
-    self.attachRotation = { math.rad(pYaw), math.rad(-pPitch), 0 }
+    self.attachRotation = { math.rad(pPitch), math.rad(-pYaw), 0 }
 
     return self
 end
 
 function Object:attachToBody()
     self.attachPosition = { px, py - 0.55, pz }
-    self.attachRotation = { 0, math.rad(-bodyRotation), 0 }
+    self.attachRotation = { math.rad(bodyPitch), math.rad(-bodyYaw), 0 }
 
     return self
 end
@@ -219,25 +265,55 @@ function Cube:render(color)
     )
 
     -- render all the vertices
-    gfx.color(color[1], color[2], color[3])
+    if shadingEnabled then
+        gfx.color(color[1], color[2], color[3])
+        local lightVector = { -1, 0.9, 0.5 }
 
-    triangle3d(vertices[3], vertices[2], vertices[1])
-    triangle3d(vertices[6], vertices[7], vertices[5])
+        renderTriangle(color, vertices[3], vertices[2], vertices[1], lightVector)
+        renderTriangle(color, vertices[6], vertices[7], vertices[5], lightVector)
 
-    triangle3d(vertices[2], vertices[3], vertices[4])
-    triangle3d(vertices[8], vertices[7], vertices[6])
+        renderTriangle(color, vertices[2], vertices[3], vertices[4], lightVector)
+        renderTriangle(color, vertices[8], vertices[7], vertices[6], lightVector)
 
-    triangle3d(vertices[5], vertices[3], vertices[1])
-    triangle3d(vertices[2], vertices[4], vertices[6])
+        renderTriangle(color, vertices[5], vertices[3], vertices[1], lightVector)
+        renderTriangle(color, vertices[2], vertices[4], vertices[6], lightVector)
 
-    triangle3d(vertices[3], vertices[5], vertices[7])
-    triangle3d(vertices[8], vertices[6], vertices[4])
+        renderTriangle(color, vertices[3], vertices[5], vertices[7], lightVector)
+        renderTriangle(color, vertices[8], vertices[6], vertices[4], lightVector)
 
-    triangle3d(vertices[1], vertices[2], vertices[5])
-    triangle3d(vertices[7], vertices[4], vertices[3])
+        renderTriangle(color, vertices[1], vertices[2], vertices[5], lightVector)
+        renderTriangle(color, vertices[7], vertices[4], vertices[3], lightVector)
 
-    triangle3d(vertices[6], vertices[5], vertices[2])
-    triangle3d(vertices[4], vertices[7], vertices[8])
+        renderTriangle(color, vertices[6], vertices[5], vertices[2], lightVector)
+        renderTriangle(color, vertices[4], vertices[7], vertices[8], lightVector)
+    else
+        gfx.color(color[1], color[2], color[3])
+        triangle3d(vertices[3], vertices[2], vertices[1])
+        triangle3d(vertices[6], vertices[7], vertices[5])
+
+        triangle3d(vertices[2], vertices[3], vertices[4])
+        triangle3d(vertices[8], vertices[7], vertices[6])
+
+        triangle3d(vertices[5], vertices[3], vertices[1])
+        triangle3d(vertices[2], vertices[4], vertices[6])
+
+        triangle3d(vertices[3], vertices[5], vertices[7])
+        triangle3d(vertices[8], vertices[6], vertices[4])
+
+        triangle3d(vertices[1], vertices[2], vertices[5])
+        triangle3d(vertices[7], vertices[4], vertices[3])
+
+        triangle3d(vertices[6], vertices[5], vertices[2])
+        triangle3d(vertices[4], vertices[7], vertices[8])
+    end
+end
+
+function renderTriangle(color, vertex1, vertex2, vertex3, lightDirection)
+    local normal = calculateSurfaceNormalTriangle(vertex1, vertex2, vertex3)
+    local dotProduct = dotProduct3D(normal, lightDirection, 0.5)
+
+    gfx.color(color[1] * dotProduct, color[2] * dotProduct, color[3] * dotProduct)
+    triangle3d(vertex1, vertex2, vertex3)
 end
 
 -- given the origin and angles, rotates all vertices
@@ -260,6 +336,16 @@ end
 
     updateCosmeticTools()
         Updates the player's positions and rotations to be used by other functions. For the best result, run this function at the start of render3d()
+        This makes a few variables global:
+            px, py, pz: player position
+            pPitch, pYaw: player/head pitch and yaw
+            bodyYaw: the player's torso's yaw
+            bodyPitch: the player's torso's pitch
+
+    enableShading()
+        Enables shading mode, hits fps hard but looks amazing.
+    disableShading()
+        Disables shading mode.
 
     Object:
         An object is a collection of 3d shapes which attaches to a specified body part. Anything done to an Object is also done to all the shapes it includes.

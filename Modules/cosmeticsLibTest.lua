@@ -2,11 +2,14 @@ name = "Cosmetics Test"
 description = "test module for cosmeticTools"
 
 importLib("cosmeticTools")
+importLib("logger")
 
 function render3d()
     if player.perspective() == 0 then return end
 
     updateCosmeticTools()
+
+    enableShading()
 
     local Backpack = Object:new(0, 0.05, -0.19)
         :attachToBody()
@@ -35,6 +38,7 @@ function render3d()
 
     local OnixPlanet = Object:new(0, 1, 0)
         :attachToPlayer()
+        :rotateSelf(os.clock(), os.clock(), os.clock())
     Cube:new(OnixPlanet, 0, 0, 0, 0.4, 0.4, 0.4)
         :render({ 0, 200, 200 })
 
@@ -43,4 +47,21 @@ function render3d()
             :rotateObject(0, math.rad(i * 45) + os.clock(), 0)
             :render({ 0, 0, 100 })
     end
+
+    local Amogus = Object:new(0, 0, 1)
+        :attachToBody()
+        :rotateAttachment(math.sin(4 * os.clock()) / 10, 0, 0)
+    Cube:new(Amogus, 0, 0, 0, 0.3, 0.4, 0.3)
+        :render({ 255, 0, 0 })
+    Cube:new(Amogus, 0, 0, -0.15, 0.2, 0.3, 0.2)
+        :render({ 200, 0, 0 })
+    Cube:new(Amogus, 0, 0.05, 0.1, 0.25, 0.15, 0.2)
+        :render({ 0, 255, 255 })
+
+    Cube:new(Amogus, 0.1, -0.2, 0, 0.15, 0.2, 0.15)
+        :rotateObject(math.sin(10 * os.clock()) / 5, 0, 0)
+        :render({ 255, 0, 0 })
+    Cube:new(Amogus, -0.1, -0.2, 0, 0.15, 0.2, 0.15)
+        :rotateObject(math.sin(10 * os.clock() + 3) / 5, 0, 0)
+        :render({ 255, 0, 0 })
 end

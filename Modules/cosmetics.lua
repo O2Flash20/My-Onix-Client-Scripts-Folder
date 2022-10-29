@@ -132,7 +132,7 @@ function render3d()
     if player.perspective() == 0 then return end
 
     px, py, pz = player.pposition()
-    pYaw, pPitch = player.rotation()
+    pPitch, pYaw = player.rotation()
 
     -- Corrects py if the player is crouching
     if player.getFlag(1) then
@@ -156,8 +156,8 @@ function render3d()
         oZ = pz
 
         -- Getting the player's rotation so that the cosmetic can match
-        rPitch = math.rad(-pPitch)
-        rYaw = math.rad(-pYaw - 90)
+        rPitch = math.rad(-pYaw)
+        rYaw = math.rad(-pPitch - 90)
 
         gfx.color(haloCol.r, haloCol.g, haloCol.b)
 
@@ -198,8 +198,8 @@ function render3d()
         oY = py - 0.2
         oZ = pz
 
-        rPitch = math.rad(-pPitch)
-        rYaw = math.rad(-pYaw - 90)
+        rPitch = math.rad(-pYaw)
+        rYaw = math.rad(-pPitch - 90)
 
         gfx.color(crownCol.r, crownCol.g, crownCol.b)
         prism = getPrism3d(x, y, z, 0.55, 0.17, 0.55)
@@ -258,8 +258,8 @@ function render3d()
         oY = py - 0.2
         oZ = pz
 
-        rPitch = math.rad(-pPitch)
-        rYaw = math.rad(-pYaw - 90)
+        rPitch = math.rad(-pYaw)
+        rYaw = math.rad(-pPitch - 90)
 
         gfx.color(sunglassesColor.r, sunglassesColor.g, sunglassesColor.b)
 
@@ -287,8 +287,8 @@ function render3d()
         oY = py - 0.2
         oZ = pz
 
-        rPitch = math.rad(-pPitch)
-        rYaw = math.rad(-pYaw - 90)
+        rPitch = math.rad(-pYaw)
+        rYaw = math.rad(-pPitch - 90)
 
         prism = getPrism3d(x, y + 2, z, 1, 1, 1)
         prism = rotatePrism(prism, oX, oY, oZ, rPitch, rYaw)
