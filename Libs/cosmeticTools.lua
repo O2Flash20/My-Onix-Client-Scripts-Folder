@@ -331,6 +331,217 @@ function rotate3d(vertices, originX, originY, originZ, pitch, yaw, roll)
     return output
 end
 
+Sphere = {}
+
+-- a behind the scenes function used to make rendering a sphere's triangle easier
+function Sphere.renderTriangle(triangle)
+    local normal = calculateSurfaceNormalTriangle(triangle[1], triangle[2], triangle[3])
+    -- local dot = dotProduct3D(normal, { 0, 1, 0 }, 0.1)
+    -- gfx.color(dot * 255, dot * 255, dot * 255)
+    gfx.color(normal[1] * 255, normal[2] * 255, normal[3] * 255)
+    triangle3d(triangle[1], triangle[2], triangle[3])
+end
+
+function Sphere:new(Object, x, y, z, radius)
+    local newSphere = {}
+
+    setmetatable(newSphere, self)
+    self.__index = self
+
+    newSphere.object = Object
+
+    newSphere.pos = { x, y, z }
+    newSphere.radius = radius
+    newSphere.detail = 2
+
+    return newSphere
+end
+
+-- detail levels: "Low", "Normal", "Insane"
+function Sphere:setDetail(detail)
+    if detail == "Low" then
+        self.detail = 1
+    end
+    if detail == "Normal" then
+        self.detail = 2
+    end
+    if detail == "Insane" then
+        self.detail = 5
+    end
+
+    return self
+end
+
+-- renders the sphere
+function Sphere:render(color)
+    local vertices = calculateVertices(self.detail)
+
+    -- gets the position offset of the sphere
+    local px = self.pos[1] + self.object.pos[1]
+    local py = self.pos[2] + self.object.pos[2]
+    local pz = self.pos[3] + self.object.pos[3]
+
+    -- normalizes all vertices
+    for x = 1, #vertices[1], 1 do
+        for y = 1, #vertices, 1 do
+            vertices[y][x] = normalizeVector(vertices[y][x])
+        end
+    end
+
+    -- DRAW ALL THE VERTICES
+    -- z+
+    for x = 1, #vertices[1], 1 do
+        for y = 1, #vertices - 1, 1 do
+            if x > 1 then
+                local triangle = {
+                    { vertices[y][x][1] + px, vertices[y][x][2] + py, vertices[y][x][3] + pz },
+                    { vertices[y + 1][x - 1][1] + px, vertices[y + 1][x - 1][2] + py, vertices[y + 1][x - 1][3] + pz },
+                    { vertices[y + 1][x][1] + px, vertices[y + 1][x][2] + py, vertices[y + 1][x][3] + pz }
+                }
+                Sphere.renderTriangle(triangle)
+            end
+            if x ~= #vertices[1] then
+                local triangle = {
+                    { vertices[y + 1][x][1] + px, vertices[y + 1][x][2] + py, vertices[y + 1][x][3] + pz },
+                    { vertices[y][x + 1][1] + px, vertices[y][x + 1][2] + py, vertices[y][x + 1][3] + pz },
+                    { vertices[y][x][1] + px, vertices[y][x][2] + py, vertices[y][x][3] + pz }
+                }
+                Sphere.renderTriangle(triangle)
+            end
+        end
+    end
+
+    -- z-
+    for x = 1, #vertices[1], 1 do
+        for y = 1, #vertices - 1, 1 do
+            if x > 1 then
+                local triangle = {
+                    { vertices[y + 1][x - 1][1] + px, vertices[y + 1][x - 1][2] + py, -vertices[y + 1][x - 1][3] + pz },
+                    { vertices[y][x][1] + px, vertices[y][x][2] + py, -vertices[y][x][3] + pz },
+                    { vertices[y + 1][x][1] + px, vertices[y + 1][x][2] + py, -vertices[y + 1][x][3] + pz }
+                }
+                Sphere.renderTriangle(triangle)
+            end
+            if x ~= #vertices[1] then
+                local triangle = {
+                    { vertices[y][x + 1][1] + px, vertices[y][x + 1][2] + py, -vertices[y][x + 1][3] + pz },
+                    { vertices[y + 1][x][1] + px, vertices[y + 1][x][2] + py, -vertices[y + 1][x][3] + pz },
+                    { vertices[y][x][1] + px, vertices[y][x][2] + py, -vertices[y][x][3] + pz }
+                }
+                Sphere.renderTriangle(triangle)
+            end
+        end
+    end
+
+    -- y+
+    for x = 1, #vertices[1], 1 do
+        for y = 1, #vertices - 1, 1 do
+            if x > 1 then
+                local triangle = {
+                    { vertices[y + 1][x - 1][1] + px, vertices[y + 1][x - 1][3] + py, vertices[y + 1][x - 1][2] + pz },
+                    { vertices[y][x][1] + px, vertices[y][x][3] + py, vertices[y][x][2] + pz },
+                    { vertices[y + 1][x][1] + px, vertices[y + 1][x][3] + py, vertices[y + 1][x][2] + pz }
+                }
+                Sphere.renderTriangle(triangle)
+            end
+            if x ~= #vertices[1] then
+                local triangle = {
+                    { vertices[y][x + 1][1] + px, vertices[y][x + 1][3] + py, vertices[y][x + 1][2] + pz },
+                    { vertices[y + 1][x][1] + px, vertices[y + 1][x][3] + py, vertices[y + 1][x][2] + pz },
+                    { vertices[y][x][1] + px, vertices[y][x][3] + py, vertices[y][x][2] + pz }
+                }
+                Sphere.renderTriangle(triangle)
+            end
+        end
+    end
+
+    -- y-
+    for x = 1, #vertices[1], 1 do
+        for y = 1, #vertices - 1, 1 do
+            if x > 1 then
+                local triangle = {
+                    { vertices[y][x][1] + px, -vertices[y][x][3] + py, vertices[y][x][2] + pz },
+                    { vertices[y + 1][x - 1][1] + px, -vertices[y + 1][x - 1][3] + py, vertices[y + 1][x - 1][2] + pz },
+                    { vertices[y + 1][x][1] + px, -vertices[y + 1][x][3] + py, vertices[y + 1][x][2] + pz }
+                }
+                Sphere.renderTriangle(triangle)
+            end
+            if x ~= #vertices[1] then
+                local triangle = {
+                    { vertices[y + 1][x][1] + px, -vertices[y + 1][x][3] + py, vertices[y + 1][x][2] + pz },
+                    { vertices[y][x + 1][1] + px, -vertices[y][x + 1][3] + py, vertices[y][x + 1][2] + pz },
+                    { vertices[y][x][1] + px, -vertices[y][x][3] + py, vertices[y][x][2] + pz }
+                }
+                Sphere.renderTriangle(triangle)
+            end
+        end
+    end
+
+    -- x+
+    for x = 1, #vertices[1], 1 do
+        for y = 1, #vertices - 1, 1 do
+            if x > 1 then
+                local triangle = {
+                    { vertices[y + 1][x - 1][3] + px, vertices[y + 1][x - 1][2] + py, vertices[y + 1][x - 1][1] + pz },
+                    { vertices[y][x][3] + px, vertices[y][x][2] + py, vertices[y][x][1] + pz },
+                    { vertices[y + 1][x][3] + px, vertices[y + 1][x][2] + py, vertices[y + 1][x][1] + pz }
+                }
+                Sphere.renderTriangle(triangle)
+            end
+            if x ~= #vertices[1] then
+                local triangle = {
+                    { vertices[y][x + 1][3] + px, vertices[y][x + 1][2] + py, vertices[y][x + 1][1] + pz },
+                    { vertices[y + 1][x][3] + px, vertices[y + 1][x][2] + py, vertices[y + 1][x][1] + pz },
+                    { vertices[y][x][3] + px, vertices[y][x][2] + py, vertices[y][x][1] + pz }
+                }
+                Sphere.renderTriangle(triangle)
+            end
+        end
+    end
+
+    -- x-
+    for x = 1, #vertices[1], 1 do
+        for y = 1, #vertices - 1, 1 do
+            if x > 1 then
+                local triangle = {
+                    { -vertices[y][x][3] + px, vertices[y][x][2] + py, vertices[y][x][1] + pz },
+                    { -vertices[y + 1][x - 1][3] + px, vertices[y + 1][x - 1][2] + py, vertices[y + 1][x - 1][1] + pz },
+                    { -vertices[y + 1][x][3] + px, vertices[y + 1][x][2] + py, vertices[y + 1][x][1] + pz }
+                }
+                Sphere.renderTriangle(triangle)
+            end
+            if x ~= #vertices[1] then
+                local triangle = {
+                    { -vertices[y + 1][x][3] + px, vertices[y + 1][x][2] + py, vertices[y + 1][x][1] + pz },
+                    { -vertices[y][x + 1][3] + px, vertices[y][x + 1][2] + py, vertices[y][x + 1][1] + pz },
+                    { -vertices[y][x][3] + px, vertices[y][x][2] + py, vertices[y][x][1] + pz }
+                }
+                Sphere.renderTriangle(triangle)
+            end
+        end
+    end
+end
+
+-- calculates the vertices of a sphere given a radius (detail) value
+function calculateVertices(radius)
+    local vertices = {}
+
+    for y = -radius, radius, 1 do
+        table.insert(vertices, {})
+        for x = radius, -radius, -1 do
+            table.insert(vertices[y + radius + 1], { x / radius, y / radius, 1 })
+        end
+    end
+
+    return vertices
+end
+
+function normalizeVector(vector)
+    local vectorLength = math.sqrt(vector[1] * vector[1] + vector[2] * vector[2] + vector[3] * vector[3])
+
+    return { vector[1] / vectorLength, vector[2] / vectorLength, vector[3] / vectorLength }
+end
+
 --[[
     DOCUMENTATION:
 
@@ -386,3 +597,10 @@ end
                 Renders the cube into the world with a specified color. The color parameter should be {Red(0-255), Green(0-255), Blue(0-255)}.
                 This is always the last thing to be done on a given cube.
 ]]
+
+-- LOOP OVER ALL VERTICES INSTEAD OF DOING EVERYTHING WHEN RENDERING THE INDIVIDUAL TRIANGLE
+
+-- add "attachment to player" to spheres
+-- add radius to spheres
+-- precalculate the basic normalized sphere, then do operations on all the trianges later
+-- add spheres to documentation
