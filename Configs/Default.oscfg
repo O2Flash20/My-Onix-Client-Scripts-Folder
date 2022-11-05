@@ -1,3 +1,24 @@
+Command Block Hud:1:
+ settings:1:
+  _setting__9154693497432463922:1:
+   b:6:1.000000
+   r:6:1.000000
+   type:4:7
+   g:6:1.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  Key:1:
+   type:4:4
+   key:4:0
+  position:1:
+   type:4:5
+   x:6:0.000000
+   y:6:0.000000
+  scale:1:
+   type:4:3
+   value:6:1.000000
+ enabled:2:true
 ThreeD View:1:
  settings:1:
   Key:1:
@@ -10,26 +31,6 @@ ThreeD View:1:
   scale:1:
    type:4:3
    value:6:1.260000
- enabled:2:false
-Arrow Trajectory:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:90
-  color:1:
-   b:6:1.000000
-   r:6:0.000000
-   type:4:7
-   g:6:1.000000
-   a:6:0.392157
-   rainbow:2:false
-   chroma:2:true
-  showTrail:1:
-   type:4:1
-   value:2:true
-  renderBehind:1:
-   type:4:1
-   value:2:true
  enabled:2:false
 Cosmetics:1:
  settings:1:
@@ -98,6 +99,26 @@ Cosmetics:1:
    a:6:1.000000
    rainbow:2:false
    chroma:2:false
+ enabled:2:false
+Arrow Trajectory:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:90
+  color:1:
+   b:6:1.000000
+   r:6:0.000000
+   type:4:7
+   g:6:1.000000
+   a:6:0.392157
+   rainbow:2:false
+   chroma:2:true
+  showTrail:1:
+   type:4:1
+   value:2:true
+  renderBehind:1:
+   type:4:1
+   value:2:true
  enabled:2:false
 Better Hunger:1:
  settings:1:
@@ -176,6 +197,33 @@ Better Hunger:1:
    type:4:3
    value:6:0.938889
  enabled:2:true
+Skinstealer:1:
+ settings:1:
+  _setting__9839599158341423445:1:
+   type:4:1
+   value:2:false
+  _setting__7378333443957830708:1:
+   type:4:1
+   value:2:false
+  Key:1:
+   type:4:4
+   key:4:0
+  _setting__16801015383468684115:1:
+   type:4:4
+   key:4:77
+  _setting__15292256483872599244:1:
+   type:4:1
+   value:2:false
+  _setting__5783667870806941407:1:
+   type:4:2
+   value:4:3
+  _setting__12827351512218913815:1:
+   type:4:1
+   value:2:false
+  _setting__6759645327598465686:1:
+   type:4:1
+   value:2:false
+ enabled:2:true
 Bridge Overlay:1:
  settings:1:
   Key:1:
@@ -245,12 +293,6 @@ ChatLogger:1:
    type:4:4
    key:4:0
  enabled:2:true
-Cosmetics Test:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
- enabled:2:false
 custom chat:1:
  settings:1:
   Key:1:
@@ -323,12 +365,67 @@ custom chat:1:
    type:4:3
    value:6:1.000000
  enabled:2:false
-Onix Bandana:1:
+Chat Timestamps:1:
  settings:1:
   Key:1:
    type:4:4
    key:4:0
  enabled:2:true
+Cosmetics Test:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+Item Held Info:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  position:1:
+   type:4:5
+   x:6:417.500000
+   y:6:317.480042
+  scale:1:
+   type:4:3
+   value:6:1.000000
+ enabled:2:true
+Cosmetics Spheres Test:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+Lag Switch:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+spher:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:true
+Amogus Cosmetic:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+Cosmetic Texture Test:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+Onix Bandana:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
 Death Coordinates:1:
  settings:1:
   Key:1:
@@ -410,25 +507,6 @@ Fulldark:1:
    type:4:4
    key:4:0
  enabled:2:false
-Item Held Info:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
-  position:1:
-   type:4:5
-   x:6:417.500000
-   y:6:317.480042
-  scale:1:
-   type:4:3
-   value:6:1.000000
- enabled:2:true
-Lag Switch:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
- enabled:2:true
 Logger:1:
  settings:1:
   Key:1:
@@ -538,6 +616,12 @@ Structurer:1:
    type:4:3
    value:6:1.000000
  enabled:2:false
+Texture Test:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:true
 World Save:1:
  settings:1:
   Key:1:
