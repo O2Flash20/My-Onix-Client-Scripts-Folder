@@ -143,6 +143,7 @@ function gfx2.textSize(text, scale) end
 function gfx2.textSize(text) end
 
 
+
 ---@class Gfx2Texture
 ---@field width integer The width of the texture
 ---@field height integer The height of the texture
@@ -154,18 +155,45 @@ local _acp__Gfx2Texture_ = {}
 ---@return iColor
 function _acp__Gfx2Texture_:getPixel(x, y) end
 
----Unloads the texture when you no longer need it
+---Sets the color of a pixel in the texture, you must unload if you used it for changes to apply
+---@param x integer X position of the pixel to get
+---@param y integer Y position of the pixel to get
+---@param r integer new red color value (0-255)
+---@param g integer new green color value (0-255)
+---@param b integer new blue color value (0-255)
+---@diagnostic disable-next-line: duplicate-set-field
+function _acp__Gfx2Texture_:setPixel(x, y, r, g, b) end
+
+---Sets the color of a pixel in the texture, you must unload if you used it for changes to apply
+---@param x integer X position of the pixel to get
+---@param y integer Y position of the pixel to get
+---@param r integer new red color value (0-255)
+---@param g integer new green color value (0-255)
+---@param b integer new blue color value (0-255)
+---@param a integer new alpha value (0-255)
+---@diagnostic disable-next-line: duplicate-set-field
+function _acp__Gfx2Texture_:setPixel(x, y, r, g, b ,a) end
+
+---Saves the texture to a png file (for if you wana draw to it using setPixel)
+---@param path string Where to save this
+---@return boolean saved
+function _acp__Gfx2Texture_:save(path) end
+
+---Unloads the texture when you no longer need it or to reload its content
 function _acp__Gfx2Texture_:unload() end
+
 
 
 ---Loads a texture from base64 text (can be used outside of render2)
 ---@param width integer
 ---@param height integer
 ---@param Base64Texture string The texture itself, convert with https://cdn.discordapp.com/attachments/877878499749289984/1029113574406242405/ImgToBase64.exe
+---@return Gfx2Texture|nil The loaded texture or nil
 function gfx2.loadImage(width, height, Base64Texture) end
 
 ---Loads a texture from base64 text (can be used outside of render2)
 ---@param filepath string The path relative to the Scripts/Data folder
+---@return Gfx2Texture|nil The loaded texture or nil
 function gfx2.loadImage(filepath) end
 
 
@@ -196,3 +224,45 @@ function gfx2.drawImage(x, y, width, height, image, opacity) end
 ---@param opacity number Opactity at which to render the image at (0.0 to 1.0)
 ---@param isLinear boolean Should the scaling be linear or is it gonna be nearest neighbor
 function gfx2.drawImage(x, y, width, height, image, opacity, isLinear) end
+
+
+
+
+---Renders an image to the Minecraft: Bedrock Edition Screen
+---@param x number The position on the x axis
+---@param y number The position on the y axis
+---@param width number Width of the image to render
+---@param height number Height of the image to render
+---@param image Gfx2Texture image to render
+---@param srcStartX number Where in the source should we start taking the image
+---@param srcStartY number Where in the source should we start taking the image
+---@param srcSizeX number what size in the source image are we taking
+---@param srcSizeY number what size in the source image are we taking
+function gfx2.cdrawImage(x, y, width, height, image, srcStartX, srcStartY, srcSizeX, srcSizeY) end
+
+---Renders an image to the Minecraft: Bedrock Edition Screen
+---@param x number The position on the x axis
+---@param y number The position on the y axis
+---@param width number Width of the image to render
+---@param height number Height of the image to render
+---@param image Gfx2Texture image to render
+---@param srcStartX number Where in the source should we start taking the image
+---@param srcStartY number Where in the source should we start taking the image
+---@param srcSizeX number what size in the source image are we taking
+---@param srcSizeY number what size in the source image are we taking
+---@param opacity number Opactity at which to render the image at (0.0 to 1.0)
+function gfx2.cdrawImage(x, y, width, height, image, srcStartX, srcStartY, srcSizeX, srcSizeY, opacity) end
+
+---Renders an image to the Minecraft: Bedrock Edition Screen
+---@param x number The position on the x axis
+---@param y number The position on the y axis
+---@param width number Width of the image to render
+---@param height number Height of the image to render
+---@param image Gfx2Texture image to render
+---@param srcStartX number Where in the source should we start taking the image
+---@param srcStartY number Where in the source should we start taking the image
+---@param srcSizeX number what size in the source image are we taking
+---@param srcSizeY number what size in the source image are we taking
+---@param opacity number Opactity at which to render the image at (0.0 to 1.0)
+---@param isLinear boolean Should the scaling be linear or is it gonna be nearest neighbor
+function gfx2.cdrawImage(x, y, width, height, image, srcStartX, srcStartY, srcSizeX, srcSizeY, opacity, isLinear) end

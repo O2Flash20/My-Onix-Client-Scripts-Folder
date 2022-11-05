@@ -1,5 +1,51 @@
 ---@meta
 
+---@class Skin
+local _acp__Player_Skin = {}
+
+---Gives you the skin id (you should be able to just check id or fullid to see if player changed skin)
+---@return string skinId skin identifier 
+function _acp__Player_Skin.id() end
+
+---Gives you the skin id (but sometimes longer)  (you should be able to just check id or fullid to see if player changed skin)
+---@return string fullSkinId The full skin identifier (sometimes larger than id)
+function _acp__Player_Skin.fullId() end
+
+---Gives you the cape id (you should be able to just check capeId to see if player has changed cape)
+---@return string capeid The cape identifier
+function _acp__Player_Skin.capeId() end
+
+---Tells you if the skin has a cape or no
+---@return boolean hasCape
+function _acp__Player_Skin.hasCape() end
+
+---Saves the skin's texture into a file
+---@param FilePath string The path to save the texture to
+---@return boolean HasSaved If the skin saved or no
+function _acp__Player_Skin.save(FilePath) end
+
+---Saves the cape's texture into a file (check if present with hasCape)
+---@param FilePath string The path to save the texture to
+---@return boolean HasSaved If the cape saved or no
+function _acp__Player_Skin.saveCape(FilePath) end
+
+---Gets you the skin geometry
+---@return string geometry Json skin geometry
+function _acp__Player_Skin.geometry() end
+
+---Gets the skin texture as a gfx2 texture dont have to write to disk 
+---this function is slow, well faster than disk but as its convenient to call it every frame, DONT
+---@return Gfx2Texture texture The skins gfx2 texture
+function _acp__Player_Skin.texture() end
+
+---Gets the cape texture as a gfx2 (check if present with hasCape) texture dont have to write to disk 
+---this function is slow, well faster than disk but as its convenient to call it every frame, DONT
+---@return Gfx2Texture texture The skins gfx2 texture
+function _acp__Player_Skin.capeTexture() end
+
+
+
+
 ---@class player
 player = {}
 
@@ -61,6 +107,12 @@ function player.breakProgress() end
 ---@field vx integer The X velocity of the entity
 ---@field vy integer The Y velocity of the entity
 ---@field vz integer The Z velocity of the entity
+local _acp__PlayerLookingAtEntityInformation_Skin = {}
+---The player skin
+---@return Skin skin
+function _acp__PlayerLookingAtEntityInformation_Skin.skin() end
+
+
 
 ---The coordinates of the block that has the outline for the player
 ---You can check if there is one in the first place with player.facingBlock()
@@ -78,6 +130,14 @@ function player.lookingPos() end
 ---@return number yaw
 ---@return number pitch
 function player.rotation() end
+
+---Where the player's body looks at
+---@return number rotation
+function player.bodyRotation() end
+
+---Where the player's head looks at
+---@return number rotation
+function player.headRotation() end
 
 ---What perspective the player is in (first person, third person back, third person front)
 ---@return integer perspective
@@ -270,3 +330,7 @@ function _acp_Inventory.at(slot) end
 ---Gets the inventory of the player
 ---@return Inventory
 function player.inventory() end
+
+---Gets the player skin
+---@return Skin
+function player.skin() end
