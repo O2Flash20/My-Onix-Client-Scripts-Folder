@@ -1,4 +1,4 @@
--- Made By O2Flash20
+-- Made By O2Flash20 :)
 
 shadingEnabled = false
 function enableShading()
@@ -80,7 +80,8 @@ function updateCosmeticTools()
     pYaw, pPitch = player.rotation()
     bodyYaw = player.bodyRotation()
     bodyPitch = 0
-    headYaw, headPitch = player.headRotation()
+    headYaw = player.headRotation()
+    t = os.clock()
 
     if player.getFlag(1) then
         py = py - 0.25
@@ -88,7 +89,7 @@ function updateCosmeticTools()
         bodyPitch = 30
     end
 
-    pxint, pyint, pzint = player.position()
+    local pxint, pyint, pzint = player.position()
     local block, sky = dimension.getBrightness(pxint, pyint, pzint)
 
     dimensionBrightness = (sky * (2 * math.abs(dimension.time() - 0.5))) / 15
@@ -125,6 +126,33 @@ function normalizeVector(vector)
     local vectorLength = math.sqrt(vector[1] * vector[1] + vector[2] * vector[2] + vector[3] * vector[3])
 
     return { vector[1] / vectorLength, vector[2] / vectorLength, vector[3] / vectorLength }
+end
+
+AnimatedTexture = {}
+-- create a new animated texture object
+function AnimatedTexture:new(texturesArray, delay)
+    local newTexture = {}
+
+    setmetatable(newTexture, self)
+    self.__index = self
+
+    newTexture.texNum = 1
+    newTexture.delay = delay
+    newTexture.texturesArray = texturesArray
+    newTexture.texturesArrayLength = #texturesArray
+    newTexture.i = 1
+    newTexture.texture = texturesArray[1]
+
+    return newTexture
+end
+
+-- update the animated texture, goes in update()
+function AnimatedTexture:update()
+    self.i = (self.i + 1) % self.delay
+    if self.i == 0 then
+        self.texNum = (self.texNum % self.texturesArrayLength) + 1
+        self.texture = self.texturesArray[self.texNum]
+    end
 end
 
 Object = {}
@@ -231,8 +259,18 @@ function Cube:rotateObject(pitch, yaw, roll)
     return self
 end
 
--- renders a cube with a texture
-function Cube:renderTexture(texture)
+-- renders a cube with a texture on each side. if you want each face to be the same, you may only input one argument
+-- scales can be from 0 to 1
+function Cube:renderTexture(frontTex, backTex, leftTex, rightTex, topTex, bottomTex, scaleHorizontal, scaleVertical)
+    local tF = frontTex
+    local tBa = backTex or frontTex
+    local tL = leftTex or frontTex
+    local tR = rightTex or frontTex
+    local tT = topTex or frontTex
+    local tBo = bottomTex or frontTex
+    local sH = scaleHorizontal or 1
+    local sV = scaleVertical or 1
+
     local vertices = {}
 
     local x = self.pos[1]
@@ -294,46 +332,46 @@ function Cube:renderTexture(texture)
     )
 
     gfx.tquad(
-        vertices[2][1], vertices[2][2], vertices[2][3], 1, 1,
-        vertices[1][1], vertices[1][2], vertices[1][3], 0, 1,
-        vertices[3][1], vertices[3][2], vertices[3][3], 0, 0,
-        vertices[4][1], vertices[4][2], vertices[4][3], 1, 0,
-        texture
+        vertices[2][1], vertices[2][2], vertices[2][3], 0, sV,
+        vertices[1][1], vertices[1][2], vertices[1][3], sH, sV,
+        vertices[3][1], vertices[3][2], vertices[3][3], sH, 0,
+        vertices[4][1], vertices[4][2], vertices[4][3], 0, 0,
+        tBa
     )
     gfx.tquad(
-        vertices[8][1], vertices[8][2], vertices[8][3], 0, 0,
-        vertices[7][1], vertices[7][2], vertices[7][3], 1, 0,
-        vertices[5][1], vertices[5][2], vertices[5][3], 1, 1,
-        vertices[6][1], vertices[6][2], vertices[6][3], 0, 1,
-        texture
-    )
-    gfx.tquad(
-        vertices[2][1], vertices[2][2], vertices[2][3], 0, 0,
-        vertices[6][1], vertices[6][2], vertices[6][3], 1, 0,
-        vertices[5][1], vertices[5][2], vertices[5][3], 1, 1,
-        vertices[1][1], vertices[1][2], vertices[1][3], 1, 0,
-        texture
-    )
-    gfx.tquad(
-        vertices[5][1], vertices[5][2], vertices[5][3], 1, 0,
+        vertices[8][1], vertices[8][2], vertices[8][3], sH, 0,
         vertices[7][1], vertices[7][2], vertices[7][3], 0, 0,
-        vertices[3][1], vertices[3][2], vertices[3][3], 0, 1,
-        vertices[1][1], vertices[1][2], vertices[1][3], 1, 1,
-        texture
+        vertices[5][1], vertices[5][2], vertices[5][3], 0, sV,
+        vertices[6][1], vertices[6][2], vertices[6][3], sH, sV,
+        tF
     )
     gfx.tquad(
-        vertices[2][1], vertices[2][2], vertices[2][3], 0, 0,
-        vertices[4][1], vertices[4][2], vertices[4][3], 1, 0,
-        vertices[8][1], vertices[8][2], vertices[8][3], 1, 1,
-        vertices[6][1], vertices[6][2], vertices[6][3], 0, 1,
-        texture
+        vertices[2][1], vertices[2][2], vertices[2][3], 0, sV,
+        vertices[6][1], vertices[6][2], vertices[6][3], sH, sV,
+        vertices[5][1], vertices[5][2], vertices[5][3], sH, 0,
+        vertices[1][1], vertices[1][2], vertices[1][3], 0, 0,
+        tBo
     )
     gfx.tquad(
-        vertices[7][1], vertices[7][2], vertices[7][3], 0, 1,
-        vertices[8][1], vertices[8][2], vertices[8][3], 1, 1,
-        vertices[4][1], vertices[4][2], vertices[4][3], 1, 0,
+        vertices[5][1], vertices[5][2], vertices[5][3], sH, sV,
+        vertices[7][1], vertices[7][2], vertices[7][3], sH, 0,
         vertices[3][1], vertices[3][2], vertices[3][3], 0, 0,
-        texture
+        vertices[1][1], vertices[1][2], vertices[1][3], 0, sV,
+        tR
+    )
+    gfx.tquad(
+        vertices[2][1], vertices[2][2], vertices[2][3], sH, sV,
+        vertices[4][1], vertices[4][2], vertices[4][3], sH, 0,
+        vertices[8][1], vertices[8][2], vertices[8][3], 0, 0,
+        vertices[6][1], vertices[6][2], vertices[6][3], 0, sV,
+        tL
+    )
+    gfx.tquad(
+        vertices[7][1], vertices[7][2], vertices[7][3], sH, sV,
+        vertices[8][1], vertices[8][2], vertices[8][3], sH, 0,
+        vertices[4][1], vertices[4][2], vertices[4][3], 0, 0,
+        vertices[3][1], vertices[3][2], vertices[3][3], 0, sV,
+        tT
     )
 end
 
@@ -625,7 +663,6 @@ end
 -- renders the sphere
 function Sphere:render(color)
     local sphereFaces = Sphere.calculateVertices(self.detail)
-    -- local sphereFaces = table.clone(normalDetailSphere)
 
     -- Doing stuff to each point
     for i = 1, #sphereFaces, 1 do
@@ -713,16 +750,145 @@ function Sphere:render(color)
     end
 end
 
+-- renders the sphere with a texture
+function Sphere:renderTexture(texture)
+    local sphereFaces = Sphere.calculateVertices(self.detail)
+
+    -- Doing stuff to each point
+    for i = 1, #sphereFaces, 1 do
+        for x = 1, #sphereFaces[1][1], 1 do
+            for y = 1, #sphereFaces[1], 1 do
+                local thisPoint = sphereFaces[i][y][x]
+
+                -- stretch and scale the sphere
+                thisPoint[1] = thisPoint[1] * self.stretch[1] * self.radius
+                thisPoint[2] = thisPoint[2] * self.stretch[2] * self.radius
+                thisPoint[3] = thisPoint[3] * self.stretch[3] * self.radius
+
+                -- move it over to its correct position
+                thisPoint[1] = thisPoint[1] + self.pos[1]
+                thisPoint[2] = thisPoint[2] + self.pos[2]
+                thisPoint[3] = thisPoint[3] + self.pos[3]
+
+                -- go through the sphere's rotation queue to rotates this point
+                for j = 1, #self.rotationQueue, 1 do
+                    thisPoint = rotatePoint(
+                        thisPoint[1], thisPoint[2], thisPoint[3],
+                        self.rotationQueue[j][1][1], self.rotationQueue[j][1][2], self.rotationQueue[j][1][3],
+                        self.rotationQueue[j][2][1], self.rotationQueue[j][2][2], self.rotationQueue[j][2][3]
+                    )
+                end
+
+                -- move all the points over to attach to its object
+                thisPoint[1] = thisPoint[1] + self.object.pos[1]
+                thisPoint[2] = thisPoint[2] + self.object.pos[2]
+                thisPoint[3] = thisPoint[3] + self.object.pos[3]
+
+                -- go through it's object's rotation queue
+                for j = 1, #self.object.rotationQueue, 1 do
+                    thisPoint = rotatePoint(
+                        thisPoint[1], thisPoint[2], thisPoint[3],
+                        self.object.rotationQueue[j][1][1], self.object.rotationQueue[j][1][2],
+                        self.object.rotationQueue[j][1][3],
+                        self.object.rotationQueue[j][2][1], self.object.rotationQueue[j][2][2],
+                        self.object.rotationQueue[j][2][3]
+                    )
+                end
+
+                -- move all the points over to attach to its attach point
+                thisPoint[1] = thisPoint[1] + self.object.attachPosition[1]
+                thisPoint[2] = thisPoint[2] + self.object.attachPosition[2]
+                thisPoint[3] = thisPoint[3] + self.object.attachPosition[3]
+
+                -- rotate to meet attachment point
+                thisPoint = rotatePoint(
+                    thisPoint[1], thisPoint[2], thisPoint[3],
+                    self.object.attachPosition[1], self.object.attachPosition[2], self.object.attachPosition[3],
+                    self.object.attachRotation[1], self.object.attachRotation[2], self.object.attachRotation[3]
+                )
+
+                sphereFaces[i][y][x] = thisPoint
+            end
+        end
+    end
+
+    -- a rational function that tries to correct the uvs on the sphere
+    function fixUV(x)
+        return (-1.4999 / (x - 1.823)) - 0.823
+    end
+
+    -- rendering each point
+    for i = 1, #sphereFaces, 1 do
+        local thisFace = sphereFaces[i]
+
+        for x = 1, #thisFace[1], 1 do
+            for y = 1, #thisFace - 1, 1 do
+                if x > 1 then
+                    local triangle = {
+                        { thisFace[y][x][1], thisFace[y][x][2], thisFace[y][x][3] },
+                        { thisFace[y + 1][x - 1][1], thisFace[y + 1][x - 1][2], thisFace[y + 1][x - 1][3] },
+                        { thisFace[y + 1][x][1], thisFace[y + 1][x][2], thisFace[y + 1][x][3] }
+                    }
+                    -- Sphere.renderTriangle(triangle, color)
+                    gfx.ttriangle(
+                        triangle[1][1], triangle[1][2], triangle[1][3],
+                        fixUV(x / #thisFace[1]),
+                        fixUV(y / (#thisFace - 1)),
+
+                        triangle[2][1], triangle[2][2], triangle[2][3],
+                        fixUV((x - 1) / #thisFace[1]),
+                        fixUV((y + 1) / (#thisFace - 1)),
+
+                        triangle[3][1], triangle[3][2], triangle[3][3],
+                        fixUV(x / #thisFace[1]),
+                        fixUV((y + 1) / (#thisFace - 1)),
+
+                        texture
+                    )
+                end
+                if x ~= #thisFace[1] then
+                    local triangle = {
+                        { thisFace[y + 1][x][1], thisFace[y + 1][x][2], thisFace[y + 1][x][3] },
+                        { thisFace[y][x + 1][1], thisFace[y][x + 1][2], thisFace[y][x + 1][3] },
+                        { thisFace[y][x][1], thisFace[y][x][2], thisFace[y][x][3] }
+                    }
+                    -- Sphere.renderTriangle(triangle, color)
+                    gfx.ttriangle(
+                        triangle[1][1], triangle[1][2], triangle[1][3],
+                        fixUV(x / #thisFace[1]),
+                        fixUV((y + 1) / (#thisFace - 1)),
+
+                        triangle[2][1], triangle[2][2], triangle[2][3],
+                        fixUV((x + 1) / #thisFace[1]),
+                        fixUV(y / (#thisFace - 1)),
+
+                        triangle[3][1], triangle[3][2], triangle[3][3],
+                        fixUV(x / #thisFace[1]),
+                        fixUV(y / (#thisFace - 1)),
+
+                        texture
+                    )
+                end
+            end
+        end
+
+    end
+end
+
 --[[
     DOCUMENTATION:
 
     updateCosmeticTools()
         Updates the player's positions and rotations to be used by other functions. For the best result, run this function at the start of render3d()
         This makes a few variables global:
-            px, py, pz: player position
-            pPitch, pYaw: player/head pitch and yaw
-            bodyYaw: the player's torso's yaw
-            bodyPitch: the player's torso's pitch
+            px, py, pz: Player position.
+            pPitch, pYaw: Player/head pitch and yaw.
+            bodyYaw: The player's torso's yaw.
+            bodyPitch: The player's torso's pitch.
+            headYaw: The yaw of the player's head.
+            dimensionBrightness: The sky's brighness (taking into account the time of day) at the player's position.
+
+            t: The time in seconds that the mod has been running. Usually used in animations.
 
     enableShading()
         Enables shading mode, hits fps hard but looks amazing.
@@ -735,74 +901,110 @@ end
             setLightDirection(1, 2, 0) means that the light is coming 1/3 from the +x direction and 2/3 from the +y direction
             The light does not have a position, you can never get closer or further from it, hence why **setLightDirection(1, 0, 0) is the same thing as setLightDirection(9999, 0, 0)**
 
-        setShadowDarkness(level)
-            Sets how dark the shadow is (0 is black, 1 is no shadow at all)
+    setLightDirectionSun()
+        Sets the direction that the light is coming from to the direction of the sun, making it look more realistic.
+
+    setShadowDarkness(level)
+        Sets how dark the shadow is (0 is black, 1 is no shadow at all)
+
+    map(val, min1, max1, min2, max2)
+        A math function that brings a value "val" from the range of min1->max1 into the range of min2->max2
+
+    rotatePoint(x, y, z, originX, originY, originZ, pitch, yaw, roll)
+        Rotates a point in 3d space.
+
+
+    Animated Textures:
+        Textures on objects can be animated using Animated Textures. Essentially, different images are cycled through on the object with a given delay.
+
+            local Your_Texture = AnimatedTexture:new(texturesArray, delay)
+                Sets up a new animated texture, stored in a variable of your choice.
+                texturesArray is a table with the textures that you want to use in the order you want.
+                delay is how often the texture changes
+            Your_Texture:update()
+                Updates the animated texture. The animation won't work without this. *Put it in the update() function.*
+
+            Your_Texture.texture
+                How you get the current texture out of the AnimatedTexture. For example, :renderTexture(Your_Texture.texture)
+
 
     Object:
         An object is a collection of 3d shapes which attaches to a specified body part. Anything done to an Object is also done to all the shapes it includes.
-        FUNCTIONS
-            new(x, y, z)
+
+            local Your_Object = Object:new(x, y, z)
                 Returns a new Object with position {x, y, z}
 
-            attachToHead()
+            :attachToHead()
                 Attaches this object to the player's head
-            attachToBody()
+            :attachToBody()
                 Attaches this object to the player's body
-            attachToPlayer()
+            :attachToPlayer()
                 Attaches this object to the player's position. It does not rotate with the player.
-            attachNone()
+            :attachNone()
                 Does not attach the object to the player, the object's position becomes world coordinates
 
-            rotateCustom(originX, originY, originZ, pitch, yaw, roll)
+            :rotateCustom(originX, originY, originZ, pitch, yaw, roll)
                 Rotates the object around a custom origin point with a specified pitch, yaw, and roll. Note that the origin is relative to the player and is not world coordinates.
-            rotateSelf(pitch, yaw, roll)
+            :rotateSelf(pitch, yaw, roll)
                 Rotates the object around itself with a specified pitch, yaw, and roll.
-            rotateAttachment(pitch, yaw, roll)
+            :rotateAttachment(pitch, yaw, roll)
                 Rotates the object around the body part that it's attached to with a specified pitch, yaw, and roll.
+
 
     Cube:
         A 3d object with a position, width, height, and depth that gets attached to an Object.
-        FUNCTIONS
-            new(Object, x, y, z, width, height, depth)
+
+            local Your_Cube = Cube:new(Object, x, y, z, width, height, depth)
                 Creates a new Cube that is attached to the specified object. It has a position {x, y, z} (relative to the object it's attached to) and has a specified width, height, and depth.
 
-            rotateCustom(originX, originY, originZ, pitch, yaw, roll)
+            :rotateCustom(originX, originY, originZ, pitch, yaw, roll)
                 Rotates the cube around a custom origin point with a specified pitch, yaw, and roll. Note that the origin is relative to the object it's attached to.
-            rotateSelf(pitch, yaw, roll)
+            :rotateSelf(pitch, yaw, roll)
                 Rotates the cube around itself with a specified pitch, yaw, and roll.
-            rotateObject(pitch, yaw, roll)
+            :rotateObject(pitch, yaw, roll)
                 Rotates the cube around the object that it's attached to with a specified pitch, yaw, and roll.
 
-            render(color)
+
+            RENDER OPTIONS *one of these should be the last thing you do to a given Cube*
+
+            :render(color)
                 Renders the cube into the world with a specified color. The color parameter should be {Red(0-255), Green(0-255), Blue(0-255)}.
-                This is always the last thing to be done on a given cube.
+
+            :renderTexture(frontTex, backTex, leftTex, rightTex, topTex, bottomTex, scaleHorizontal, scaleVertical)
+                Renders the cube into the world with specified textures on each side.
+                frontTex, backTex, leftTex, rightTex, topTex, bottomTex can be strings to a texture file or an AnimatedTexture. If one is not defined, it will default to whatever frontTex is
+                scaleHorizontal and scaleVertical are controls to scale the textures on the cube. These values can be in the range (0-1) with 0 making the texture stretched and 1 being the default value.
+                :renderTexture("textures/blocks/planks_oak") is valid. It will make all sides the oak planks texture and both the horizontal and verticle scales will be 1. 
+
 
     Sphere:
         A 3d object with a position and radius that gets attached to an Object.
-        FUNCTIONS
-            new(Object, x, y, z, radius)
+
+            local Your_Sphere = Sphere:new(Object, x, y, z, radius)
                 Creates a new Sphere that is attached to the specified object. It has a position {x, y, z} (relative to the object it's attached to) and has a specified radius.
-            setDetail("Low" | "Normal" | "Insane")
+            :setDetail("Low" | "Normal" | "Insane")
                 Sets the detail level of the Sphere. If detail is not specified, it will default to Normal.
                 Low detail looks bad but is great for performance, Normal detail is a mix of performance and smoothness, and Insane is terrible for performance but looks very smooth.
-            setStretch(x, y, z)
+            :setStretch(x, y, z)
                 Stretches the Sphere to make it an ellipsoid. 
                 For example:
                     setStretch(1, 1, 1) is a perfect sphere
                     setStretch(1, 2, 1) is a sphere stretched vertically
                     setStretch(0.5, 1, 1) is a sphere that is compressed on the x-axis
 
-            rotateCustom(originX, originY, originZ, pitch, yaw, roll)
+            :rotateCustom(originX, originY, originZ, pitch, yaw, roll)
                 Rotates the sphere around a custom origin point with a specified pitch, yaw, and roll. Note that the origin is relative to the object it's attached to.
-            rotateSelf(pitch, yaw, roll)
+            :rotateSelf(pitch, yaw, roll)
                 Rotates the sphere around itself with a specified pitch, yaw, and roll.
-            rotateObject(pitch, yaw, roll)
+            :rotateObject(pitch, yaw, roll)
                 Rotates the sphere around the object that it's attached to with a specified pitch, yaw, and roll.
 
-            render(color)
-                Renders the sphere into the world with a specified color. The color parameter should be {Red(0-255), Green(0-255), Blue(0-255)}.
-                This is always the last thing to be done on a given sphere.
-]]
 
--- add the globals in updateCosmeticTools
--- redo the order of the texture uv of the cube
+            RENDER OPTIONS *one of these should be the last thing you do to a given Sphere*
+
+            :render(color)
+                Renders the sphere into the world with a specified color. The color parameter should be {Red(0-255), Green(0-255), Blue(0-255)}.
+
+            :renderTexture(texture)
+                Renders the sphere into the world with a specified texture. This texture can be a string to a texture file or an AnimatedTexture.
+]]
