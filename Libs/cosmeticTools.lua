@@ -283,7 +283,6 @@ function Object:attachAsCape()
         math.clamp(math.abs(vI[3]) * math.rad(capeRoll) * 0.625, math.rad(-45), math.rad(45)),
         math.clamp(math.abs(vI[3]) * math.rad(capeRoll) * 0.8, math.rad(-50), math.rad(50))
     )
-    log(useVerticalVelocity)
     return self
 end
 
