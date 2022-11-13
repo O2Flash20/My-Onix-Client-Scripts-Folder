@@ -199,6 +199,96 @@ function Object:attachToPlayer()
     return self
 end
 
+posOldx = 0
+posOldy = 0
+posOldz = 0
+velocity = { 0, 0, 0 }
+oldVelocity = { 0, 0, 0 }
+timeOfOldVelocity = 0
+updateCapesIterations = 0
+function updateCapes()
+    -- half the time, dont update (to get a better interpolation effect)
+    updateCapesIterations = (updateCapesIterations + 1) % 2
+    if updateCapesIterations ~= 0 or player.perspective() == 0 then return end
+
+    oldVelocity = velocity
+    timeOfOldVelocity = t
+
+    local displacementX = px - posOldx
+    local displacementY = py - posOldy
+    local displacementZ = pz - posOldz
+
+    velX = displacementX
+    velY = displacementY
+    velZ = displacementZ
+
+    posOldx = px
+    posOldy = py
+    posOldz = pz
+
+    velocity = rotatePoint(velX, velY, velZ, 0, 0, 0, 0, math.rad(bodyYaw), 0)
+end
+
+function Object:attachAsCape()
+    function EastInOut(x)
+        return math.sqrt(1 - (x - 1) ^ 2);
+    end
+
+    function vecLenSqu(vector)
+        return vector[1] ^ 2 + vector[2] ^ 2 + vector[3] ^ 2
+    end
+
+    -- velocity interpolated
+    local vI = {}
+    local percentageOfNewVelocity = (t - timeOfOldVelocity) / 0.2
+
+    -- if the cape will be falling quickly, ease-out interpolate instead of linear
+    if dotProduct3D(velocity, oldVelocity) < 0.65 and vecLenSqu(oldVelocity) > vecLenSqu(velocity)
+    then percentageOfNewVelocity = EastInOut(percentageOfNewVelocity) end
+
+    vI[1] = ((1 - percentageOfNewVelocity) * oldVelocity[1]) + (percentageOfNewVelocity * velocity[1])
+    vI[2] = ((1 - percentageOfNewVelocity) * oldVelocity[2]) + (percentageOfNewVelocity * velocity[2])
+    vI[3] = ((1 - percentageOfNewVelocity) * oldVelocity[3]) + (percentageOfNewVelocity * velocity[3])
+
+    -- attach to the body
+    self.attachPosition = { px, py - 0.25, pz }
+    self.attachRotation = { math.rad(bodyPitch), math.rad(-bodyYaw), 0 }
+
+    -- do the necessary rotations to make the cape react to movement
+    -- cape waving
+    self:rotateCustom(
+        0, 0, -0.15,
+        math.clamp((vI[3] / 15), 0, 0.0866) * (math.sin(t * 15 * math.clamp(math.floor(vI[3] * 3) + 0.5, 0, 1)))
+        + math.rad(5),
+        0, 0)
+
+    -- correcting the cape's roll value
+    local capeRoll = bodyYaw - headYaw
+    if capeRoll < -180 then capeRoll = 360 + capeRoll end
+    if capeRoll > 180 then capeRoll = capeRoll - 360 end
+
+    math.clamp(vI[2], 0, 10)
+    local useVerticalVelocity = 1
+    if math.abs(vI[3]) > math.abs(math.clamp(vI[2], -10000, 0)) then useVerticalVelocity = 0 else useVerticalVelocity = 1 end
+    -- the cape reacting to movement
+    self:rotateCustom(
+        0, 0, -0.15,
+        math.clamp(
+            math.clamp(vI[3] * 0.8, 0, math.rad(75)) - --forward movement
+            ((vI[2] * 0.2) * useVerticalVelocity * 3) - --vertical movement
+            math.abs(vI[3] * math.rad(capeRoll) * 0.4), -- side to side movement
+            math.rad(5),
+            math.rad(115)
+        ),
+        math.clamp(math.abs(vI[3]) * math.rad(capeRoll) * 0.625, math.rad(-45), math.rad(45)),
+        math.clamp(math.abs(vI[3]) * math.rad(capeRoll) * 0.8, math.rad(-50), math.rad(50))
+    )
+    log(useVerticalVelocity)
+    return self
+end
+
+---------------------
+
 -- tells all the Shapes of the Object to rotate around a given point, gets added to a queue
 function Object:rotateCustom(originX, originY, originZ, pitch, yaw, roll)
     local rotationQueue = self.rotationQueue or {}
@@ -890,6 +980,10 @@ end
 
             t: The time in seconds that the mod has been running. Usually used in animations.
 
+    updateCapes()
+        Updates the physics needed if you're using Object:attachAsCape(). If you're not using that attachment type, you don't need this.
+        You would run this function in update().
+
     enableShading()
         Enables shading mode, hits fps hard but looks amazing.
     disableShading()
@@ -940,6 +1034,8 @@ end
                 Attaches this object to the player's body
             :attachToPlayer()
                 Attaches this object to the player's position. It does not rotate with the player.
+            :attachAsCape()
+                Attaches this object to the player's neck and gives it 1.7 cape physics. To use this, *make sure to put updateCapes() in the update() loop*.
             :attachNone()
                 Does not attach the object to the player, the object's position becomes world coordinates
 
@@ -1008,3 +1104,5 @@ end
             :renderTexture(texture)
                 Renders the sphere into the world with a specified texture. This texture can be a string to a texture file or an AnimatedTexture.
 ]]
+
+-- add Cube:newCape()
