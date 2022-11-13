@@ -4,10 +4,6 @@ description = "Proof of Concept for Capes"
 importLib("cosmeticTools")
 importLib("logger")
 
-oldDisplacementX = 0
-oldDisplacementY = 0
-oldDisplacementZ = 0
-
 x = 0
 y = 0
 z = 0
