@@ -1,5 +1,17 @@
 -- Made By O2Flash20 :)
 
+-- checking if the version is supported
+_versionSplit = string.split(client.mcversion, ".")
+_v = {}
+for i = 1, #_versionSplit, 1 do
+    table.insert(_v, tonumber(_versionSplit[i]))
+end
+isSupportedVersion = false
+if _v[1] <= 1 and _v[2] <= 19 and _v[3] <= 41 then
+    isSupportedVersion = true
+end
+--
+
 shadingEnabled = false
 function enableShading()
     shadingEnabled = true
@@ -78,9 +90,10 @@ end
 function updateCosmeticTools()
     px, py, pz = player.pposition()
     pYaw, pPitch = player.rotation()
-    bodyYaw = player.bodyRotation()
+
+    if isSupportedVersion then bodyYaw = player.bodyRotation() else bodyYaw = pYaw end
     bodyPitch = 0
-    headYaw = player.headRotation()
+    if isSupportedVersion then headYaw = player.headRotation() else headYaw = pYaw end
     t = os.clock()
 
     if player.getFlag(1) then
@@ -128,30 +141,97 @@ function normalizeVector(vector)
     return { vector[1] / vectorLength, vector[2] / vectorLength, vector[3] / vectorLength }
 end
 
-AnimatedTexture = {}
--- create a new animated texture object
-function AnimatedTexture:new(texturesArray, delay)
-    local newTexture = {}
+TexturesArray = {}
+-- updates all textures at once, use in update()
+function updateTextures()
+    for i = 1, #TexturesArray, 1 do
+        TexturesArray[i]:update()
+    end
+end
 
+Texture = {}
+-- create a new texture object
+function Texture:new()
+    local newTexture = {}
     setmetatable(newTexture, self)
     self.__index = self
 
-    newTexture.texNum = 1
-    newTexture.delay = delay
-    newTexture.texturesArray = texturesArray
-    newTexture.texturesArrayLength = #texturesArray
-    newTexture.i = 1
-    newTexture.texture = texturesArray[1]
+    newTexture.sources = {}
+    newTexture.sourcesNames = {}
+    newTexture.sourcesSizes = {}
 
+    newTexture.frames = {}
+    newTexture.texture = {}
+
+    newTexture.images = {}
+
+    newTexture.i = 0
+
+    table.insert(TexturesArray, newTexture)
     return newTexture
 end
 
--- update the animated texture, goes in update()
-function AnimatedTexture:update()
-    self.i = (self.i + 1) % self.delay
-    if self.i == 0 then
-        self.texNum = (self.texNum % self.texturesArrayLength) + 1
-        self.texture = self.texturesArray[self.texNum]
+-- creates a new source that Textures can draw from
+function Texture:newSource(link, width, height)
+    return { link, { width, height } }
+end
+
+-- adds an image that addFrame can pull from to create an animation, or can be used by setFrame
+function Texture:addImage(Source, cropX1, cropY1, cropX2, cropY2)
+    local sourceLink = Source[1]
+    local sourceSize = Source[2]
+
+    -- correct the crop in pixels to the uv
+    if cropX1 then cropX1 = cropX1 / sourceSize[1] else cropX1 = 0 end
+    if cropY1 then cropY1 = cropY1 / sourceSize[2] else cropY1 = 0 end
+    if cropX2 then cropX2 = cropX2 / sourceSize[1] else cropX2 = 1 end
+    if cropY2 then cropY2 = cropY2 / sourceSize[2] else cropY2 = 1 end
+
+    table.insert(self.images, { sourceLink, { { cropX1, cropY1 }, { cropX2, cropY2 } } })
+
+    -- to stop errors
+    self.texture = self.images[#self.images]
+
+    return self
+end
+
+-- adds an animation frame
+function Texture:addFrame(imageNumber, lengthOfFrame)
+    lengthOfFrame = math.floor(lengthOfFrame * 10)
+
+    for i = 1, lengthOfFrame, 1 do
+        table.insert(self.frames, imageNumber)
+    end
+
+    return self
+end
+
+-- sets the frame used by the texture, overwriting the animation
+-- must be after any update to the texture
+function Texture:setFrame(imageNumber)
+    self.texture = self.images[imageNumber]
+
+    return self
+end
+
+-- updates the texture
+function Texture:update()
+    if #self.frames == 0 then
+        return self
+    end
+
+    self.i = ((self.i + 1) % #self.frames) + 1
+    self.texture = self.images[self.frames[self.i]]
+
+    return self
+end
+
+-- helper function
+function table.indexOf(table, element)
+    for i = 1, #table, 1 do
+        if table[i] == element then
+            return i
+        end
     end
 end
 
@@ -326,6 +406,11 @@ function Cube:new(Object, x, y, z, width, height, depth)
     return newCube
 end
 
+-- creates a cube with default cape dimensions
+function Cube:newCape(Object)
+    return Cube:new(Object, 0, -0.45, -0.15, 0.6, 0.95, 0.05)
+end
+
 -- adds a rotation with a custom origin to the queue
 function Cube:rotateCustom(originX, originY, originZ, pitch, yaw, roll)
     local rotationQueue = self.rotationQueue or {}
@@ -349,16 +434,33 @@ function Cube:rotateObject(pitch, yaw, roll)
 end
 
 -- renders a cube with a texture on each side. if you want each face to be the same, you may only input one argument
--- scales can be from 0 to 1
-function Cube:renderTexture(frontTex, backTex, leftTex, rightTex, topTex, bottomTex, scaleHorizontal, scaleVertical)
-    local tF = frontTex
-    local tBa = backTex or frontTex
-    local tL = leftTex or frontTex
-    local tR = rightTex or frontTex
-    local tT = topTex or frontTex
-    local tBo = bottomTex or frontTex
-    local sH = scaleHorizontal or 1
-    local sV = scaleVertical or 1
+-- Textures can be a Texture or a string of the link
+function Cube:renderTexture(frontTex, backTex, leftTex, rightTex, topTex, bottomTex)
+    local tF, tBa, tL, tR, tT, tBo
+
+    -- if it's a string, convert it to a Texture, if it doesnt exist, use frontTex
+    if type(frontTex) == "table" then tF = frontTex else tF = { frontTex, { { 0, 0 }, { 1, 1 } } } end
+
+    if backTex == nil then tBa = tF -- backTex wasn't defined, make it tF
+    else if type(backTex) == "table" then tBa = backTex else tBa = { backTex, { { 0, 0 }, { 1, 1 } } } -- If it's a table (a Texture), use that, else, treat backTex as a link and make it a Texture
+        end
+    end
+    if leftTex == nil then tL = tF
+    else if type(leftTex) == "table" then tL = leftTex else tL = { leftTex, { { 0, 0 }, { 1, 1 } } }
+        end
+    end
+    if rightTex == nil then tR = tF
+    else if type(rightTex) == "table" then tR = rightTex else tR = { rightTex, { { 0, 0 }, { 1, 1 } } }
+        end
+    end
+    if topTex == nil then tT = tF
+    else if type(topTex) == "table" then tT = topTex else tT = { topTex, { { 0, 0 }, { 1, 1 } } }
+        end
+    end
+    if bottomTex == nil then tBo = tF
+    else if type(bottomTex) == "table" then tBo = bottomTex else tBo = { bottomTex, { { 0, 0 }, { 1, 1 } } }
+        end
+    end
 
     local vertices = {}
 
@@ -421,46 +523,46 @@ function Cube:renderTexture(frontTex, backTex, leftTex, rightTex, topTex, bottom
     )
 
     gfx.tquad(
-        vertices[2][1], vertices[2][2], vertices[2][3], 0, sV,
-        vertices[1][1], vertices[1][2], vertices[1][3], sH, sV,
-        vertices[3][1], vertices[3][2], vertices[3][3], sH, 0,
-        vertices[4][1], vertices[4][2], vertices[4][3], 0, 0,
-        tBa
+        vertices[2][1], vertices[2][2], vertices[2][3], tBa[2][1][1], tBa[2][2][2],
+        vertices[1][1], vertices[1][2], vertices[1][3], tBa[2][2][1], tBa[2][2][2],
+        vertices[3][1], vertices[3][2], vertices[3][3], tBa[2][2][1], tBa[2][1][2],
+        vertices[4][1], vertices[4][2], vertices[4][3], tBa[2][1][1], tBa[2][1][2],
+        tBa[1]
     )
     gfx.tquad(
-        vertices[8][1], vertices[8][2], vertices[8][3], sH, 0,
-        vertices[7][1], vertices[7][2], vertices[7][3], 0, 0,
-        vertices[5][1], vertices[5][2], vertices[5][3], 0, sV,
-        vertices[6][1], vertices[6][2], vertices[6][3], sH, sV,
-        tF
+        vertices[8][1], vertices[8][2], vertices[8][3], tF[2][2][1], tF[2][1][2],
+        vertices[7][1], vertices[7][2], vertices[7][3], tF[2][1][1], tF[2][1][2],
+        vertices[5][1], vertices[5][2], vertices[5][3], tF[2][1][1], tF[2][2][2],
+        vertices[6][1], vertices[6][2], vertices[6][3], tF[2][2][1], tF[2][2][2],
+        tF[1]
     )
     gfx.tquad(
-        vertices[2][1], vertices[2][2], vertices[2][3], 0, sV,
-        vertices[6][1], vertices[6][2], vertices[6][3], sH, sV,
-        vertices[5][1], vertices[5][2], vertices[5][3], sH, 0,
-        vertices[1][1], vertices[1][2], vertices[1][3], 0, 0,
-        tBo
+        vertices[2][1], vertices[2][2], vertices[2][3], tBo[2][1][1], tBo[2][2][2],
+        vertices[6][1], vertices[6][2], vertices[6][3], tBo[2][2][1], tBo[2][2][2],
+        vertices[5][1], vertices[5][2], vertices[5][3], tBo[2][2][1], tBo[2][1][2],
+        vertices[1][1], vertices[1][2], vertices[1][3], tBo[2][1][1], tBo[2][1][2],
+        tBo[1]
     )
     gfx.tquad(
-        vertices[5][1], vertices[5][2], vertices[5][3], sH, sV,
-        vertices[7][1], vertices[7][2], vertices[7][3], sH, 0,
-        vertices[3][1], vertices[3][2], vertices[3][3], 0, 0,
-        vertices[1][1], vertices[1][2], vertices[1][3], 0, sV,
-        tR
+        vertices[5][1], vertices[5][2], vertices[5][3], tR[2][2][1], tR[2][2][2],
+        vertices[7][1], vertices[7][2], vertices[7][3], tR[2][2][1], tR[2][1][2],
+        vertices[3][1], vertices[3][2], vertices[3][3], tR[2][1][1], tR[2][1][2],
+        vertices[1][1], vertices[1][2], vertices[1][3], tR[2][1][1], tR[2][2][2],
+        tR[1]
     )
     gfx.tquad(
-        vertices[2][1], vertices[2][2], vertices[2][3], sH, sV,
-        vertices[4][1], vertices[4][2], vertices[4][3], sH, 0,
-        vertices[8][1], vertices[8][2], vertices[8][3], 0, 0,
-        vertices[6][1], vertices[6][2], vertices[6][3], 0, sV,
-        tL
+        vertices[2][1], vertices[2][2], vertices[2][3], tL[2][2][1], tL[2][2][2],
+        vertices[4][1], vertices[4][2], vertices[4][3], tL[2][2][1], tL[2][1][2],
+        vertices[8][1], vertices[8][2], vertices[8][3], tL[2][1][1], tL[2][1][2],
+        vertices[6][1], vertices[6][2], vertices[6][3], tL[2][1][1], tL[2][2][2],
+        tL[1]
     )
     gfx.tquad(
-        vertices[7][1], vertices[7][2], vertices[7][3], sH, sV,
-        vertices[8][1], vertices[8][2], vertices[8][3], sH, 0,
-        vertices[4][1], vertices[4][2], vertices[4][3], 0, 0,
-        vertices[3][1], vertices[3][2], vertices[3][3], 0, sV,
-        tT
+        vertices[7][1], vertices[7][2], vertices[7][3], tT[2][2][1], tT[2][2][2],
+        vertices[8][1], vertices[8][2], vertices[8][3], tT[2][2][1], tT[2][1][2],
+        vertices[4][1], vertices[4][2], vertices[4][3], tT[2][1][1], tT[2][1][2],
+        vertices[3][1], vertices[3][2], vertices[3][3], tT[2][1][1], tT[2][2][2],
+        tT[1]
     )
 end
 
@@ -841,6 +943,8 @@ end
 
 -- renders the sphere with a texture
 function Sphere:renderTexture(texture)
+    if type(texture) ~= "table" then texture = { texture, { { 0, 0 }, { 1, 1 } } } end
+
     local sphereFaces = Sphere.calculateVertices(self.detail)
 
     -- Doing stuff to each point
@@ -921,18 +1025,18 @@ function Sphere:renderTexture(texture)
                     -- Sphere.renderTriangle(triangle, color)
                     gfx.ttriangle(
                         triangle[1][1], triangle[1][2], triangle[1][3],
-                        fixUV(x / #thisFace[1]),
-                        fixUV(y / (#thisFace - 1)),
+                        map(fixUV(x / #thisFace[1]), 0, 1, texture[2][1][1], texture[2][2][1]),
+                        map(fixUV(y / (#thisFace - 1)), 0, 1, texture[2][1][2], texture[2][2][2]),
 
                         triangle[2][1], triangle[2][2], triangle[2][3],
-                        fixUV((x - 1) / #thisFace[1]),
-                        fixUV((y + 1) / (#thisFace - 1)),
+                        map(fixUV((x - 1) / #thisFace[1]), 0, 1, texture[2][1][1], texture[2][2][1]),
+                        map(fixUV((y + 1) / (#thisFace - 1)), 0, 1, texture[2][1][2], texture[2][2][2]),
 
                         triangle[3][1], triangle[3][2], triangle[3][3],
-                        fixUV(x / #thisFace[1]),
-                        fixUV((y + 1) / (#thisFace - 1)),
+                        map(fixUV(x / #thisFace[1]), 0, 1, texture[2][1][1], texture[2][2][1]),
+                        map(fixUV((y + 1) / (#thisFace - 1)), 0, 1, texture[2][1][2], texture[2][2][2]),
 
-                        texture
+                        texture[1]
                     )
                 end
                 if x ~= #thisFace[1] then
@@ -944,18 +1048,18 @@ function Sphere:renderTexture(texture)
                     -- Sphere.renderTriangle(triangle, color)
                     gfx.ttriangle(
                         triangle[1][1], triangle[1][2], triangle[1][3],
-                        fixUV(x / #thisFace[1]),
-                        fixUV((y + 1) / (#thisFace - 1)),
+                        map(fixUV(x / #thisFace[1]), 0, 1, texture[2][1][1], texture[2][2][1]),
+                        map(fixUV((y + 1) / (#thisFace - 1)), 0, 1, texture[2][1][2], texture[2][2][2]),
 
                         triangle[2][1], triangle[2][2], triangle[2][3],
-                        fixUV((x + 1) / #thisFace[1]),
-                        fixUV(y / (#thisFace - 1)),
+                        map(fixUV((x + 1) / #thisFace[1]), 0, 1, texture[2][1][1], texture[2][2][1]),
+                        map(fixUV(y / (#thisFace - 1)), 0, 1, texture[2][1][2], texture[2][2][2]),
 
                         triangle[3][1], triangle[3][2], triangle[3][3],
-                        fixUV(x / #thisFace[1]),
-                        fixUV(y / (#thisFace - 1)),
+                        map(fixUV(x / #thisFace[1]), 0, 1, texture[2][1][1], texture[2][2][1]),
+                        map(fixUV(y / (#thisFace - 1)), 0, 1, texture[2][1][2], texture[2][2][2]),
 
-                        texture
+                        texture[1]
                     )
                 end
             end
@@ -966,6 +1070,10 @@ end
 
 --[[
     DOCUMENTATION:
+
+    IMPORTANT:
+    ATTACHASCAPE() AND ATTACHTOBODY() DO NOT WORK ON VERSIONS 1.19.50+
+    ANY MOD USING THESE WILL NOT WORK
 
     updateCosmeticTools()
         Updates the player's positions and rotations to be used by other functions. For the best result, run this function at the start of render3d()
@@ -982,6 +1090,7 @@ end
     updateCapes()
         Updates the physics needed if you're using Object:attachAsCape(). If you're not using that attachment type, you don't need this.
         You would run this function in update().
+        Makes globals velX, velY, velZ available. This is the player's velocity.
 
     enableShading()
         Enables shading mode, hits fps hard but looks amazing.
@@ -1007,19 +1116,39 @@ end
         Rotates a point in 3d space.
 
 
-    Animated Textures:
-        Textures on objects can be animated using Animated Textures. Essentially, different images are cycled through on the object with a given delay.
+    Textures:
+        All shapes can use Textures. Textures have an advantage over normal images because they can be animated and/or cropped.
 
-            local Your_Texture = AnimatedTexture:new(texturesArray, delay)
-                Sets up a new animated texture, stored in a variable of your choice.
-                texturesArray is a table with the textures that you want to use in the order you want.
-                delay is how often the texture changes
+            local Your_Texture = Texture:new()
+                Sets up a new Texture object.
+
+            local Your_Source = Texture:newSource(link, width, height)
+                Textures draw their images from Sources. This function creates a Source.
+                The width and height parameters should be the width and height of the image you're inputting.
+
+            Your_Texture:addImage(Source, cropX1, cropY1, cropX2, cropY2)
+                Adds an image to your texture. This image will not be displayed, only saved in the Texture for later use.
+                :addFrame() can pull from it to create an animation, or it can be used by :setFrame()
+                It is useful to keep track of the order in which of add images. The number (first, second third, ...) is used to identify the image.
+                The image is cropped from (cropX1, cropY1) to (cropX2, cropY2). You may leave these empty though, if you don't want to crop.
+
+            Your_Texture:addFrame(imageNumber, lengthOfFrame)
+                Adds a frame to the animation of this texture.
+                lengthOfFrame is in seconds, the lowest it can go it 0.1.
+
+            Your_Texture:setFrame(imageNumber)
+                Sets the frame used by the texture, overwriting the animation.
+                Must be after any update to the texture.
+
             Your_Texture:update()
-                Updates the animated texture. The animation won't work without this. *Put it in the update() function.*
+                Updates the texture. Should be done in the update() function.
+            updateTextures()
+                Updates all textures at the same time. Should be done in the update() function.
 
-            Your_Texture.texture
-                How you get the current texture out of the AnimatedTexture. For example, :renderTexture(Your_Texture.texture)
-
+            Your_Texture.texture !IMPORTANT!
+                How you get the actual texture out of the Texture object.
+                For example, :renderTexture(Your_Texture.texture)
+                This works on any textured shape in the lib.
 
     Object:
         An object is a collection of 3d shapes which attaches to a specified body part. Anything done to an Object is also done to all the shapes it includes.
@@ -1049,8 +1178,10 @@ end
     Cube:
         A 3d object with a position, width, height, and depth that gets attached to an Object.
 
-            local Your_Cube = Cube:new(Object, x, y, z, width, height, depth)
+            Cube:new(Object, x, y, z, width, height, depth)
                 Creates a new Cube that is attached to the specified object. It has a position {x, y, z} (relative to the object it's attached to) and has a specified width, height, and depth.
+            Cube:newCape(Object)
+                Exactly the same as Cube:new, but automatically fills in the size and position to make your cube look like a Minecraft cape.
 
             :rotateCustom(originX, originY, originZ, pitch, yaw, roll)
                 Rotates the cube around a custom origin point with a specified pitch, yaw, and roll. Note that the origin is relative to the object it's attached to.
@@ -1067,7 +1198,7 @@ end
 
             :renderTexture(frontTex, backTex, leftTex, rightTex, topTex, bottomTex, scaleHorizontal, scaleVertical)
                 Renders the cube into the world with specified textures on each side.
-                frontTex, backTex, leftTex, rightTex, topTex, bottomTex can be strings to a texture file or an AnimatedTexture. If one is not defined, it will default to whatever frontTex is
+                frontTex, backTex, leftTex, rightTex, topTex, bottomTex can be strings to a texture file or a Texture. If one is not defined, it will default to whatever frontTex is
                 scaleHorizontal and scaleVertical are controls to scale the textures on the cube. These values can be in the range (0-1) with 0 making the texture stretched and 1 being the default value.
                 :renderTexture("textures/blocks/planks_oak") is valid. It will make all sides the oak planks texture and both the horizontal and verticle scales will be 1. 
 
@@ -1075,7 +1206,7 @@ end
     Sphere:
         A 3d object with a position and radius that gets attached to an Object.
 
-            local Your_Sphere = Sphere:new(Object, x, y, z, radius)
+            Sphere:new(Object, x, y, z, radius)
                 Creates a new Sphere that is attached to the specified object. It has a position {x, y, z} (relative to the object it's attached to) and has a specified radius.
             :setDetail("Low" | "Normal" | "Insane")
                 Sets the detail level of the Sphere. If detail is not specified, it will default to Normal.
@@ -1101,7 +1232,6 @@ end
                 Renders the sphere into the world with a specified color. The color parameter should be {Red(0-255), Green(0-255), Blue(0-255)}.
 
             :renderTexture(texture)
-                Renders the sphere into the world with a specified texture. This texture can be a string to a texture file or an AnimatedTexture.
-]]
+                Renders the sphere into the world with a specified texture. This texture can be a string to a texture file or a Texture.
 
--- add Cube:newCape()
+]]
