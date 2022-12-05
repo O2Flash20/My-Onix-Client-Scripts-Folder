@@ -56,7 +56,7 @@ function gfx2.fillRoundRect(x, y, width, height, radius) end
 ---@param height number Height of the rectangle
 ---@param radius number Radius of the rounded corners
 ---@param lineWidth number How large is the line
-function gfx2.fillRoundRect(x, y, width, height, lineWidth, radius) end
+function gfx2.drawRoundRect(x, y, width, height, lineWidth, radius) end
 
 
 ---Fills an elipse (circle but possibly wider)
@@ -143,7 +143,6 @@ function gfx2.textSize(text, scale) end
 function gfx2.textSize(text) end
 
 
-
 ---@class Gfx2Texture
 ---@field width integer The width of the texture
 ---@field height integer The height of the texture
@@ -183,7 +182,6 @@ function _acp__Gfx2Texture_:save(path) end
 function _acp__Gfx2Texture_:unload() end
 
 
-
 ---Loads a texture from base64 text (can be used outside of render2)
 ---@param width integer
 ---@param height integer
@@ -195,6 +193,12 @@ function gfx2.loadImage(width, height, Base64Texture) end
 ---@param filepath string The path relative to the Scripts/Data folder
 ---@return Gfx2Texture|nil The loaded texture or nil
 function gfx2.loadImage(filepath) end
+
+---Creates a texture with the specified width and height
+---@param width integer
+---@param height integer
+---@return Gfx2Texture|nil The created texture or nil
+function gfx2.createImage(width, height) end
 
 
 
@@ -224,7 +228,6 @@ function gfx2.drawImage(x, y, width, height, image, opacity) end
 ---@param opacity number Opactity at which to render the image at (0.0 to 1.0)
 ---@param isLinear boolean Should the scaling be linear or is it gonna be nearest neighbor
 function gfx2.drawImage(x, y, width, height, image, opacity, isLinear) end
-
 
 
 

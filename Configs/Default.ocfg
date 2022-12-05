@@ -16,8 +16,8 @@ Command Block Hud:1:
    value:6:1.000000
   position:1:
    type:4:5
-   x:6:0.000000
-   y:6:0.000000
+   x:6:50.000000
+   y:6:50.000000
  enabled:2:false
 ThreeD View:1:
  settings:1:
@@ -26,11 +26,11 @@ ThreeD View:1:
    key:4:0
   scale:1:
    type:4:3
-   value:6:1.260000
+   value:6:1.000000
   position:1:
    type:4:5
-   x:6:36.000015
-   y:6:18.035995
+   x:6:50.000000
+   y:6:100.000000
  enabled:2:false
 Cosmetics:1:
  settings:1:
@@ -55,7 +55,7 @@ Cosmetics:1:
    chroma:2:false
   cosmeticNum:1:
    type:4:2
-   value:4:2
+   value:4:1
   haloCol:1:
    b:6:0.000000
    r:6:1.000000
@@ -90,7 +90,7 @@ Cosmetics:1:
    chroma:2:false
   sunglassesHeight:1:
    type:4:3
-   value:6:1.001624
+   value:6:1.000000
   sunglassesColor:1:
    b:6:0.011765
    r:6:0.011765
@@ -104,7 +104,7 @@ Arrow Trajectory:1:
  settings:1:
   Key:1:
    type:4:4
-   key:4:90
+   key:4:0
   color:1:
    b:6:1.000000
    r:6:0.000000
@@ -112,13 +112,13 @@ Arrow Trajectory:1:
    g:6:1.000000
    a:6:0.392157
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   showTrail:1:
    type:4:1
    value:2:true
   renderBehind:1:
    type:4:1
-   value:2:true
+   value:2:false
  enabled:2:false
 Better Hunger:1:
  settings:1:
@@ -127,7 +127,7 @@ Better Hunger:1:
    key:4:0
   scale:1:
    type:4:3
-   value:6:0.938889
+   value:6:1.000000
   backgroundC:1:
    b:6:0.200000
    r:6:0.200000
@@ -135,7 +135,7 @@ Better Hunger:1:
    g:6:0.200000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   hungerPreviewC:1:
    b:6:0.000000
    r:6:0.000000
@@ -143,7 +143,7 @@ Better Hunger:1:
    g:6:1.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   noSprintC:1:
    b:6:0.000000
    r:6:0.392157
@@ -151,15 +151,15 @@ Better Hunger:1:
    g:6:0.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   hungerC:1:
-   b:6:0.359492
-   r:6:0.910400
+   b:6:0.000000
+   r:6:0.784314
    type:4:7
-   g:6:0.359492
+   g:6:0.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   saturationC:1:
    b:6:0.003922
    r:6:0.933333
@@ -167,7 +167,7 @@ Better Hunger:1:
    g:6:0.901961
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   saturationPreviewC:1:
    b:6:0.000000
    r:6:0.588235
@@ -175,7 +175,7 @@ Better Hunger:1:
    g:6:1.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   canEatC:1:
    b:6:0.000000
    r:6:0.000000
@@ -183,20 +183,20 @@ Better Hunger:1:
    g:6:0.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   cantEatC:1:
    b:6:0.000000
-   r:6:0.568978
+   r:6:1.000000
    type:4:7
    g:6:0.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   position:1:
    type:4:5
-   x:6:329.000000
-   y:6:292.867981
- enabled:2:true
+   x:6:500.000000
+   y:6:25.000000
+ enabled:2:false
 Skinstealer:1:
  settings:1:
   _setting__9839599158341423445:1:
@@ -210,7 +210,7 @@ Skinstealer:1:
    key:4:0
   _setting__16801015383468684115:1:
    type:4:4
-   key:4:77
+   key:4:0
   _setting__15292256483872599244:1:
    type:4:1
    value:2:false
@@ -223,23 +223,23 @@ Skinstealer:1:
   _setting__6759645327598465686:1:
    type:4:1
    value:2:false
- enabled:2:true
+ enabled:2:false
 Bridge Overlay:1:
  settings:1:
   Key:1:
    type:4:4
    key:4:0
   color:1:
-   b:6:0.000000
-   r:6:1.000000
+   b:6:1.000000
+   r:6:0.000000
    type:4:7
-   g:6:0.666667
-   a:6:1.000000
+   g:6:0.000000
+   a:6:0.294118
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   height:1:
    type:4:2
-   value:4:87
+   value:4:86
   radius:1:
    type:4:2
    value:4:5
@@ -254,17 +254,17 @@ Block Map:1:
    key:4:0
   gridR:1:
    type:4:2
-   value:4:49
+   value:4:25
   scale:1:
    type:4:3
-   value:6:1.106944
+   value:6:1.000000
   position:1:
    type:4:5
-   x:6:11.666656
-   y:6:67.417984
+   x:6:500.000000
+   y:6:25.000000
   checkLimit:1:
    type:4:2
-   value:4:13
+   value:4:10
   checkFrequency:1:
    type:4:2
    value:4:1
@@ -273,19 +273,19 @@ Dev Block Leaker:1:
  settings:1:
   Sv:1:
    type:4:1
-   value:2:true
+   value:2:false
   Key:1:
    type:4:4
    key:4:0
   HighlightRadius:1:
    type:4:2
-   value:4:4
+   value:4:10
   B:1:
    type:4:1
-   value:2:true
+   value:2:false
   Lb:1:
    type:4:1
-   value:2:true
+   value:2:false
  enabled:2:false
 ChatLogger:1:
  settings:1:
@@ -305,7 +305,7 @@ custom chat:1:
    g:6:0.996078
    a:6:0.996078
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   scale:1:
    type:4:3
    value:6:1.000000
@@ -322,7 +322,7 @@ custom chat:1:
    g:6:0.003922
    a:6:0.498039
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   chatboxColor:1:
    b:6:0.003922
    r:6:0.003922
@@ -330,7 +330,7 @@ custom chat:1:
    g:6:0.003922
    a:6:0.498039
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   clearClose:1:
    type:4:1
    value:2:false
@@ -341,13 +341,13 @@ custom chat:1:
    g:6:0.003922
    a:6:0.784314
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   AlwaysShowChat:1:
    type:4:1
-   value:2:true
+   value:2:false
   getOwnMessage:1:
    type:4:1
-   value:2:true
+   value:2:false
   discordChat:1:
    type:4:1
    value:2:false
@@ -359,11 +359,11 @@ custom chat:1:
    value:4:3
   sizeX:1:
    type:4:2
-   value:4:260
+   value:4:200
   position:1:
    type:4:5
-   x:6:-5.333351
-   y:6:63.727997
+   x:6:50.000000
+   y:6:200.000000
  enabled:2:false
 Chat Timestamps:1:
  settings:1:
@@ -377,6 +377,12 @@ Cosmetics Test:1:
    type:4:4
    key:4:0
  enabled:2:false
+Cosmetics v2 Example:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:true
 Item Held Info:1:
  settings:1:
   Key:1:
@@ -387,9 +393,9 @@ Item Held Info:1:
    value:6:1.000000
   position:1:
    type:4:5
-   x:6:435.500000
-   y:6:318.148041
- enabled:2:true
+   x:6:500.000000
+   y:6:25.000000
+ enabled:2:false
 Cosmetics Spheres Test:1:
  settings:1:
   Key:1:
@@ -430,8 +436,8 @@ Death Coordinates:1:
    value:4:1
   waypoint_message:1:
    type:4:1
-   value:2:true
- enabled:2:true
+   value:2:false
+ enabled:2:false
 Cape Cosmetics Test:1:
  settings:1:
   Key:1:
@@ -443,13 +449,7 @@ Capes Lib Test:1:
   Key:1:
    type:4:4
    key:4:0
- enabled:2:true
-Lua Module:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
- enabled:2:true
+ enabled:2:false
 Texture Sphere Test:1:
  settings:1:
   Key:1:
@@ -475,8 +475,8 @@ Replay Mod:1:
    value:6:1.000000
   position:1:
    type:4:5
-   x:6:462.333282
-   y:6:53.992012
+   x:6:10.000000
+   y:6:10.000000
  enabled:2:false
 Fill Better:1:
  settings:1:
@@ -497,7 +497,7 @@ FPS:1:
    value:6:1.000000
   multiplier:1:
    type:4:3
-   value:6:861903.812500
+   value:6:1.000000
   background:1:
    b:6:0.000000
    r:6:0.000000
@@ -505,19 +505,19 @@ FPS:1:
    g:6:0.000000
    a:6:0.498039
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   color:1:
    b:6:1.000000
-   r:6:0.000000
+   r:6:1.000000
    type:4:7
-   g:6:0.933333
+   g:6:1.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   position:1:
    type:4:5
-   x:6:563.000000
-   y:6:230.794006
+   x:6:0.000000
+   y:6:0.000000
  enabled:2:false
 Fulldark:1:
  settings:1:
@@ -532,24 +532,24 @@ Logger:1:
    key:4:0
   scale:1:
    type:4:3
-   value:6:0.633337
+   value:6:0.780140
   backColor:1:
-   b:6:0.200000
-   r:6:0.200000
+   b:6:0.157023
+   r:6:0.138024
    type:4:7
-   g:6:0.200000
-   a:6:0.895556
+   g:6:0.145285
+   a:6:0.868742
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   showNumber:1:
    type:4:1
-   value:2:true
+   value:2:false
   wRatio:1:
    type:4:3
-   value:6:0.360714
+   value:6:0.434379
   tScale:1:
    type:4:3
-   value:6:0.845238
+   value:6:1.091754
   foreColor:1:
    b:6:1.000000
    r:6:1.000000
@@ -557,11 +557,11 @@ Logger:1:
    g:6:1.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   position:1:
    type:4:5
-   x:6:398.428589
-   y:6:53.219437
+   x:6:388.333313
+   y:6:51.189301
  enabled:2:true
 Mini Map:1:
  settings:1:
@@ -570,17 +570,17 @@ Mini Map:1:
    key:4:0
   scale:1:
    type:4:3
-   value:6:2.167499
+   value:6:1.000000
   radius:1:
    type:4:2
-   value:4:150
+   value:4:50
   position:1:
    type:4:5
-   x:6:52.333328
-   y:6:22.177994
+   x:6:0.000000
+   y:6:100.000000
   checkLimit:1:
    type:4:2
-   value:4:18
+   value:4:50
  enabled:2:false
 Motion blur:1:
  settings:1:
@@ -589,7 +589,7 @@ Motion blur:1:
    key:4:0
   Oppacity:1:
    type:4:2
-   value:4:26
+   value:4:255
  enabled:2:false
 Win Particles:1:
  settings:1:
@@ -600,11 +600,11 @@ Win Particles:1:
    b:6:0.000000
    r:6:1.000000
    type:4:7
-   g:6:0.936001
+   g:6:0.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
- enabled:2:true
+   chroma:2:false
+ enabled:2:false
 Redstone Utility Power Level:1:
  settings:1:
   Key:1:
@@ -650,9 +650,15 @@ World Save:1:
    value:6:1.000000
   r:1:
    type:4:2
-   value:4:30
+   value:4:15
   position:1:
    type:4:5
-   x:6:375.333344
-   y:6:25.029999
+   x:6:10.000000
+   y:6:10.000000
  enabled:2:false
+Lua Module:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:true
