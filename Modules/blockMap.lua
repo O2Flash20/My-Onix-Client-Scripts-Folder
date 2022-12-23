@@ -62,10 +62,12 @@ function update()
 
                 height = 0
 
-                if dimension.getBlock(px + (i - gridSize / 2), ySearch, pz + (j - gridSize / 2)).name == "air" or invisWater(px + (i - gridSize / 2), ySearch, pz + (j - gridSize / 2)) then
+                if dimension.getBlock(px + (i - gridSize / 2), ySearch, pz + (j - gridSize / 2)).name == "air" or
+                    invisWater(px + (i - gridSize / 2), ySearch, pz + (j - gridSize / 2)) then
                     -- Check downwards
                     checks = 0
-                    while dimension.getBlock(px + (i - gridSize / 2), ySearch, pz + (j - gridSize / 2)).name == "air" or invisWater(px + (i - gridSize / 2), ySearch, pz + (j - gridSize / 2)) and checks < checkLimit do
+                    while dimension.getBlock(px + (i - gridSize / 2), ySearch, pz + (j - gridSize / 2)).name == "air" or
+                        invisWater(px + (i - gridSize / 2), ySearch, pz + (j - gridSize / 2)) and checks < checkLimit do
                         checks = checks + 1
 
                         height = height - 1
@@ -75,7 +77,8 @@ function update()
 
                     -- Get light
                     if lightEnabled then
-                        bLight, sLight = dimension.getBrightness(px + (i - gridSize / 2), ySearch + 1, pz + (j - gridSize / 2))
+                        bLight, sLight = dimension.getBrightness(px + (i - gridSize / 2), ySearch + 1,
+                            pz + (j - gridSize / 2))
                         sLight = sLight * (math.abs(dimension.time() - 0.5) * 2)
 
                         if bLight > sLight then
@@ -87,7 +90,9 @@ function update()
                 else
                     -- Check upwards
                     checks = 0
-                    while dimension.getBlock(px + (i - gridSize / 2), ySearch, pz + (j - gridSize / 2)).name ~= "air" and invisWater(px + (i - gridSize / 2), ySearch, pz + (j - gridSize / 2)) == false and checks < checkLimit do
+                    while dimension.getBlock(px + (i - gridSize / 2), ySearch, pz + (j - gridSize / 2)).name ~= "air" and
+                        invisWater(px + (i - gridSize / 2), ySearch, pz + (j - gridSize / 2)) == false and
+                        checks < checkLimit do
                         checks = checks + 1
 
                         height = height + 1
@@ -98,7 +103,8 @@ function update()
 
                     -- Get light
                     if lightEnabled then
-                        bLight, sLight = dimension.getBrightness(px + (i - gridSize / 2), ySearch, pz + (j - gridSize / 2))
+                        bLight, sLight = dimension.getBrightness(px + (i - gridSize / 2), ySearch,
+                            pz + (j - gridSize / 2))
                         sLight = sLight * (math.abs(dimension.time() - 0.5) * 2)
 
                         if bLight > sLight then
@@ -110,7 +116,11 @@ function update()
                 end
 
                 -- lava glow lichen tuff
-                if block == "tuff" or block == "glow_lichen" or block == "lava" or block == "deepslate" or block == "tallgrass" or block == "torch" or block == "wheat" or block == "grass" or block == "kelp" or block == "grass_path" or block == "sand" or block == "gravel" or block == "seagrass" or block == "red_flower" or block == "water" or block == "flowing_water" or block == "leaves2" or block == "leaves" then
+                if block == "tuff" or block == "glow_lichen" or block == "lava" or block == "deepslate" or
+                    block == "tallgrass" or block == "torch" or block == "wheat" or block == "grass" or block == "kelp"
+                    or block == "grass_path" or block == "sand" or block == "gravel" or block == "seagrass" or
+                    block == "red_flower" or block == "water" or block == "flowing_water" or block == "leaves2" or
+                    block == "leaves" then
                     r, g, b = getRBG(block)
                 else
                     color = getMapColorName(block, blockdata)
@@ -156,7 +166,8 @@ function update()
             i = i + 1
 
             -- If the next color is the same as this one, add it
-            if colourMap[i][1] == colourMap[i + 1][1] and colourMap[i][2] == colourMap[i + 1][2] and colourMap[i][3] == colourMap[i + 1][3] and i % gridSize ~= 0 and i ~= gridSize * gridSize - 1 then
+            if colourMap[i][1] == colourMap[i + 1][1] and colourMap[i][2] == colourMap[i + 1][2] and
+                colourMap[i][3] == colourMap[i + 1][3] and i % gridSize ~= 0 and i ~= gridSize * gridSize - 1 then
                 if rectLength == 0 then
                     rectStart = { i % gridSize, math.floor(i / gridSize) }
                 end
@@ -181,7 +192,8 @@ function render()
     for i = 1, #mapRects, 1 do
         gfx.color(mapRects[i][3][1], mapRects[i][3][2], mapRects[i][3][3])
 
-        gfx.rect((mapRects[i][1][1]) * (sizeX / gridSize), (mapRects[i][1][2]) * (sizeX / gridSize), (sizeX / gridSize) * mapRects[i][2], sizeX / gridSize)
+        gfx.rect((mapRects[i][1][1]) * (sizeX / gridSize), (mapRects[i][1][2]) * (sizeX / gridSize),
+            (sizeX / gridSize) * mapRects[i][2], sizeX / gridSize)
     end
     -- There's a problem with rendering the blocks at the ends so i just hardcoded it :P
     if #colourMap > 0 then
@@ -198,16 +210,20 @@ function render()
 
     -- A square on the player
     gfx.color(255, 0, 255)
-    gfx.rect(((gridSize / 2) * sizeX / gridSize) - sizeX / gridSize, (gridSize / 2) * sizeX / gridSize - sizeX / gridSize, sizeX / gridSize, sizeX / gridSize)
+    gfx.rect(((gridSize / 2) * sizeX / gridSize) - sizeX / gridSize, (gridSize / 2) * sizeX / gridSize - sizeX / gridSize
+        , sizeX / gridSize, sizeX / gridSize)
 
     -- Direction line
     yaw, pitch = player.rotation()
     gfx.color(255, 0, 0)
-    x1, y1, x2, y2, x3, y3, x4, y4 = directionLine(math.rad(yaw + 90), 13, ((gridSize / 2) * sizeX / gridSize) - sizeX / gridSize / 2, (gridSize / 2) * sizeX / gridSize - sizeX / gridSize / 2)
+    x1, y1, x2, y2, x3, y3, x4, y4 = directionLine(math.rad(yaw + 90), 13,
+        ((gridSize / 2) * sizeX / gridSize) - sizeX / gridSize / 2,
+        (gridSize / 2) * sizeX / gridSize - sizeX / gridSize / 2)
     gfx.triangle(x1, y1, x2, y2, x3, y3)
     gfx.triangle(x4, y4, x3, y3, x2, y2)
 
-    directionTriangle(math.rad(yaw + 90), 13, ((gridSize / 2) * sizeX / gridSize) - sizeX / gridSize / 2, (gridSize / 2) * sizeX / gridSize - sizeX / gridSize / 2)
+    directionTriangle(math.rad(yaw + 90), 13, ((gridSize / 2) * sizeX / gridSize) - sizeX / gridSize / 2,
+        (gridSize / 2) * sizeX / gridSize - sizeX / gridSize / 2)
 
     -- "log" for debugging
     gfx.color(255, 255, 255)
@@ -219,7 +235,9 @@ function getRBG(name)
     if name == "grass" or name == "slime" then
         return 127, 178, 56
 
-    elseif name == "sand" or name == "birch_trapdoor" or name == "birch_door" or name == "birch_fence_gate" or name == "birch_pressure_plate" or name == "sandstone" or name == "glowstone" or name == "end_stone" or name == "end_bricks" or name == "end_brick_stairs" or name == "bone_block" or name == "scaffolding" then
+    elseif name == "sand" or name == "birch_trapdoor" or name == "birch_door" or name == "birch_fence_gate" or
+        name == "birch_pressure_plate" or name == "sandstone" or name == "glowstone" or name == "end_stone" or
+        name == "end_bricks" or name == "end_brick_stairs" or name == "bone_block" or name == "scaffolding" then
         return 247, 233, 163
 
     elseif name == "cobweb" or name == "bed" or name == "wool" then
@@ -231,11 +249,14 @@ function getRBG(name)
     elseif name == "ice" or name == "blue_ice" or name == "packed_ice" then
         return 160, 160, 255
 
-    elseif name == "iron_block" or name == "iron_bars" or name == "iron_trapdoor" or name == "iron_door" or name == "anvil" or name == "grindstone" or name == "lodestone" or name == "lantern" then
+    elseif name == "iron_block" or name == "iron_bars" or name == "iron_trapdoor" or name == "iron_door" or
+        name == "anvil" or name == "grindstone" or name == "lodestone" or name == "lantern" then
         return 167, 167, 167
 
         -- missing a bunch
-    elseif name == "sapling" or name == "seagrass" or name == "kelp" or name == "red_flower" or name == "double_plant" or name == "reeds" or name == "wheat" or name == "tallgrass" or name == "leaves" or name == "azalea_leaves" or name == "big_dripleaf" or name == "small_dripleaf_block" or name == "leaves2" then
+    elseif name == "sapling" or name == "seagrass" or name == "kelp" or name == "red_flower" or name == "double_plant" or
+        name == "reeds" or name == "wheat" or name == "tallgrass" or name == "leaves" or name == "azalea_leaves" or
+        name == "big_dripleaf" or name == "small_dripleaf_block" or name == "leaves2" then
         return 0, 124, 0
 
     elseif name == "snow" or name == "snow_layer" or name == "powder_snow" then
@@ -250,7 +271,8 @@ function getRBG(name)
     elseif name == "water" or name == "flowing_water" then
         return 64, 64, 255
 
-    elseif name == "stone" or name == "normal_stone_stairs" or name == "stone_slab4" or name == "stone_slab3" or name == "gravel" then
+    elseif name == "stone" or name == "normal_stone_stairs" or name == "stone_slab4" or name == "stone_slab3" or
+        name == "gravel" then
         return 112, 112, 112
 
     elseif name == "air" then

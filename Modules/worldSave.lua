@@ -16,14 +16,15 @@ function scan()
     for i = 1, r, 1 do
         for j = 1, r, 1 do
             for k = 1, r, 1 do
-                x = px+(i-r/2)
-                y = py+(j-r/2)
-                z = pz+(k-r/2)
+                x = px + (i - r / 2)
+                y = py + (j - r / 2)
+                z = pz + (k - r / 2)
                 add(dimension.getBlock(x, y, z).name, true)
             end
         end
     end
 end
+
 client.settings.addFunction("Scan World", "scan", "Scan")
 
 -- function load()
@@ -43,6 +44,7 @@ client.settings.addFunction("Scan World", "scan", "Scan")
 function load()
     loading = true
 end
+
 client.settings.addFunction("Load World", "load", "Load")
 
 function write(text)
@@ -53,9 +55,9 @@ end
 
 function add(text, newline)
     if newline then
-        write(get()..text.."\n")
+        write(get() .. text .. "\n")
     else
-        write(get()..text)
+        write(get() .. text)
     end
 end
 
@@ -77,13 +79,13 @@ loading = false
 function update()
     d = d + 0.5
     px, py, pz = player.position()
-    if d%1==0 and loading and d < #getLines() then
-        z=math.floor((d%r)+200)
-        y=math.floor(((d/r)%r)+100)
-        x=math.floor((d/(r*r))+0)
+    if d % 1 == 0 and loading and d < #getLines() then
+        z = math.floor((d % r) + 200)
+        y = math.floor(((d / r) % r) + 100)
+        x = math.floor((d / (r * r)) + 0)
         print(x, y, z)
         if getLines()[d] ~= "air" then
-            client.execute("execute /setblock "..x.." "..y.." "..z.." "..getLines()[d])
+            client.execute("execute /setblock " .. x .. " " .. y .. " " .. z .. " " .. getLines()[d])
         else
             -- client.execute("execute /setblock "..x.." "..y.." "..z.." ".."glass")
         end

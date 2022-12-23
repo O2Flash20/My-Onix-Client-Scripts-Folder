@@ -104,7 +104,7 @@ Arrow Trajectory:1:
  settings:1:
   Key:1:
    type:4:4
-   key:4:0
+   key:4:78
   color:1:
    b:6:1.000000
    r:6:0.000000
@@ -194,9 +194,9 @@ Better Hunger:1:
    chroma:2:false
   position:1:
    type:4:5
-   x:6:500.000000
-   y:6:25.000000
- enabled:2:false
+   x:6:325.666656
+   y:6:292.200012
+ enabled:2:true
 Skinstealer:1:
  settings:1:
   _setting__9839599158341423445:1:
@@ -382,7 +382,7 @@ Cosmetics v2 Example:1:
   Key:1:
    type:4:4
    key:4:0
- enabled:2:true
+ enabled:2:false
 Item Held Info:1:
  settings:1:
   Key:1:
@@ -591,6 +591,12 @@ Motion blur:1:
    type:4:2
    value:4:255
  enabled:2:false
+Raycast Test:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
 Win Particles:1:
  settings:1:
   Key:1:
@@ -604,7 +610,7 @@ Win Particles:1:
    a:6:1.000000
    rainbow:2:false
    chroma:2:false
- enabled:2:false
+ enabled:2:true
 Redstone Utility Power Level:1:
  settings:1:
   Key:1:
