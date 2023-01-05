@@ -39,7 +39,7 @@ function gfx2.fillRect(x, y, width, height) end
 ---@param width number Width of the rectangle
 ---@param height number Height of the rectangle
 ---@param lineWidth number How large is the line
-function gfx2.fillRect(x, y, width, height, lineWidth) end
+function gfx2.drawRect(x, y, width, height, lineWidth) end
 
 ---Fills a rectangle with rounded corners
 ---@param x number Position on the X axis
@@ -56,7 +56,7 @@ function gfx2.fillRoundRect(x, y, width, height, radius) end
 ---@param height number Height of the rectangle
 ---@param radius number Radius of the rounded corners
 ---@param lineWidth number How large is the line
-function gfx2.drawRoundRect(x, y, width, height, lineWidth, radius) end
+function gfx2.drawRoundRect(x, y, width, height, radius, lineWidth) end
 
 
 ---Fills an elipse (circle but possibly wider)
@@ -151,7 +151,7 @@ local _acp__Gfx2Texture_ = {}
 ---Gets the color of a pixel in the texture
 ---@param x integer X position of the pixel to get
 ---@param y integer Y position of the pixel to get
----@return iColor
+---@return iColor color The color of the pixel
 function _acp__Gfx2Texture_:getPixel(x, y) end
 
 ---Sets the color of a pixel in the texture, you must unload if you used it for changes to apply
@@ -175,7 +175,7 @@ function _acp__Gfx2Texture_:setPixel(x, y, r, g, b ,a) end
 
 ---Saves the texture to a png file (for if you wana draw to it using setPixel)
 ---@param path string Where to save this
----@return boolean saved
+---@return boolean saved Did the texture successfully save
 function _acp__Gfx2Texture_:save(path) end
 
 ---Unloads the texture when you no longer need it or to reload its content
@@ -186,18 +186,32 @@ function _acp__Gfx2Texture_:unload() end
 ---@param width integer
 ---@param height integer
 ---@param Base64Texture string The texture itself, convert with https://cdn.discordapp.com/attachments/877878499749289984/1029113574406242405/ImgToBase64.exe
----@return Gfx2Texture|nil The loaded texture or nil
+---@return Gfx2Texture|nil texture The loaded texture or nil
 function gfx2.loadImage(width, height, Base64Texture) end
 
 ---Loads a texture from base64 text (can be used outside of render2)
 ---@param filepath string The path relative to the Scripts/Data folder
----@return Gfx2Texture|nil The loaded texture or nil
+---@return Gfx2Texture|nil texture The loaded texture or nil
 function gfx2.loadImage(filepath) end
+
+---Loads a texture from a url, great for things that render images that changes
+---Note that while the texture is loading, drawing it will draw a gfx2.color() colored rectangle
+---@param url string The url to download the image from
+---@return Gfx2Texture texture The texture that will be loaded from the web
+function gfx2.loadImageFromUrl(url) end
+
+---Loads a texture from a url, great for things that render images that changes
+---Note that while the texture is loading, drawing it will draw a gfx2.color() colored rectangle
+---Please don't use this for static images that don't change.
+---@param url string The url to download the image from
+---@param headers string[] Headers if needed to get access to the image
+---@return Gfx2Texture texture The texture that will be loaded from the web
+function gfx2.loadImageFromUrl(url, headers) end
 
 ---Creates a texture with the specified width and height
 ---@param width integer
 ---@param height integer
----@return Gfx2Texture|nil The created texture or nil
+---@return Gfx2Texture|nil texture The created texture or nil
 function gfx2.createImage(width, height) end
 
 
@@ -224,7 +238,7 @@ function gfx2.drawImage(x, y, width, height, image, opacity) end
 ---@param y number The position on the y axis
 ---@param width number Width of the image to render
 ---@param height number Height of the image to render
----@param image Gfx2Texture image to render
+---@param image Gfx2Texture Image to render
 ---@param opacity number Opactity at which to render the image at (0.0 to 1.0)
 ---@param isLinear boolean Should the scaling be linear or is it gonna be nearest neighbor
 function gfx2.drawImage(x, y, width, height, image, opacity, isLinear) end

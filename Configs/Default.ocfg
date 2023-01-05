@@ -29,8 +29,8 @@ ThreeD View:1:
    value:6:1.000000
   position:1:
    type:4:5
-   x:6:50.000000
-   y:6:100.000000
+   x:6:334.333313
+   y:6:74.281998
  enabled:2:false
 Cosmetics:1:
  settings:1:
@@ -104,7 +104,7 @@ Arrow Trajectory:1:
  settings:1:
   Key:1:
    type:4:4
-   key:4:78
+   key:4:0
   color:1:
    b:6:1.000000
    r:6:0.000000
@@ -371,11 +371,33 @@ Chat Timestamps:1:
    type:4:4
    key:4:0
  enabled:2:false
+Cosmetics Lib Custom Capes:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
 Cosmetics Test:1:
  settings:1:
   Key:1:
    type:4:4
    key:4:0
+ enabled:2:false
+Replay Mod OLD:1:
+ settings:1:
+  recording:1:
+   type:4:1
+   value:2:false
+  Key:1:
+   type:4:4
+   key:4:0
+  scale:1:
+   type:4:3
+   value:6:0.998606
+  position:1:
+   type:4:5
+   x:6:10.000000
+   y:6:10.000000
  enabled:2:false
 Cosmetics v2 Example:1:
  settings:1:
@@ -393,9 +415,9 @@ Item Held Info:1:
    value:6:1.000000
   position:1:
    type:4:5
-   x:6:500.000000
-   y:6:25.000000
- enabled:2:false
+   x:6:416.333344
+   y:6:318.252014
+ enabled:2:true
 Cosmetics Spheres Test:1:
  settings:1:
   Key:1:
@@ -464,20 +486,13 @@ Direct Message:1:
  enabled:2:false
 Replay Mod:1:
  settings:1:
-  recording:1:
-   type:4:1
-   value:2:false
   Key:1:
    type:4:4
    key:4:0
-  scale:1:
-   type:4:3
-   value:6:1.000000
-  position:1:
-   type:4:5
-   x:6:10.000000
-   y:6:10.000000
- enabled:2:false
+  _setting__8545721755745366783:1:
+   type:4:9
+   text:8:TGhe
+ enabled:2:true
 Fill Better:1:
  settings:1:
   Key:1:
@@ -532,7 +547,7 @@ Logger:1:
    key:4:0
   scale:1:
    type:4:3
-   value:6:0.780140
+   value:6:0.745645
   backColor:1:
    b:6:0.157023
    r:6:0.138024
@@ -560,8 +575,8 @@ Logger:1:
    chroma:2:false
   position:1:
    type:4:5
-   x:6:388.333313
-   y:6:51.189301
+   x:6:408.143829
+   y:6:51.189514
  enabled:2:true
 Mini Map:1:
  settings:1:
@@ -576,8 +591,8 @@ Mini Map:1:
    value:4:50
   position:1:
    type:4:5
-   x:6:0.000000
-   y:6:100.000000
+   x:6:122.666672
+   y:6:198.529999
   checkLimit:1:
    type:4:2
    value:4:50
