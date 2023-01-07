@@ -4,10 +4,19 @@ description = "Record a section of your world/server, then watch it back later!"
 workingDir = "RoamingState/OnixClient/Scripts/Data/ReplayMod"
 
 importLib("logger")
+-- importLib("blockFromId")
+
+-- registerCommand("updateData", function() updateData() print("Updated data.") end)
+
+function onEnable()
+    -- updateData()
+    print("enable")
+end
 
 -- SETTINGS --------------------------------------------
 status = "Waiting to record."
 recording = false
+blockList = {}
 function startRecording()
     recording = true
     startRecordingButton.visible = false
@@ -20,11 +29,14 @@ function startRecording()
 
     fs.delete(fileName.value .. ".replay")
     saveFile = fs.open(fileName.value .. ".replay", 'w')
+    print("Writing to " .. fileName.value .. ".replay...")
 
+    -- move the "cursor" so that there's space for the packet id and amount of blocks at the front
     saveFile:seek(5)
 end
 
 updatesFile = nil
+---@type BinaryFile|nil
 saveFile = nil
 
 function endRecording()
@@ -32,6 +44,23 @@ function endRecording()
     startRecordingButton.visible = true
     endRecordingButton.visible = false
     status = "Waiting to record."
+
+    -- Save blocks
+    saveFile:writeByte(0)
+    local arraySize = saveFile:tell()
+    local arrayLength = 0
+    for hash, block in pairs(blockList) do
+        saveFile:writeLong(hash)
+        saveFile:writeString(block.name)
+        saveFile:writeByte(block.data)
+        arrayLength = arrayLength + 1
+    end
+    arraySize = saveFile:tell() - arraySize
+    saveFile:writeUInt(arraySize)
+    saveFile:writeUShort(arrayLength)
+    print("Size of block list: " .. arraySize .. " length: " .. arrayLength)
+
+    -- print(tableToJson(blockList))
 
     saveFile:seek(0)
     -- packet Id
@@ -74,7 +103,69 @@ function test()
     end
 end
 
-client.settings.addFunction("Test Button", "test", "Enter")
+client.settings.addFunction("Convert .replay to .txt", "test", "Enter")
+
+---@param file BinaryFile
+function readSingleBlockData(file)
+    local output = {}
+    table.insert(output, file:readInt()) --x
+    table.insert(output, file:readInt()) --y
+    table.insert(output, file:readInt()) --z
+    table.insert(output, file:readLong()) -- block hash -> to get name and data from registry
+
+    return output
+end
+
+---@param file BinaryFile
+function readBlockRegistry(file)
+    local blockRegistry = {}
+
+    file:seek(file:size() - 6)
+    local registrySize = file:readUInt()
+    local registryLen = file:readUShort()
+
+    file:seek(file:size() - 6 - registrySize)
+    for i = 1, registryLen do
+        local hash = file:readLong()
+        blockRegistry[hash] = {
+            name = file:readString(),
+            data = file:readByte()
+        }
+    end
+
+    file:seek(0)
+    return blockRegistry
+end
+
+function worldFromFile()
+    local file = fs.open(fileName.value .. ".replay", "r")
+    if file == nil then return nil end
+
+    -- Get block list
+    local blockRegistry = readBlockRegistry(file)
+
+    print("Packet ID (should be 1): " .. file:readByte())
+    local amountOfBlocks = file:readUInt()
+    print("Amount of blocks: " .. amountOfBlocks)
+
+    for i = 1, amountOfBlocks do
+        data = readSingleBlockData(file)
+        print(blockRegistry[data[4]].name)
+        client.execute(
+            "execute /setblock ~" ..
+            data[1] ..
+            " ~" ..
+            data[2] .. " ~" .. data[3] .. " " .. blockRegistry[data[4]].name .. " " .. blockRegistry[data[4]].data
+        )
+    end
+
+    file:close()
+end
+
+client.settings.addFunction("Load World", "worldFromFile", "Enter")
+registerCommand("loadworld", function() loadWorld = true end) -- I'm on touchpad atm so this is less painful
+
+loadWorld = false
 
 ------------------------------------------------------------
 
@@ -89,6 +180,7 @@ function update()
         coroutine.resume(initialScan)
     end
 
+    if loadWorld then loadWorld = false worldFromFile() end
 end
 
 -- for degugging
@@ -101,15 +193,16 @@ function addToWorldScan(x, y, z)
     local block = dimension.getBlock(math.floor(x), math.floor(y), math.floor(z))
     initalBlocksScanned = initalBlocksScanned + 1
 
-    if block.id ~= 0 then
-        blocksSaved = blocksSaved + 1
+    if block.name == "air" or block.name == "client_request_placeholder_block" then return nil end
 
-        saveFile:writeInt(x)
-        saveFile:writeInt(y)
-        saveFile:writeInt(z)
-        saveFile:writeUShort(block.id)
-        saveFile:writeByte(block.data)
-    end
+    if blockList[block.hash] == nil then blockList[block.hash] = { name = block.name, data = block.data } end
+
+    blocksSaved = blocksSaved + 1
+
+    saveFile:writeInt(x - centerX)
+    saveFile:writeInt(y - centerY)
+    saveFile:writeInt(z - centerZ)
+    saveFile:writeLong(block.hash)
 end
 
 -- y = max(centerY - math.floor((r - 1) / 2), -worldBorder), min(centerY + math.floor((r - 1) / 2), worldBorder)
@@ -246,15 +339,4 @@ THEN, EACH NEW LINE IS INFORMATION GATHERED IN ONE UPDATE CYCLE
 block updates; player position; player inventory; other stuff (other players+their inventory, other entities)...
 posX posY posZ blockId blockData                         playerX    playerY playerZ
 1000 100  0    12      2        , 1001 100 0 43 0, ... ; 990.123123 98.3235 23.34432 ; inventory stuff idk
-]]
-
-
---[[
-    static data (id 0):
-    ip, time
-
-    block changes (id 1):
-        amount of blocks (Int)
-
-        
 ]]

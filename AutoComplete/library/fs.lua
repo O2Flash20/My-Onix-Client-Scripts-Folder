@@ -128,6 +128,10 @@ function _acp_BinaryFile:writeUShort(Short) end
 ---@param Int integer a number from from 0 to 4294967295
 function _acp_BinaryFile:writeUInt(Int) end
 
+---Writes a long to the file
+---@param Long integer a number from from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+function _acp_BinaryFile:writeLong(Long) end
+
 ---Writes a float to the file
 ---@param Float number a number with decimal places
 ---@return nil
@@ -140,6 +144,10 @@ function _acp_BinaryFile:writeDouble(Double) end
 ---Writes Text to the file
 ---@param Text string the text to put in the file
 function _acp_BinaryFile:writeString(Text) end
+
+---Writes Data to the file
+---@param Data userdata the data to put in the file
+function _acp_BinaryFile:writeRaw(Data) end
 
 
 
@@ -174,6 +182,10 @@ function _acp_BinaryFile:readUShort() end
 ---@return integer Int The unsigned int that was read
 function _acp_BinaryFile:readUInt() end
 
+---Reads a long from the file
+---@return integer Long The long that was read
+function _acp_BinaryFile:readLong() end
+
 ---Reads a float from the file
 ---@return number Float The float that was read
 function _acp_BinaryFile:readFloat() end
@@ -186,6 +198,9 @@ function _acp_BinaryFile:readDouble() end
 ---@return string Text The text that was read
 function _acp_BinaryFile:readString() end
 
+---Reads Data from the file
+---@return userdata Data The data that was read
+function _acp_BinaryFile:readRaw() end
 
 
 
