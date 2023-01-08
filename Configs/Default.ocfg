@@ -491,7 +491,7 @@ Replay Mod:1:
    key:4:0
   _setting__8545721755745366783:1:
    type:4:9
-   text:8:Test1
+   text:8:Untitled
  enabled:2:true
 Fill Better:1:
  settings:1:
@@ -547,7 +547,7 @@ Logger:1:
    key:4:0
   scale:1:
    type:4:3
-   value:6:0.745645
+   value:6:0.659408
   backColor:1:
    b:6:0.157023
    r:6:0.138024
@@ -561,7 +561,7 @@ Logger:1:
    value:2:false
   wRatio:1:
    type:4:3
-   value:6:0.434379
+   value:6:0.383275
   tScale:1:
    type:4:3
    value:6:1.091754
@@ -575,7 +575,7 @@ Logger:1:
    chroma:2:false
   position:1:
    type:4:5
-   x:6:408.143829
+   x:6:408.810516
    y:6:51.189514
  enabled:2:true
 Mini Map:1:
