@@ -194,7 +194,7 @@ Better Hunger:1:
    chroma:2:false
   position:1:
    type:4:5
-   x:6:325.666656
+   x:6:326.000000
    y:6:292.200012
  enabled:2:true
 Skinstealer:1:
@@ -415,8 +415,8 @@ Item Held Info:1:
    value:6:1.000000
   position:1:
    type:4:5
-   x:6:416.333344
-   y:6:318.252014
+   x:6:436.000000
+   y:6:317.584015
  enabled:2:true
 Cosmetics Spheres Test:1:
  settings:1:
@@ -486,12 +486,22 @@ Direct Message:1:
  enabled:2:false
 Replay Mod:1:
  settings:1:
+  toggleKey:1:
+   type:4:4
+   key:4:55
   Key:1:
    type:4:4
    key:4:0
+  scale:1:
+   type:4:3
+   value:6:1.000000
   _setting__8545721755745366783:1:
    type:4:9
-   text:8:skywars lobby
+   text:8:test101
+  position:1:
+   type:4:5
+   x:6:50.000000
+   y:6:50.000000
  enabled:2:true
 Fill Better:1:
  settings:1:
