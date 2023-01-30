@@ -1,14 +1,12 @@
 name = "Win Particles"
 description = "Server win particles"
 
-local initlog = io.open("Chatlog.txt", 'w')
-io.close(initlog)
-
 function onChat(message, username, type)
     if message == "§a§aCongratulations, you win!§r" then
         startParticles()
     end
-    if string.find(message, "§b§l» §r§aYou survived!") or string.find(message, "are the WINNERS!") or string.find(message, "is the WINNER!") then
+    if string.find(message, "§b§l» §r§aYou survived!") or string.find(message, "are the WINNERS!") or
+        string.find(message, "is the WINNER!") then
         startParticles()
     end
 end
@@ -60,8 +58,10 @@ function render(deltaTime)
         end
 
         if #emitters > 0 then
-            applyForceParticle(emitters[1][4][#emitters[1][4]], math.random(-1, 1) / 10 + 1.5, math.random(-1, 1) / 10 - 2.5)
-            applyForceParticle(emitters[2][4][#emitters[2][4]], math.random(-1, 1) / 10 - 1.5, math.random(-1, 1) / 10 - 2.5)
+            applyForceParticle(emitters[1][4][#emitters[1][4]], math.random(-1, 1) / 10 + 1.5,
+                math.random(-1, 1) / 10 - 2.5)
+            applyForceParticle(emitters[2][4][#emitters[2][4]], math.random(-1, 1) / 10 - 1.5,
+                math.random(-1, 1) / 10 - 2.5)
 
             for i = 1, #emitters[1][4], 1 do
                 applyForceParticle(emitters[1][4][i], 0, 0.01)
@@ -84,19 +84,10 @@ function render(deltaTime)
             updateEmitter(emitters[2])
             showEmitter(emitters[2])
         end
-
-        -- FIREWORKS
-        -- addEmitter(100, 100, 500)
-        -- if math.random(1, 200) == 1 then
-        --     emit(emitters[3])
-        --     print(emitters[3][4][#emitters][1][1])
-        --     emitters[3][4][#emitters][1] = { math.random(630), math.random(350) }
-        --     applyForceParticle(emitters[3][4][#emitters], 1, -1)
-        -- end
-        -- updateEmitter(emitters[3])
-        -- showEmitter(emitters[3])
     end
 end
+
+function update() client.settings.reload() end
 
 -- PARTICLE STUFF
 -- Emitter = {{x, y}, {velX, velY}, {accX, accY}, {particles}, lifetime}

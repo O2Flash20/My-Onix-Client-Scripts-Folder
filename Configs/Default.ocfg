@@ -1,24 +1,3 @@
-Command Block Hud:1:
- settings:1:
-  _setting__9154693497432463922:1:
-   b:6:1.000000
-   r:6:1.000000
-   type:4:7
-   g:6:1.000000
-   a:6:1.000000
-   rainbow:2:false
-   chroma:2:false
-  Key:1:
-   type:4:4
-   key:4:0
-  scale:1:
-   type:4:3
-   value:6:1.000000
-  position:1:
-   type:4:5
-   x:6:50.000000
-   y:6:50.000000
- enabled:2:false
 ThreeD View:1:
  settings:1:
   Key:1:
@@ -32,6 +11,31 @@ ThreeD View:1:
    x:6:334.333313
    y:6:74.281998
  enabled:2:false
+Optimal Hit Position:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  targetColor:1:
+   b:6:1.000000
+   r:6:0.050288
+   type:4:7
+   g:6:0.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  hitboxColor:1:
+   b:6:0.000000
+   r:6:1.000000
+   type:4:7
+   g:6:0.000000
+   a:6:0.102976
+   rainbow:2:false
+   chroma:2:false
+  crossSize:1:
+   type:4:3
+   value:6:0.600000
+ enabled:2:true
 Cosmetics:1:
  settings:1:
   gemCol2:1:
@@ -111,7 +115,7 @@ Arrow Trajectory:1:
    type:4:7
    g:6:1.000000
    a:6:0.392157
-   rainbow:2:false
+   rainbow:2:true
    chroma:2:false
   showTrail:1:
    type:4:1
@@ -196,7 +200,7 @@ Better Hunger:1:
    type:4:5
    x:6:326.000000
    y:6:292.200012
- enabled:2:true
+ enabled:2:false
 Skinstealer:1:
  settings:1:
   _setting__9839599158341423445:1:
@@ -292,7 +296,7 @@ ChatLogger:1:
   Key:1:
    type:4:4
    key:4:0
- enabled:2:false
+ enabled:2:true
 custom chat:1:
  settings:1:
   Key:1:
@@ -371,6 +375,46 @@ Chat Timestamps:1:
    type:4:4
    key:4:0
  enabled:2:false
+Camera Animations:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  scale:1:
+   type:4:3
+   value:6:1.000000
+  position:1:
+   type:4:5
+   x:6:170.000000
+   y:6:0.000000
+  setKeyframeKey:1:
+   type:4:4
+   key:4:48
+  togglePlayKey:1:
+   type:4:4
+   key:4:57
+ enabled:2:true
+Command Block Hud:1:
+ settings:1:
+  _setting__9154693497432463922:1:
+   b:6:1.000000
+   r:6:1.000000
+   type:4:7
+   g:6:1.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  Key:1:
+   type:4:4
+   key:4:0
+  scale:1:
+   type:4:3
+   value:6:1.000000
+  position:1:
+   type:4:5
+   x:6:50.000000
+   y:6:50.000000
+ enabled:2:false
 Cosmetics Lib Custom Capes:1:
  settings:1:
   Key:1:
@@ -417,7 +461,7 @@ Item Held Info:1:
    type:4:5
    x:6:436.000000
    y:6:317.584015
- enabled:2:true
+ enabled:2:false
 Cosmetics Spheres Test:1:
  settings:1:
   Key:1:
@@ -435,6 +479,27 @@ spher:1:
   Key:1:
    type:4:4
    key:4:0
+ enabled:2:false
+Cubecraft Auto GG:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:true
+Custom Message:1:
+ settings:1:
+  Ratio:1:
+   type:4:1
+   value:2:false
+  Key:1:
+   type:4:4
+   key:4:0
+  CustomAutoGG:1:
+   type:4:1
+   value:2:false
+  PinkGlitch:1:
+   type:4:1
+   value:2:false
  enabled:2:false
 Amogus Cosmetic:1:
  settings:1:
@@ -502,7 +567,7 @@ Replay Mod:1:
    type:4:5
    x:6:50.000000
    y:6:50.000000
- enabled:2:true
+ enabled:2:false
 Fill Better:1:
  settings:1:
   Key:1:
@@ -585,9 +650,9 @@ Logger:1:
    chroma:2:false
   position:1:
    type:4:5
-   x:6:408.810516
-   y:6:51.189514
- enabled:2:true
+   x:6:416.816345
+   y:6:65.331657
+ enabled:2:false
 Mini Map:1:
  settings:1:
   Key:1:
