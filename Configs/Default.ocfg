@@ -11,31 +11,6 @@ ThreeD View:1:
    x:6:334.333313
    y:6:74.281998
  enabled:2:false
-Optimal Hit Position:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
-  targetColor:1:
-   b:6:1.000000
-   r:6:0.050288
-   type:4:7
-   g:6:0.000000
-   a:6:1.000000
-   rainbow:2:false
-   chroma:2:false
-  hitboxColor:1:
-   b:6:0.000000
-   r:6:1.000000
-   type:4:7
-   g:6:0.000000
-   a:6:0.102976
-   rainbow:2:false
-   chroma:2:false
-  crossSize:1:
-   type:4:3
-   value:6:0.600000
- enabled:2:true
 Cosmetics:1:
  settings:1:
   gemCol2:1:
@@ -393,7 +368,7 @@ Camera Animations:1:
   togglePlayKey:1:
    type:4:4
    key:4:57
- enabled:2:true
+ enabled:2:false
 Command Block Hud:1:
  settings:1:
   _setting__9154693497432463922:1:
@@ -681,6 +656,85 @@ Motion blur:1:
    type:4:2
    value:4:255
  enabled:2:false
+PvP Helper:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  scale:1:
+   type:4:3
+   value:6:1.000000
+  comboIndicatorDanger:1:
+   b:6:0.000000
+   r:6:1.000000
+   type:4:7
+   g:6:0.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  _setting__308904813179427803:1:
+   type:4:1
+   value:2:true
+  eyelineColor:1:
+   b:6:0.466667
+   r:6:0.000000
+   type:4:7
+   g:6:0.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  targetColor:1:
+   b:6:0.000000
+   r:6:1.000000
+   type:4:7
+   g:6:0.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  crossSize:1:
+   type:4:3
+   value:6:0.600000
+  hitboxColor:1:
+   b:6:1.000000
+   r:6:0.000000
+   type:4:7
+   g:6:0.784314
+   a:6:0.058824
+   rainbow:2:false
+   chroma:2:false
+  comboIndicatorGood:1:
+   b:6:0.000000
+   r:6:0.000000
+   type:4:7
+   g:6:1.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  comboIndicatorBorderColor:1:
+   b:6:0.000000
+   r:6:0.000000
+   type:4:7
+   g:6:0.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  comboIndicatorRoundness:1:
+   type:4:3
+   value:6:2.000000
+  _setting__13430926589999961932:1:
+   type:4:1
+   value:2:true
+  _setting__3547371415535262492:1:
+   type:4:1
+   value:2:true
+  _setting__2136708622234895275:1:
+   type:4:1
+   value:2:true
+  position:1:
+   type:4:5
+   x:6:355.000000
+   y:6:162.000000
+ enabled:2:true
 Raycast Test:1:
  settings:1:
   Key:1:
