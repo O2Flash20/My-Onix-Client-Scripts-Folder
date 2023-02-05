@@ -225,5 +225,5 @@ showComboIndicator = client.settings.addNamelessBool("Show Combo Indicator", tru
 
 client.settings.addAir(10)
 
-client.settings.addTitle("How to use:\nKeep your mouse on the target and keep the box in the good color,\nand you'll get a combo.")
+client.settings.addTitle("How to use:\nKeep your mouse on the target and keep the square on the good color,\nand you'll probably get a combo.")
 ------------
