@@ -1,13 +1,5 @@
-Command Block Hud:1:
+ThreeD View:1:
  settings:1:
-  _setting__9154693497432463922:1:
-   b:6:1.000000
-   r:6:1.000000
-   type:4:7
-   g:6:1.000000
-   a:6:1.000000
-   rainbow:2:false
-   chroma:2:false
   Key:1:
    type:4:4
    key:4:0
@@ -16,22 +8,10 @@ Command Block Hud:1:
    value:6:1.000000
   position:1:
    type:4:5
-   x:6:0.000000
-   y:6:0.000000
+   x:6:50.000000
+   y:6:100.000000
  enabled:2:false
-ThreeD View:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
-  scale:1:
-   type:4:3
-   value:6:1.260000
-  position:1:
-   type:4:5
-   x:6:36.000015
-   y:6:18.035995
- enabled:2:false
+ favorite:2:false
 Cosmetics:1:
  settings:1:
   gemCol2:1:
@@ -55,7 +35,7 @@ Cosmetics:1:
    chroma:2:false
   cosmeticNum:1:
    type:4:2
-   value:4:2
+   value:4:1
   haloCol:1:
    b:6:0.000000
    r:6:1.000000
@@ -90,7 +70,7 @@ Cosmetics:1:
    chroma:2:false
   sunglassesHeight:1:
    type:4:3
-   value:6:1.001624
+   value:6:1.000000
   sunglassesColor:1:
    b:6:0.011765
    r:6:0.011765
@@ -100,11 +80,12 @@ Cosmetics:1:
    rainbow:2:false
    chroma:2:false
  enabled:2:false
+ favorite:2:false
 Arrow Trajectory:1:
  settings:1:
   Key:1:
    type:4:4
-   key:4:90
+   key:4:78
   color:1:
    b:6:1.000000
    r:6:0.000000
@@ -112,14 +93,15 @@ Arrow Trajectory:1:
    g:6:1.000000
    a:6:0.392157
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   showTrail:1:
    type:4:1
    value:2:true
   renderBehind:1:
    type:4:1
-   value:2:true
+   value:2:false
  enabled:2:false
+ favorite:2:false
 Better Hunger:1:
  settings:1:
   Key:1:
@@ -127,7 +109,7 @@ Better Hunger:1:
    key:4:0
   scale:1:
    type:4:3
-   value:6:0.938889
+   value:6:1.000000
   backgroundC:1:
    b:6:0.200000
    r:6:0.200000
@@ -135,7 +117,7 @@ Better Hunger:1:
    g:6:0.200000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   hungerPreviewC:1:
    b:6:0.000000
    r:6:0.000000
@@ -143,7 +125,7 @@ Better Hunger:1:
    g:6:1.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   noSprintC:1:
    b:6:0.000000
    r:6:0.392157
@@ -151,15 +133,15 @@ Better Hunger:1:
    g:6:0.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   hungerC:1:
-   b:6:0.359492
-   r:6:0.910400
+   b:6:0.000000
+   r:6:0.784314
    type:4:7
-   g:6:0.359492
+   g:6:0.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   saturationC:1:
    b:6:0.003922
    r:6:0.933333
@@ -167,7 +149,7 @@ Better Hunger:1:
    g:6:0.901961
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   saturationPreviewC:1:
    b:6:0.000000
    r:6:0.588235
@@ -175,7 +157,7 @@ Better Hunger:1:
    g:6:1.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   canEatC:1:
    b:6:0.000000
    r:6:0.000000
@@ -183,20 +165,21 @@ Better Hunger:1:
    g:6:0.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   cantEatC:1:
    b:6:0.000000
-   r:6:0.568978
+   r:6:1.000000
    type:4:7
    g:6:0.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   position:1:
    type:4:5
-   x:6:329.000000
-   y:6:292.867981
- enabled:2:true
+   x:6:500.000000
+   y:6:25.000000
+ enabled:2:false
+ favorite:2:false
 Skinstealer:1:
  settings:1:
   _setting__9839599158341423445:1:
@@ -210,7 +193,7 @@ Skinstealer:1:
    key:4:0
   _setting__16801015383468684115:1:
    type:4:4
-   key:4:77
+   key:4:79
   _setting__15292256483872599244:1:
    type:4:1
    value:2:false
@@ -224,26 +207,28 @@ Skinstealer:1:
    type:4:1
    value:2:false
  enabled:2:true
+ favorite:2:false
 Bridge Overlay:1:
  settings:1:
   Key:1:
    type:4:4
    key:4:0
   color:1:
-   b:6:0.000000
-   r:6:1.000000
+   b:6:1.000000
+   r:6:0.000000
    type:4:7
-   g:6:0.666667
-   a:6:1.000000
+   g:6:0.000000
+   a:6:0.294118
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   height:1:
    type:4:2
-   value:4:87
+   value:4:86
   radius:1:
    type:4:2
    value:4:5
  enabled:2:false
+ favorite:2:false
 Block Map:1:
  settings:1:
   lightEnabled:1:
@@ -254,45 +239,48 @@ Block Map:1:
    key:4:0
   gridR:1:
    type:4:2
-   value:4:49
+   value:4:25
   scale:1:
    type:4:3
-   value:6:1.106944
+   value:6:1.000000
   position:1:
    type:4:5
-   x:6:11.666656
-   y:6:67.417984
+   x:6:500.000000
+   y:6:25.000000
   checkLimit:1:
    type:4:2
-   value:4:13
+   value:4:10
   checkFrequency:1:
    type:4:2
    value:4:1
  enabled:2:false
+ favorite:2:false
 Dev Block Leaker:1:
  settings:1:
   Sv:1:
    type:4:1
-   value:2:true
+   value:2:false
   Key:1:
    type:4:4
    key:4:0
   HighlightRadius:1:
    type:4:2
-   value:4:4
+   value:4:10
   B:1:
    type:4:1
-   value:2:true
+   value:2:false
   Lb:1:
    type:4:1
-   value:2:true
+   value:2:false
  enabled:2:false
+ favorite:2:false
 ChatLogger:1:
  settings:1:
   Key:1:
    type:4:4
    key:4:0
  enabled:2:false
+ favorite:2:false
 custom chat:1:
  settings:1:
   Key:1:
@@ -305,7 +293,7 @@ custom chat:1:
    g:6:0.996078
    a:6:0.996078
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   scale:1:
    type:4:3
    value:6:1.000000
@@ -322,7 +310,7 @@ custom chat:1:
    g:6:0.003922
    a:6:0.498039
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   chatboxColor:1:
    b:6:0.003922
    r:6:0.003922
@@ -330,7 +318,7 @@ custom chat:1:
    g:6:0.003922
    a:6:0.498039
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   clearClose:1:
    type:4:1
    value:2:false
@@ -341,13 +329,13 @@ custom chat:1:
    g:6:0.003922
    a:6:0.784314
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   AlwaysShowChat:1:
    type:4:1
-   value:2:true
+   value:2:false
   getOwnMessage:1:
    type:4:1
-   value:2:true
+   value:2:false
   discordChat:1:
    type:4:1
    value:2:false
@@ -359,25 +347,21 @@ custom chat:1:
    value:4:3
   sizeX:1:
    type:4:2
-   value:4:260
+   value:4:200
   position:1:
    type:4:5
-   x:6:-5.333351
-   y:6:63.727997
+   x:6:50.000000
+   y:6:200.000000
  enabled:2:false
+ favorite:2:false
 Chat Timestamps:1:
  settings:1:
   Key:1:
    type:4:4
    key:4:0
  enabled:2:false
-Cosmetics Test:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
- enabled:2:false
-Item Held Info:1:
+ favorite:2:false
+Camera Animations:1:
  settings:1:
   Key:1:
    type:4:4
@@ -387,82 +371,59 @@ Item Held Info:1:
    value:6:1.000000
   position:1:
    type:4:5
-   x:6:435.500000
-   y:6:318.148041
+   x:6:170.000000
+   y:6:0.000000
+  setKeyframeKey:1:
+   type:4:4
+   key:4:48
+  togglePlayKey:1:
+   type:4:4
+   key:4:57
+  CURVEALPHA:1:
+   type:4:3
+   value:6:0.948097
+  CURVETENSION:1:
+   type:4:3
+   value:6:0.479815
  enabled:2:true
-Cosmetics Spheres Test:1:
+ favorite:2:true
+Command Block Hud:1:
  settings:1:
+  _setting__9154693497432463922:1:
+   b:6:1.000000
+   r:6:1.000000
+   type:4:7
+   g:6:1.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
   Key:1:
    type:4:4
    key:4:0
- enabled:2:false
-Lag Switch:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
- enabled:2:false
-spher:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
- enabled:2:false
-Amogus Cosmetic:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
- enabled:2:false
-Onix Bandana:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
- enabled:2:false
-Death Coordinates:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
-  waypoint_style:1:
-   type:4:2
-   value:4:1
-  waypoint_message:1:
-   type:4:1
-   value:2:true
+  scale:1:
+   type:4:3
+   value:6:1.000000
+  position:1:
+   type:4:5
+   x:6:501.199951
+   y:6:286.651978
  enabled:2:true
-Cape Cosmetics Test:1:
+ favorite:2:false
+Cosmetics Lib Custom Capes:1:
  settings:1:
   Key:1:
    type:4:4
    key:4:0
  enabled:2:false
-Capes Lib Test:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
- enabled:2:true
-Lua Module:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
- enabled:2:true
-Texture Sphere Test:1:
+ favorite:2:false
+Cosmetics Test:1:
  settings:1:
   Key:1:
    type:4:4
    key:4:0
  enabled:2:false
-Direct Message:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
- enabled:2:false
-Replay Mod:1:
+ favorite:2:false
+Replay Mod OLD:1:
  settings:1:
   recording:1:
    type:4:1
@@ -475,15 +436,157 @@ Replay Mod:1:
    value:6:1.000000
   position:1:
    type:4:5
-   x:6:462.333282
-   y:6:53.992012
+   x:6:10.000000
+   y:6:10.000000
  enabled:2:false
+ favorite:2:false
+Cosmetics v2 Example:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
+Item Held Info:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  scale:1:
+   type:4:3
+   value:6:1.000000
+  position:1:
+   type:4:5
+   x:6:500.000000
+   y:6:25.000000
+ enabled:2:false
+ favorite:2:false
+Cosmetics Spheres Test:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
+Lag Switch:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
+spher:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
+Cubecraft Auto GG:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
+Custom Message:1:
+ settings:1:
+  Ratio:1:
+   type:4:1
+   value:2:false
+  Key:1:
+   type:4:4
+   key:4:0
+  CustomAutoGG:1:
+   type:4:1
+   value:2:false
+  PinkGlitch:1:
+   type:4:1
+   value:2:false
+ enabled:2:false
+ favorite:2:false
+Amogus Cosmetic:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
+Onix Bandana:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
+Death Coordinates:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  waypoint_style:1:
+   type:4:2
+   value:4:2
+  waypoint_message:1:
+   type:4:1
+   value:2:true
+ enabled:2:true
+ favorite:2:false
+Cape Cosmetics Test:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
+Capes Lib Test:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
+Texture Sphere Test:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
+Direct Message:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
+Replay Mod:1:
+ settings:1:
+  toggleKey:1:
+   type:4:4
+   key:4:72
+  Key:1:
+   type:4:4
+   key:4:0
+  scale:1:
+   type:4:3
+   value:6:1.000000
+  _setting__8545721755745366783:1:
+   type:4:9
+   text:8:Untitled
+  position:1:
+   type:4:5
+   x:6:50.000000
+   y:6:50.000000
+ enabled:2:false
+ favorite:2:false
 Fill Better:1:
  settings:1:
   Key:1:
    type:4:4
    key:4:0
  enabled:2:false
+ favorite:2:false
 FPS:1:
  settings:1:
   refresh:1:
@@ -497,7 +600,7 @@ FPS:1:
    value:6:1.000000
   multiplier:1:
    type:4:3
-   value:6:861903.812500
+   value:6:1.000000
   background:1:
    b:6:0.000000
    r:6:0.000000
@@ -505,26 +608,28 @@ FPS:1:
    g:6:0.000000
    a:6:0.498039
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   color:1:
    b:6:1.000000
-   r:6:0.000000
+   r:6:1.000000
    type:4:7
-   g:6:0.933333
+   g:6:1.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   position:1:
    type:4:5
-   x:6:563.000000
-   y:6:230.794006
+   x:6:0.000000
+   y:6:0.000000
  enabled:2:false
+ favorite:2:false
 Fulldark:1:
  settings:1:
   Key:1:
    type:4:4
    key:4:0
  enabled:2:false
+ favorite:2:false
 Logger:1:
  settings:1:
   Key:1:
@@ -532,24 +637,24 @@ Logger:1:
    key:4:0
   scale:1:
    type:4:3
-   value:6:0.633337
+   value:6:0.620934
   backColor:1:
    b:6:0.200000
    r:6:0.200000
    type:4:7
    g:6:0.200000
-   a:6:0.895556
+   a:6:0.787661
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   showNumber:1:
    type:4:1
    value:2:true
   wRatio:1:
    type:4:3
-   value:6:0.360714
+   value:6:0.377163
   tScale:1:
    type:4:3
-   value:6:0.845238
+   value:6:1.000000
   foreColor:1:
    b:6:1.000000
    r:6:1.000000
@@ -557,12 +662,13 @@ Logger:1:
    g:6:1.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
+   chroma:2:false
   position:1:
    type:4:5
-   x:6:398.428589
-   y:6:53.219437
- enabled:2:true
+   x:6:473.710815
+   y:6:53.561630
+ enabled:2:false
+ favorite:2:false
 Mini Map:1:
  settings:1:
   Key:1:
@@ -570,18 +676,19 @@ Mini Map:1:
    key:4:0
   scale:1:
    type:4:3
-   value:6:2.167499
+   value:6:1.000000
   radius:1:
    type:4:2
-   value:4:150
+   value:4:50
   position:1:
    type:4:5
-   x:6:52.333328
-   y:6:22.177994
+   x:6:0.000000
+   y:6:100.000000
   checkLimit:1:
    type:4:2
-   value:4:18
+   value:4:50
  enabled:2:false
+ favorite:2:false
 Motion blur:1:
  settings:1:
   Key:1:
@@ -589,8 +696,96 @@ Motion blur:1:
    key:4:0
   Oppacity:1:
    type:4:2
-   value:4:26
+   value:4:255
  enabled:2:false
+ favorite:2:false
+PvP Helper:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  scale:1:
+   type:4:3
+   value:6:1.000000
+  comboIndicatorDanger:1:
+   b:6:0.000000
+   r:6:1.000000
+   type:4:7
+   g:6:0.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  _setting__308904813179427803:1:
+   type:4:1
+   value:2:true
+  eyelineColor:1:
+   b:6:0.466667
+   r:6:0.000000
+   type:4:7
+   g:6:0.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  targetColor:1:
+   b:6:0.000000
+   r:6:1.000000
+   type:4:7
+   g:6:0.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  crossSize:1:
+   type:4:3
+   value:6:0.600000
+  hitboxColor:1:
+   b:6:1.000000
+   r:6:0.000000
+   type:4:7
+   g:6:0.784314
+   a:6:0.058824
+   rainbow:2:false
+   chroma:2:false
+  comboIndicatorGood:1:
+   b:6:0.000000
+   r:6:0.000000
+   type:4:7
+   g:6:1.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  comboIndicatorBorderColor:1:
+   b:6:0.000000
+   r:6:0.000000
+   type:4:7
+   g:6:0.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  comboIndicatorRoundness:1:
+   type:4:3
+   value:6:2.000000
+  _setting__13430926589999961932:1:
+   type:4:1
+   value:2:true
+  _setting__3547371415535262492:1:
+   type:4:1
+   value:2:true
+  _setting__2136708622234895275:1:
+   type:4:1
+   value:2:true
+  position:1:
+   type:4:5
+   x:6:350.000000
+   y:6:165.000000
+ enabled:2:true
+ favorite:2:false
+Raycast Test:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
 Win Particles:1:
  settings:1:
   Key:1:
@@ -600,11 +795,12 @@ Win Particles:1:
    b:6:0.000000
    r:6:1.000000
    type:4:7
-   g:6:0.936001
+   g:6:0.000000
    a:6:1.000000
    rainbow:2:false
-   chroma:2:true
- enabled:2:true
+   chroma:2:false
+ enabled:2:false
+ favorite:2:false
 Redstone Utility Power Level:1:
  settings:1:
   Key:1:
@@ -618,6 +814,14 @@ Redstone Utility Power Level:1:
    x:6:500.000000
    y:6:25.000000
  enabled:2:false
+ favorite:2:false
+Replay Mod Playback:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
 Structurer:1:
  settings:1:
   recording:1:
@@ -634,12 +838,14 @@ Structurer:1:
    x:6:100.000000
    y:6:100.000000
  enabled:2:false
+ favorite:2:false
 Texture Test:1:
  settings:1:
   Key:1:
    type:4:4
    key:4:0
  enabled:2:false
+ favorite:2:false
 World Save:1:
  settings:1:
   Key:1:
@@ -650,9 +856,17 @@ World Save:1:
    value:6:1.000000
   r:1:
    type:4:2
-   value:4:30
+   value:4:15
   position:1:
    type:4:5
-   x:6:375.333344
-   y:6:25.029999
+   x:6:10.000000
+   y:6:10.000000
  enabled:2:false
+ favorite:2:false
+Lua Module:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:true
+ favorite:2:false
