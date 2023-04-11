@@ -12,6 +12,48 @@ ThreeD View:1:
    y:6:100.000000
  enabled:2:false
  favorite:2:false
+Lag Switch:1:
+ settings:1:
+  _setting__4195671764758634113:1:
+   type:4:3
+   value:6:5.000000
+  pauseKey:1:
+   type:4:4
+   key:4:0
+  Key:1:
+   type:4:4
+   key:4:0
+  _setting__15265531444834917920:1:
+   type:4:3
+   value:6:0.495963
+  holdKey:1:
+   type:4:4
+   key:4:77
+ enabled:2:true
+ favorite:2:false
+spher:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
+Anti Interact:1:
+ settings:1:
+  _setting__10762051958271135577:1:
+   type:4:1
+   value:2:false
+  Key:1:
+   type:4:4
+   key:4:0
+  _setting__12303747823477379466:1:
+   type:4:1
+   value:2:true
+  _setting__7787111738925047487:1:
+   type:4:1
+   value:2:true
+ enabled:2:true
+ favorite:2:false
 Cosmetics:1:
  settings:1:
   gemCol2:1:
@@ -375,6 +417,13 @@ Chat Timestamps:1:
    key:4:0
  enabled:2:false
  favorite:2:false
+Cosmetics Pack V1:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
 Camera Animations:1:
  settings:1:
   Key:1:
@@ -419,8 +468,8 @@ Command Block Hud:1:
    value:6:1.000000
   position:1:
    type:4:5
-   x:6:501.199951
-   y:6:286.651978
+   x:6:1.507507
+   y:6:58.544006
  enabled:2:true
  favorite:2:false
 Cosmetics Lib Custom Capes:1:
@@ -482,31 +531,12 @@ Cosmetics Spheres Test:1:
    key:4:0
  enabled:2:false
  favorite:2:false
-Lag Switch:1:
+Vectors Test:1:
  settings:1:
-  _setting__4195671764758634113:1:
-   type:4:3
-   value:6:5.000000
-  pauseKey:1:
-   type:4:4
-   key:4:0
   Key:1:
    type:4:4
    key:4:0
-  _setting__15265531444834917920:1:
-   type:4:3
-   value:6:0.495963
-  holdKey:1:
-   type:4:4
-   key:4:77
  enabled:2:true
- favorite:2:false
-spher:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
- enabled:2:false
  favorite:2:false
 Custom Message:1:
  settings:1:
@@ -649,89 +679,6 @@ Fulldark:1:
    key:4:0
  enabled:2:false
  favorite:2:false
-Logger:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
-  scale:1:
-   type:4:3
-   value:6:0.620934
-  backColor:1:
-   b:6:0.200000
-   r:6:0.200000
-   type:4:7
-   g:6:0.200000
-   a:6:0.787661
-   rainbow:2:false
-   chroma:2:false
-  showNumber:1:
-   type:4:1
-   value:2:true
-  wRatio:1:
-   type:4:3
-   value:6:0.377163
-  tScale:1:
-   type:4:3
-   value:6:1.000000
-  foreColor:1:
-   b:6:1.000000
-   r:6:1.000000
-   type:4:7
-   g:6:1.000000
-   a:6:1.000000
-   rainbow:2:false
-   chroma:2:false
-  position:1:
-   type:4:5
-   x:6:444.377502
-   y:6:49.887634
- enabled:2:true
- favorite:2:true
-Mini Map:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
-  scale:1:
-   type:4:3
-   value:6:1.000000
-  radius:1:
-   type:4:2
-   value:4:50
-  position:1:
-   type:4:5
-   x:6:0.000000
-   y:6:100.000000
-  checkLimit:1:
-   type:4:2
-   value:4:50
- enabled:2:false
- favorite:2:false
-Motion blur:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
-  Oppacity:1:
-   type:4:2
-   value:4:255
- enabled:2:false
- favorite:2:false
-Onix SMP:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
-  scale:1:
-   type:4:3
-   value:6:1.000000
-  position:1:
-   type:4:5
-   x:6:100.000000
-   y:6:100.000000
- enabled:2:true
- favorite:2:false
 PvP Helper:1:
  settings:1:
   Key:1:
@@ -813,6 +760,96 @@ PvP Helper:1:
    type:4:5
    x:6:350.000000
    y:6:165.000000
+ enabled:2:true
+ favorite:2:false
+Immersive First Person:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
+Logger:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  scale:1:
+   type:4:3
+   value:6:0.620934
+  backColor:1:
+   b:6:0.200000
+   r:6:0.200000
+   type:4:7
+   g:6:0.200000
+   a:6:0.787661
+   rainbow:2:false
+   chroma:2:false
+  showNumber:1:
+   type:4:1
+   value:2:true
+  wRatio:1:
+   type:4:3
+   value:6:0.377163
+  tScale:1:
+   type:4:3
+   value:6:1.000000
+  foreColor:1:
+   b:6:1.000000
+   r:6:1.000000
+   type:4:7
+   g:6:1.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  position:1:
+   type:4:5
+   x:6:434.377502
+   y:6:54.229630
+ enabled:2:true
+ favorite:2:true
+Mini Map:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  scale:1:
+   type:4:3
+   value:6:1.000000
+  radius:1:
+   type:4:2
+   value:4:50
+  position:1:
+   type:4:5
+   x:6:0.000000
+   y:6:100.000000
+  checkLimit:1:
+   type:4:2
+   value:4:50
+ enabled:2:false
+ favorite:2:false
+Motion blur:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  Oppacity:1:
+   type:4:2
+   value:4:255
+ enabled:2:false
+ favorite:2:false
+Onix SMP:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  scale:1:
+   type:4:3
+   value:6:1.000000
+  position:1:
+   type:4:5
+   x:6:99.333344
+   y:6:100.667999
  enabled:2:true
  favorite:2:false
 Raycast Test:1:
