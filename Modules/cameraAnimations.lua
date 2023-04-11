@@ -10,7 +10,9 @@ positionY = 0
 
 importLib("logger")
 
-APPROXIMATIONRESOLUTION = 100
+workingDir = "RoamingState/OnixClient/Scripts/Data/ReplayMod"
+
+APPROXIMATIONRESOLUTION = 15
 
 playing = false
 timeInReplay = 0
@@ -72,54 +74,47 @@ function render2(dt)
     )
 end
 
-LINERESOLUTION = 1
+function stylizedTime(seconds)
+    seconds = math.floor(seconds * 10) / 10
+    minutes = math.floor(seconds / 60)
+    seconds = seconds % 60
+
+    if seconds < 10 then seconds = "0" .. seconds end
+    if minutes < 10 then minutes = "0" .. minutes end
+
+    return minutes .. ":" .. seconds
+end
+
+-- bigger = worse
+LINERESOLUTION = 2
 function render3d(dt)
-    for i = 1, #PATHPOINTS - LINERESOLUTION, LINERESOLUTION do
-        local thisPoint = { PATHPOINTS[i][1], PATHPOINTS[i][2], PATHPOINTS[i][3] }
-        local nextPoint = { PATHPOINTS[i + LINERESOLUTION][1], PATHPOINTS[i + LINERESOLUTION][2], PATHPOINTS[i + 1][3] }
-        gfx.line(
-            thisPoint[1], thisPoint[2], thisPoint[3],
-            nextPoint[1], nextPoint[2], nextPoint[3]
-        )
-    end
-
-    if playing then
-        --[[
-            timeInReplay = timeInReplay + dt
-            currentTime = timeInReplay
-
-            local lastK = keyframes[lastKeyframe]
-            local nextK = keyframes[lastKeyframe + 1]
-
-            local currentX = map(timeInReplay, lastK.time, nextK.time, lastK.position[1], nextK.position[1])
-            local currentY = map(timeInReplay, lastK.time, nextK.time, lastK.position[2], nextK.position[2])
-            local currentZ = map(timeInReplay, lastK.time, nextK.time, lastK.position[3], nextK.position[3])
-            local currentYaw = map(timeInReplay, lastK.time, nextK.time, lastK.rotation[1], nextK.rotation[1])
-            local currentPitch = map(timeInReplay, lastK.time, nextK.time, lastK.rotation[2], nextK.rotation[2])
-
-            client.execute(
-                "execute /tp @s "
-                .. currentX .. " "
-                .. currentY - 1.6 .. " "
-                .. currentZ .. " "
-                .. currentYaw .. " "
-                .. currentPitch
+    if not playing then
+        for i = 1, #PATHPOINTS - LINERESOLUTION, LINERESOLUTION do
+            local thisPoint = { PATHPOINTS[i][1], PATHPOINTS[i][2], PATHPOINTS[i][3] }
+            local nextPoint = {
+                PATHPOINTS[i + LINERESOLUTION][1],
+                PATHPOINTS[i + LINERESOLUTION][2],
+                PATHPOINTS[i + LINERESOLUTION][3]
+            }
+            gfx.line(
+                thisPoint[1], thisPoint[2], thisPoint[3],
+                nextPoint[1], nextPoint[2], nextPoint[3]
             )
 
-            if timeInReplay >= nextK.time then
-                lastKeyframe = lastKeyframe + 1
-                log("Next")
-            end
-            -- log(lastK.time)
+            -- *MAYBE?
+            -- drawPlayerHead(
+            --     PATHPOINTS[i][1], PATHPOINTS[i][2], PATHPOINTS[i][3],
+            --     math.rad( -PATHPOINTS[i][5]), -math.rad(PATHPOINTS[i][4] + 180), 0.25
+            -- )
+        end
 
-            if timeInReplay > keyframes[#keyframes].time then
-                print("No more keyframes")
-                playing = false
-                timeInReplay = 0
-                currentTime = 0.0
-                lastKeyframe = 1
-            end
-        ]]
+        for i = 1, #keyframes do
+            drawPlayerHead(
+                keyframes[i].position[1], keyframes[i].position[2], keyframes[i].position[3],
+                math.rad( -keyframes[i].rotation[2]), -math.rad(keyframes[i].rotation[1] + 180), 0.75
+            )
+        end
+    else
         currentTime = currentTime + dt
 
         if currentTime > keyframes[#keyframes].time then
@@ -148,64 +143,32 @@ function render3d(dt)
 
         local smoothedTimeIndex = smoothedTime * APPROXIMATIONRESOLUTION
 
-        -- log(smoothedTime * APPROXIMATIONRESOLUTION)
-
-        local lastK = keyframes[math.floor(smoothedTime) + 1]
-        local nextK = keyframes[math.floor(smoothedTime) + 2]
-
-        -- local currentX = PATHPOINTS[math.floor(smoothedTimeIndex)][1]
-        -- local currentY = PATHPOINTS[math.floor(smoothedTimeIndex)][2]
-        -- local currentZ = PATHPOINTS[math.floor(smoothedTimeIndex)][3]
-
         local currentX = map(
-                smoothedTimeIndex,
-                math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
-                PATHPOINTS[math.floor(smoothedTimeIndex)][1], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][1]
-            )
+            smoothedTimeIndex,
+            math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
+            PATHPOINTS[math.floor(smoothedTimeIndex)][1], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][1]
+        )
         local currentY = map(
-                smoothedTimeIndex,
-                math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
-                PATHPOINTS[math.floor(smoothedTimeIndex)][2], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][2]
-            )
+            smoothedTimeIndex,
+            math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
+            PATHPOINTS[math.floor(smoothedTimeIndex)][2], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][2]
+        )
         local currentZ = map(
-                smoothedTimeIndex,
-                math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
-                PATHPOINTS[math.floor(smoothedTimeIndex)][3], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][3]
-            )
+            smoothedTimeIndex,
+            math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
+            PATHPOINTS[math.floor(smoothedTimeIndex)][3], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][3]
+        )
 
         local currentYaw = map(
-                smoothedTimeIndex,
-                math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
-                PATHPOINTS[math.floor(smoothedTimeIndex)][4], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][4]
-            )
+            smoothedTimeIndex,
+            math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
+            PATHPOINTS[math.floor(smoothedTimeIndex)][4], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][4]
+        )
         local currentPitch = map(
-                smoothedTimeIndex,
-                math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
-                PATHPOINTS[math.floor(smoothedTimeIndex)][5], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][5]
-            )
-
-        -- local currentX = map(
-        --         smoothedTime, math.floor(smoothedTime), math.floor(smoothedTime) + 1,
-        --         lastK.position[1],
-        --         nextK.position[1]
-        --     )
-        -- local currentY = map(
-        --         smoothedTime, math.floor(smoothedTime), math.floor(smoothedTime) + 1,
-        --         lastK.position[2], nextK.position[2]
-        --     )
-        -- local currentZ = map(
-        --         smoothedTime, math.floor(smoothedTime), math.floor(smoothedTime) + 1,
-        --         lastK.position[3], nextK.position[3]
-        --     )
-
-        -- local currentYaw = map(
-        --         smoothedTime, math.floor(smoothedTime), math.floor(smoothedTime) + 1,
-        --         lastK.rotation[1], nextK.rotation[1]
-        --     )
-        -- local currentPitch = map(
-        --         smoothedTime, math.floor(smoothedTime), math.floor(smoothedTime) + 1,
-        --         lastK.rotation[2], nextK.rotation[2]
-        -- )
+            smoothedTimeIndex,
+            math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
+            PATHPOINTS[math.floor(smoothedTimeIndex)][5], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][5]
+        )
 
         client.execute(
             "execute /tp @s "
@@ -219,7 +182,7 @@ function render3d(dt)
 end
 
 currentTime = 0.0
-totalTime = 30 -- start time end time instead?
+totalTime = 60 -- start time end time instead?
 
 function createKeyFrame()
     -- delete the old one there
@@ -365,6 +328,71 @@ event.listen("KeyboardInput", function(key, down)
         currentTime = math.floor(currentTime * 10) / 10
     end
 
+    -- teleport to timeline
+    if key == 0x37 and down then
+        if currentTime > keyframes[#keyframes].time then
+            log("done")
+            print("No more keyframes")
+            playing = false
+            currentTime = 0
+            currentTime = 0.0
+            lastKeyframe = 1
+        end
+
+        local lastPathPoint
+        local nextPathPoint
+        for i = 1, #TIMEPATHPOINTS, 1 do
+            if currentTime >= TIMEPATHPOINTS[i] and currentTime < TIMEPATHPOINTS[i + 1] then
+                lastPathPoint = i
+                nextPathPoint = i + 1
+                break
+            end
+        end
+
+        -- the index of the path, smoothed
+        local smoothedTime = map(
+                currentTime, TIMEPATHPOINTS[lastPathPoint], TIMEPATHPOINTS[nextPathPoint], lastPathPoint, nextPathPoint
+            ) / APPROXIMATIONRESOLUTION
+
+        local smoothedTimeIndex = smoothedTime * APPROXIMATIONRESOLUTION
+
+        local currentX = map(
+            smoothedTimeIndex,
+            math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
+            PATHPOINTS[math.floor(smoothedTimeIndex)][1], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][1]
+        )
+        local currentY = map(
+            smoothedTimeIndex,
+            math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
+            PATHPOINTS[math.floor(smoothedTimeIndex)][2], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][2]
+        )
+        local currentZ = map(
+            smoothedTimeIndex,
+            math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
+            PATHPOINTS[math.floor(smoothedTimeIndex)][3], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][3]
+        )
+
+        local currentYaw = map(
+            smoothedTimeIndex,
+            math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
+            PATHPOINTS[math.floor(smoothedTimeIndex)][4], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][4]
+        )
+        local currentPitch = map(
+            smoothedTimeIndex,
+            math.floor(smoothedTimeIndex), math.floor(smoothedTimeIndex) + 1,
+            PATHPOINTS[math.floor(smoothedTimeIndex)][5], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][5]
+        )
+
+        client.execute(
+            "execute /tp @s "
+            .. currentX .. " "
+            .. currentY - 1.6 .. " "
+            .. currentZ .. " "
+            .. currentYaw .. " "
+            .. currentPitch
+        )
+    end
+
     -- move the cursor
     local RIGHTARROW = 0x27
     local LEFTARROW = 0x25
@@ -386,7 +414,9 @@ event.listen("KeyboardInput", function(key, down)
         currentTime = currentTime - 0.1
         moveSelectedKeyframe()
     end
+
     currentTime = math.clamp(currentTime, 0, totalTime)
+    currentTime = math.floor(currentTime * 10) / 10
 end)
 
 CURVEALPHA = 0.5
@@ -412,11 +442,11 @@ function update(dt)
             if i == #keyframes then table.insert(times, keyframes[i].time + 1) end
         end
         TIMEPATHPOINTS = approximateCurve(
-                function(x)
-                    return catmullRomSpline1D(times, x, CURVEALPHA, 0)
-                end
-                , #times - 3, 1 / APPROXIMATIONRESOLUTION
-            )
+            function(x)
+                return catmullRomSpline1D(times, x, 0.5, 0)
+            end
+            , #times - 3, 1 / APPROXIMATIONRESOLUTION
+        )
 
 
         PATHPOINTS = {}
@@ -428,11 +458,11 @@ function update(dt)
             if i == #keyframes then table.insert(xs, keyframes[i].position[1] + 1) end
         end
         local xPath = approximateCurve(
-                function(x)
-                    return catmullRomSpline1D(xs, x, CURVEALPHA, CURVETENSION)
-                end
-                , #xs - 3, 1 / APPROXIMATIONRESOLUTION
-            )
+            function(x)
+                return catmullRomSpline1D(xs, x, CURVEALPHA, CURVETENSION)
+            end
+            , #xs - 3, 1 / APPROXIMATIONRESOLUTION
+        )
 
         local ys = {}
         for i = 1, #keyframes do
@@ -441,11 +471,11 @@ function update(dt)
             if i == #keyframes then table.insert(ys, keyframes[i].position[2] + 1) end
         end
         local yPath = approximateCurve(
-                function(x)
-                    return catmullRomSpline1D(ys, x, CURVEALPHA, CURVETENSION)
-                end
-                , #ys - 3, 1 / APPROXIMATIONRESOLUTION
-            )
+            function(x)
+                return catmullRomSpline1D(ys, x, CURVEALPHA, CURVETENSION)
+            end
+            , #ys - 3, 1 / APPROXIMATIONRESOLUTION
+        )
 
         local zs = {}
         for i = 1, #keyframes do
@@ -454,11 +484,11 @@ function update(dt)
             if i == #keyframes then table.insert(zs, keyframes[i].position[3] + 1) end
         end
         local zPath = approximateCurve(
-                function(x)
-                    return catmullRomSpline1D(zs, x, CURVEALPHA, CURVETENSION)
-                end
-                , #zs - 3, 1 / APPROXIMATIONRESOLUTION
-            )
+            function(x)
+                return catmullRomSpline1D(zs, x, CURVEALPHA, CURVETENSION)
+            end
+            , #zs - 3, 1 / APPROXIMATIONRESOLUTION
+        )
 
         local yaws = {}
         for i = 1, #keyframes do
@@ -467,11 +497,11 @@ function update(dt)
             if i == #keyframes then table.insert(yaws, keyframes[i].rotation[1] + 1) end
         end
         local yawPath = approximateCurve(
-                function(x)
-                    return catmullRomSpline1D(yaws, x, CURVEALPHA, CURVETENSION)
-                end
-                , #yaws - 3, 1 / APPROXIMATIONRESOLUTION
-            )
+            function(x)
+                return catmullRomSpline1D(yaws, x, CURVEALPHA, CURVETENSION)
+            end
+            , #yaws - 3, 1 / APPROXIMATIONRESOLUTION
+        )
 
         local pitches = {}
         for i = 1, #keyframes do
@@ -480,11 +510,11 @@ function update(dt)
             if i == #keyframes then table.insert(pitches, keyframes[i].rotation[2] + 1) end
         end
         local pitchPath = approximateCurve(
-                function(x)
-                    return catmullRomSpline1D(pitches, x, CURVEALPHA, CURVETENSION)
-                end
-                , #pitches - 3, 1 / APPROXIMATIONRESOLUTION
-            )
+            function(x)
+                return catmullRomSpline1D(pitches, x, CURVEALPHA, CURVETENSION)
+            end
+            , #pitches - 3, 1 / APPROXIMATIONRESOLUTION
+        )
 
         for i = 1, #xPath do
             table.insert(PATHPOINTS, { xPath[i], yPath[i], zPath[i], yawPath[i], pitchPath[i] })
@@ -497,38 +527,6 @@ function update(dt)
     lastCURVETENSION = CURVETENSION
 end
 
--- maps a value from one range to another
-function map(value, min1, max1, min2, max2)
-    return (value - min1) * ((max2 - min2) / (max1 - min1)) + min2
-end
-
-function stylizedTime(seconds)
-    seconds = math.floor(seconds * 10) / 10
-    minutes = math.floor(seconds / 60)
-    seconds = seconds % 60
-
-    if seconds < 10 then seconds = "0" .. seconds end
-    if minutes < 10 then minutes = "0" .. minutes end
-
-    return minutes .. ":" .. seconds
-end
-
---[[
-have a table of all keyframes with their pos, rot and time
-    a curve (catmull-rom?) will interpolate between them
-    keyframes need to be sorted by time?
-    the time can be set and reset
-        if you "select" a keyframe and move "currentTime" it will change the time of the keyframe
-have a visual representation of the motion of the camera with render3
-
-*catmull-rom curve interpolating between points
-    visualized with 3d lines
-    creates a list of straight-line interpolations?
-*save keyframes to a file
-
-https://dev.to/ndesmic/splines-from-scratch-catmull-rom-3m66
-https://qroph.github.io/2018/07/30/smooth-paths-using-catmull-rom-splines.html
-]]
 function catmullRomSpline1D(points, t, alpha, tension)
     local i = math.floor(t) + 1
 
@@ -576,3 +574,139 @@ function approximateCurve(curveFunction, max, delta)
     end
     return points
 end
+
+function render()
+    if unload then
+        gfx.unloadimage("skin.png")
+        unload = false
+    end
+end
+
+local playerSkin
+function postInit()
+    unload = true
+    player.skin().save("skin.png")
+end
+
+function drawPlayerHead(x, y, z, pitch, yaw, scale)
+    local s = scale / 2
+    local vertices = {
+        { -s, -s, -s },
+        { s,  -s, -s },
+        { -s, s,  -s },
+        { s,  s,  -s },
+        { -s, -s, s },
+        { s,  -s, s },
+        { -s, s,  s },
+        { s,  s,  s }
+    }
+
+    local verticesRotated = {}
+    for i, vertex in pairs(vertices) do
+        local vertexRotated = rotatePoint(vertex[1], vertex[2], vertex[3], 0, 0, 0, pitch, yaw, 0)
+        table.insert(verticesRotated, { vertexRotated[1] + x, vertexRotated[2] + y, vertexRotated[3] + z })
+    end
+    vertices = verticesRotated
+
+    -- log(verticesRotated)
+
+    -- front
+    gfx.tquad(
+        vertices[3][1], vertices[3][2], vertices[3][3], 0.125, 0.125,
+        vertices[4][1], vertices[4][2], vertices[4][3], 0.25, 0.125,
+        vertices[2][1], vertices[2][2], vertices[2][3], 0.25, 0.25,
+        vertices[1][1], vertices[1][2], vertices[1][3], 0.125, 0.25,
+        "skin.png"
+    )
+    -- back
+    gfx.tquad(
+        vertices[5][1], vertices[5][2], vertices[5][3], 0.375, 0.25,
+        vertices[6][1], vertices[6][2], vertices[6][3], 0.5, 0.25,
+        vertices[8][1], vertices[8][2], vertices[8][3], 0.5, 0.125,
+        vertices[7][1], vertices[7][2], vertices[7][3], 0.375, 0.125,
+        "skin.png"
+    )
+
+    -- bottom
+    gfx.tquad(
+        vertices[1][1], vertices[1][2], vertices[1][3], 0.25, 0.125,
+        vertices[2][1], vertices[2][2], vertices[2][3], 0.375, 0.125,
+        vertices[6][1], vertices[6][2], vertices[6][3], 0.375, 0,
+        vertices[5][1], vertices[5][2], vertices[5][3], 0.25, 0,
+        "skin.png"
+    )
+    -- top
+    gfx.tquad(
+        vertices[7][1], vertices[7][2], vertices[7][3], 0.125, 0,
+        vertices[8][1], vertices[8][2], vertices[8][3], 0.25, 0,
+        vertices[4][1], vertices[4][2], vertices[4][3], 0.25, 0.125,
+        vertices[3][1], vertices[3][2], vertices[3][3], 0.125, 0.125,
+        "skin.png"
+    )
+
+    -- left
+    gfx.tquad(
+        vertices[5][1], vertices[5][2], vertices[5][3], 0, 0.25,
+        vertices[7][1], vertices[7][2], vertices[7][3], 0, 0.125,
+        vertices[3][1], vertices[3][2], vertices[3][3], 0.125, 0.125,
+        vertices[1][1], vertices[1][2], vertices[1][3], 0.125, 0.25,
+        "skin.png"
+    )
+    -- right
+    gfx.tquad(
+        vertices[2][1], vertices[2][2], vertices[2][3], 0.25, 0.25,
+        vertices[4][1], vertices[4][2], vertices[4][3], 0.25, 0.125,
+        vertices[8][1], vertices[8][2], vertices[8][3], 0.375, 0.125,
+        vertices[6][1], vertices[6][2], vertices[6][3], 0.375, 0.25,
+        "skin.png"
+    )
+end
+
+-- rotates a point in 3d space
+function rotatePoint(x, y, z, originX, originY, originZ, pitch, yaw, roll)
+    local newX, newY, newZ
+
+    -- rotate along z axis
+    x = x - originX
+    y = y - originY
+
+    newX = x * math.cos(roll) - y * math.sin(roll)
+    newY = x * math.sin(roll) + y * math.cos(roll)
+
+    x = newX + originX
+    y = newY + originY
+
+    -- rotate along x axis
+    y = y - originY
+    z = z - originZ
+
+    newY = y * math.cos(pitch) - z * math.sin(pitch)
+    newZ = y * math.sin(pitch) + z * math.cos(pitch)
+
+    y = newY + originY
+    z = newZ + originZ
+
+    -- rotate along y axis
+    x = x - originX
+    z = z - originZ
+
+    newX = z * math.sin(yaw) + x * math.cos(yaw)
+    newZ = z * math.cos(yaw) - x * math.sin(yaw)
+
+    x = newX + originX
+    z = newZ + originZ
+
+    return { x, y, z }
+end
+
+-- maps a value from one range to another
+function map(value, min1, max1, min2, max2)
+    return (value - min1) * ((max2 - min2) / (max1 - min1)) + min2
+end
+
+--[[
+*save keyframes to a file
+
+https://dev.to/ndesmic/splines-from-scratch-catmull-rom-3m66
+https://qroph.github.io/2018/07/30/smooth-paths-using-catmull-rom-splines.html
+]]
