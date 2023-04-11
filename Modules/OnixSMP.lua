@@ -9,18 +9,23 @@ positionX = 100
 positionY = 100
 
 points = {
-    { 545,   -120, "O2Flash20" },
-    { 0,     60,   "Chickens" },
-    { 440,   20,   "StaticWarrior77" },
-    { -740,  75,   "HazardTheAD" },
-    { 500,   1300, "MADKANE1" },
-    { 890,   -134, "Joe (the tree)" },
-    { -291,  770,  "Villager breeder" },
-    { 1880,  180,  "wTBone" },
-    { -500,  990,  "Riceexe" },
-    { -3300, -800, "Xk4nx" },
-    { -1100, -310, "namooTH" },
-    { -580,  540,  "Rosie" }
+    { 545,   -120,  "O2Flash20" },
+    { 0,     60,    "Chickens" },
+    { 440,   20,    "StaticWarrior77" },
+    { -740,  75,    "HazardTheAD" },
+    { 500,   1300,  "MADKANE1" },
+    { -291,  770,   "Villager breeder" },
+    { 1880,  180,   "wTBone" },
+    { -500,  990,   "Riceexe" },
+    { -3300, -800,  "Xk4nx" },
+    { -1100, -310,  "namooTH" },
+    { -580,  540,   "Rosie/Pontatot/Onix" },
+    { -490,  390,   "Stario" },
+    { -900,  70,    "Luneth" },
+    { -800,  0,     "CreeperG16" },
+    { 20,    -2670, "FallenSky" },
+    { -280,  -90,   "Villager Trading" },
+    { -970,  -790,  "Pillager Outpost" }
 }
 
 mapLocation = { 545, 66, -120 }
