@@ -297,6 +297,48 @@ Block Map:1:
    value:4:1
  enabled:2:false
  favorite:2:false
+Cosmetics Pack V1:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
+Camera Animations:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  scale:1:
+   type:4:3
+   value:6:1.003460
+  setKeyframeKey:1:
+   type:4:4
+   key:4:48
+  togglePlayKey:1:
+   type:4:4
+   key:4:57
+  teleportToKey:1:
+   type:4:4
+   key:4:55
+  selectedFile:1:
+   type:4:9
+   text:8:swamp
+  CURVEALPHA:1:
+   type:4:3
+   value:6:0.000000
+  selectKeyframeKey:1:
+   type:4:4
+   key:4:56
+  CURVETENSION:1:
+   type:4:3
+   value:6:0.000000
+  position:1:
+   type:4:5
+   x:6:169.480988
+   y:6:3.006001
+ enabled:2:true
+ favorite:2:false
 Cubecraft Auto GG:1:
  settings:1:
   Key:1:
@@ -417,39 +459,6 @@ Chat Timestamps:1:
    key:4:0
  enabled:2:false
  favorite:2:false
-Cosmetics Pack V1:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
- enabled:2:false
- favorite:2:false
-Camera Animations:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
-  scale:1:
-   type:4:3
-   value:6:1.000000
-  position:1:
-   type:4:5
-   x:6:170.000000
-   y:6:0.000000
-  setKeyframeKey:1:
-   type:4:4
-   key:4:48
-  togglePlayKey:1:
-   type:4:4
-   key:4:57
-  CURVEALPHA:1:
-   type:4:3
-   value:6:0.000000
-  CURVETENSION:1:
-   type:4:3
-   value:6:0.000000
- enabled:2:false
- favorite:2:false
 Command Block Hud:1:
  settings:1:
   _setting__9154693497432463922:1:
@@ -536,7 +545,7 @@ Vectors Test:1:
   Key:1:
    type:4:4
    key:4:0
- enabled:2:true
+ enabled:2:false
  favorite:2:false
 Custom Message:1:
  settings:1:
@@ -804,9 +813,9 @@ Logger:1:
    chroma:2:false
   position:1:
    type:4:5
-   x:6:434.377502
-   y:6:54.229630
- enabled:2:true
+   x:6:428.710815
+   y:6:70.314827
+ enabled:2:false
  favorite:2:true
 Mini Map:1:
  settings:1:

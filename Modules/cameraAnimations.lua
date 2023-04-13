@@ -10,6 +10,8 @@ positionY = 0
 
 importLib("logger")
 
+if not fs.isdir("ReplayMod") then fs.mkdir("ReplayMod") end
+
 workingDir = "RoamingState/OnixClient/Scripts/Data/ReplayMod"
 
 APPROXIMATIONRESOLUTION = 15
@@ -72,6 +74,34 @@ function render2(dt)
         (currentTime / totalTime) * (sizeX - 60) + 20, 40,
         stylizedTime(currentTime)
     )
+
+    -- status system
+    gfx2.color(255, 255, 255)
+    gfx2.text(25, 10, "Status: " .. statusText, 1)
+    if statusLength then
+        currentStatusTime = currentStatusTime + dt
+        if currentStatusTime > statusLength then
+            statusText = "";
+            statusLength = nil
+        end
+    end
+
+    -- file
+    gfx2.color(255, 255, 255)
+    if selectedFile ~= "" then
+        gfx2.text(130, 10, "Selected File: " .. selectedFile .. ".anim")
+    else
+        gfx2.text(130, 10, "No File is Selected")
+    end
+end
+
+statusText = ""
+statusLength = nil
+currentStatusTime = 0
+function setStatus(text, length)
+    currentStatusTime = 0
+    statusText = text
+    statusLength = length
 end
 
 function stylizedTime(seconds)
@@ -111,15 +141,16 @@ function render3d(dt)
         for i = 1, #keyframes do
             drawPlayerHead(
                 keyframes[i].position[1], keyframes[i].position[2], keyframes[i].position[3],
-                math.rad( -keyframes[i].rotation[2]), -math.rad(keyframes[i].rotation[1] + 180), 0.75
+                math.rad(-keyframes[i].rotation[2]), -math.rad(keyframes[i].rotation[1] + 180), 0.75
             )
         end
     else
         currentTime = currentTime + dt
 
         if currentTime > keyframes[#keyframes].time then
-            log("done")
-            print("No more keyframes")
+            -- log("done")
+            -- print("No more keyframes")
+            setStatus("Replay Over", 3)
             playing = false
             currentTime = 0
             currentTime = 0.0
@@ -290,12 +321,101 @@ function insertionSort(arr)
     return indices
 end
 
+function clearPath() keyframes = {} end
+
+client.settings.addFunction("Clear Path", "clearPath", "Clear")
+
+-- _______________________________________________________________________________
+
+client.settings.addAir(10)
+
+client.settings.addTitle("Saving and Loading")
+
+selectedFile = ""
+client.settings.addTextbox("Selected File Name:", "selectedFile")
+
+-- saves keyframes to a file
+function saveKeyframes()
+    fs.delete(selectedFile .. ".anim")
+    local saveFile = fs.open(selectedFile .. ".anim", 'w')
+    if not saveFile then return end
+
+    saveFile:writeFloat(CURVEALPHA)
+    saveFile:writeFloat(CURVETENSION)
+    for _, key in pairs(keyframes) do
+        saveFile:writeFloat(key.position[1])
+        saveFile:writeFloat(key.position[2])
+        saveFile:writeFloat(key.position[3])
+
+        saveFile:writeFloat(key.rotation[1])
+        saveFile:writeFloat(key.rotation[2])
+
+        saveFile:writeFloat(key.time)
+    end
+
+    saveFile:close()
+    setStatus("File Saved to " .. selectedFile .. ".anim", 6)
+end
+
+client.settings.addFunction("Save File", "saveKeyframes", "Save")
+
+-- reads keyframes from a file_________
+function readKeyframes()
+    local saveFile = fs.open(selectedFile .. ".anim", "r")
+    if not saveFile then return end
+
+    local tempKeyframes = {}
+
+    -- load alpha and tension values
+    local a = saveFile:readFloat()
+    CURVEALPHA = a
+    alphaSetting.value = a
+
+    local t = saveFile:readFloat()
+    CURVETENSION = t
+    tensionSetting.value = t
+
+    -- loop over all keyframes until the end of the file
+    while not saveFile:eof() do
+        local x = saveFile:readFloat()
+        local y = saveFile:readFloat()
+        local z = saveFile:readFloat()
+        local yaw = saveFile:readFloat()
+        local pitch = saveFile:readFloat()
+        local time = saveFile:readFloat()
+
+        table.insert(tempKeyframes, {
+            position = { x, y, z },
+            rotation = { yaw, pitch },
+            time = time
+        })
+    end
+
+    keyframes = tempKeyframes
+
+    setStatus("Loaded " .. selectedFile .. ".anim", 6)
+end
+
+client.settings.addFunction("Load File", "readKeyframes", "Load")
+-- _______________________________________________________________________________
+
+client.settings.addAir(10)
+
 keyframes = {}
+
+client.settings.addTitle("Keybinds")
+
+teleportToKey = 0x37
+client.settings.addKeybind("Teleport to spot on timeline: ", "teleportToKey")
+
+selectKeyframeKey = 0x38
+client.settings.addKeybind("Select nearest keyframe: ", "selectKeyframeKey")
+
 togglePlayKey = 0x39
 client.settings.addKeybind("Start/Stop playing: ", "togglePlayKey")
 
-setKeyframeKey = 0x2D
-client.settings.addKeybind("Set Keyframe: ", "setKeyframeKey")
+setKeyframeKey = 0x30
+client.settings.addKeybind("Create/Delete keyframe: ", "setKeyframeKey")
 
 event.listen("KeyboardInput", function(key, down)
     -- create keyframe
@@ -304,18 +424,22 @@ event.listen("KeyboardInput", function(key, down)
             -- delete keyframe
             table.remove(keyframes, selectedKeyframe)
             selectedKeyframe = 0
+            setStatus("Keyframe Deleted", 2)
         else
             -- add keyframe
             createKeyFrame()
+            setStatus("Keyframe Created", 2)
         end
     end
 
     -- select keyframe
-    if key == 0x38 and down then
+    if key == selectKeyframeKey and down then
         if selectedKeyframe ~= 0 then
             selectedKeyframe = 0
+            setStatus("Keyframe Unselected", 2)
         else
             selectKeyframe()
+            setStatus("Keyframe Selected")
         end
     end
 
@@ -323,16 +447,20 @@ event.listen("KeyboardInput", function(key, down)
     if key == togglePlayKey and down then
         if not playing then
             timeInReplay = currentTime
+            setStatus("Playing")
+        else
+            setStatus("Playing Stopped", 2)
         end
         playing = not playing
         currentTime = math.floor(currentTime * 10) / 10
     end
 
     -- teleport to timeline
-    if key == 0x37 and down then
+    if key == teleportToKey and down then
+        local doTeleportStatus = true
         if currentTime > keyframes[#keyframes].time then
-            log("done")
-            print("No more keyframes")
+            setStatus("No Keyframes Here", 2)
+            doTeleportStatus = false
             playing = false
             currentTime = 0
             currentTime = 0.0
@@ -391,6 +519,7 @@ event.listen("KeyboardInput", function(key, down)
             .. currentYaw .. " "
             .. currentPitch
         )
+        if doTeleportStatus then setStatus("Teleported", 2) end
     end
 
     -- move the cursor
@@ -419,11 +548,19 @@ event.listen("KeyboardInput", function(key, down)
     currentTime = math.floor(currentTime * 10) / 10
 end)
 
+-- _______________________________________________________________________________
+
+client.settings.addAir(5)
+
+client.settings.addTitle("Path Controls")
+
 CURVEALPHA = 0.5
-client.settings.addFloat("Curve Alpha", "CURVEALPHA", 0, 1)
+alphaSetting = client.settings.addFloat("Curve Alpha", "CURVEALPHA", 0, 1)
 
 CURVETENSION = 0
-client.settings.addFloat("Curve Tension", "CURVETENSION", 0, 1)
+tensionSetting = client.settings.addFloat("Curve Tension", "CURVETENSION", 0, 1)
+
+-- _______________________________________________________________________________
 
 TIMEPATHPOINTS = {}
 PATHPOINTS = {}
@@ -705,7 +842,11 @@ function map(value, min1, max1, min2, max2)
 end
 
 --[[
-*save keyframes to a file
+up arrow sometimes not working
+
+!fix all those errors when the replay ends
+
+what's up with the keyframes starting a bit before the first actual keyframe
 
 https://dev.to/ndesmic/splines-from-scratch-catmull-rom-3m66
 https://qroph.github.io/2018/07/30/smooth-paths-using-catmull-rom-splines.html
