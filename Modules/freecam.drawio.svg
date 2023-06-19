@@ -1,0 +1,147 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="771px" height="611px" viewBox="-0.5 -0.5 771 611" content="&lt;mxfile&gt;&lt;diagram id=&quot;V7q-l73v7D6aD7FCUKTV&quot; name=&quot;Page-1&quot;&gt;1VhLb9tGEP41AtqDAYq0ZffYWE5ySNGDC/S8JEfkViSX2Ycl9ZDf3pnZ5cukEDtx4hoGLGn2wfm+/XZmOKvktj5+0KIt/1A5VKs4yo+rZLuK43W83uAHWU7ecn39mzcUWuZh0mC4l/9CMEbB6mQOZjLRKlVZ2U6NmWoayOzEJrRWh+m0naqmT21FATPDfSaqufVvmdvSW2+uosH+EWRRdk9eR2GkFt3kYDClyNVhZEruVsmtVsr6b/XxFioir+PFr3t/ZrR3TENjn7Ig8QseROUCtlW8qXDpuxL32hT0rbOYVjTksj0FHjafHfn5LhXZvtDKNflFpiqlV8nv9IhGWikq3gApbuzFIXBCo43SdRjstumet4VM5rIpcNahFJYPF/8hpBz83t4fROVdmrqJ5rnvc4urFrGwo4YVR26u4/a46GS3TSWfTNO5rZ9FTqpB7HGKa4kepVG5RDUzdHPEP5J96Zq9+TpNc99/Npqc3Daqhu5uhLPeycJpMipnWQYyK0fA8BLT4IM0MkW33gBQSXvbcuJ1D+eWgDbVaRB5NzetVMaAD6UyvATvNWi2SL7I6RsjYqcIHYjhPOk4D+LkafCw+SHIya63fPpzyzrPUP4GCH+8uro74ucvkhTSSs+T6Ejj2QbTBBmbvKfW8JYcVQLloltXCV0w95lL4de3R6ZjLexEBp5LOdAX9kAbgW0VBgwfYD3z0U6rup+ciRq08Hvk6M1YlkT283mhWPvagQZMD1A4qzDayIxZqypPBavtsxO54WC0B57PhDkqI8AYobFgef8yDMwtuPB7jM+l9InMCQ4znjgvFk49DhU0DJDohricgmfUqwZyL6U9QDvTWKSVFZamhFsahlHLhl3Xgr3sgkPTL5nMpRgIGk+UV/lr4Udbrf7BElAqWrlzTfi6EXWL4JrUtFNef9hdfyLdBdjuao6IH/KAREk2IWBlCFnwLy1y6YzfvONZC46CLOvFvUIYNKVyXEX48EFlnKe7FA/QPUlheYd+Mes+QfsyckhrXLq/Smx4IrNjN1F/TZ88QZOqU1l42CmXHJxVQo59nJsXuf8/Q09PQRdeWfAAw7mRngq+NUKvxqmYGTCoAdaK5BqtwounvwXqi0esS3ylWoRK6s5K0RQcVAiq7UMC0Fkz4HF58H36/REgEo6HWnO45Qs8LhVDvi/7wmU+fXTT+fZWynHl02F+ba2eA26s4gziPSaH8+C2BZH30SyzjquZHtgLCfKnqVTpcZXfZU8OJ49K453TOMn0b8FZhS8Cpq/CUr2A4VW1O4XWv7F9Bcdrez1+OYCpuwMEqdkwLlSW5vU5Gkfql9TmuIkRT/DGFo5kL22NGWC75quk1R5ufT9m2yjM3cgHJrRHJvQqo4CYbK+GX38pLIu2FzGRhS/fFu5beq1ItgctqGBSGEh3FTeuSpnnmE6QQqocgPpKUe/huBEVelNUp8FxZAqNqQ+garCcisNoEnpkp+nPw9Bxu74OtnLUbbvsmm0idPmKfuehEYZfQi9suS92OeuLfYkj2ri/rBd9ERlOJPpyGe1aMzuaKS9LbI5O7QxHC0yepe1mStsmmvO2ThZ4S55PG/4cWpU8Nmr4Jnf/AQ==&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <rect x="0" y="10" width="770" height="400" fill="none" stroke="none" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 762px; height: 1px; padding-top: 0px; margin-left: 5px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left; max-height: 410px; overflow: hidden;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                <h1>
+                                    <span style="background-color: initial; font-weight: normal;">
+                                        Deciding what to render:
+                                    </span>
+                                </h1>
+                                <h1>
+                                    <ul style="font-size: 12px;">
+                                        <li>
+                                            <span style="font-size: 12px; font-weight: normal;">
+                                                break up world into 8x8x8 chunks
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span style="font-size: 12px; font-weight: normal;">
+                                                do some math to figure out which chunks are visible
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span style="font-size: 12px; font-weight: normal;">
+                                                in the visible chunks, only render the blocks whose centers will be visible
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span style="font-size: 12px; font-weight: normal;">
+                                                for each chunk away, the size of the LOD increases 2^x (it picks a block inside and renders that only as a larger cube)
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span style="font-size: 12px; font-weight: normal;">
+                                                for each cube face, if the normal is pointing away from the camera, dont render it
+                                            </span>
+                                        </li>
+                                        <ul>
+                                            <li>
+                                                <span style="font-size: 12px; font-weight: normal;">
+                                                    does the automatic culling of quads make this unnecessary?
+                                                </span>
+                                            </li>
+                                            <ul>
+                                                <ul></ul>
+                                            </ul>
+                                        </ul>
+                                        <li>
+                                            <span style="font-weight: normal;">
+                                                all the way up until the faces are being rendered, keep the camera rotated and the cubes straight, then rotate the cube vertices for the projection function
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span style="font-weight: normal;">
+                                                getting all the blocks within a certain radius: keep track of all the blocks that should be found, have a coroutine to fill in the grid
+                                            </span>
+                                        </li>
+                                        <ul>
+                                            <li>
+                                                <span style="font-weight: normal;">
+                                                    the grid can be very big, but it will only render a certain radius
+                                                </span>
+                                            </li>
+                                            <ul>
+                                                <li>
+                                                    <span style="font-weight: normal;">
+                                                        by keeping even the things far away, it saves time later
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                            <li>
+                                                <span style="font-weight: 400;">
+                                                    blockchanged event for everything inside the grid
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span style="font-weight: 400;">
+                                                    3d array of chunks, each has a 3d array of the block colours inside
+                                                </span>
+                                            </li>
+                                            <ul>
+                                                <li>
+                                                    <span style="font-weight: 400;">
+                                                        store colour ids instead of actual colours
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </ul>
+                                        <li>
+                                            <span style="font-weight: 400;">
+                                                order the faces in each chunk furthest to closest
+                                                <br/>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span style="font-weight: 400;">
+                                                order the chunks furthest to closest
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span style="font-weight: 400;">
+                                                renders the furthest chunks first and the furthest chunks within them
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="5" y="12" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px">
+                    Deciding what to render:...
+                </text>
+            </switch>
+        </g>
+        <rect x="50" y="580" width="130" height="30" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 128px; height: 1px; padding-top: 595px; margin-left: 51px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                ~2000 faces -&gt; ~40fps
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="115" y="599" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    ~2000 faces -&gt; ~40fps
+                </text>
+            </switch>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Text is not SVG - cannot display
+            </text>
+        </a>
+    </switch>
+</svg>
