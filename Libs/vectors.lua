@@ -191,7 +191,7 @@ end
 
 function vec:dist(otherVec)
     local leastComponents = math.min(#self.components, #otherVec.components)
-    local output
+    local output = 0
     for i = 1, leastComponents do
         output = output + (self.components[i] - otherVec.components[i]) ^ 2
     end
