@@ -52,6 +52,14 @@ function vec:mag()
     return math.sqrt(self:magSq())
 end
 
+function vec:set(...)
+    local args = { ... }
+    self.components = args
+    self:updateComponentNames()
+
+    return self
+end
+
 function vec:setMag(magnitude)
     self:normalize():mult(magnitude)
 

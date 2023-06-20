@@ -499,7 +499,7 @@ Command Block Hud:1:
   position:1:
    type:4:5
    x:6:0.000000
-   y:6:14.790003
+   y:6:24.142006
  enabled:2:true
  favorite:2:false
 Cosmetics Lib Custom Capes:1:
@@ -710,7 +710,7 @@ Freecam:1:
   testButton:1:
    type:4:4
    key:4:33
- enabled:2:false
+ enabled:2:true
  favorite:2:false
 Fulldark:1:
  settings:1:
@@ -844,9 +844,9 @@ Logger:1:
    chroma:2:false
   position:1:
    type:4:5
-   x:6:362.903320
-   y:6:79.580658
- enabled:2:false
+   x:6:480.000000
+   y:6:70.314827
+ enabled:2:true
  favorite:2:true
 Mini Map:1:
  settings:1:
