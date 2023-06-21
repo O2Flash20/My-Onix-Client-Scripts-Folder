@@ -16,10 +16,12 @@ event.listen("KeyboardInput", function(key, down)
         facesFromGrid()
     end
 
-    for i = 1, #trackedKeys do
-        if trackedKeys[i] == key then
-            trackedKeysDown[i] = down
-            -- return true
+    if ISINFREECAM then
+        for i = 1, #trackedKeys do
+            if trackedKeys[i] == key then
+                trackedKeysDown[i] = down
+                return true
+            end
         end
     end
 end)
@@ -27,23 +29,28 @@ end)
 ISINFREECAM = false
 lastWasInFreecam = false
 
---------------v
-radius = (8 * 1) / 2
+----------------v
+chunkDiameter = 3
+radius = (8 * chunkDiameter) / 2
 Grid = {}
 blocksToAddToGrid = {} -- {{x, y, z}, {x, y, z}, {x, y, z}}
 function postInit()
     lastX, lastY, lastZ = player.position()
+    lastcPos = { 0, 0, 0 }
 end
 
 BlockAddingSpeed = 5000
 function update()
     px, py, pz = player.position()
 
-    log({ #blocksToAddToGrid, #facesToRender, facesToRender[1] })
-
     if ISINFREECAM then
-        diffX, diffY, diffZ = px - lastX, py - lastY, pz - lastZ
-        scanWithMovement(diffX, diffY, diffZ)
+        local diff = {
+            math.floor(cPos[1]) - math.floor(lastcPos[1]),
+            math.floor(cPos[2]) - math.floor(lastcPos[2]),
+            math.floor(cPos[3]) - math.floor(lastcPos[3])
+        }
+        -- log(diff)
+        scanWithMovement(diff[1], diff[2], diff[3])
 
         -- remove all faces and redo it
         facesToRender = {}
@@ -62,19 +69,23 @@ function update()
     end
 
     if ISINFREECAM and not lastWasInFreecam then
+        cPos = { px, py, pz }
         initialScan()
     end
-
     lastWasInFreecam = ISINFREECAM
 
-    lastX, lastY, lastZ = px, py, pz
+    lastcPos = cPos
 end
 
 function initialScan()
     for x = -radius, radius, 1 do
         for y = -radius, radius, 1 do
             for z = -radius, radius, 1 do
-                table.insert(blocksToAddToGrid, { px + x, py + y, pz + z })
+                table.insert(blocksToAddToGrid, {
+                    math.floor(cPos[1]) + x,
+                    math.floor(cPos[2]) + y,
+                    math.floor(cPos[3]) + z
+                })
             end
         end
     end
@@ -84,21 +95,33 @@ function scanWithMovement(diffX, diffY, diffZ)
     for x = 1, math.abs(diffX) do
         for y = -radius, radius do
             for z = -radius, radius do
-                table.insert(blocksToAddToGrid, { px + math.sign(diffX) * (radius - x), py + y, pz + z })
+                table.insert(blocksToAddToGrid, {
+                    math.floor(cPos[1]) + math.sign(diffX) * (radius - x),
+                    math.floor(cPos[2]) + y,
+                    math.floor(cPos[3]) + z
+                })
             end
         end
     end
     for y = 1, math.abs(diffY) do
         for x = -radius, radius do
             for z = -radius, radius do
-                table.insert(blocksToAddToGrid, { px + x, py + math.sign(diffY) * (radius - y), pz + z })
+                table.insert(blocksToAddToGrid, {
+                    math.floor(cPos[1]) + x,
+                    math.floor(cPos[2]) + math.sign(diffY) * (radius - y),
+                    math.floor(cPos[3]) + z
+                })
             end
         end
     end
     for z = 1, math.abs(diffZ) do
         for x = -radius, radius do
             for y = -radius, radius do
-                table.insert(blocksToAddToGrid, { px + x, py + y, pz + math.sign(diffZ) * (radius - z) })
+                table.insert(blocksToAddToGrid, {
+                    math.floor(cPos[1]) + x,
+                    math.floor(cPos[2]) + y,
+                    math.floor(cPos[3]) + math.sign(diffZ) * (radius - z)
+                })
             end
         end
     end
@@ -149,34 +172,162 @@ function addBlockToGrid(x, y, z)
 end
 
 function facesFromGrid()
-    local chunkX = math.floor(px / 8)
-    local chunkY = math.floor(py / 8)
-    local chunkZ = math.floor(pz / 8)
+    local chunkX = math.floor(cPos[1] / 8)
+    local chunkY = math.floor(cPos[2] / 8)
+    local chunkZ = math.floor(cPos[3] / 8)
 
-
-    for i = -radius, radius do
-        for j = -radius, radius do
-            for k = -radius, radius do
+    for i = -(chunkDiameter - 1) / 2, (chunkDiameter - 1) / 2 do
+        for j = -(chunkDiameter - 1) / 2, (chunkDiameter - 1) / 2 do
+            for k = -(chunkDiameter - 1) / 2, (chunkDiameter - 1) / 2 do
                 if Grid[chunkX + i] ~= nil and Grid[chunkX + i][chunkY + j] ~= nil and Grid[chunkX + i][chunkY + j][chunkZ + k] ~= nil then -- the chunk exists
-                    local thisChunk = Grid[chunkX + i][chunkY + j][chunkZ + k]
+                    local thisChunkX = chunkX + i
+                    local thisChunkY = chunkY + j
+                    local thisChunkZ = chunkZ + k
+                    local thisChunk = Grid[thisChunkX][thisChunkY][thisChunkZ]
 
-                    for l = 0, 8 do
-                        for m = 0, 8 do
-                            for n = 0, 8 do
-                                if thisChunk ~= nil and thisChunk[l] ~= nil and thisChunk[l][m] ~= nil and thisChunk[l][m][n] ~= nil then -- the block in the chunk exists
-                                    if thisChunk[l][m][n] ~= 0 then                                                                       -- it isn't air
-                                        --this is a block that can be rendered
-                                        -- client.execute(
-                                        --     "execute /setblock " ..
-                                        --     8 * (chunkX + i) + l .. " " ..
-                                        --     8 * (chunkY + j) + m .. " " ..
-                                        --     8 * (chunkZ + k) + n .. " " ..
-                                        --     "dirt"
-                                        -- )
-                                        local x = 8 * (chunkX + i) + l
-                                        local y = 8 * (chunkY + j) + m
-                                        local z = 8 * (chunkZ + k) + n
-                                        table.insert(facesToRender, { x, y, z, { 0, 1, 0 }, "nil" })
+                    local chunkToCamVec = vec:new(
+                        thisChunkX * 8 - cPos[1],
+                        thisChunkY * 8 - cPos[2],
+                        thisChunkZ * 8 - cPos[3]
+                    ):normalize()
+
+                    if (i == 0 and k == 0) or chunkToCamVec:dot(vec:fromAngle(1, pyaw, ppitch)) > 0 then
+                        for l = 0, 8 do
+                            for m = 0, 8 do
+                                for n = 0, 8 do
+                                    if thisChunk ~= nil and thisChunk[l] ~= nil and thisChunk[l][m] ~= nil and thisChunk[l][m][n] ~= nil then -- the block in the chunk exists
+                                        if thisChunk[l][m][n] ~= 0 then                                                                       -- it isn't air
+                                            --this is a block that can be rendered
+                                            local x = 8 * (chunkX + i) + l
+                                            local y = 8 * (chunkY + j) + m
+                                            local z = 8 * (chunkZ + k) + n
+
+                                            -- check all blocks around this one, if it is visible, render a face there
+
+                                            --!some of these aren't right, recheck!
+                                            ---------------------------------------------------------------------------
+                                            local upBlockIsInChunk, block = pcall(function()
+                                                return thisChunk[l][m + 1][n]
+                                            end)
+                                            if upBlockIsInChunk then
+                                                if block == 0 then
+                                                    table.insert(facesToRender,
+                                                        { x, y, z, { 0, 1, 0 }, thisChunk[l][m][n] })
+                                                end
+                                                --------------------
+                                            else
+                                                -- the block is in another chunk, so it is the lowest block of the chunk above\
+                                                local blockAboveExists, block = pcall(function()
+                                                    return Grid[thisChunkX]
+                                                        [thisChunkY + 1][thisChunkZ][l][0][n]
+                                                end)
+                                                if blockAboveExists and block == 0 then
+                                                    table.insert(facesToRender,
+                                                        { x, y, z, { 0, 1, 0 }, thisChunk[l][m][n] })
+                                                end
+                                            end
+                                            ---------------------------------------------------------------------------
+                                            local downBlockIsInChunk, block = pcall(function()
+                                                return thisChunk[l][m - 1][n]
+                                            end)
+                                            if downBlockIsInChunk then
+                                                if block == 0 then
+                                                    table.insert(facesToRender,
+                                                        { x, y, z, { 0, -1, 0 }, thisChunk[l][m][n] })
+                                                end
+                                                --------------------
+                                            else
+                                                -- the block is in another chunk, so it is the highest block of the chunk below
+                                                local blockBelowExists, block = pcall(function()
+                                                    return Grid[thisChunkX]
+                                                        [thisChunkY - 1][thisChunkZ][l][8][n]
+                                                end)
+                                                if blockBelowExists and block == 0 then
+                                                    table.insert(facesToRender,
+                                                        { x, y, z, { 0, -1, 0 }, thisChunk[l][m][n] })
+                                                end
+                                            end
+                                            ---------------------------------------------------------------------------
+                                            local leftBlockIsInChunk, block = pcall(function()
+                                                return thisChunk[l - 1][m][n]
+                                            end)
+                                            if leftBlockIsInChunk then
+                                                if block == 0 then
+                                                    table.insert(facesToRender,
+                                                        { x, y, z, { -1, 0, 0 }, thisChunk[l][m][n] })
+                                                end
+                                            else
+                                                -- the block is in another chunk, so it is the rightmost block of the chunk to the left
+                                                local blockLeftExists, block = pcall(function()
+                                                    return Grid[thisChunkX - 1]
+                                                        [thisChunkY][thisChunkZ][8][m][n]
+                                                end)
+                                                if blockLeftExists and block == 0 then
+                                                    table.insert(facesToRender,
+                                                        { x, y, z, { -1, 0, 0 }, thisChunk[l][m][n] })
+                                                end
+                                            end
+                                            ---------------------------------------------------------------------------
+                                            local rightBlockIsInChunk, block = pcall(function()
+                                                return thisChunk[l + 1][m][n]
+                                            end)
+                                            if rightBlockIsInChunk then
+                                                if block == 0 then
+                                                    table.insert(facesToRender,
+                                                        { x, y, z, { 1, 0, 0 }, thisChunk[l][m][n] })
+                                                end
+                                            else
+                                                -- the block is in another chunk, so it is the leftmost block of the chunk to the right
+                                                local blockRightExists, block = pcall(function()
+                                                    return Grid[thisChunkX + 1][thisChunkY][thisChunkZ][0][m][n]
+                                                end)
+                                                if blockRightExists and block == 0 then
+                                                    table.insert(facesToRender,
+                                                        { x, y, z, { 1, 0, 0 }, thisChunk[l][m][n] })
+                                                end
+                                            end
+                                            ---------------------------------------------------------------------------
+                                            local frontBlockIsInChunk, block = pcall(function()
+                                                return thisChunk[l][m][n + 1]
+                                            end)
+                                            if frontBlockIsInChunk then
+                                                if block == 0 then
+                                                    table.insert(facesToRender,
+                                                        { x, y, z, { 0, 0, 1 }, thisChunk[l][m][n] })
+                                                end
+                                            else
+                                                -- the block is in another chunk, so it is the backmost block of the chunk in front
+                                                local blockFrontExists, block = pcall(function()
+                                                    return Grid[thisChunkX]
+                                                        [thisChunkY][thisChunkZ + 1][l][m][0]
+                                                end)
+                                                if blockFrontExists and block == 0 then
+                                                    table.insert(facesToRender,
+                                                        { x, y, z, { 0, 0, 1 }, thisChunk[l][m][n] })
+                                                end
+                                            end
+                                            ---------------------------------------------------------------------------
+                                            local backBlockIsInChunk, block = pcall(function()
+                                                return thisChunk[l][m][n - 1]
+                                            end)
+                                            if backBlockIsInChunk then
+                                                if block == 0 then
+                                                    table.insert(facesToRender,
+                                                        { x, y, z, { 0, 0, -1 }, thisChunk[l][m][n] })
+                                                end
+                                            else
+                                                -- the block is in another chunk, so it is the frontmost block of the chunk in back
+                                                local blockBackExists, block = pcall(function()
+                                                    return Grid[thisChunkX]
+                                                        [thisChunkY][thisChunkZ - 1][l][m][8]
+                                                end)
+                                                if blockBackExists and block == 0 then
+                                                    table.insert(facesToRender,
+                                                        { x, y, z, { 0, 0, -1 }, thisChunk[l][m][n] })
+                                                end
+                                            end
+                                            ---------------------------------------------------------------------------
+                                        end
                                     end
                                 end
                             end
@@ -188,83 +339,92 @@ function facesFromGrid()
     end
 end
 
-cameraPosition = { 0, 0, 0 }
+cPos = { 0, 0, 0 }
 -----------------w------a-----s-----d----space-z
 trackedKeys = { 0x57, 0x41, 0x53, 0x44, 0x20, 0x5A }
 trackedKeysDown = { false, false, false, false, false, false }
 function moveCamera(amount, direction)
-    local cam = vec:new(cameraPosition[1], cameraPosition[2], cameraPosition[3])
+    local cam = vec:new(cPos[1], cPos[2], cPos[3])
     if direction == "forward" then
         local toAdd = vec:fromAngle(amount, pyaw, 0)
         cam:add(toAdd)
-        cameraPosition = cam.components
+        cPos = cam.components
         return
     end
     if direction == "left" then
         local toAdd = vec:fromAngle(amount, pyaw - math.rad(90), 0)
         cam:add(toAdd)
-        cameraPosition = cam.components
+        cPos = cam.components
         return
     end
     if direction == "backward" then
         local toSub = vec:fromAngle(amount, pyaw, 0)
         cam:sub(toSub)
-        cameraPosition = cam.components
+        cPos = cam.components
         return
     end
     if direction == "right" then
         local toAdd = vec:fromAngle(amount, pyaw + math.rad(90), 0)
         cam:add(toAdd)
-        cameraPosition = cam.components
+        cPos = cam.components
         return
     end
     if direction == "up" then
-        cameraPosition[2] = cameraPosition[2] + amount
+        cPos[2] = cPos[2] + amount
     end
     if direction == "down" then
-        cameraPosition[2] = cameraPosition[2] - amount
+        cPos[2] = cPos[2] - amount
     end
 end
 
 -- {{x, y, z, direction, texture}, {...}}
 facesToRender = {}
-function render3d()
+function render3d(dt)
     local blocksSizes = 0.05
 
+    ppx, ppy, ppz = player.pposition()
     pyaw, ppitch = player.rotation()
     pyaw = math.rad(pyaw + 90)
-    -- log(cameraPosition)
-    -- if trackedKeysDown[1] == true then moveCamera(blocksSizes / 4, "forward") end
-    -- if trackedKeysDown[2] == true then moveCamera(blocksSizes / 4, "left") end
-    -- if trackedKeysDown[3] == true then moveCamera(blocksSizes / 4, "backward") end
-    -- if trackedKeysDown[4] == true then moveCamera(blocksSizes / 4, "right") end
-    -- if trackedKeysDown[5] == true then moveCamera(blocksSizes / 4, "up") end
-    -- if trackedKeysDown[6] == true then moveCamera(blocksSizes / 4, "down") end
+    ppitch = math.rad(-ppitch)
 
-    for i = 1, #facesToRender do
-        local f = facesToRender[i]
-        renderFace(f[1] * blocksSizes, f[2] * blocksSizes, f[3] * blocksSizes, f[4], blocksSizes, f[5])
+    if ISINFREECAM then
+        if trackedKeysDown[1] == true then moveCamera(6 * dt, "forward") end
+        if trackedKeysDown[2] == true then moveCamera(6 * dt, "left") end
+        if trackedKeysDown[3] == true then moveCamera(6 * dt, "backward") end
+        if trackedKeysDown[4] == true then moveCamera(6 * dt, "right") end
+        if trackedKeysDown[5] == true then moveCamera(6 * dt, "up") end
+        if trackedKeysDown[6] == true then moveCamera(6 * dt, "down") end
+
+        for i = 1, #facesToRender do
+            local f = facesToRender[i]
+            renderFace(
+                f[1] * blocksSizes + ppx - (cPos[1] * blocksSizes),
+                f[2] * blocksSizes + ppy - (cPos[2] * blocksSizes),
+                f[3] * blocksSizes + ppz - (cPos[3] * blocksSizes),
+                f[4], blocksSizes, f[5]
+            )
+            -- gfx.color(f[5], f[5], f[5])
+            -- renderFaceC(
+            --     f[1] * blocksSizes + ppx - (cPos[1] * blocksSizes),
+            --     f[2] * blocksSizes + ppy - (cPos[2] * blocksSizes),
+            --     f[3] * blocksSizes + ppz - (cPos[3] * blocksSizes),
+            --     f[4], blocksSizes)
+        end
     end
-    -- facesToRender = {}
 
-    -- for x = 1, 10 do
-    --     for y = 1, 10 do
-    --         for z = 1, 10 do
-    --             renderFace(
-    --                 x * blocksSizes - cameraPosition[1],
-    --                 y * blocksSizes - cameraPosition[2],
-    --                 z * blocksSizes - cameraPosition[3],
-    --                 { 0, 1, 0 }, blocksSizes, "textures/blocks/netherite_block")
-    --         end
-    --     end
-    -- end
+    renderFace(cPos[1], cPos[2], cPos[3], { 1, 0, 0 }, 0.5, "nil")
+    renderFace(cPos[1], cPos[2], cPos[3], { -1, 0, 0 }, 0.5, "nil")
+    renderFace(cPos[1], cPos[2], cPos[3], { 0, 1, 0 }, 0.5, "nil")
+    renderFace(cPos[1], cPos[2], cPos[3], { 0, -1, 0 }, 0.5, "nil")
+    renderFace(cPos[1], cPos[2], cPos[3], { 0, 0, 1 }, 0.5, "nil")
+    renderFace(cPos[1], cPos[2], cPos[3], { 1, 0, -1 }, 0.5, "nil")
 
-    -- renderFace(2, 0, 0.5, { -1, 0, 0 }, 1, "textures/blocks/stone")
-    -- renderFace(-1, 0, 0.5, { 1, 0, 0 }, 1, "textures/blocks/stone")
-    -- renderFace(2, 0, 0.5, { -1, 0, 0 }, 1, "textures/blocks/stone")
-    -- renderFace(2, 0, 0.5, { -1, 0, 0 }, 1, "textures/blocks/stone")
-    -- renderFace(2, 0, 0.5, { -1, 0, 0 }, 1, "textures/blocks/stone")
-    -- renderFace(2, 0, 0.5, { -1, 0, 0 }, 1, "textures/blocks/stone")
+    -- renderFaceC(cPos[1], cPos[2], cPos[3], { 1, 0, 0 }, 0.5)
+    -- renderFaceC(cPos[1], cPos[2], cPos[3], { -1, 0, 0 }, 0.5)
+    -- renderFaceC(cPos[1], cPos[2], cPos[3], { 0, 1, 0 }, 0.5)
+    -- renderFaceC(cPos[1], cPos[2], cPos[3], { 0, -1, 0 }, 0.5)
+    -- renderFaceC(cPos[1], cPos[2], cPos[3], { 0, 0, 1 }, 0.5)
+    -- renderFaceC(cPos[1], cPos[2], cPos[3], { 1, 0, -1 }, 0.5)
 end
 
 function renderFace(x, y, z, direction, size, texturePath)
@@ -308,12 +468,11 @@ function renderFace(x, y, z, direction, size, texturePath)
         )
     end
 
-    -- ! for these two, the uvs might be inverted
     if direction[3] == 1 then --front
         gfx.tquad(
-            x + s2, y + s2, z + s2, 1, 0,
-            x - s2, y + s2, z + s2, 1, 1,
-            x + s2, y - s2, z + s2, 0, 1,
+            x + s2, y - s2, z + s2, 1, 0,
+            x + s2, y + s2, z + s2, 1, 1,
+            x - s2, y + s2, z + s2, 0, 1,
             x - s2, y - s2, z + s2, 0, 0,
             texturePath
         )
@@ -321,13 +480,68 @@ function renderFace(x, y, z, direction, size, texturePath)
     if direction[3] == -1 then --back
         gfx.tquad(
             x - s2, y - s2, z - s2, 0, 0,
-            x + s2, y - s2, z - s2, 0, 1,
-            x - s2, y + s2, z - s2, 1, 1,
-            x + s2, y + s2, z - s2, 1, 0,
+            x - s2, y + s2, z - s2, 0, 1,
+            x + s2, y + s2, z - s2, 1, 1,
+            x + s2, y - s2, z - s2, 1, 0,
             texturePath
         )
     end
 end
+
+-- function renderFaceC(x, y, z, direction, size)
+--     local s2 = size / 2
+
+--     if direction[1] == 1 then --right
+--         gfx.quad(
+--             x + s2, y + s2, z - s2,
+--             x + s2, y + s2, z + s2,
+--             x + s2, y - s2, z + s2,
+--             x + s2, y - s2, z - s2
+--         )
+--     end
+--     if direction[1] == -1 then --left
+--         gfx.quad(
+--             x - s2, y - s2, z - s2,
+--             x - s2, y - s2, z + s2,
+--             x - s2, y + s2, z + s2,
+--             x - s2, y + s2, z - s2
+--         )
+--     end
+
+--     if direction[2] == 1 then --up
+--         gfx.quad(
+--             x - s2, y + s2, z - s2,
+--             x - s2, y + s2, z + s2,
+--             x + s2, y + s2, z + s2,
+--             x + s2, y + s2, z - s2
+--         )
+--     end
+--     if direction[2] == -1 then --down
+--         gfx.quad(
+--             x + s2, y - s2, z - s2,
+--             x + s2, y - s2, z + s2,
+--             x - s2, y - s2, z + s2,
+--             x - s2, y - s2, z - s2
+--         )
+--     end
+
+--     if direction[3] == 1 then --front
+--         gfx.quad(
+--             x + s2, y - s2, z + s2,
+--             x + s2, y + s2, z + s2,
+--             x - s2, y + s2, z + s2,
+--             x - s2, y - s2, z + s2
+--         )
+--     end
+--     if direction[3] == -1 then --back
+--         gfx.quad(
+--             x - s2, y - s2, z - s2,
+--             x - s2, y + s2, z - s2,
+--             x + s2, y + s2, z - s2,
+--             x + s2, y - s2, z - s2
+--         )
+--     end
+-- end
 
 --[[
     -- !too difficult to get the point to match up with in-game, maybe try again later
@@ -379,3 +593,5 @@ end
         gfx.rect(629, 332, 10, 10)
     end
 ]]
+
+-- TODO: blockChanged stuff
