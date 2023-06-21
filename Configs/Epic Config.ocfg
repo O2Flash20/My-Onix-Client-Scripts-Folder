@@ -846,8 +846,18 @@ Logger:1:
    type:4:5
    x:6:480.000000
    y:6:70.314827
- enabled:2:true
+ enabled:2:false
  favorite:2:true
+Quick Waypoints:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  keybind:1:
+   type:4:4
+   key:4:86
+ enabled:2:true
+ favorite:2:false
 Mini Map:1:
  settings:1:
   Key:1:
