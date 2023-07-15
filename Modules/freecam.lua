@@ -192,9 +192,9 @@ function facesFromGrid()
                     ):normalize()
 
                     if (i == 0 and k == 0) or chunkToCamVec:dot(vec:fromAngle(1, pyaw, ppitch)) > 0 then
-                        for l = 0, 8 do
-                            for m = 0, 8 do
-                                for n = 0, 8 do
+                        for l = 0, 7 do
+                            for m = 0, 7 do
+                                for n = 0, 7 do
                                     if thisChunk ~= nil and thisChunk[l] ~= nil and thisChunk[l][m] ~= nil and thisChunk[l][m][n] ~= nil then -- the block in the chunk exists
                                         if thisChunk[l][m][n] ~= 0 then                                                                       -- it isn't air
                                             --this is a block that can be rendered
@@ -204,7 +204,7 @@ function facesFromGrid()
 
                                             -- check all blocks around this one, if it is visible, render a face there
 
-                                            --!some of these aren't right, recheck!
+                                            --! +- Z are wrong
                                             ---------------------------------------------------------------------------
                                             local upBlockIsInChunk, block = pcall(function()
                                                 return thisChunk[l][m + 1][n]
@@ -240,7 +240,7 @@ function facesFromGrid()
                                                 -- the block is in another chunk, so it is the highest block of the chunk below
                                                 local blockBelowExists, block = pcall(function()
                                                     return Grid[thisChunkX]
-                                                        [thisChunkY - 1][thisChunkZ][l][8][n]
+                                                        [thisChunkY - 1][thisChunkZ][l][7][n]
                                                 end)
                                                 if blockBelowExists and block == 0 then
                                                     table.insert(facesToRender,
@@ -260,7 +260,7 @@ function facesFromGrid()
                                                 -- the block is in another chunk, so it is the rightmost block of the chunk to the left
                                                 local blockLeftExists, block = pcall(function()
                                                     return Grid[thisChunkX - 1]
-                                                        [thisChunkY][thisChunkZ][8][m][n]
+                                                        [thisChunkY][thisChunkZ][7][m][n]
                                                 end)
                                                 if blockLeftExists and block == 0 then
                                                     table.insert(facesToRender,
@@ -279,7 +279,8 @@ function facesFromGrid()
                                             else
                                                 -- the block is in another chunk, so it is the leftmost block of the chunk to the right
                                                 local blockRightExists, block = pcall(function()
-                                                    return Grid[thisChunkX + 1][thisChunkY][thisChunkZ][0][m][n]
+                                                    return Grid[thisChunkX + 1]
+                                                        [thisChunkY][thisChunkZ][0][m][n]
                                                 end)
                                                 if blockRightExists and block == 0 then
                                                     table.insert(facesToRender,
@@ -319,7 +320,7 @@ function facesFromGrid()
                                                 -- the block is in another chunk, so it is the frontmost block of the chunk in back
                                                 local blockBackExists, block = pcall(function()
                                                     return Grid[thisChunkX]
-                                                        [thisChunkY][thisChunkZ - 1][l][m][8]
+                                                        [thisChunkY][thisChunkZ - 1][l][m][7]
                                                 end)
                                                 if blockBackExists and block == 0 then
                                                     table.insert(facesToRender,
