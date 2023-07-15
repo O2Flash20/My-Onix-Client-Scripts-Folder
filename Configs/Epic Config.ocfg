@@ -232,8 +232,8 @@ Better Hunger:1:
    chroma:2:false
   position:1:
    type:4:5
-   x:6:500.000000
-   y:6:25.000000
+   x:6:328.666656
+   y:6:292.534027
  enabled:2:false
  favorite:2:false
 Skinstealer:1:
@@ -498,9 +498,9 @@ Command Block Hud:1:
    value:6:1.000000
   position:1:
    type:4:5
-   x:6:0.000000
-   y:6:24.142006
- enabled:2:true
+   x:6:43.000000
+   y:6:51.864010
+ enabled:2:false
  favorite:2:false
 Cosmetics Lib Custom Capes:1:
  settings:1:
@@ -719,6 +719,16 @@ Fulldark:1:
    key:4:0
  enabled:2:false
  favorite:2:false
+Ray Tracing Test:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  _setting__13550292235676943758:1:
+   type:4:4
+   key:4:34
+ enabled:2:true
+ favorite:2:false
 PvP Helper:1:
  settings:1:
   Key:1:
@@ -844,9 +854,9 @@ Logger:1:
    chroma:2:false
   position:1:
    type:4:5
-   x:6:480.000000
+   x:6:458.000000
    y:6:70.314827
- enabled:2:false
+ enabled:2:true
  favorite:2:true
 Quick Waypoints:1:
  settings:1:
@@ -930,8 +940,8 @@ Movable Action Bar:1:
    value:6:0.000000
   position:1:
    type:4:5
-   x:6:318.500000
-   y:6:285.784027
+   x:6:299.941589
+   y:6:263.406067
   _setting__3822280789167061462:1:
    type:4:3
    value:6:3.000000
@@ -944,7 +954,7 @@ Movable Action Bar:1:
   _setting__8461204673150529413:1:
    type:4:3
    value:6:4.998616
- enabled:2:true
+ enabled:2:false
  favorite:2:false
 Onix SMP:1:
  settings:1:
@@ -1035,6 +1045,20 @@ World Save:1:
    type:4:5
    x:6:10.000000
    y:6:10.000000
+ enabled:2:false
+ favorite:2:false
+Texture get test:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  scale:1:
+   type:4:3
+   value:6:1.003460
+  position:1:
+   type:4:5
+   x:6:110.000000
+   y:6:86.974007
  enabled:2:false
  favorite:2:false
 Lua Module:1:

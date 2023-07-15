@@ -1,1 +1,4 @@
 
+to finish: 
+    freecam (including textures library)
+    replay mod (once scripting 2)
