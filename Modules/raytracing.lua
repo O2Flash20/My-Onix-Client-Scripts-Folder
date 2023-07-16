@@ -4,10 +4,10 @@ description = "how bad can it possibly be"
 importLib("logger")
 importLib("vectors")
 
-ResolutionW = 192
+ResolutionW = 1000
 ResolutionH = math.ceil(ResolutionW * (9 / 16))
 
-gameFov = 86
+gameFov = 90.80
 
 -- idk, seems about right
 fov = math.rad(247.0858 + (8.55627 - 247.0858) / (1 + (gameFov / 97.78112) ^ 1.295414))
@@ -18,16 +18,17 @@ squareSpacing = 643.2 / ResolutionW
 
 testBtn = client.settings.addNamelessKeybind("test button", 0x22)
 
+currentlyRayTracing = false
 event.listen("KeyboardInput", function(key, down)
     if key == testBtn.value and down then
         raytraceScene()
-        -- blurredBuffer = blurBuffer(outputBuffer, ResolutionW, ResolutionH, 480, 270)
+        -- coroutine.resume(rayTraceScene) --*
+        -- currentlyRayTracing = true --*
     end
 end)
 
 
 outputBuffer = {}
--- blurredBuffer = {}
 
 
 function render2()
@@ -37,36 +38,43 @@ function render2()
     if #outputBuffer > 0 then
         for x = 0, ResolutionW - 1, 1 do
             for y = 0, ResolutionH - 1, 1 do
+                -- for x = 0, #outputBuffer - 1 do --*
+                --     for y = 0, #outputBuffer[#outputBuffer] - 1 do --*
                 local col = outputBuffer[x + 1][y + 1]
-                gfx2.color(0, 255, 255, col[1])
+
+                -- gfx2.color(0, 255, 255, col[1])
+
+                -- local facingDir = col[2]
+                -- local dirToCol = {}
+                -- dirToCol[-1] = { 0, 0, 0, 0 }
+                -- dirToCol[0] = { 0, 127, 0, 255 }
+                -- dirToCol[1] = { 0, 255, 0, 255 }
+                -- dirToCol[2] = { 0, 0, 127, 255 }
+                -- dirToCol[3] = { 0, 0, 255, 255 }
+                -- dirToCol[4] = { 127, 0, 0, 255 }
+                -- dirToCol[5] = { 255, 0, 0, 255 }
+                -- local thisColor = dirToCol[facingDir]
+                -- gfx2.color(thisColor[1], thisColor[2], thisColor[3], 100)
+
+                -- local shadowAmount = col[3]
+                -- gfx2.color(0, 0, 0, shadowAmount * 100)
+
+                local isWater = col[4]
+                gfx2.color(255, 255, 255, isWater * 255)
 
                 gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
             end
         end
     end
-
-    -- if #blurredBuffer > 0 then
-    --     for x = 0, 480, 1 do
-    --         for y = 0, 270, 1 do
-    --             local col = blurredBuffer[x + 1][y + 1]
-    --             gfx2.color(0, 255, 255, col[1])
-
-    --             gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
-    --         end
-    --     end
-    -- end
 end
 
--- function render3d()
---     if #outputBuffer > 0 then
---         for x = 0, ResolutionW - 1, 1 do
---             for y = 0, ResolutionH - 1, 1 do
---                 local dir = pixelDirToWorldDir(screenPixelToDirection(x, y))
---                 gfx.line(px, py, pz, px + dir.x, py + dir.y, pz + dir.z)
---             end
---         end
---     end
--- end
+-- function update() --*
+--     if currentlyRayTracing then --*
+--         for i = 1, ResolutionH, 1 do --*
+--             coroutine.resume(rayTraceScene) --*
+--         end --*
+--     end --*
+-- end --*
 
 function isLookingAtBlock(dirVec)
     local dist = 10
@@ -104,13 +112,57 @@ function raytracePixel(x, y)
     local worldDir = pixelDirToWorldDir(screenPixelToDirection(x, y)):normalize()
     local dist = 1000
 
+    local output = {}
+
     local hit = dimension.raycast(px, py, pz, px + worldDir.x * dist, py + worldDir.y * dist, pz + worldDir.z * dist)
+    local sunDir = getSunDirection()
+
+    --DEPTH--
     local distToCam = vec:new(hit.px, hit.py, hit.pz):dist(vec:new(px, py, pz))
     if hit.isBlock then
-        return { distToCam, distToCam, distToCam, 255 }
+        table.insert(output, distToCam)
     else
-        return { 255, 255, 255, 255 }
+        table.insert(output, dist)
     end
+
+    --NORMAL (in the form of the block face number)--
+    if hit.isBlock then
+        table.insert(output, hit.blockFace)
+    else
+        table.insert(output, -1)
+    end
+
+    --SUN SHADOWS--
+    if hit.isBlock then
+        local shadowDist = 100
+        local toSunRaycast = dimension.raycast(
+            hit.px, hit.py, hit.pz,
+            hit.px + sunDir.x * shadowDist, hit.py + sunDir.y * shadowDist, hit.pz + sunDir.z * shadowDist
+        )
+        if toSunRaycast.isBlock then
+            table.insert(output, 1)
+        else
+            table.insert(output, 0)
+        end
+    else
+        table.insert(output, 0)
+    end
+
+    --WATER MASK--
+    local hitW = dimension.raycast(px, py, pz, px + worldDir.x * dist, py + worldDir.y * dist, pz + worldDir.z * dist,
+        dist, false, false, true)
+    if hitW.isBlock then
+        if dimension.getBlock(hitW.x, hitW.y, hitW.z).name == "water" then
+            -- use facing direction instead of just -worldDir.y
+            table.insert(output, vec:new(worldDir.x, -worldDir.y, worldDir.z):dot(sunDir) ^ 100)
+        else
+            table.insert(output, 0)
+        end
+    else
+        table.insert(output, 0)
+    end
+
+    return output
 end
 
 function raytraceScene() --a coroutine?
@@ -123,52 +175,43 @@ function raytraceScene() --a coroutine?
     end
 end
 
--- ! kills performance even more
-function blurBuffer(outputBuffer, inResX, inResY, outResX, outResY)
-    local outScaling = outResX / inResX
-    local maxDistanceToSamplePoints = 2 * outScaling + math.sqrt(2 * outScaling ^ 2)
+rayTraceScene = coroutine.create(function(...) --*
+    ::start::
+    coroutine.yield()
 
-    local output = {}
-
-    for x = 0, outResX - 1, 1 do
-        table.insert(output, {})
-        for y = 0, outResY - 1, 1 do
-            log("hi")
-            local topLeftPoint = outputBuffer[math.floor(x / outScaling) + 1][math.floor(y / outScaling) + 1] or
-                { 0, 0, 0, 0, 0 }
-            local bottomLeftPoint = outputBuffer[math.floor(x / outScaling) + 1][math.ceil(y / outScaling) + 1] or
-                { 0, 0, 0, 0, 0 }
-            local topRightPoint = outputBuffer[math.ceil(x / outScaling) + 1][math.floor(y / outScaling) + 1] or
-                { 0, 0, 0, 0, 0 }
-            local bottomRightPoint = outputBuffer[math.ceil(x / outScaling) + 1][math.ceil(y / outScaling) + 1] or
-                { 0, 0, 0, 0, 0 }
-
-            local posWithinSquare = vec:new(x % outScaling / outScaling, y % outScaling / outScaling)
-            local topLeftDist = posWithinSquare:dist(vec:new(0, 0))
-            local bottomLeftDist = posWithinSquare:dist(vec:new(0, 1))
-            local topRightDist = posWithinSquare:dist(vec:new(1, 0))
-            local bottomRightDist = posWithinSquare:dist(vec:new(1, 1))
-
-            local thisPoint = {}
-            for i = 1, #topLeftPoint, 1 do
-                table.insert(
-                    thisPoint,
-                    topLeftPoint[i] * (topLeftDist / maxDistanceToSamplePoints) +
-                    bottomLeftPoint[i] * (bottomLeftDist / maxDistanceToSamplePoints) +
-                    topRightPoint[i] * (topRightDist / maxDistanceToSamplePoints) +
-                    bottomRightPoint[i] * (bottomRightDist / maxDistanceToSamplePoints)
-                )
-            end
-            table.insert(output[x + 1], thisPoint)
+    outputBuffer = {}
+    for x = 0, ResolutionW - 1, 1 do
+        table.insert(outputBuffer, {})
+        for y = 0, ResolutionH - 1, 1 do
+            table.insert(outputBuffer[x + 1], raytracePixel(x, y))
+            coroutine.yield()
         end
     end
 
-    return output
+    currentlyRayTracing = false
+    goto start
+end)
+
+function getSunDirection()
+    local time = -dimension.time() * 2 * math.pi
+    return vec:new(math.sin(time), math.cos(time), 0)
 end
 
 function mapRange(value, inMin, inMax, outMin, outMax)
     return (outMax - outMin) * (value - inMin) / (inMax - inMin) + outMin
 end
 
--- ? each pixel of outputBuffer has information like {normalX, normalY, normalZ, depth, etc?}
--- * possibly draw 1920x1080 pixels by box blurring the raytraced points
+--[[
+    blockFace:
+        0: -y / no block
+        1: +y
+        2: -z
+        3: +z
+        4: -x
+        5: +x
+]]
+
+--? smooth shadows
+-- water shine waves
+-- volumetric clouds
+-- torch shadows

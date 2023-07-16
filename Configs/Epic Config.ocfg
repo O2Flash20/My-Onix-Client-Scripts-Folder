@@ -856,7 +856,7 @@ Logger:1:
    type:4:5
    x:6:458.000000
    y:6:70.314827
- enabled:2:true
+ enabled:2:false
  favorite:2:true
 Quick Waypoints:1:
  settings:1:
