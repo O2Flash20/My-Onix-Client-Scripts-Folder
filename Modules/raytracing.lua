@@ -4,17 +4,15 @@ description = "how bad can it possibly be"
 importLib("logger")
 importLib("vectors")
 
-ResolutionW = 1000
+ResolutionW = 1920
 ResolutionH = math.ceil(ResolutionW * (9 / 16))
 
-gameFov = 90.80
+gameFov = 46.80
 
--- idk, seems about right
-fov = math.rad(247.0858 + (8.55627 - 247.0858) / (1 + (gameFov / 97.78112) ^ 1.295414))
-verticalFov = 2 * math.atan(math.tan(fov / 2), 16 / 9)
+verticalFov = math.rad(gameFov)
+fov = 2 * math.atan((16 / 9) * (math.tan(verticalFov / 2)))
 
--- seems about right
-squareSpacing = 643.2 / ResolutionW
+squareSpacing = 640 / ResolutionW
 
 testBtn = client.settings.addNamelessKeybind("test button", 0x22)
 
@@ -58,14 +56,33 @@ function render2()
 
                 -- local shadowAmount = col[3]
                 -- gfx2.color(0, 0, 0, shadowAmount * 100)
+                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing, squareSpacing)
 
-                local isWater = col[4]
-                gfx2.color(255, 255, 255, isWater * 255)
+                -- local isWater = col[4]
+                -- gfx2.color(255, 255, 255, isWater * 255)
+                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing, squareSpacing)
 
-                gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+                -- if col[1] == 1 then
+                -- else
+                --     gfx2.color(120, 220, 255, (col[1] ^ 2 / 1.2) * 255)
+                --     gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing, squareSpacing)
+                -- end
+
+                -- gfx2.color(col[5], 0, 0, 255)
+                gfx2.blur(x * squareSpacing, y * squareSpacing, squareSpacing, squareSpacing, col[5] / 75)
+
+                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
             end
         end
     end
+
+    -- for i = 1, 100, 1 do
+    --     for j = 1, 100, 1 do
+    --         gfx2.blur(i, j, 1, 1, i / 100)
+    --     end
+    -- end
+
+    -- gfx2.fillRect(0, 0, 640, 10)
 end
 
 -- function update() --*
@@ -75,12 +92,6 @@ end
 --         end --*
 --     end --*
 -- end --*
-
-function isLookingAtBlock(dirVec)
-    local dist = 10
-    local rayCast = dimension.raycast(px, py, pz, px + dirVec.x * dist, py + dirVec.y * dist, pz + dirVec.z * dist)
-    return rayCast.isBlock
-end
 
 function screenPixelToDirection(x, y)
     local tanF2 = math.tan(fov / 2)
@@ -117,22 +128,22 @@ function raytracePixel(x, y)
     local hit = dimension.raycast(px, py, pz, px + worldDir.x * dist, py + worldDir.y * dist, pz + worldDir.z * dist)
     local sunDir = getSunDirection()
 
-    --DEPTH--
+    --DEPTH-- [1]
     local distToCam = vec:new(hit.px, hit.py, hit.pz):dist(vec:new(px, py, pz))
     if hit.isBlock then
-        table.insert(output, distToCam)
+        table.insert(output, distToCam / dist)
     else
-        table.insert(output, dist)
+        table.insert(output, 1)
     end
 
-    --NORMAL (in the form of the block face number)--
+    --NORMAL (in the form of the block face number)-- [2]
     if hit.isBlock then
         table.insert(output, hit.blockFace)
     else
         table.insert(output, -1)
     end
 
-    --SUN SHADOWS--
+    --SUN SHADOWS-- [3]
     if hit.isBlock then
         local shadowDist = 100
         local toSunRaycast = dimension.raycast(
@@ -148,12 +159,12 @@ function raytracePixel(x, y)
         table.insert(output, 0)
     end
 
-    --WATER MASK--
+    --WATER MASK-- [4]
     local hitW = dimension.raycast(px, py, pz, px + worldDir.x * dist, py + worldDir.y * dist, pz + worldDir.z * dist,
         dist, false, false, true)
     if hitW.isBlock then
         if dimension.getBlock(hitW.x, hitW.y, hitW.z).name == "water" then
-            -- use facing direction instead of just -worldDir.y
+            -- *use facing direction instead of just -worldDir.y
             table.insert(output, vec:new(worldDir.x, -worldDir.y, worldDir.z):dot(sunDir) ^ 100)
         else
             table.insert(output, 0)
@@ -161,6 +172,10 @@ function raytracePixel(x, y)
     else
         table.insert(output, 0)
     end
+
+    --DEPTH OF FIELD BLUR MASK-- [5]
+    local focalDistance = 100
+    table.insert(output, math.abs(output[1] * dist - focalDistance))
 
     return output
 end
@@ -215,3 +230,4 @@ end
 -- water shine waves
 -- volumetric clouds
 -- torch shadows
+-- depth of field
