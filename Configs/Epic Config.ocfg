@@ -1047,6 +1047,22 @@ World Save:1:
    y:6:10.000000
  enabled:2:false
  favorite:2:false
+Waypoint Ping Tool:1:
+ settings:1:
+  _setting__16601433861206559176:1:
+   type:4:1
+   value:2:false
+  Key:1:
+   type:4:4
+   key:4:0
+  _setting__11441311280909365845:1:
+   type:4:2
+   value:4:3
+  _setting__10118977085955408643:1:
+   type:4:4
+   key:4:39
+ enabled:2:true
+ favorite:2:false
 Texture get test:1:
  settings:1:
   Key:1:
