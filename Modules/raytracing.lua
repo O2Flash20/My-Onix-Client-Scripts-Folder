@@ -4,7 +4,7 @@ description = "how bad can it possibly be"
 importLib("logger")
 importLib("vectors")
 
-ResolutionW = 1920
+ResolutionW = 250
 ResolutionH = math.ceil(ResolutionW * (9 / 16))
 
 gameFov = 46.80
@@ -28,8 +28,8 @@ end)
 
 outputBuffer = {}
 
-
-function render2()
+time = 0
+function render2(dt)
     px, py, pz = player.pposition()
     pyaw, ppitch = player.rotation()
 
@@ -68,21 +68,25 @@ function render2()
                 --     gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing, squareSpacing)
                 -- end
 
-                -- gfx2.color(col[5], 0, 0, 255)
-                gfx2.blur(x * squareSpacing, y * squareSpacing, squareSpacing, squareSpacing, col[5] / 75)
+                -- gfx2.blur(x * squareSpacing, y * squareSpacing, squareSpacing, squareSpacing, col[5] / 75)
+
+                gfx2.color(255, 255, 255, col[6])
+                gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
 
                 -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
             end
         end
     end
 
+
     -- for i = 1, 100, 1 do
     --     for j = 1, 100, 1 do
-    --         gfx2.blur(i, j, 1, 1, i / 100)
+    --         -- local val = valueNoise(i / 2, j / 2) * (255)
+    --         local val = fbmNoise(i, j) * 255
+    --         gfx2.color(val, val, val)
+    --         gfx2.fillRect(i * 1, j * 1, 1, 1)
     --     end
     -- end
-
-    -- gfx2.fillRect(0, 0, 640, 10)
 end
 
 -- function update() --*
@@ -92,6 +96,10 @@ end
 --         end --*
 --     end --*
 -- end --*
+
+-- function update()
+--     raytraceScene()
+-- end
 
 function screenPixelToDirection(x, y)
     local tanF2 = math.tan(fov / 2)
@@ -177,6 +185,32 @@ function raytracePixel(x, y)
     local focalDistance = 100
     table.insert(output, math.abs(output[1] * dist - focalDistance))
 
+    --CLOUD MAP-- [6]
+    local cloudPlaneY = 200
+    local distToCloudPlane = cloudPlaneY - py
+    if not hitW.isBlock or math.abs(hitW.y - py) > math.abs(cloudPlaneY - py) then -- hit the cloud plane
+        if distToCloudPlane * worldDir.y < 0 then                                  -- ray is not facing the sky, end here
+            table.insert(output, 0)
+        else
+            local cloudPlaneXHit = px + (worldDir.x * (distToCloudPlane / worldDir.y))
+            local cloudPlaneZHit = pz + (worldDir.z * (distToCloudPlane / worldDir.y))
+
+            -- local hitOnCloudPlane = vec:new(cloudPlaneXHit, cloudPlaneY, cloudPlaneZHit)
+
+            -- table.insert(output,
+            --     contrast(
+            --         (fbmNoise(cloudPlaneXHit / 2, cloudPlaneZHit / 4) + 1) / 2 *
+            --         (fbmNoise(cloudPlaneXHit / 20, cloudPlaneZHit / 20) + 1) / 2
+            --         , 0.9) * 255
+            -- )
+            table.insert(output,
+                fbmNoise(cloudPlaneXHit / 20, cloudPlaneZHit / 20) * 255
+            )
+        end
+    else
+        table.insert(output, 0)
+    end
+
     return output
 end
 
@@ -216,6 +250,50 @@ function mapRange(value, inMin, inMax, outMin, outMax)
     return (outMax - outMin) * (value - inMin) / (inMax - inMin) + outMin
 end
 
+function fract(x)
+    return x - math.floor(x)
+end
+
+function mix(val1, val2, factor)
+    return val1 * (1 - factor) + val2 * factor
+end
+
+-- takes a number from 0-1, contrast is (0-1), 1 being black and white, 0 being all gray
+function contrast(x, contrast)
+    local n = -1.2 * math.log(contrast, 0.2) + 0.5
+
+    return (0.5 / (0.5 - n)) * x - (0.5 * n) / (0.5 - n)
+end
+
+function pseudoRandom(x)
+    function f(a)
+        return 50.343 * fract(x * 0.3180 + 0.113)
+    end
+
+    return fract(f(x) ^ 2 * fract((f(x) * f(f(x)))))
+end
+
+function pseudoRandom2d(x, y)
+    return pseudoRandom(pseudoRandom(x) * pseudoRandom(pseudoRandom(y)))
+end
+
+function valueNoise(x, y)
+    local i = vec:new(math.floor(x), math.floor(y))
+    local f = vec:new(fract(x), fract(y))
+    -- local u = f:mult(f):mult(f:mult(-2):add(vec:new(3, 3))) --! this might be better, but it's broken
+    local u = f
+
+    return mix(
+        mix(pseudoRandom2d(i.x + 0, i.y + 0), pseudoRandom2d(i.x + 1, i.y + 0), u.x),
+        mix(pseudoRandom2d(i.x + 0, i.y + 1), pseudoRandom2d(i.x + 1, i.y + 1), u.x),
+        u.y
+    )
+end
+
+function fbmNoise(x, y)
+    return (0.5 * valueNoise(x / 8, y / 8) + 0.25 * valueNoise(x / 4, y / 4) + 0.125 * valueNoise(x / 2, y / 2) + 0.0625 * valueNoise(x, y))
+end
+
 --[[
     blockFace:
         0: -y / no block
@@ -230,4 +308,3 @@ end
 -- water shine waves
 -- volumetric clouds
 -- torch shadows
--- depth of field
