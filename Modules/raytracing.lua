@@ -4,10 +4,10 @@ description = "how bad can it possibly be"
 importLib("logger")
 importLib("vectors")
 
-ResolutionW = 1920
+ResolutionW = 500
 ResolutionH = math.ceil(ResolutionW * (9 / 16))
 
-gameFov = 80.40
+gameFov = 100.40
 
 verticalFov = math.rad(gameFov)
 fov = 2 * math.atan((16 / 9) * (math.tan(verticalFov / 2)))
@@ -72,16 +72,22 @@ function render2(dt)
                 -- gfx2.blur(x * squareSpacing, y * squareSpacing, squareSpacing, squareSpacing, col[5] / 75)
 
                 -- *clouds
-                -- gfx2.color(255, 255, 255, col[6])
-                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+                local a = col[6][1] * (255 / 30)
+                local b = 255 - (col[6][2] * (255 / 400))
+                gfx2.color(b, b, b, a)
+                gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
 
                 -- *water reflections
-                gfx2.color(col[4][1], col[4][2], col[4][3], col[4][4])
-                gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+                -- gfx2.color(col[4][1], col[4][2], col[4][3], col[4][4])
+                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
 
                 -- *water shine
-                gfx2.color(255, 255, 255, col[7] * 150)
-                gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+                -- gfx2.color(255, 255, 255, col[7] * 150)
+                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+
+                --*water shadows
+                -- gfx2.color(0, 0, 0, col[8] * 80)
+                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
 
                 -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
             end
@@ -98,18 +104,10 @@ function render2(dt)
     --         gfx2.fillRect(i * 10, j * 10, 10, 10)
     --     end
     -- end
-
-    -- for i = 1, 20, 1 do
-    --     for j = 1, 20, 1 do
-    --         local normal = fbmNoiseNormal2d(i, j):mult(255)
-    --         gfx2.color(normal.x, normal.y, 0)
-    --         gfx2.fillRect(i * 10, j * 10, 10, 10)
-    --     end
-    -- end
 end
 
 -- function update()
---     raytraceScene()
+--     log(factorRamp(px, { { 200, 0 }, { 220, 1 }, { 280, 1 }, { 300, 0 } }))
 -- end
 
 -- function render3d()
@@ -145,6 +143,14 @@ function pixelDirToWorldDir(pixelDir)
     return pixelDir
 end
 
+_depth = false
+_normal = false
+_sunShadows = false
+_waterReflections = false
+_dof = false
+_clouds = true
+_waterShine = false
+_waterShadows = false
 function raytracePixel(x, y)
     local worldDir = pixelDirToWorldDir(screenPixelToDirection(x, y)):normalize()
     local dist = 1000
@@ -152,138 +158,163 @@ function raytracePixel(x, y)
     local output = {}
 
     local hit = dimension.raycast(px, py, pz, px + worldDir.x * dist, py + worldDir.y * dist, pz + worldDir.z * dist)
+    local hitW = dimension.raycast(px, py, pz, px + worldDir.x * dist, py + worldDir.y * dist, pz + worldDir.z * dist,
+        dist, false, false, true)
     local sunDir = getSunDirection()
 
     --DEPTH-- [1]
-    local distToCam = vec:new(hit.px, hit.py, hit.pz):dist(vec:new(px, py, pz))
-    if hit.isBlock then
-        table.insert(output, distToCam / dist)
-    else
-        table.insert(output, 1)
+    if _depth then
+        local distToCam = vec:new(hit.px, hit.py, hit.pz):dist(vec:new(px, py, pz))
+        if hit.isBlock then
+            output[1] = distToCam / dist
+        else
+            output[1] = 1
+        end
     end
 
     --NORMAL (in the form of the block face number)-- [2]
-    if hit.isBlock then
-        table.insert(output, hit.blockFace)
-    else
-        table.insert(output, -1)
+    if _normal then
+        if hit.isBlock then
+            output[2] = hit.blockFace
+        else
+            output[2] = -1
+        end
     end
 
     --SUN SHADOWS-- [3]
-    if hit.isBlock then
-        local shadowDist = 100
-        local toSunRaycast = dimension.raycast(
-            hit.px, hit.py, hit.pz,
-            hit.px + sunDir.x * shadowDist, hit.py + sunDir.y * shadowDist, hit.pz + sunDir.z * shadowDist
-        )
-        if toSunRaycast.isBlock then
-            table.insert(output, 1)
+    if _sunShadows then
+        if hit.isBlock then
+            local shadowDist = 100
+            local toSunRaycast = dimension.raycast(
+                hit.px, hit.py, hit.pz,
+                hit.px + sunDir.x * shadowDist, hit.py + sunDir.y * shadowDist, hit.pz + sunDir.z * shadowDist
+            )
+            if toSunRaycast.isBlock then
+                output[3] = 1
+            else
+                output[3] = 0
+            end
         else
-            table.insert(output, 0)
+            output[3] = 0
         end
-    else
-        table.insert(output, 0)
     end
 
     --WATER REFLECTIONS-- [4]
-    local hitW = dimension.raycast(px, py, pz, px + worldDir.x * dist, py + worldDir.y * dist, pz + worldDir.z * dist,
-        dist, false, false, true)
-    if hitW.isBlock then
-        if dimension.getBlock(hitW.x, hitW.y, hitW.z).name == "water" then
-            --[[
-                -- local waterNormal = fbmNoiseNormal2d(hitW.px, hitW.pz)
-                -- local reflected = reflectVector3d(worldDir, waterNormal)
-                -- local reflected = reflectVector3d(worldDir, vec:new(0, 1, 0))
-
-                -- local dot = vec:new(worldDir.x, -worldDir.y, worldDir.z):dot(sunDir)
-                -- -- local dot = reflected:dot(sunDir)
-                -- if dot > 0.7 then
-                --     table.insert(output, dot)
-                -- else
-                --     table.insert(output, 0)
-                -- end
-
-                -- table.insert(
-                --     output,
-                --     (vec:new(worldDir.x, -worldDir.y, worldDir.z):dot(sunDir) ^ 13) *
-                --     -- (-math.abs(contrast(fbmNoise2d(hitW.px * 10, hitW.pz * 10), 0.6) * 2 - 1) + 1)
-                --     contrast(fbmNoise2d(hitW.px * 15, hitW.pz * 15), 0.7)
-                -- )
-
-                table.insert(
-                    output,
-                    (vec:new(worldDir.x, -worldDir.y, worldDir.z):dot(sunDir) ^ 13) +
-                    1 * fbmNoise2d(hitW.px * 4, hitW.pz * 4)
-                -- 0.5 * fbmNoise2d(hitW.px * 10, hitW.pz * 10)
+    if _waterReflections then
+        if hitW.isBlock then
+            if dimension.getBlock(hitW.x, hitW.y, hitW.z).name == "water" then
+                local waterNormal = fbmNoiseNormal2d(hitW.px * 4, hitW.pz * 4, 2)
+                local reflected = reflectVector3d(worldDir, waterNormal)
+                local reflectedHit = dimension.raycast(
+                    hitW.px, hitW.py, hitW.pz,
+                    hitW.px + reflected.x * dist,
+                    hitW.py + reflected.y * dist,
+                    hitW.pz + reflected.z * dist
                 )
-
-                -- table.insert(output, vec:new(worldDir.x, -worldDir.y, worldDir.z):dot(sunDir) ^ 100)
-
-                -- table.insert(output, reflected:dot(sunDir))
-            ]]
-
-            local waterNormal = fbmNoiseNormal2d(hitW.px * 4, hitW.pz * 4, 2)
-            -- table.insert(output, { waterNormal.x * 255, waterNormal.y * 255, waterNormal.z * 255 })
-            local reflected = reflectVector3d(worldDir, waterNormal)
-            local reflectedHit = dimension.raycast(
-                hitW.px, hitW.py, hitW.pz,
-                hitW.px + reflected.x * dist,
-                hitW.py + reflected.y * dist,
-                hitW.pz + reflected.z * dist
-            )
-            if reflectedHit.isBlock then
-                local hitR, hitG, hitB = dimension.getMapColor(reflectedHit.x, reflectedHit.y, reflectedHit.z)
-                -- table.insert(output, { 0.25 * hitR + 0.75 * 42, 0.25 * hitG + 0.75 * 76, 0.25 * hitB + 0.75 * 130, 255 })
-                table.insert(output, { hitR, hitG, hitB, 75 })
+                if reflectedHit.isBlock then
+                    local hitR, hitG, hitB = dimension.getMapColor(reflectedHit.x, reflectedHit.y, reflectedHit.z)
+                    output[4] = { hitR, hitG, hitB, 75 }
+                else
+                    output[4] = { 0, 0, 0, 0 }
+                end
             else
-                table.insert(output, { 0, 0, 0, 0 })
+                output[4] = { 0, 0, 0, 0 }
             end
         else
-            table.insert(output, { 0, 0, 0, 0 })
+            output[4] = { 0, 0, 0, 0 }
         end
-    else
-        table.insert(output, { 0, 0, 0, 0 })
     end
 
     --DEPTH OF FIELD BLUR MASK-- [5]
-    local focalDistance = 100
-    table.insert(output, math.abs(output[1] * dist - focalDistance))
-
-    --CLOUD MAP-- [6]
-    local cloudPlaneY = 200
-    local distToCloudPlane = cloudPlaneY - py
-    if not hitW.isBlock or math.abs(hitW.y - py) > math.abs(cloudPlaneY - py) then -- hit the cloud plane
-        if distToCloudPlane * worldDir.y < 0 then                                  -- ray is not facing the sky, end here
-            table.insert(output, 0)
-        else
-            local cloudPlaneXHit = px + (worldDir.x * (distToCloudPlane / worldDir.y))
-            local cloudPlaneZHit = pz + (worldDir.z * (distToCloudPlane / worldDir.y))
-
-            table.insert(output,
-                contrast(fbmNoise2d(cloudPlaneXHit / 20, cloudPlaneZHit / 20), 0.8) *
-                fbmNoise2d(cloudPlaneXHit / 2, cloudPlaneZHit / 4) * 255
-            )
-        end
-    else
-        table.insert(output, 0)
+    if _dof then
+        local focalDistance = 100
+        output[5] = math.abs(output[1] * dist - focalDistance)
     end
 
-    --WATER SHINE-- [7]
-    if hitW.isBlock then
-        if dimension.getBlock(hitW.x, hitW.y, hitW.z).name == "water" and output[4][4] == 0 then --hit water and reflects into the sky
-            local waterNormal = fbmNoiseNormal2d(hitW.px * 4, hitW.pz * 4, 1)
-            local reflected = reflectVector3d(worldDir, waterNormal)
-            reflected:setComponent("y", -reflected.y)
+    --CLOUD MAP-- [6]
+    if _clouds then
+        local cloudBottomBound = 200
+        local cloudTopBound = 300
 
-            table.insert(output, factorRamp(reflected:normalize():dot(sunDir), { { 0, 0 }, { 0.994, 0 },
-                { 1, 1 } }))
-            -- table.insert(output, { reflected.x, reflected.y, reflected.z })
-            -- table.insert(output, worldDir:dot(sunDir))
+        if (py < cloudBottomBound and worldDir.y < 0) or (py > cloudTopBound and worldDir.y > 0) then
+            output[6] = { 0, 0 }
         else
-            table.insert(output, 0)
+            local cloudRay
+            if py < cloudTopBound and py > cloudBottomBound then
+                cloudRay = vec:new(px, py, pz)
+            elseif py < cloudBottomBound then
+                local xStart = ((cloudBottomBound - py) / worldDir.y) * worldDir.x + px
+                local zStart = ((cloudBottomBound - py) / worldDir.y) * worldDir.z + pz
+                cloudRay = vec:new(xStart, cloudBottomBound, zStart)
+            elseif py > cloudTopBound then
+                local xStart = ((cloudTopBound - py) / worldDir.y) * worldDir.x + px
+                local zStart = ((cloudTopBound - py) / worldDir.y) * worldDir.z + pz
+                cloudRay = vec:new(xStart, cloudTopBound, zStart)
+            end
+
+            local density = 0
+            local sunOcclusion = 0
+            local worldDirMult = vec:new(worldDir.x, worldDir.y, worldDir.z):mult(4)
+            local sunDirMult = vec:new(sunDir.x, sunDir.y, sunDir.z):mult(10)
+
+            for i = 1, 50, 1 do
+                if cloudRay.y > cloudTopBound + 1 or cloudRay.y < cloudBottomBound - 1 then break end
+                local thisDensity = factorRamp(cloudRay.y, { { 200, 0 }, { 220, 1 }, { 280, 1 }, { 300, 0 } }) *
+                    contrast(fbmNoise3d(cloudRay.x / 10, cloudRay.y / 10, cloudRay.z / 10), 0.9)
+                density = density + thisDensity
+
+                local thisSunOcclusion = 0
+                local sunRay = vec:new(cloudRay.x, cloudRay.y, cloudRay.z)
+                for j = 1, 3 do
+                    thisSunOcclusion = thisSunOcclusion +
+                        factorRamp(cloudRay.y, { { 200, 0 }, { 220, 1 }, { 280, 1 }, { 300, 0 } }) *
+                        contrast(fbmNoise3d(cloudRay.x / 10, cloudRay.y / 10, cloudRay.z / 10), 0.9)
+                    sunRay:add(sunDirMult)
+                end
+                sunOcclusion = sunOcclusion + thisSunOcclusion
+
+                cloudRay:add(worldDirMult)
+            end
+            output[6] = { density, sunOcclusion }
         end
-    else
-        table.insert(output, 0)
+    end
+
+
+    --WATER SHINE-- [7]
+    if _waterShine then
+        if hitW.isBlock then
+            if dimension.getBlock(hitW.x, hitW.y, hitW.z).name == "water" and output[4][4] == 0 then --hit water and reflects into the sky
+                local waterNormal = fbmNoiseNormal2d(hitW.px * 4, hitW.pz * 4, 1)
+                local reflected = reflectVector3d(worldDir:copy(), waterNormal)
+                reflected:setComponent("y", -reflected.y)
+
+                output[7] = factorRamp(reflected:normalize():dot(sunDir), { { 0, 0 }, { 0.994, 0 },
+                    { 1, 1 } })
+            else
+                output[7] = 0
+            end
+        else
+            output[7] = 0
+        end
+    end
+
+    --WATER SHADOWS-- [8]
+    if _waterShadows then
+        if hitW.isBlock then
+            if dimension.getBlock(hitW.x, hitW.y, hitW.z).name == "water" then
+                local waterNormal = fbmNoiseNormal2d(hitW.px * 4, hitW.pz * 4, 0.2)
+                local reflected = reflectVector3d(worldDir:copy(), waterNormal)
+                reflected:setComponent("y", -reflected.y)
+
+                local dot = worldDir.x * reflected.x + worldDir.y * reflected.y + worldDir.z * reflected.z
+
+                output[8] = math.min((1 - dot) * 5, 1)
+            else
+                output[8] = 0
+            end
+        else
+            output[8] = 0
+        end
     end
 
     return output
@@ -427,13 +458,15 @@ end
 ]]
 
 --? smooth shadows
--- water shine waves
+--   five+ differnent sun directions, shadows are added together
 -- volumetric clouds
 -- torch shadows
 -- textured water reflections
 -- iron mirror reflections
 -- sun color with depending on time with water reflection
 -- normal maps on all blocks
+-- water refraction
+-- distort fbm by shifting pixels by other fbm
 
 -- ?when reflecting, recurvisely call the raytrace function
 --      give it the input of the direction and the output of each map at that pixel
