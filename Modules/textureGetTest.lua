@@ -89,3 +89,12 @@ translations = {
 }
 
 --! logs, tgas flipbook textures, tops of some slabs?
+-- grass and leaves use the "carried" texture
+
+faceToDirection = {}
+faceToDirection[0] = "down"
+faceToDirection[1] = "up"
+faceToDirection[2] = "north"
+faceToDirection[3] = "south"
+faceToDirection[4] = "west"
+faceToDirection[5] = "east"
