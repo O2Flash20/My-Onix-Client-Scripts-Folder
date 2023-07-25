@@ -72,10 +72,10 @@ function render2(dt)
                 -- gfx2.blur(x * squareSpacing, y * squareSpacing, squareSpacing, squareSpacing, col[5] / 75)
 
                 -- *clouds
-                local a = col[6][1] * (255 / 30)
-                local b = 255 - (col[6][2] * (255 / 400))
-                gfx2.color(b, b, b, a)
-                gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+                -- local a = col[6][1] * (255 / 0.7)
+                -- local b = 255 - (col[6][2] * (255 / 1.5))
+                -- gfx2.color(b, b, b, a)
+                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
 
                 -- *water reflections
                 -- gfx2.color(col[4][1], col[4][2], col[4][3], col[4][4])
@@ -88,6 +88,10 @@ function render2(dt)
                 --*water shadows
                 -- gfx2.color(0, 0, 0, col[8] * 80)
                 -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+
+                --*UVs
+                gfx2.color(col[9][1] * 255, col[9][2] * 255, 0, 255)
+                gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
 
                 -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
             end
@@ -148,9 +152,10 @@ _normal = false
 _sunShadows = false
 _waterReflections = false
 _dof = false
-_clouds = true
+_clouds = false
 _waterShine = false
 _waterShadows = false
+_textureUVs = true
 function raytracePixel(x, y)
     local worldDir = pixelDirToWorldDir(screenPixelToDirection(x, y)):normalize()
     local dist = 1000
@@ -234,7 +239,7 @@ function raytracePixel(x, y)
     --CLOUD MAP-- [6]
     if _clouds then
         local cloudBottomBound = 200
-        local cloudTopBound = 300
+        local cloudTopBound = 350
 
         if (py < cloudBottomBound and worldDir.y < 0) or (py > cloudTopBound and worldDir.y > 0) then
             output[6] = { 0, 0 }
@@ -253,32 +258,27 @@ function raytracePixel(x, y)
             end
 
             local density = 0
-            local sunOcclusion = 0
-            local worldDirMult = vec:new(worldDir.x, worldDir.y, worldDir.z):mult(4)
-            local sunDirMult = vec:new(sunDir.x, sunDir.y, sunDir.z):mult(10)
+            local darkening = 0
+            local worldDirMult = vec:new(worldDir.x, worldDir.y, worldDir.z):mult(16)
 
-            for i = 1, 50, 1 do
+            local numSteps = 25
+            for i = 1, numSteps, 1 do
                 if cloudRay.y > cloudTopBound + 1 or cloudRay.y < cloudBottomBound - 1 then break end
-                local thisDensity = factorRamp(cloudRay.y, { { 200, 0 }, { 220, 1 }, { 280, 1 }, { 300, 0 } }) *
-                    contrast(fbmNoise3d(cloudRay.x / 10, cloudRay.y / 10, cloudRay.z / 10), 0.9)
+                local thisDensity = factorRamp(cloudRay.y,
+                        {
+                            { cloudBottomBound,   0 }, { cloudBottomBound + 10, 1 },
+                            { cloudTopBound - 10, 1 }, { cloudTopBound, 0 }
+                        })
+                    * contrast(fbmNoise3d(cloudRay.x / 10, cloudRay.y / 10, cloudRay.z / 10), 0.9)
                 density = density + thisDensity
 
-                local thisSunOcclusion = 0
-                local sunRay = vec:new(cloudRay.x, cloudRay.y, cloudRay.z)
-                for j = 1, 3 do
-                    thisSunOcclusion = thisSunOcclusion +
-                        factorRamp(cloudRay.y, { { 200, 0 }, { 220, 1 }, { 280, 1 }, { 300, 0 } }) *
-                        contrast(fbmNoise3d(cloudRay.x / 10, cloudRay.y / 10, cloudRay.z / 10), 0.9)
-                    sunRay:add(sunDirMult)
-                end
-                sunOcclusion = sunOcclusion + thisSunOcclusion
+                darkening = darkening + thisDensity * mapRange(cloudRay.y, cloudBottomBound, cloudTopBound, 1, 0)
 
                 cloudRay:add(worldDirMult)
             end
-            output[6] = { density, sunOcclusion }
+            output[6] = { density / numSteps, darkening / numSteps }
         end
     end
-
 
     --WATER SHINE-- [7]
     if _waterShine then
@@ -315,6 +315,25 @@ function raytracePixel(x, y)
         else
             output[8] = 0
         end
+    end
+
+    --TEXTURE UVS-- [9]
+    if _textureUVs then
+        local blockFract = vec:new(fract(hitW.px), fract(hitW.py), fract(hitW.pz))
+        local uv = vec:new(0, 0)
+        if hitW.blockFace == 0 or hitW.blockFace == 1 then
+            uv.u = blockFract.x
+            uv.v = blockFract.z
+        end
+        if hitW.blockFace == 2 or hitW.blockFace == 3 then
+            uv.u = blockFract.x
+            uv.v = blockFract.y
+        end
+        if hitW.blockFace == 4 or hitW.blockFace == 5 then
+            uv.u = blockFract.y
+            uv.v = blockFract.z
+        end
+        output[9] = { uv.u, uv.v }
     end
 
     return output
