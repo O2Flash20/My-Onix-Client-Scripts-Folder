@@ -1,15 +1,3 @@
--- Made By O2Flash20 🙂
-
-name = "Texture get test"
-description = "tells you the texture you're looking at, hopefully"
-
-sizeX = 100
-sizeY = 100
-positionX = 0
-positionY = 100
-
-importLib("logger")
-
 blocks = {}
 terrain_texture = {}
 
@@ -83,23 +71,6 @@ function getTexture(x, y, z, face)
     return output
 end
 
-function render()
-    local posx, posy, posz = player.selectedPos()
-    local face = player.selectedFace()
-
-    local tex = getTexture(posx, posy, posz, face)
-
-    gfx.tquad(
-        0, 100, 0, 1,
-        100, 100, 1, 1,
-        100, 0, 1, 0,
-        0, 0, 0, 0,
-        tex
-    )
-
-    -- log({ dimension.getBlock(posx, posy, posz).data, face })
-end
-
 function onNetworkData(code, identifier, data)
     log(identifier)
     if identifier == "blocks.json" then
@@ -129,13 +100,6 @@ logIDToNumber[826] = 4
 log2IDToNumber = {}
 logIDToNumber[162] = 1
 logIDToNumber[827] = 2
-
--- log: oak spruce birch jungle
--- log2: acacia big_oak
-
---! logs, tgas flipbook textures, tops of some slabs?
--- grass and leaves use the "carried" texture
--- !log2
 
 faceToDirection = {}
 faceToDirection[0] = "down"
