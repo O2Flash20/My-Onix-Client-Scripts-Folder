@@ -1,5 +1,7 @@
-blocks = {}
-terrain_texture = {}
+btt = {}
+
+btt.blocks = {}
+btt.terrain_texture = {}
 
 function postInit()
     network.get(
@@ -13,28 +15,28 @@ function postInit()
     )
 end
 
-function getTexture(x, y, z, face)
+function btt.getTexture(x, y, z, face)
     local blockSelected = dimension.getBlock(x, y, z)
     local blockName = blockSelected.name
-    local direction = faceToDirection[face]
+    local direction = btt.faceToDirection[face]
 
     if blockName == "air" or blockName == "client_request_placeholder_block" then return end
 
-    if toBlocksTranslations[blockName] then
-        blockName = toBlocksTranslations[blockName]
+    if btt.toBlocksTranslations[blockName] then
+        blockName = btt.toBlocksTranslations[blockName]
     end
 
 
     local textureFrom_blocks
-    if blocks[blockName].carried_textures then
-        textureFrom_blocks = blocks[blockName].carried_textures
+    if btt.blocks[blockName].carried_textures then
+        textureFrom_blocks = btt.blocks[blockName].carried_textures
     else
-        textureFrom_blocks = blocks[blockName].textures
+        textureFrom_blocks = btt.blocks[blockName].textures
     end
     if type(textureFrom_blocks) == "table" then
         if textureFrom_blocks.side then
-            if dataAndFaceToTextureSide[blockSelected.data] then
-                textureFrom_blocks = textureFrom_blocks[dataAndFaceToTextureSide[blockSelected.data][face]]
+            if btt.dataAndFaceToTextureSide[blockSelected.data] then
+                textureFrom_blocks = textureFrom_blocks[btt.dataAndFaceToTextureSide[blockSelected.data][face]]
             else
                 textureFrom_blocks = textureFrom_blocks["up"]
             end
@@ -44,23 +46,23 @@ function getTexture(x, y, z, face)
     end
 
     local finalTextures
-    if terrain_texture[textureFrom_blocks] == nil then
+    if btt.terrain_texture[textureFrom_blocks] == nil then
         finalTextures = "textures/blocks/" .. textureFrom_blocks
     else
         if textureFrom_blocks == "grass_carried" then
             finalTextures = "textures/blocks/grass_carried.png"
         else
-            finalTextures = terrain_texture[textureFrom_blocks].textures
+            finalTextures = btt.terrain_texture[textureFrom_blocks].textures
         end
     end
 
     local output = ""
     if type(finalTextures) == "table" then
-        if string.find(textureFrom_blocks, "log_") then
-            output = finalTextures[logIDToNumber[blockSelected.id]]
-        elseif string.find(textureFrom_blocks, "log2_") then
-            log("hi")
-            output = finalTextures[log2IDToNumber[blockSelected.id]]
+        if blockName == "log" then
+            output = finalTextures[btt.logIDToNumber[blockSelected.id]]
+        elseif blockName == "log2" then
+            -- log("hi")
+            output = finalTextures[btt.log2IDToNumber[blockSelected.id]]
         else
             output = finalTextures[blockSelected.data + 1]
         end
@@ -74,14 +76,14 @@ end
 function onNetworkData(code, identifier, data)
     log(identifier)
     if identifier == "blocks.json" then
-        blocks = jsonToTable(data)
+        btt.blocks = jsonToTable(data)
     end
     if identifier == "terrain_texture.json" then
-        terrain_texture = jsonToTable(data).texture_data
+        btt.terrain_texture = jsonToTable(data).texture_data
     end
 end
 
-toBlocksTranslations = {
+btt.toBlocksTranslations = {
     concrete_powder = "concretePowder",
     birch_log = "log",
     oak_log = "log",
@@ -91,46 +93,46 @@ toBlocksTranslations = {
     dark_oak_log = "log2"
 }
 
-logIDToNumber = {}
-logIDToNumber[17] = 1
-logIDToNumber[824] = 2
-logIDToNumber[825] = 3
-logIDToNumber[826] = 4
+btt.logIDToNumber = {}
+btt.logIDToNumber[17] = 1
+btt.logIDToNumber[824] = 2
+btt.logIDToNumber[825] = 3
+btt.logIDToNumber[826] = 4
 
-log2IDToNumber = {}
-logIDToNumber[162] = 1
-logIDToNumber[827] = 2
+btt.log2IDToNumber = {}
+btt.log2IDToNumber[162] = 1
+btt.log2IDToNumber[827] = 2
 
-faceToDirection = {}
-faceToDirection[0] = "down"
-faceToDirection[1] = "up"
-faceToDirection[2] = "north"
-faceToDirection[3] = "south"
-faceToDirection[4] = "west"
-faceToDirection[5] = "east"
+btt.faceToDirection = {}
+btt.faceToDirection[0] = "down"
+btt.faceToDirection[1] = "up"
+btt.faceToDirection[2] = "north"
+btt.faceToDirection[3] = "south"
+btt.faceToDirection[4] = "west"
+btt.faceToDirection[5] = "east"
 
-dataAndFaceToTextureSide = {}
+btt.dataAndFaceToTextureSide = {}
 
-dataAndFaceToTextureSide[0] = {}
-dataAndFaceToTextureSide[0][0] = "down"
-dataAndFaceToTextureSide[0][1] = "up"
-dataAndFaceToTextureSide[0][2] = "side"
-dataAndFaceToTextureSide[0][3] = "side"
-dataAndFaceToTextureSide[0][4] = "side"
-dataAndFaceToTextureSide[0][5] = "side"
+btt.dataAndFaceToTextureSide[0] = {}
+btt.dataAndFaceToTextureSide[0][0] = "down"
+btt.dataAndFaceToTextureSide[0][1] = "up"
+btt.dataAndFaceToTextureSide[0][2] = "side"
+btt.dataAndFaceToTextureSide[0][3] = "side"
+btt.dataAndFaceToTextureSide[0][4] = "side"
+btt.dataAndFaceToTextureSide[0][5] = "side"
 
-dataAndFaceToTextureSide[1] = {}
-dataAndFaceToTextureSide[1][0] = "side"
-dataAndFaceToTextureSide[1][1] = "side"
-dataAndFaceToTextureSide[1][2] = "side"
-dataAndFaceToTextureSide[1][3] = "side"
-dataAndFaceToTextureSide[1][4] = "down"
-dataAndFaceToTextureSide[1][5] = "up"
+btt.dataAndFaceToTextureSide[1] = {}
+btt.dataAndFaceToTextureSide[1][0] = "side"
+btt.dataAndFaceToTextureSide[1][1] = "side"
+btt.dataAndFaceToTextureSide[1][2] = "side"
+btt.dataAndFaceToTextureSide[1][3] = "side"
+btt.dataAndFaceToTextureSide[1][4] = "down"
+btt.dataAndFaceToTextureSide[1][5] = "up"
 
-dataAndFaceToTextureSide[2] = {}
-dataAndFaceToTextureSide[2][0] = "side"
-dataAndFaceToTextureSide[2][1] = "side"
-dataAndFaceToTextureSide[2][2] = "down"
-dataAndFaceToTextureSide[2][3] = "up"
-dataAndFaceToTextureSide[2][4] = "side"
-dataAndFaceToTextureSide[2][5] = "side"
+btt.dataAndFaceToTextureSide[2] = {}
+btt.dataAndFaceToTextureSide[2][0] = "side"
+btt.dataAndFaceToTextureSide[2][1] = "side"
+btt.dataAndFaceToTextureSide[2][2] = "down"
+btt.dataAndFaceToTextureSide[2][3] = "up"
+btt.dataAndFaceToTextureSide[2][4] = "side"
+btt.dataAndFaceToTextureSide[2][5] = "side"

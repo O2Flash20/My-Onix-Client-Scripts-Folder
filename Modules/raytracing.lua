@@ -3,8 +3,9 @@ description = "how bad can it possibly be"
 
 importLib("logger")
 importLib("vectors")
+importLib("blockToTexture")
 
-ResolutionW = 500
+ResolutionW = 1920
 ResolutionH = math.ceil(ResolutionW * (9 / 16))
 
 gameFov = 100.40
@@ -34,8 +35,6 @@ function render2(dt)
     if #outputBuffer > 0 then
         for x = 0, ResolutionW - 1, 1 do
             for y = 0, ResolutionH - 1, 1 do
-                -- for x = 0, #outputBuffer - 1 do --*
-                --     for y = 0, #outputBuffer[#outputBuffer] - 1 do --*
                 local col = outputBuffer[x + 1][y + 1]
 
                 -- *normals
@@ -90,7 +89,12 @@ function render2(dt)
                 -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
 
                 --*UVs
-                gfx2.color(col[9][1] * 255, col[9][2] * 255, 0, 255)
+                -- gfx2.color(col[9][1] * (255 / 16), col[9][2] * (255 / 16), 0, 255)
+                gfx2.color(col[9][1], col[9][2], col[9][3], 255)
+                -- local im = gfx2.loadImage("textures/blocks/stone.png")
+                -- local pix = im:getPixel(col[9][1] + 1, col[9][2] + 1)
+                -- gfx2.color(pix.r, pix.g, pix.b)
+                -- im:unload()
                 gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
 
                 -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
@@ -110,8 +114,18 @@ function render2(dt)
     -- end
 end
 
--- function update()
---     log(factorRamp(px, { { 200, 0 }, { 220, 1 }, { 280, 1 }, { 300, 0 } }))
+-- function render()
+--     local blockx, blocky, blockz = player.selectedPos()
+--     local f                      = player.selectedFace()
+--     local tex                    = getTexture(blockx, blocky, blockz, f)
+
+--     gfx.tquad(
+--         0, 10, 0.1, 0.1,
+--         10, 10, 0.1, 0.1,
+--         10, 0, 0.1, 0.1,
+--         0, 0, 0.1, 0.1,
+--         tex
+--     )
 -- end
 
 -- function render3d()
@@ -319,21 +333,41 @@ function raytracePixel(x, y)
 
     --TEXTURE UVS-- [9]
     if _textureUVs then
-        local blockFract = vec:new(fract(hitW.px), fract(hitW.py), fract(hitW.pz))
-        local uv = vec:new(0, 0)
-        if hitW.blockFace == 0 or hitW.blockFace == 1 then
-            uv.u = blockFract.x
-            uv.v = blockFract.z
+        if hit.isBlock then
+            local blockFract = vec:new(fract(hit.px), 1 - fract(hit.py), fract(hit.pz))
+            local uv = vec:new(0, 0)
+            if hit.blockFace == 0 or hit.blockFace == 1 then
+                uv.u = blockFract.x
+                uv.v = blockFract.z
+            end
+            if hit.blockFace == 2 or hit.blockFace == 3 then
+                uv.u = blockFract.x
+                uv.v = blockFract.y
+            end
+            if hit.blockFace == 4 or hit.blockFace == 5 then
+                uv.u = blockFract.z
+                uv.v = blockFract.y
+            end
+
+            local texture = btt.getTexture(hit.x, hit.y, hit.z, hit.blockFace)
+            if texture then
+                local img
+                if fs.exist(texture .. ".png") then
+                    img = gfx2.loadImage(texture .. ".png")
+                elseif fs.exist(texture .. ".tga") then
+                    img = gfx2.loadImage(texture .. ".tga")
+                else
+                    img = gfx2.loadImage("textures/blocks/dirt.png")
+                end
+                local color = img:getPixel(math.floor(uv.u * 16) + 1, math.floor(uv.v * 16) + 1)
+                output[9] = { color.r, color.g, color.b }
+                img:unload()
+            else
+                output[9] = { 255, 0, 0 }
+            end
+        else
+            output[9] = { 100, 100, 255 }
         end
-        if hitW.blockFace == 2 or hitW.blockFace == 3 then
-            uv.u = blockFract.x
-            uv.v = blockFract.y
-        end
-        if hitW.blockFace == 4 or hitW.blockFace == 5 then
-            uv.u = blockFract.y
-            uv.v = blockFract.z
-        end
-        output[9] = { uv.u, uv.v }
     end
 
     return output
