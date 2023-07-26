@@ -854,9 +854,9 @@ Logger:1:
    chroma:2:false
   position:1:
    type:4:5
-   x:6:447.999786
-   y:6:70.314819
- enabled:2:true
+   x:6:98.951668
+   y:6:83.314827
+ enabled:2:false
  favorite:2:true
 Quick Waypoints:1:
  settings:1:
@@ -1061,20 +1061,6 @@ Waypoint Ping Tool:1:
   _setting__10118977085955408643:1:
    type:4:4
    key:4:39
- enabled:2:false
- favorite:2:false
-Texture get test:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
-  scale:1:
-   type:4:3
-   value:6:1.000000
-  position:1:
-   type:4:5
-   x:6:0.000000
-   y:6:100.000000
  enabled:2:false
  favorite:2:false
 Lua Module:1:
