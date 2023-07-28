@@ -88,13 +88,27 @@ function render2(dt)
                 -- gfx2.color(0, 0, 0, col[8] * 80)
                 -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
 
-                --*UVs
-                -- gfx2.color(col[9][1] * (255 / 16), col[9][2] * (255 / 16), 0, 255)
-                gfx2.color(col[9][1], col[9][2], col[9][3], 255)
-                -- local im = gfx2.loadImage("textures/blocks/stone.png")
-                -- local pix = im:getPixel(col[9][1] + 1, col[9][2] + 1)
-                -- gfx2.color(pix.r, pix.g, pix.b)
-                -- im:unload()
+                --*TEXTURES
+                -- gfx2.color(col[9][1], col[9][2], col[9][3], 255)
+                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+
+                --*REFLECTANCE
+                -- gfx2.color(col[10] * 255, (1 - col[10]) * 255, 0, 255)
+                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+
+                --*REFLECTION + REFRACTION
+                gfx2.color(
+                    col[4][1] * col[10] + col[11][1] * (1 - col[10]),
+                    col[4][2] * col[10] + col[11][2] * (1 - col[10]),
+                    col[4][3] * col[10] + col[11][3] * (1 - col[10]),
+                    col[4][4]
+                )
+                -- gfx2.color(
+                --     col[11][1] * (1 - col[10]),
+                --     col[11][2] * (1 - col[10]),
+                --     col[11][3] * (1 - col[10]),
+                --     255
+                -- )
                 gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
 
                 -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
@@ -164,12 +178,12 @@ end
 _depth = false
 _normal = false
 _sunShadows = false
-_waterReflections = false
+_waterReflections = true
 _dof = false
 _clouds = false
 _waterShine = false
 _waterShadows = false
-_textureUVs = true
+_textures = false
 function raytracePixel(x, y)
     local worldDir = pixelDirToWorldDir(screenPixelToDirection(x, y)):normalize()
     local dist = 1000
@@ -223,7 +237,7 @@ function raytracePixel(x, y)
         if hitW.isBlock then
             if dimension.getBlock(hitW.x, hitW.y, hitW.z).name == "water" then
                 local waterNormal = fbmNoiseNormal2d(hitW.px * 4, hitW.pz * 4, 2)
-                local reflected = reflectVector3d(worldDir, waterNormal)
+                local reflected = reflectVector3d(vec:new(worldDir.x, worldDir.y, worldDir.z), waterNormal)
                 local reflectedHit = dimension.raycast(
                     hitW.px, hitW.py, hitW.pz,
                     hitW.px + reflected.x * dist,
@@ -231,10 +245,11 @@ function raytracePixel(x, y)
                     hitW.pz + reflected.z * dist
                 )
                 if reflectedHit.isBlock then
-                    local hitR, hitG, hitB = dimension.getMapColor(reflectedHit.x, reflectedHit.y, reflectedHit.z)
-                    output[4] = { hitR, hitG, hitB, 75 }
+                    local color = getColorFromCoord(reflectedHit.px, reflectedHit.py, reflectedHit.pz, reflectedHit.x,
+                        reflectedHit.y, reflectedHit.z, reflectedHit.blockFace)
+                    output[4] = { color[1], color[2], color[3], 255 }
                 else
-                    output[4] = { 0, 0, 0, 0 }
+                    output[4] = { 111, 165, 252, 255 }
                 end
             else
                 output[4] = { 0, 0, 0, 0 }
@@ -331,46 +346,96 @@ function raytracePixel(x, y)
         end
     end
 
-    --TEXTURE UVS-- [9]
-    if _textureUVs then
+    --TEXTURES-- [9]
+    if _textures then
         if hit.isBlock then
-            local blockFract = vec:new(fract(hit.px), 1 - fract(hit.py), fract(hit.pz))
-            local uv = vec:new(0, 0)
-            if hit.blockFace == 0 or hit.blockFace == 1 then
-                uv.u = blockFract.x
-                uv.v = blockFract.z
-            end
-            if hit.blockFace == 2 or hit.blockFace == 3 then
-                uv.u = blockFract.x
-                uv.v = blockFract.y
-            end
-            if hit.blockFace == 4 or hit.blockFace == 5 then
-                uv.u = blockFract.z
-                uv.v = blockFract.y
-            end
-
-            local texture = btt.getTexture(hit.x, hit.y, hit.z, hit.blockFace)
-            if texture then
-                local img
-                if fs.exist(texture .. ".png") then
-                    img = gfx2.loadImage(texture .. ".png")
-                elseif fs.exist(texture .. ".tga") then
-                    img = gfx2.loadImage(texture .. ".tga")
-                else
-                    img = gfx2.loadImage("textures/blocks/dirt.png")
-                end
-                local color = img:getPixel(math.floor(uv.u * 16) + 1, math.floor(uv.v * 16) + 1)
-                output[9] = { color.r, color.g, color.b }
-                img:unload()
-            else
-                output[9] = { 255, 0, 0 }
-            end
+            output[9] = getColorFromCoord(hit.px, hit.py, hit.pz, hit.x, hit.y, hit.z, hit.blockFace)
         else
             output[9] = { 100, 100, 255 }
         end
     end
 
+    --REFLECTANCE-- [10]
+    if hitW.isBlock then
+        if dimension.getBlock(hitW.x, hitW.y, hitW.z).name == "water" then
+            output[10] = reflectance(worldDir, fbmNoiseNormal2d(hitW.px * 4, hitW.pz * 4, 2), 1, 1.33)
+        else
+            output[10] = 0
+        end
+    else
+        output[10] = 0
+    end
+
+    --REFRACTIONS-- [11]
+    if hitW.isBlock then
+        if dimension.getBlock(hitW.x, hitW.y, hitW.z).name == "water" then
+            local refractedVec = refractVector(worldDir, fbmNoiseNormal2d(hitW.px * 4, hitW.pz * 4, 2), 1, 1.33)
+            if refractedVec == nil then
+                output[11] = { 0, 0, 0 }
+            else
+                --actually refracted
+                local refractDist = 100
+                local refractHit = dimension.raycast(
+                    hitW.px, hitW.py, hitW.pz,
+                    hitW.px + refractedVec.x * refractDist,
+                    hitW.py + refractedVec.y * refractDist,
+                    hitW.pz + refractedVec.z * refractDist
+                )
+                if refractHit.isBlock then
+                    local hitColor = getColorFromCoord(
+                        refractHit.px, refractHit.py, refractHit.pz,
+                        refractHit.x, refractHit.y, refractHit.z,
+                        refractHit.blockFace
+                    )
+                    output[11] = hitColor
+                else
+                    output[11] = { 0, 0, 0 }
+                end
+            end
+        else
+            output[11] = { 0, 0, 0 }
+        end
+    else
+        output[11] = { 0, 0, 0 }
+    end
+
     return output
+end
+
+function getColorFromCoord(x, y, z, xint, yint, zint, face)
+    local blockFract = vec:new(fract(x), 1 - fract(y), fract(z))
+    local uv = vec:new(0, 0)
+    if face == 0 or face == 1 then
+        uv.u = blockFract.x
+        uv.v = blockFract.z
+    end
+    if face == 2 or face == 3 then
+        uv.u = blockFract.x
+        uv.v = blockFract.y
+    end
+    if face == 4 or face == 5 then
+        uv.u = blockFract.z
+        uv.v = blockFract.y
+    end
+
+    local texture = btt.getTexture(xint, yint, zint, face)
+    if texture then
+        local img
+        if fs.exist(texture .. ".png") then
+            img = gfx2.loadImage(texture .. ".png")
+        elseif fs.exist(texture .. ".tga") then
+            img = gfx2.loadImage(texture .. ".tga")
+        else
+            img = gfx2.loadImage("textures/blocks/dirt.png")
+        end
+        if img then
+            local color = img:getPixel(math.floor(uv.u * 16) + 1, math.floor(uv.v * 16) + 1)
+            img:unload()
+            return { color.r, color.g, color.b }
+        end
+    else
+        return { 255, 0, 0 }
+    end
 end
 
 function raytraceScene()
@@ -412,11 +477,39 @@ function factorRamp(x, points)
 end
 
 -- might not need
-function reflectVector3d(vec, normal)
+function reflectVector3d(incident, normal)
     normal:normalize()
-    local dot = vec:dot(normal)
+    local dot = incident:dot(normal)
 
-    return vec:copy():sub(normal:mult(2 * dot))
+    return incident:copy():sub(normal:mult(2 * dot))
+end
+
+-- https://graphics.stanford.edu/courses/cs148-10-summer/docs/2006--degreve--reflection_refraction.pdf
+-- n1: the one you're in, n2: the one you're going into
+function refractVector(incident, normal, n1, n2)
+    local Normal = vec:new(normal.x, normal.y, normal.z)
+    local Incident = vec:new(incident.x, incident.y, incident.z)
+
+    local n = n1 / n2
+    local cosI = -Normal:dot(Incident)
+    local sinT2 = n * n * (1 - cosI * cosI)
+
+    if sinT2 > 1 then return nil end --total internal reflection
+
+    local cosT = math.sqrt(1 - sinT2)
+    return Incident:mult(n):add(Normal:mult(n * cosI - cosT))
+end
+
+-- 1: all reflection, 0: add refraction
+function reflectance(incident, normal, n1, n2)
+    local n = n1 / n2
+    local cosI = -normal:dot(incident)
+    local sinT2 = n * n * (1 - cosI * cosI)
+    if sinT2 > 1 then return 1 end --total internal reflection
+    local cosT = math.sqrt(1 - sinT2)
+    local rOrthogonal = (n1 * cosI - n2 * cosT) / (n1 * cosI + n2 * cosT)
+    local rParallel = (n2 * cosI - n1 * cosT) / (n2 * cosI + n1 * cosT)
+    return math.clamp((rOrthogonal * rOrthogonal + rParallel * rParallel) / 2, 0, 1)
 end
 
 -- takes a number from 0-1, contrast is (0-1), 1 being black and white, 0 being all gray
@@ -497,7 +590,7 @@ function fbmNoiseNormal2d(x, y, strength)
     local dx = (fbmNoise2d(x + 1, y) - fbmNoise2d(x - 1, y)) / 2
     local dy = (fbmNoise2d(x, y + 1) - fbmNoise2d(x, y - 1)) / 2
 
-    return vec:new(-dx, -strength, -dy):normalize()
+    return vec:new(-dx, strength, -dy):normalize()
 end
 
 --[[
