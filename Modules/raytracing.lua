@@ -1,29 +1,56 @@
 name = "Ray Tracing Test"
 description = "how bad can it possibly be"
 
-importLib("logger")
 importLib("vectors")
 importLib("blockToTexture")
 
-ResolutionW = 1920
+_depth = false
+_normal = false
+_sunShadows = false
+_waterReflections = false
+_dof = false
+_clouds = false
+_waterShine = false
+_waterShadows = false
+_textures = false
+_realWater = false
+
+ResolutionW = 500
 ResolutionH = math.ceil(ResolutionW * (9 / 16))
 
 gameFov = 100.40
+
+traceBtn = client.settings.addNamelessKeybind("Raytrace Scene Button", 0x22)
+
+client.settings.addInt("Horizontal Resolution", "ResolutionW", 0, 2160)
+
+client.settings.addFloat("Game FOV", "gameFov", 30, 110)
+
+client.settings.addBool("Real Water Optics", "_realWater")
+client.settings.addBool("Sun Shadows", "_sunShadows")
+client.settings.addBool("Volumetric Clouds", "_clouds")
+client.settings.addBool("Depth of Field", "_dof")
+client.settings.addBool("Depth Fog", "_depth")
+client.settings.addBool("Normal Direction Demo", "_normal")
+client.settings.addBool("Textures Demo", "_textures")
+client.settings.addBool("Water Reflections (old)", "_waterReflections")
+client.settings.addBool("Water Shine (old)", "_waterShine")
+client.settings.addBool("Water Shadows (old)", "_waterShadows")
+
+client.settings.addTitle(
+    "NOTES:\nMake sure to set Game FOV to your current fov.\nMade to be used in fullscreen mode, however it's more convenient to have it do the raytrace while in windowed.\nIt will freeze your game, but it (almost) always comes back after the raytrace is done.\nVolumetric Clouds takes a LONG time."
+)
 
 verticalFov = math.rad(gameFov)
 fov = 2 * math.atan((16 / 9) * (math.tan(verticalFov / 2)))
 
 squareSpacing = 640 / ResolutionW
 
-testBtn = client.settings.addNamelessKeybind("test button", 0x22)
-
-currentlyRayTracing = false
 event.listen("KeyboardInput", function(key, down)
-    if key == testBtn.value and down then
+    if key == traceBtn.value and down then
         raytraceScene()
     end
 end)
-
 
 outputBuffer = {}
 
@@ -38,80 +65,83 @@ function render2(dt)
                 local col = outputBuffer[x + 1][y + 1]
 
                 -- *normals
-                -- local facingDir = col[2]
-                -- local dirToCol = {}
-                -- dirToCol[-1] = { 0, 0, 0, 0 }
-                -- dirToCol[0] = { 0, 127, 0, 255 }
-                -- dirToCol[1] = { 0, 255, 0, 255 }
-                -- dirToCol[2] = { 0, 0, 127, 255 }
-                -- dirToCol[3] = { 0, 0, 255, 255 }
-                -- dirToCol[4] = { 127, 0, 0, 255 }
-                -- dirToCol[5] = { 255, 0, 0, 255 }
-                -- local thisColor = dirToCol[facingDir]
-                -- gfx2.color(thisColor[1], thisColor[2], thisColor[3], 100)
-
-                -- *shadows
-                -- local shadowAmount = col[3]
-                -- gfx2.color(0, 0, 0, shadowAmount * 100)
-                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing, squareSpacing)
-
-                -- *water shine (old)
-                -- local isWater = col[4]
-                -- gfx2.color(117, 170, 235, isWater * 200)
-                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing, squareSpacing)
-
-                -- *fog
-                -- if col[1] == 1 then
-                -- else
-                --     gfx2.color(120, 220, 255, (col[1] ^ 2 / 1.2) * 255)
-                --     gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing, squareSpacing)
-                -- end
-
-                -- *dof
-                -- gfx2.blur(x * squareSpacing, y * squareSpacing, squareSpacing, squareSpacing, col[5] / 75)
-
-                -- *clouds
-                -- local a = col[6][1] * (255 / 0.7)
-                -- local b = 255 - (col[6][2] * (255 / 1.5))
-                -- gfx2.color(b, b, b, a)
-                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
-
-                -- *water reflections
-                -- gfx2.color(col[4][1], col[4][2], col[4][3], col[4][4])
-                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
-
-                -- *water shine
-                -- gfx2.color(255, 255, 255, col[7] * 150)
-                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
-
-                --*water shadows
-                -- gfx2.color(0, 0, 0, col[8] * 80)
-                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+                if _normal then
+                    local facingDir = col[2]
+                    local dirToCol = {}
+                    dirToCol[-1] = { 0, 0, 0, 0 }
+                    dirToCol[0] = { 0, 127, 0, 255 }
+                    dirToCol[1] = { 0, 255, 0, 255 }
+                    dirToCol[2] = { 0, 0, 127, 255 }
+                    dirToCol[3] = { 0, 0, 255, 255 }
+                    dirToCol[4] = { 127, 0, 0, 255 }
+                    dirToCol[5] = { 255, 0, 0, 255 }
+                    local thisColor = dirToCol[facingDir]
+                    gfx2.color(thisColor[1], thisColor[2], thisColor[3], 100)
+                end
 
                 --*TEXTURES
-                -- gfx2.color(col[9][1], col[9][2], col[9][3], 255)
-                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+                if _textures then
+                    gfx2.color(col[9][1], col[9][2], col[9][3], 255)
+                    gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+                end
 
-                --*REFLECTANCE
-                -- gfx2.color(col[10] * 255, (1 - col[10]) * 255, 0, 255)
-                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+                -- *shadows
+                if _sunShadows then
+                    local shadowAmount = col[3]
+                    gfx2.color(0, 0, 0, shadowAmount * 100)
+                    gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing, squareSpacing)
+                end
+
+                -- *fog
+                if _depth then
+                    if col[1] == 1 then
+                    else
+                        gfx2.color(120, 220, 255, (col[1] ^ 2 / 1.2) * 1000)
+                        gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing, squareSpacing)
+                    end
+                end
+
+                -- *clouds
+                if _clouds then
+                    local a = col[6][1] * (255 / 0.7)
+                    local b = 255 - (col[6][2] * (255 / 1.5))
+                    gfx2.color(b, b, b, a)
+                    gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+                end
+
+                -- *water reflections
+                if _waterReflections then
+                    gfx2.color(col[4][1], col[4][2], col[4][3], col[4][4])
+                    gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+                end
+
+                -- *water shine
+                if _waterShine then
+                    gfx2.color(255, 255, 255, col[7] * 150)
+                    gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+                end
+
+                --*water shadows
+                if _waterShadows then
+                    gfx2.color(0, 0, 0, col[8] * 80)
+                    gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+                end
 
                 --*REFLECTION + REFRACTION
-                gfx2.color(
-                    col[4][1] * col[10] + col[11][1] * (1 - col[10]),
-                    col[4][2] * col[10] + col[11][2] * (1 - col[10]),
-                    col[4][3] * col[10] + col[11][3] * (1 - col[10]),
-                    col[4][4]
-                )
-                -- gfx2.color(
-                --     col[11][1] * (1 - col[10]),
-                --     col[11][2] * (1 - col[10]),
-                --     col[11][3] * (1 - col[10]),
-                --     255
-                -- )
-                gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+                if _realWater then
+                    gfx2.color(
+                        col[4][1] * col[10] + col[11][1] * (1 - col[10]),
+                        col[4][2] * col[10] + col[11][2] * (1 - col[10]),
+                        col[4][3] * col[10] + col[11][3] * (1 - col[10]),
+                        col[4][4]
+                    )
+                    gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+                end
 
-                -- gfx2.fillRect(x * squareSpacing, y * squareSpacing, squareSpacing + 0.1, squareSpacing + 0.1)
+                -- *dof
+                if _dof then
+                    gfx2.blur(x * squareSpacing, y * squareSpacing, squareSpacing, squareSpacing, col[5] / 250, 0)
+                end
             end
         end
     end
@@ -121,33 +151,25 @@ function render2(dt)
     -- time = time + dt
     -- for i = 1, 20, 1 do
     --     for j = 1, 20, 1 do
-    --         local val = contrast(fbmNoise3d(i, j, time * 2), 0.75) * 255
+    --         local val = fbmNoise3d(i, j, time * 2)
+    --         val = (-1 * math.abs(val * 2 - 1) + 0.1) * 10
+    --         val = val * 255
     --         gfx2.color(val, val, val)
     --         gfx2.fillRect(i * 10, j * 10, 10, 10)
     --     end
     -- end
+
+    if oldResolutionW ~= ResolutionW then
+        ResolutionH = math.ceil(ResolutionW * (9 / 16))
+        squareSpacing = 640 / ResolutionW
+    end
+    if oldGameFOV ~= gameFov then
+        verticalFov = math.rad(gameFov)
+        fov = 2 * math.atan((16 / 9) * (math.tan(verticalFov / 2)))
+    end
+    oldResolutionW = ResolutionW
+    oldGameFOV = gameFov
 end
-
--- function render()
---     local blockx, blocky, blockz = player.selectedPos()
---     local f                      = player.selectedFace()
---     local tex                    = getTexture(blockx, blocky, blockz, f)
-
---     gfx.tquad(
---         0, 10, 0.1, 0.1,
---         10, 10, 0.1, 0.1,
---         10, 0, 0.1, 0.1,
---         0, 0, 0.1, 0.1,
---         tex
---     )
--- end
-
--- function render3d()
---     local playerToOrigin = vec:new(-px, -py, -pz)
---     local reflected = reflectVector3d(playerToOrigin, vec:new(1, 1, 0))
---     gfx.line(px, py, pz, 0, 0, 0)
---     gfx.line(0, 0, 0, reflected.x, reflected.y, reflected.z)
--- end
 
 function screenPixelToDirection(x, y)
     local tanF2 = math.tan(fov / 2)
@@ -175,15 +197,6 @@ function pixelDirToWorldDir(pixelDir)
     return pixelDir
 end
 
-_depth = false
-_normal = false
-_sunShadows = false
-_waterReflections = true
-_dof = false
-_clouds = false
-_waterShine = false
-_waterShadows = false
-_textures = false
 function raytracePixel(x, y)
     local worldDir = pixelDirToWorldDir(screenPixelToDirection(x, y)):normalize()
     local dist = 1000
@@ -196,7 +209,7 @@ function raytracePixel(x, y)
     local sunDir = getSunDirection()
 
     --DEPTH-- [1]
-    if _depth then
+    if _depth or _dof then
         local distToCam = vec:new(hit.px, hit.py, hit.pz):dist(vec:new(px, py, pz))
         if hit.isBlock then
             output[1] = distToCam / dist
@@ -233,10 +246,10 @@ function raytracePixel(x, y)
     end
 
     --WATER REFLECTIONS-- [4]
-    if _waterReflections then
+    if _waterReflections or _waterShine or _realWater then
         if hitW.isBlock then
             if dimension.getBlock(hitW.x, hitW.y, hitW.z).name == "water" then
-                local waterNormal = fbmNoiseNormal2d(hitW.px * 4, hitW.pz * 4, 2)
+                local waterNormal = fbmNoiseNormal2d(hitW.px * 4, hitW.pz * 4, 1)
                 local reflected = reflectVector3d(vec:new(worldDir.x, worldDir.y, worldDir.z), waterNormal)
                 local reflectedHit = dimension.raycast(
                     hitW.px, hitW.py, hitW.pz,
@@ -261,7 +274,7 @@ function raytracePixel(x, y)
 
     --DEPTH OF FIELD BLUR MASK-- [5]
     if _dof then
-        local focalDistance = 100
+        local focalDistance = 300
         output[5] = math.abs(output[1] * dist - focalDistance)
     end
 
@@ -356,47 +369,81 @@ function raytracePixel(x, y)
     end
 
     --REFLECTANCE-- [10]
-    if hitW.isBlock then
-        if dimension.getBlock(hitW.x, hitW.y, hitW.z).name == "water" then
-            output[10] = reflectance(worldDir, fbmNoiseNormal2d(hitW.px * 4, hitW.pz * 4, 2), 1, 1.33)
+    if _realWater then
+        if hitW.isBlock then
+            if dimension.getBlock(hitW.x, hitW.y, hitW.z).name == "water" then
+                output[10] = reflectance(worldDir, fbmNoiseNormal2d(hitW.px * 4, hitW.pz * 4, 1), 1, 1.33)
+            else
+                output[10] = 0
+            end
         else
             output[10] = 0
         end
-    else
-        output[10] = 0
     end
 
     --REFRACTIONS-- [11]
-    if hitW.isBlock then
-        if dimension.getBlock(hitW.x, hitW.y, hitW.z).name == "water" then
-            local refractedVec = refractVector(worldDir, fbmNoiseNormal2d(hitW.px * 4, hitW.pz * 4, 2), 1, 1.33)
-            if refractedVec == nil then
-                output[11] = { 0, 0, 0 }
-            else
-                --actually refracted
-                local refractDist = 100
-                local refractHit = dimension.raycast(
-                    hitW.px, hitW.py, hitW.pz,
-                    hitW.px + refractedVec.x * refractDist,
-                    hitW.py + refractedVec.y * refractDist,
-                    hitW.pz + refractedVec.z * refractDist
-                )
-                if refractHit.isBlock then
-                    local hitColor = getColorFromCoord(
-                        refractHit.px, refractHit.py, refractHit.pz,
-                        refractHit.x, refractHit.y, refractHit.z,
-                        refractHit.blockFace
-                    )
-                    output[11] = hitColor
-                else
+    if _realWater then
+        if hitW.isBlock then
+            if dimension.getBlock(hitW.x, hitW.y, hitW.z).name == "water" then
+                local refractedVec = refractVector(worldDir, fbmNoiseNormal2d(hitW.px * 4, hitW.pz * 4, 1), 1, 1.33)
+                if refractedVec == nil then
                     output[11] = { 0, 0, 0 }
+                else
+                    --actually refracted
+                    local refractDist = 300
+                    local refractHit = dimension.raycast(
+                        hitW.px, hitW.py, hitW.pz,
+                        hitW.px + refractedVec.x * refractDist,
+                        hitW.py + refractedVec.y * refractDist,
+                        hitW.pz + refractedVec.z * refractDist
+                    )
+
+                    if refractHit.isBlock then
+                        local hitColor = getColorFromCoord(
+                            refractHit.px, refractHit.py, refractHit.pz,
+                            refractHit.x, refractHit.y, refractHit.z,
+                            refractHit.blockFace
+                        )
+
+                        local distThroughWater = vec:new(hitW.px, hitW.py, hitW.pz)
+                            :dist(vec:new(refractHit.px, refractHit.py, refractHit.pz))
+                        local waterColMixAmount = math.clamp(0.0009 * distThroughWater ^ 2, 0, 0.8)
+                        local waterColor = dimension.getBiomeColor(hitW.x, hitW.y, hitW.z).water
+
+                        -- *check if under the sky
+                        local causticBrightness = fbmNoise2d(refractHit.px * 8, refractHit.pz * 8)
+                        causticBrightness = 40 * (-1 * math.abs(2 * causticBrightness - 1) + 0.025)
+                        causticBrightness = math.clamp(causticBrightness, 0, 1) * 100
+
+                        local face = refractHit.blockFace
+                        local faceShadow
+                        if face == 0 or face == 1 then
+                            faceShadow = 0.95
+                        end
+                        if face == 2 or face == 3 then
+                            faceShadow = 0.65
+                        end
+                        if face == 4 or face == 5 then
+                            faceShadow = 0.8
+                        end
+
+                        hitColor[1] = (1 - waterColMixAmount) * (hitColor[1] * faceShadow + causticBrightness) +
+                            waterColMixAmount * waterColor.r * 255
+                        hitColor[2] = (1 - waterColMixAmount) * (hitColor[2] * faceShadow + causticBrightness) +
+                            waterColMixAmount * waterColor.g * 255
+                        hitColor[3] = (1 - waterColMixAmount) * (hitColor[3] * faceShadow + causticBrightness) +
+                            waterColMixAmount * waterColor.b * 255
+                        output[11] = hitColor
+                    else
+                        output[11] = { 0, 0, 0 }
+                    end
                 end
+            else
+                output[11] = { 0, 0, 0 }
             end
         else
             output[11] = { 0, 0, 0 }
         end
-    else
-        output[11] = { 0, 0, 0 }
     end
 
     return output
@@ -605,14 +652,8 @@ end
 
 --? smooth shadows
 --   five+ differnent sun directions, shadows are added together
--- volumetric clouds
 -- torch shadows
--- textured water reflections
 -- iron mirror reflections
 -- sun color with depending on time with water reflection
 -- normal maps on all blocks
--- water refraction
 -- distort fbm by shifting pixels by other fbm
-
--- ?when reflecting, recurvisely call the raytrace function
---      give it the input of the direction and the output of each map at that pixel
