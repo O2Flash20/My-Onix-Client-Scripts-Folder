@@ -1,3 +1,5 @@
+-- Made By O2Flash20 🙂
+
 name = "Ray Tracing Test"
 description = "how bad can it possibly be"
 
