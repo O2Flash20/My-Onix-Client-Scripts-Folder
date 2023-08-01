@@ -61,7 +61,6 @@ function btt.getTexture(x, y, z, face)
         if blockName == "log" then
             output = finalTextures[btt.logIDToNumber[blockSelected.id]]
         elseif blockName == "log2" then
-            -- log("hi")
             output = finalTextures[btt.log2IDToNumber[blockSelected.id]]
         else
             output = finalTextures[blockSelected.data + 1]
@@ -74,7 +73,6 @@ function btt.getTexture(x, y, z, face)
 end
 
 function onNetworkData(code, identifier, data)
-    log(identifier)
     if identifier == "blocks.json" then
         btt.blocks = jsonToTable(data)
     end
