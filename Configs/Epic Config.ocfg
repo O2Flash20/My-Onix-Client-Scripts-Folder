@@ -376,22 +376,22 @@ render test:1:
  favorite:2:false
 Dev Block Leaker:1:
  settings:1:
-  Sv:1:
-   type:4:1
-   value:2:false
+  _setting__11714910769601064179:1:
+   type:4:2
+   value:4:32
   Key:1:
    type:4:4
    key:4:0
-  HighlightRadius:1:
-   type:4:2
-   value:4:10
-  B:1:
+  _setting__902793383370320742:1:
    type:4:1
-   value:2:false
-  Lb:1:
+   value:2:true
+  _setting__10410307581100957929:1:
    type:4:1
-   value:2:false
- enabled:2:false
+   value:2:true
+  _setting__17519911118033282550:1:
+   type:4:1
+   value:2:true
+ enabled:2:true
  favorite:2:false
 ChatLogger:1:
  settings:1:
@@ -724,9 +724,45 @@ Ray Tracing Test:1:
   Key:1:
    type:4:4
    key:4:0
-  _setting__13550292235676943758:1:
+  ResolutionW:1:
+   type:4:2
+   value:4:194
+  _clouds:1:
+   type:4:1
+   value:2:false
+  _setting__15600631067578966460:1:
    type:4:4
    key:4:34
+  gameFov:1:
+   type:4:3
+   value:6:38.000000
+  _realWater:1:
+   type:4:1
+   value:2:false
+  _sunShadows:1:
+   type:4:1
+   value:2:true
+  _dof:1:
+   type:4:1
+   value:2:false
+  _depth:1:
+   type:4:1
+   value:2:false
+  _normal:1:
+   type:4:1
+   value:2:false
+  _textures:1:
+   type:4:1
+   value:2:false
+  _waterReflections:1:
+   type:4:1
+   value:2:false
+  _waterShine:1:
+   type:4:1
+   value:2:false
+  _waterShadows:1:
+   type:4:1
+   value:2:false
  enabled:2:true
  favorite:2:false
 PvP Helper:1:
