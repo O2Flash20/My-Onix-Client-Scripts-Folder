@@ -1,111 +1,137 @@
-name="Dev Block Leaker"
-description="See the unseen!!"
+name = "Dev Block Leaker"
+description = "See the unseen! May be laggy but this time it's because of the amount of cubes being rendered."
 
-importLib("renderthreeD")
+importLib("cosmeticTools")
+importLib("vectors")
 
---[[
-    Forked by Helix, big ty to onix for getting me started
-    Pls dont look at my messy unotimized code pls
-]]
-
-
-B = false
-Lb = false
-Sv = false
---ntk ="Avoid turning everything on! The script is vary resource heavy!"
-
---client.settings.addInfo(ntk)
-client.settings.addAir(5)
-client.settings.addBool("Barriers", "B")
-client.settings.addBool("Light Blocks", "Lb")
-client.settings.addBool("Void Blocks", "Sv")
---I feel like if I add invis bedrock and border blocks the game would drop to 1 fps while trying and render everything
-client.settings.addAir(5)
-HighlightRadius = 10
-client.settings.addInt("Radius", "HighlightRadius", 3, 50)
+barriers = client.settings.addNamelessBool("Barriers", true)
+lightBlocks = client.settings.addNamelessBool("Light Blocks", true)
+voidBlocks = client.settings.addNamelessBool("Void Blocks", true)
+radius = client.settings.addNamelessInt("Radius", 1, 1024, 32)
 
 BarrierList = {}
 LightList = {}
 VoidList = {}
 
-function update(dt)
-    local player_x, player_y, player_z = player.position()
-    BarrierList = {}
-    if (B == true) then
-        for x=player_x - HighlightRadius,player_x + HighlightRadius do
-            for y=player_y - HighlightRadius,player_y + HighlightRadius do
-                for z=player_z - HighlightRadius,player_z + HighlightRadius do
-                  local block = dimension.getBlock(x, y, z)
-                  if (block.id == 416) then
-                    table.insert(BarrierList, {x=x,y=y,z=z})
-                  end
+function update()
+    BarrierList = dimension.findBlock("barrier", 0, radius.value)
+    LightList = dimension.findBlock("light_block", -1, radius.value)
+    VoidList = dimension.findBlock("structure_void", 0, radius.value)
+end
+
+local function renderBlockList(blockList, texturePath, getBrightness)
+    for i = 1, #blockList do
+        local pos = blockList[i]
+        local posVec = vec:new(pos[1], pos[2], pos[3])
+
+        if playerRot:dot(posVec:sub(playerPos)) > 0 then
+            if texturePath ~= "textures/blocks/structure_void" then
+                local texture
+                if getBrightness then
+                    local brightness = dimension.getBrightness(pos[1], pos[2], pos[3])
+                    texture = texturePath .. brightness .. ".png"
+                else
+                    texture = texturePath .. ".png"
                 end
-            end
-        end
-    end
-    local player_x, player_y, player_z = player.position()
-    LightList = {}
-    if (Lb == true) then
-        for x=player_x - HighlightRadius,player_x + HighlightRadius do
-            for y=player_y - HighlightRadius,player_y + HighlightRadius do
-                for z=player_z - HighlightRadius,player_z + HighlightRadius do
-                  local block = dimension.getBlock(x, y, z)
-                  if (block.id == 470) then
-                    table.insert(LightList, {x=x,y=y,z=z})
-                  end
-                end
-            end
-        end
-    end
-    local player_x, player_y, player_z = player.position()
-    VoidList = {}
-    if (Sv == true) then
-        for x=player_x - HighlightRadius,player_x + HighlightRadius do
-            for y=player_y - HighlightRadius,player_y + HighlightRadius do
-                for z=player_z - HighlightRadius,player_z + HighlightRadius do
-                  local block = dimension.getBlock(x, y, z)
-                  if (block.id == 217) then
-                    table.insert(VoidList, {x=x,y=y,z=z})
-                  end
-                end
+                renderFacingPlayerQuad(pos[1], pos[2], pos[3], texture)
+            else
+                local block = Object:new(pos[1], pos[2], pos[3]):attachNone()
+
+                local texture = texturePath .. ".png"
+
+                Cube:new(block, 0.5, 0.5, 0.5, 1, 1, 1):renderTexture(gfx.loadTexture(texture))
             end
         end
     end
 end
 
 function render3d()
-    gfx.color(225,0,0,70)
-    for _, pos in pairs(BarrierList) do
-        cube(pos.x, pos.y, pos.z, 1)
+    px, py, pz = player.pposition()
+    pyaw, ppitch = player.rotation()
+    playerPos = vec:new(px, py, pz)
+    playerRot = vec:fromAngle(1, math.rad(pyaw + 90), math.rad(-ppitch))
+
+    local selectSlot = player.inventory().selected
+    local selectedItem = player.inventory().at(selectSlot)
+    if barriers.value and (not selectedItem or selectedItem.blockname ~= "barrier") then
+        renderBlockList(BarrierList, "textures/blocks/barrier", false)
     end
-    gfx.color(255,255,77,70)
-    for _, pos in pairs(LightList) do
-        cube(pos.x, pos.y, pos.z, 1)
+    if lightBlocks.value and (not selectedItem or selectedItem.blockname ~= "light_block") then
+        renderBlockList(LightList, "textures/items/light_block_", true)
     end
-    gfx.color(255,128,128,70)
-    for _, pos in pairs(VoidList) do
-        cube(pos.x, pos.y, pos.z, 1)
+    if voidBlocks.value and (not selectedItem or selectedItem.blockname ~= "structure_void") then
+        renderBlockList(VoidList, "textures/blocks/structure_void", false)
     end
 end
 
---[[                                   *@@.
-                                  O@@#
-                                 *@@#.O
-                                 @@@ °@@@°
-                                 @@@    O@@o   **
-                       .*oO#@@@@ @@@ *Ooo#@@@@@@@*
-                   .O@@@@@@@@#@@ O@@°o@@@@@#Oo.
-                 *@@@@*  .#@@*   o@@o
-               .@@@#@@O     o@@@ *@@o
-              °@@@   °@@@o    °# @@@.
-              @@@ O.    O@@#.   #@@O
-             .@@@ @@@o    .#@@O@@@*
-             °@@@   o@@O.  *@@@@o
-   .*oO@@@@@# @@@ @@@@@@@@@@@o.
-*@@@@@@@OoOOo @@@ #@@#Oo*°
- oo. .#@@*    @@@
-        o@@@. @@@
-          .#°O@@*
-            #@@#        Helix (omg bloat)
-           .@@o
-]]
+function rotatePoint(x, y, z, originX, originY, originZ, pitch, yaw, roll)
+    local newX, newY, newZ
+
+    -- rotate along z axis
+    x = x - originX
+    y = y - originY
+
+    newX = x * math.cos(roll) - y * math.sin(roll)
+    newY = x * math.sin(roll) + y * math.cos(roll)
+
+    x = newX + originX
+    y = newY + originY
+
+    -- rotate along x axis
+    y = y - originY
+    z = z - originZ
+
+    newY = y * math.cos(pitch) - z * math.sin(pitch)
+    newZ = y * math.sin(pitch) + z * math.cos(pitch)
+
+    y = newY + originY
+    z = newZ + originZ
+
+    -- rotate along y axis
+    x = x - originX
+    z = z - originZ
+
+    newX = z * math.sin(yaw) + x * math.cos(yaw)
+    newZ = z * math.cos(yaw) - x * math.sin(yaw)
+
+    x = newX + originX
+    z = newZ + originZ
+
+    return { x, y, z }
+end
+
+function renderFacingPlayerQuad(x, y, z, texture)
+    local blockPos = vec:new(x + 0.5, y + 0.5, z + 0.5)
+
+    local topLeft = vec:new(-0.5, 0.5, 0)
+    local topRight = vec:new(0.5, 0.5, 0)
+    local bottomRight = vec:new(0.5, -0.5, 0)
+    local bottomLeft = vec:new(-0.5, -0.5, 0)
+
+    local toRotate = vec:new(px, py, pz):sub(blockPos):dir()
+
+    local topLeftRot = rotatePoint(
+        topLeft.x, topLeft.y, topLeft.z,
+        0, 0, 0, -toRotate[2], -toRotate[1] + math.rad(90), 0
+    )
+    local topRightRot = rotatePoint(
+        topRight.x, topRight.y, topRight.z,
+        0, 0, 0, -toRotate[2], -toRotate[1] + math.rad(90), 0
+    )
+    local bottomRightRot = rotatePoint(
+        bottomRight.x, bottomRight.y, bottomRight.z,
+        0, 0, 0, -toRotate[2], -toRotate[1] + math.rad(90), 0
+    )
+    local bottomLeftRot = rotatePoint(
+        bottomLeft.x, bottomLeft.y, bottomLeft.z,
+        0, 0, 0, -toRotate[2], -toRotate[1] + math.rad(90), 0
+    )
+
+    gfx.tquad(
+        bottomLeftRot[1] + blockPos.x, bottomLeftRot[2] + blockPos.y, bottomLeftRot[3] + blockPos.z, 0, 1,
+        bottomRightRot[1] + blockPos.x, bottomRightRot[2] + blockPos.y, bottomRightRot[3] + blockPos.z, 1, 1,
+        topRightRot[1] + blockPos.x, topRightRot[2] + blockPos.y, topRightRot[3] + blockPos.z, 1, 0,
+        topLeftRot[1] + blockPos.x, topLeftRot[2] + blockPos.y, topLeftRot[3] + blockPos.z, 0, 0,
+        texture
+    )
+end
