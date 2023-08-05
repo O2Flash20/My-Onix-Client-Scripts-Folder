@@ -726,7 +726,7 @@ Ray Tracing Test:1:
    key:4:0
   ResolutionW:1:
    type:4:2
-   value:4:194
+   value:4:48
   _clouds:1:
    type:4:1
    value:2:false
@@ -735,13 +735,13 @@ Ray Tracing Test:1:
    key:4:34
   gameFov:1:
    type:4:3
-   value:6:38.000000
+   value:6:77.764008
   _realWater:1:
    type:4:1
-   value:2:false
+   value:2:true
   _sunShadows:1:
    type:4:1
-   value:2:true
+   value:2:false
   _dof:1:
    type:4:1
    value:2:false
