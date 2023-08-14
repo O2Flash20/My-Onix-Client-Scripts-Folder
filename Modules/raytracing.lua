@@ -5,6 +5,7 @@ description = "how bad can it possibly be"
 
 importLib("vectors")
 importLib("blockToTexture")
+importLib("zip")
 
 _depth = false
 _normal = false
@@ -40,7 +41,7 @@ client.settings.addBool("Water Shine (old)", "_waterShine")
 client.settings.addBool("Water Shadows (old)", "_waterShadows")
 
 client.settings.addTitle(
-    "NOTES:\nMake sure to set Game FOV to your current fov.\nMade to be used in fullscreen mode, however it's more convenient to have it do the raytrace while in windowed.\nIt will freeze your game, but it (almost) always comes back after the raytrace is done.\nVolumetric Clouds takes a LONG time."
+    "NOTES:\nMake sure to set Game FOV to your current fov.\nMade to be used in fullscreen mode, however it's more convenient to have it do the\n    raytrace while in windowed.\nIt will freeze your game, but it (almost) always comes back after the raytrace is done.\nVolumetric Clouds takes a LONG time."
 )
 
 verticalFov = math.rad(gameFov)
@@ -659,3 +660,10 @@ end
 -- sun color with depending on time with water reflection
 -- normal maps on all blocks
 -- distort fbm by shifting pixels by other fbm
+
+function zipTest()
+    local a = zip.open("bedrock-samples-main (1).zip")
+    a:DumpOnDisk("test")
+end
+
+client.settings.addFunction("test", "zipTest", "yes")
