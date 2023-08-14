@@ -566,10 +566,10 @@ function Cube:renderTexture(frontTex, backTex, leftTex, rightTex, topTex, bottom
         tF[1]
     )
     gfx.tquad(
-        vertices[2][1], vertices[2][2], vertices[2][3], tBo[2][1][1], tBo[2][2][2],
-        vertices[6][1], vertices[6][2], vertices[6][3], tBo[2][2][1], tBo[2][2][2],
-        vertices[5][1], vertices[5][2], vertices[5][3], tBo[2][2][1], tBo[2][1][2],
-        vertices[1][1], vertices[1][2], vertices[1][3], tBo[2][1][1], tBo[2][1][2],
+        vertices[2][1], vertices[2][2], vertices[2][3], tBo[2][1][1], tBo[2][1][2],
+        vertices[6][1], vertices[6][2], vertices[6][3], tBo[2][2][1], tBo[2][1][2],
+        vertices[5][1], vertices[5][2], vertices[5][3], tBo[2][2][1], tBo[2][2][2],
+        vertices[1][1], vertices[1][2], vertices[1][3], tBo[2][1][1], tBo[2][2][2],
         tBo[1]
     )
     gfx.tquad(
@@ -587,10 +587,10 @@ function Cube:renderTexture(frontTex, backTex, leftTex, rightTex, topTex, bottom
         tL[1]
     )
     gfx.tquad(
-        vertices[7][1], vertices[7][2], vertices[7][3], tT[2][2][1], tT[2][2][2],
-        vertices[8][1], vertices[8][2], vertices[8][3], tT[2][2][1], tT[2][1][2],
-        vertices[4][1], vertices[4][2], vertices[4][3], tT[2][1][1], tT[2][1][2],
-        vertices[3][1], vertices[3][2], vertices[3][3], tT[2][1][1], tT[2][2][2],
+        vertices[7][1], vertices[7][2], vertices[7][3], tT[2][2][1], tT[2][1][2],
+        vertices[8][1], vertices[8][2], vertices[8][3], tT[2][1][1], tT[2][1][2],
+        vertices[4][1], vertices[4][2], vertices[4][3], tT[2][1][1], tT[2][2][2],
+        vertices[3][1], vertices[3][2], vertices[3][3], tT[2][2][1], tT[2][2][2],
         tT[1]
     )
 end

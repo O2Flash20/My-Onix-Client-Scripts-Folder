@@ -57,9 +57,6 @@ function render3d(dt)
     local isSwimming = player.getFlag(3) and dimension.getBlock(math.floor(px), math.floor(py), math.floor(pz)).id == 9
     -- if player.perspective() ~= 0 or player.getFlag(5) or player.getFlag(32) or isSwimming then return end
 
-
-    log(player.bodyRotation())
-
     t = t + dt
 
     a = 1
