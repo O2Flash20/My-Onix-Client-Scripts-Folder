@@ -4,8 +4,6 @@ name = "Immersive First Person"
 description = "Look at yourself and see... yourself"
 
 importLib("cosmeticTools")
-importLib("vectors")
-importLib("logger")
 
 function postInit()
     player.skin().save("IFP_skin.png")
@@ -106,8 +104,3 @@ function render3d(dt)
 
     lastPos = { px, py, pz }
 end
-
---[[
-    why skin source no updatey?
-    the top of the body is not right (rotated 90deg)
-]]
