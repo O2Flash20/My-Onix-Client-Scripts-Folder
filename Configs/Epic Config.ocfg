@@ -726,7 +726,7 @@ Ray Tracing Test:1:
    key:4:0
   ResolutionW:1:
    type:4:2
-   value:4:48
+   value:4:500
   _clouds:1:
    type:4:1
    value:2:false
@@ -735,10 +735,10 @@ Ray Tracing Test:1:
    key:4:34
   gameFov:1:
    type:4:3
-   value:6:77.764008
+   value:6:100.400002
   _realWater:1:
    type:4:1
-   value:2:true
+   value:2:false
   _sunShadows:1:
    type:4:1
    value:2:false
@@ -772,7 +772,7 @@ PvP Helper:1:
    key:4:0
   scale:1:
    type:4:3
-   value:6:1.000000
+   value:6:1.362501
   comboIndicatorDanger:1:
    b:6:0.000000
    r:6:1.000000
@@ -844,8 +844,8 @@ PvP Helper:1:
    value:2:true
   position:1:
    type:4:5
-   x:6:355.000000
-   y:6:162.000000
+   x:6:358.000000
+   y:6:160.187500
  enabled:2:true
  favorite:2:false
 Immersive First Person:1:
@@ -853,7 +853,7 @@ Immersive First Person:1:
   Key:1:
    type:4:4
    key:4:0
- enabled:2:false
+ enabled:2:true
  favorite:2:false
 Logger:1:
  settings:1:
@@ -890,9 +890,9 @@ Logger:1:
    chroma:2:false
   position:1:
    type:4:5
-   x:6:98.951668
+   x:6:101.451660
    y:6:83.314827
- enabled:2:false
+ enabled:2:true
  favorite:2:true
 Quick Waypoints:1:
  settings:1:
