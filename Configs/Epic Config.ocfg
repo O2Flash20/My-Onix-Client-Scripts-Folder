@@ -892,7 +892,7 @@ Logger:1:
    type:4:5
    x:6:101.451660
    y:6:83.314827
- enabled:2:true
+ enabled:2:false
  favorite:2:true
 Quick Waypoints:1:
  settings:1:
