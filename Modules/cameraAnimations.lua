@@ -169,8 +169,8 @@ function render3d(dt)
 
         -- the index of the path, smoothed
         local smoothedTime = map(
-                currentTime, TIMEPATHPOINTS[lastPathPoint], TIMEPATHPOINTS[nextPathPoint], lastPathPoint, nextPathPoint
-            ) / APPROXIMATIONRESOLUTION
+            currentTime, TIMEPATHPOINTS[lastPathPoint], TIMEPATHPOINTS[nextPathPoint], lastPathPoint, nextPathPoint
+        ) / APPROXIMATIONRESOLUTION
 
         local smoothedTimeIndex = smoothedTime * APPROXIMATIONRESOLUTION
 
@@ -479,8 +479,8 @@ event.listen("KeyboardInput", function(key, down)
 
         -- the index of the path, smoothed
         local smoothedTime = map(
-                currentTime, TIMEPATHPOINTS[lastPathPoint], TIMEPATHPOINTS[nextPathPoint], lastPathPoint, nextPathPoint
-            ) / APPROXIMATIONRESOLUTION
+            currentTime, TIMEPATHPOINTS[lastPathPoint], TIMEPATHPOINTS[nextPathPoint], lastPathPoint, nextPathPoint
+        ) / APPROXIMATIONRESOLUTION
 
         local smoothedTimeIndex = smoothedTime * APPROXIMATIONRESOLUTION
 
