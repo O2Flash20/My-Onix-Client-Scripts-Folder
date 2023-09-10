@@ -1,3 +1,69 @@
+Cubecraft Auto GG:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
+Bow Display:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:false
+ favorite:2:false
+Skin Layers 3D:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+ enabled:2:true
+ favorite:2:false
+Command Block Hud:1:
+ settings:1:
+  _setting__9154693497432463922:1:
+   b:6:1.000000
+   r:6:1.000000
+   type:4:7
+   g:6:1.000000
+   a:6:1.000000
+   rainbow:2:false
+   chroma:2:false
+  Key:1:
+   type:4:4
+   key:4:0
+  scale:1:
+   type:4:3
+   value:6:1.000000
+  position:1:
+   type:4:5
+   x:6:43.000000
+   y:6:51.864010
+ enabled:2:false
+ favorite:2:false
+Auto Smooth Interpolation:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  scale:1:
+   type:4:3
+   value:6:1.000000
+  position:1:
+   type:4:5
+   x:6:94.666672
+   y:6:190.380005
+  APPROXIMATIONRESOLUTION:1:
+   type:4:3
+   value:6:60.491348
+  ALPHA:1:
+   type:4:3
+   value:6:0.500577
+  TENSION:1:
+   type:4:3
+   value:6:0.000000
+ enabled:2:false
+ favorite:2:false
 ThreeD View:1:
  settings:1:
   Key:1:
@@ -8,10 +74,10 @@ ThreeD View:1:
    value:6:1.000000
   position:1:
    type:4:5
-   x:6:50.000000
-   y:6:100.000000
+   x:6:60.000000
+   y:6:37.207993
  enabled:2:false
- favorite:2:false
+ favorite:2:true
 World Edit:1:
  settings:1:
   Key:1:
@@ -43,7 +109,7 @@ Lag Switch:1:
   holdKey:1:
    type:4:4
    key:4:77
- enabled:2:true
+ enabled:2:false
  favorite:2:false
 spher:1:
  settings:1:
@@ -103,8 +169,8 @@ Logger:1:
    chroma:2:false
   position:1:
    type:4:5
-   x:6:101.451660
-   y:6:83.314827
+   x:6:385.118347
+   y:6:86.988823
  enabled:2:false
  favorite:2:true
 Animated Skin:1:
@@ -112,7 +178,7 @@ Animated Skin:1:
   Key:1:
    type:4:4
    key:4:0
- enabled:2:true
+ enabled:2:false
  favorite:2:false
 Cosmetics:1:
  settings:1:
@@ -282,6 +348,85 @@ Better Hunger:1:
    y:6:278.506042
  enabled:2:false
  favorite:2:false
+World Save:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  scale:1:
+   type:4:3
+   value:6:1.000000
+  r:1:
+   type:4:2
+   value:4:15
+  position:1:
+   type:4:5
+   x:6:10.000000
+   y:6:10.000000
+ enabled:2:false
+ favorite:2:false
+Waypoint Ping Tool:1:
+ settings:1:
+  _setting__16601433861206559176:1:
+   type:4:1
+   value:2:false
+  Key:1:
+   type:4:4
+   key:4:0
+  _setting__11441311280909365845:1:
+   type:4:2
+   value:4:3
+  _setting__10118977085955408643:1:
+   type:4:4
+   key:4:39
+ enabled:2:false
+ favorite:2:false
+Blender Camera Recorder:1:
+ settings:1:
+  Key:1:
+   type:4:4
+   key:4:0
+  scale:1:
+   type:4:3
+   value:6:1.000000
+  _setting__3786886557502698921:1:
+   type:4:4
+   key:4:77
+  _setting__8545721755745366783:1:
+   type:4:9
+   text:8:cave
+  position:1:
+   type:4:5
+   x:6:290.000000
+   y:6:18.369999
+ enabled:2:true
+ favorite:2:false
+Block Map:1:
+ settings:1:
+  lightEnabled:1:
+   type:4:1
+   value:2:false
+  Key:1:
+   type:4:4
+   key:4:0
+  gridR:1:
+   type:4:2
+   value:4:25
+  scale:1:
+   type:4:3
+   value:6:1.000000
+  position:1:
+   type:4:5
+   x:6:500.000000
+   y:6:25.000000
+  checkLimit:1:
+   type:4:2
+   value:4:10
+  checkFrequency:1:
+   type:4:2
+   value:4:1
+ enabled:2:false
+ favorite:2:false
 Skinstealer:1:
  settings:1:
   _setting__9839599158341423445:1:
@@ -335,46 +480,6 @@ Bridge Overlay:1:
   radius:1:
    type:4:2
    value:4:5
- enabled:2:false
- favorite:2:false
-Block Map:1:
- settings:1:
-  lightEnabled:1:
-   type:4:1
-   value:2:false
-  Key:1:
-   type:4:4
-   key:4:0
-  gridR:1:
-   type:4:2
-   value:4:25
-  scale:1:
-   type:4:3
-   value:6:1.000000
-  position:1:
-   type:4:5
-   x:6:500.000000
-   y:6:25.000000
-  checkLimit:1:
-   type:4:2
-   value:4:10
-  checkFrequency:1:
-   type:4:2
-   value:4:1
- enabled:2:false
- favorite:2:false
-Cubecraft Auto GG:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
- enabled:2:false
- favorite:2:false
-Bow Display:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
  enabled:2:false
  favorite:2:false
 Cosmetics Pack V1:1:
@@ -530,28 +635,6 @@ Chat Timestamps:1:
   Key:1:
    type:4:4
    key:4:0
- enabled:2:false
- favorite:2:false
-Command Block Hud:1:
- settings:1:
-  _setting__9154693497432463922:1:
-   b:6:1.000000
-   r:6:1.000000
-   type:4:7
-   g:6:1.000000
-   a:6:1.000000
-   rainbow:2:false
-   chroma:2:false
-  Key:1:
-   type:4:4
-   key:4:0
-  scale:1:
-   type:4:3
-   value:6:1.000000
-  position:1:
-   type:4:5
-   x:6:43.000000
-   y:6:51.864010
  enabled:2:false
  favorite:2:false
 Cosmetics Lib Custom Capes:1:
@@ -1091,38 +1174,5 @@ Texture Test:1:
   Key:1:
    type:4:4
    key:4:0
- enabled:2:false
- favorite:2:false
-World Save:1:
- settings:1:
-  Key:1:
-   type:4:4
-   key:4:0
-  scale:1:
-   type:4:3
-   value:6:1.000000
-  r:1:
-   type:4:2
-   value:4:15
-  position:1:
-   type:4:5
-   x:6:10.000000
-   y:6:10.000000
- enabled:2:false
- favorite:2:false
-Waypoint Ping Tool:1:
- settings:1:
-  _setting__16601433861206559176:1:
-   type:4:1
-   value:2:false
-  Key:1:
-   type:4:4
-   key:4:0
-  _setting__11441311280909365845:1:
-   type:4:2
-   value:4:3
-  _setting__10118977085955408643:1:
-   type:4:4
-   key:4:39
  enabled:2:false
  favorite:2:false
