@@ -1,4 +1,6 @@
-
 to finish: 
     freecam (including textures library)
-    replay mod (once scripting 2)
+    replay mod use the new freecam editing stuff
+to do:
+    actually good world download script
+    another mini map but with Gfx2Texture.setPixel(self, x, y, r, g, b, a)
