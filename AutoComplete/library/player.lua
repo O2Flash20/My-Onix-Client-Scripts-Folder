@@ -396,6 +396,7 @@ local _acp_Enchants = {}
 ---@field blockid integer The runtime numerical identifier of the block assosiated with the item, will change often use for runtime only
 ---@field name string The name of the item  ex: diamond_sword
 ---@field blockname string The name of the block assosiated with the item  ex: carrots
+---@field blockstate table The state of the block assosiated with the item
 ---@field maxStackCount integer The maximum amount of this item that can be stacked
 ---@field maxDamage integer The maximum durability of an item
 ---@field durability integer The amount of damage applied to that item
@@ -425,6 +426,10 @@ function _acp_Inventory.armor() end
 ---The item in the second hand
 ---@return Item|nil offhand The item in the offhand
 function _acp_Inventory.offhand() end
+
+---The item in the main hand
+---@return Item|nil handItem The item in the main hand
+function _acp_Inventory.selectedItem() end
 
 
 ---The item in slot or nil

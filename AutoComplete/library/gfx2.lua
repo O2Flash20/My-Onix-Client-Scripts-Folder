@@ -1,6 +1,36 @@
 ---@meta
 
 
+---@class Gfx2RenderTarget
+---@field width integer The width of the render target
+---@field height integer The height of the render target
+local _acp__gfx2Render_Target_ = {}
+---Changes the size of the render target (will clear it)
+---@param width integer The new width of the render target
+---@param height integer The new height of the render target
+function _acp__gfx2Render_Target_:resize(width, height) end
+
+---Clears the render target to the active gfx2.color
+function _acp__gfx2Render_Target_:clear() end
+
+---Saves the content of the render target to a file
+---@param filepath string The path to save the file to
+---@return boolean saved If the file was saved or not
+function _acp__gfx2Render_Target_:save(filepath) end
+---Saves the content of the render target to a file
+---@param filepath string The path to save the file to
+---@param toClipboardAswell boolean If it should also copy the image to the clipboard (default false)
+---@return boolean saved If the file was saved or not
+function _acp__gfx2Render_Target_:save(filepath, toClipboardAswell) end
+
+
+---@class Gfx2CpuRenderTarget : Gfx2RenderTarget
+---@field cpuTexture Gfx2Texture Please cache this as it needs to extract and copy the entire thing 
+
+---@class Gfx2GpuRenderTarget : Gfx2RenderTarget
+
+
+
 ---@class gfx2
 gfx2 = {}
 
@@ -24,6 +54,15 @@ function gfx2.color(r, g, b) end
 ---@param b number 0-255 color code
 ---@param a number 0-255 color code
 function gfx2.color(r, g, b, a) end
+
+
+---Gives you the size of the current render target
+---@return integer width
+function gfx2.width() end
+
+---Gives you the size of the current render target
+---@return integer height
+function gfx2.height() end
 
 
 ---Fills a rectangle
@@ -232,7 +271,7 @@ function gfx2.createImage(width, height) end
 ---@param y number The position on the y axis
 ---@param width number Width of the image to render
 ---@param height number Height of the image to render
----@param image Gfx2Texture image to render
+---@param image Gfx2Texture|Gfx2GpuRenderTarget image to render
 function gfx2.drawImage(x, y, width, height, image) end
 
 ---Renders an image to the Minecraft: Bedrock Edition Screen
@@ -240,7 +279,7 @@ function gfx2.drawImage(x, y, width, height, image) end
 ---@param y number The position on the y axis
 ---@param width number Width of the image to render
 ---@param height number Height of the image to render
----@param image Gfx2Texture image to render
+---@param image Gfx2Texture|Gfx2GpuRenderTarget image to render
 ---@param opacity number Opactity at which to render the image at (0.0 to 1.0)
 function gfx2.drawImage(x, y, width, height, image, opacity) end
 
@@ -249,7 +288,7 @@ function gfx2.drawImage(x, y, width, height, image, opacity) end
 ---@param y number The position on the y axis
 ---@param width number Width of the image to render
 ---@param height number Height of the image to render
----@param image Gfx2Texture Image to render
+---@param image Gfx2Texture|Gfx2GpuRenderTarget Image to render
 ---@param opacity number Opactity at which to render the image at (0.0 to 1.0)
 ---@param isLinear boolean Should the scaling be linear or is it gonna be nearest neighbor
 function gfx2.drawImage(x, y, width, height, image, opacity, isLinear) end
@@ -261,7 +300,7 @@ function gfx2.drawImage(x, y, width, height, image, opacity, isLinear) end
 ---@param y number The position on the y axis
 ---@param width number Width of the image to render
 ---@param height number Height of the image to render
----@param image Gfx2Texture image to render
+---@param image Gfx2Texture|Gfx2GpuRenderTarget image to render
 ---@param srcStartX number Where in the source should we start taking the image
 ---@param srcStartY number Where in the source should we start taking the image
 ---@param srcSizeX number what size in the source image are we taking
@@ -273,7 +312,7 @@ function gfx2.cdrawImage(x, y, width, height, image, srcStartX, srcStartY, srcSi
 ---@param y number The position on the y axis
 ---@param width number Width of the image to render
 ---@param height number Height of the image to render
----@param image Gfx2Texture image to render
+---@param image Gfx2Texture|Gfx2GpuRenderTarget image to render
 ---@param srcStartX number Where in the source should we start taking the image
 ---@param srcStartY number Where in the source should we start taking the image
 ---@param srcSizeX number what size in the source image are we taking
@@ -286,7 +325,7 @@ function gfx2.cdrawImage(x, y, width, height, image, srcStartX, srcStartY, srcSi
 ---@param y number The position on the y axis
 ---@param width number Width of the image to render
 ---@param height number Height of the image to render
----@param image Gfx2Texture image to render
+---@param image Gfx2Texture|Gfx2GpuRenderTarget image to render
 ---@param srcStartX number Where in the source should we start taking the image
 ---@param srcStartY number Where in the source should we start taking the image
 ---@param srcSizeX number what size in the source image are we taking
@@ -294,3 +333,52 @@ function gfx2.cdrawImage(x, y, width, height, image, srcStartX, srcStartY, srcSi
 ---@param opacity number Opactity at which to render the image at (0.0 to 1.0)
 ---@param isLinear boolean Should the scaling be linear or is it gonna be nearest neighbor
 function gfx2.cdrawImage(x, y, width, height, image, srcStartX, srcStartY, srcSizeX, srcSizeY, opacity, isLinear) end
+
+
+
+
+
+---Creates a cpu render target, you can basically use most gfx2 things on it.
+---Except that you can then save it to disk or do whatever you want with the texture cpu or gpu side
+---@param width integer The width of the render target
+---@param height integer The height of the render target
+---@return Gfx2CpuRenderTarget target The created render target
+function gfx2.createCpuRenderTarget(width, height) end
+
+---Creates a gpu render target, you can basically use most gfx2 things on it.
+---@param width integer The width of the render target
+---@param height integer The height of the render target
+---@return Gfx2GpuRenderTarget target The created render target
+function gfx2.createRenderTarget(width, height) end
+
+---Choses which render target to use
+---Chosing nil will result in going back to default/normal
+---@param target nil|Gfx2RenderTarget The render target to use
+function gfx2.bindRenderTarget(target) end
+
+---Pushes a clipping rectangle, you cannot draw outside of these
+---If you need to do that again you may consider poping the clipping rectangle
+---@param x number The position on the x axis
+---@param y number The position on the y axis
+---@param width number Width of the clipping rectangle
+---@param height number Height of the clipping rectangle
+function gfx2.pushClipArea(x, y, width, height) end
+
+---Pops the last pushed clipping rectangle
+function gfx2.popClipArea() end
+---Pops the last pushed clipping rectangle
+---@param amount integer How many clipping rectangles to pop (you cant pop enough to crash so to reset just put a high number)
+function gfx2.popClipArea(amount) end
+
+---Pushes a transformation
+---@param matrices table The transformation matrices typed parameter
+function gfx2.pushTransformation(matrices) end
+
+---Pops the last pushed transformation
+function gfx2.popTransformation() end
+---Pops the last pushed transformation
+---@param amount integer How many transformations to pop (you cant pop enough to crash so to reset just put a high number)
+function gfx2.popTransformation(amount) end
+
+
+

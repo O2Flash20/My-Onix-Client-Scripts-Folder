@@ -1,8 +1,11 @@
 {
+    "Lua.diagnostics.disable": [
+        "lowercase-global"
+    ],
     "Lua.diagnostics.globals": [
         "zSearch"
     ],
-    "Lua.diagnostics.disable": [
-        "lowercase-global"
+    "Lua.workspace.library": [
+        "C:\\Users\\willd\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\RoamingState\\OnixClient\\Scripts\\AutoComplete"
     ]
 }

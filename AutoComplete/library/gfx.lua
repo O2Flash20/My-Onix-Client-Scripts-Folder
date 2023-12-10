@@ -19,6 +19,14 @@ function gfx.color(r, g, b) end
 ---@param b number blue
 function gfx.tcolor(r, g, b) end
 
+---Sets the texture drawing color, values range from 0 to 255
+---Gfx texture drawing functions will tint using this color
+---@param r number red
+---@param g number green
+---@param b number blue
+---@param a number Opacity
+function gfx.tcolor(r, g, b, a) end
+
 ---Sets if the 3D rendering should render trough blocks
 ---@param phaseTroughBlocks boolean red
 ---@return nil
@@ -39,6 +47,22 @@ function gfx.color(r, g, b, a) end
 ---@return number z
 function gfx.origin() end
 
+---Gets screen position from world position
+---Getting nil means that the position is not on screen
+---@param x number The world position X
+---@param y number The world position Y
+---@param z number The world position Z
+---@return number|nil x The screen position X
+---@return number|nil y The screen position Y
+function gfx.worldToScreen(x, y, z) end
+
+---Gets screen position from world position and gives you a table of number with a size of 2
+---Getting nil means that the position is not on screen
+---@param x number The world position X
+---@param y number The world position Y
+---@param z number The world position Z
+---@return number[]|nil x The screen position X
+function gfx.worldToScreen2(x, y, z) end
 
 ---Renders a rectangle 
 ---@param x number The position X
@@ -134,6 +158,13 @@ function gfx.loadTexture(filepath) end
 ---@param filepath string
 ---@return string GfxTexture the image (not actually a string but its for the autocomplete to not have yellow lines)
 function gfx.loadImage(filepath) end
+
+
+---Uploads a Gfx2Texture into gfx to later be used by gfx.image
+---You can then do gfx.image with the filepath you used here and it should render the texture
+---@param filepath string Which filepath is it being uploaded as
+---@param texture Gfx2Texture The texture to upload
+function gfx.uploadImage(filepath, texture) end
 
 
 ---Renders an Image 
@@ -427,6 +458,51 @@ function gfx.tquad(x_1, y_1, z_1, uvx_1, uvy_1, x_2, y_2, z_2, uvx_2, uvy_2, x_3
 function gfx.tquad(x_1, y_1, z_1, uvx_1, uvy_1, x_2, y_2, z_2, uvx_2, uvy_2, x_3, y_3, z_3, uvx_3, uvy_3, x_4, y_4, z_4, uvx_4, uvy_4, texturePath, bothSides) end
 
 
+---Changes the lighting parameters for future gfx calls (3d only)
+---@param AreaStartX number The starting X position of the area
+---@param AreaStartY number The starting Y position of the area
+---@param AreaStartZ number The starting Z position of the area
+---@param AreaEndX number The ending X position of the area
+---@param AreaEndY number The ending Y position of the area
+---@param AreaEndZ number The ending Z position of the area
+---@return nil
+function gfx.setupLights(AreaStartX, AreaStartY, AreaStartZ, AreaEndX, AreaEndY, AreaEndZ) end
+
+---Changes the lighting parameters for future gfx calls (3d only)
+---@param AreaStartX number The starting X position of the area
+---@param AreaStartY number The starting Y position of the area
+---@param AreaStartZ number The starting Z position of the area
+---@param AreaEndX number The ending X position of the area
+---@param AreaEndY number The ending Y position of the area
+---@param AreaEndZ number The ending Z position of the area
+---@param minimumBrightness integer The minimum brightness
+function gfx.setupLights(AreaStartX, AreaStartY, AreaStartZ, AreaEndX, AreaEndY, AreaEndZ, minimumBrightness) end
+
+---Changes the lighting parameters for future gfx calls (3d only)
+---@param AreaStartX number The starting X position of the area
+---@param AreaStartY number The starting Y position of the area
+---@param AreaStartZ number The starting Z position of the area
+---@param AreaEndX number The ending X position of the area
+---@param AreaEndY number The ending Y position of the area
+---@param AreaEndZ number The ending Z position of the area
+---@param CenterX number The center X of the area, you can uncenter it if it gives an effect you prefer
+---@param CenterY number The center Y of the area, you can uncenter it if it gives an effect you prefer
+---@param CenterZ number The center Z of the area, you can uncenter it if it gives an effect you prefer
+function gfx.setupLights(AreaStartX, AreaStartY, AreaStartZ, AreaEndX, AreaEndY, AreaEndZ, CenterX, CenterY, CenterZ) end
+
+---Changes the lighting parameters for future gfx calls (3d only)
+---@param AreaStartX number The starting X position of the area
+---@param AreaStartY number The starting Y position of the area
+---@param AreaStartZ number The starting Z position of the area
+---@param AreaEndX number The ending X position of the area
+---@param AreaEndY number The ending Y position of the area
+---@param AreaEndZ number The ending Z position of the area
+---@param CenterX number The center X of the area, you can uncenter it if it gives an effect you prefer
+---@param CenterY number The center Y of the area, you can uncenter it if it gives an effect you prefer
+---@param CenterZ number The center Z of the area, you can uncenter it if it gives an effect you prefer
+---@param minimumBrightness integer The minimum brightness
+function gfx.setupLights(AreaStartX, AreaStartY, AreaStartZ, AreaEndX, AreaEndY, AreaEndZ, CenterX, CenterY, CenterZ, minimumBrightness) end
+
 
 ---@param filepath string Filepath to the .obj file
 ---@return userdata
@@ -446,6 +522,89 @@ function gfx.objRender(mesh) end
 ---@param texture string
 function gfx.objRender(mesh, texture) end
 
+
+---@class JsonGeometry
+---@field name string
+
+---Loads minecraft geometries from json
+---@param geometryJson string The geometry json string, you can get from a file with: jsonFromFile
+---@return JsonGeometry[] geometries
+---@return string error
+function gfx.geometryLoad(geometryJson) end
+
+---Loads minecraft geometries from json
+---@param geometryJson string The geometry json string, you can get from a file with: jsonFromFile
+---@param desiredGeometry string The name of the desired geometry.
+---@return JsonGeometry geometry
+---@return string error
+function gfx.geometryLoad(geometryJson, desiredGeometry) end
+
+---Renders a json geometry model
+---@param model JsonGeometry the model to render
+---@param texture string the texture to render the model with
+function gfx.geometryRender(model, texture) end
+
+---Renders a json geometry model
+---@param model JsonGeometry the model to render
+---@param texture string the texture to render the model with
+---@param x number The position X
+---@param y number The position Y
+---@param z number The position Z
+function gfx.geometryRender(model, texture, x, y, z) end
+
+---Renders a json geometry model
+---@param model JsonGeometry the model to render
+---@param texture string the texture to render the model with
+---@param x number The position X
+---@param y number The position Y
+---@param z number The position Z
+---@param rotationX number The rotation X
+---@param rotationY number The rotation Y
+---@param rotationZ number The rotation Z
+function gfx.geometryRender(model, texture, x, y, z, rotationX, rotationY, rotationZ) end
+
+---Renders a json geometry model
+---@param model JsonGeometry the model to render
+---@param texture string the texture to render the model with
+---@param x number The position X
+---@param y number The position Y
+---@param z number The position Z
+---@param rotationX number The rotation X
+---@param rotationY number The rotation Y
+---@param rotationZ number The rotation Z
+---@param lightEmission integer The light emission (0-15)
+function gfx.geometryRender(model, texture, x, y, z, rotationX, rotationY, rotationZ, lightEmission) end
+
+---Renders a json geometry model
+---@param model JsonGeometry the model to render
+---@param texture string the texture to render the model with
+---@param x number The position X
+---@param y number The position Y
+---@param z number The position Z
+---@param rotationX number The rotation X
+---@param rotationY number The rotation Y
+---@param rotationZ number The rotation Z
+---@param lightEmission integer The light emission (0-15)
+---@param scaleX number The scale X
+---@param scaleY number The scale Y
+---@param scaleZ number The scale Z
+function gfx.geometryRender(model, texture, x, y, z, rotationX, rotationY, rotationZ, lightEmission, scaleX, scaleY, scaleZ) end
+
+---Renders a json geometry model
+---@param model JsonGeometry the model to render
+---@param texture string the texture to render the model with
+---@param x number The position X
+---@param y number The position Y
+---@param z number The position Z
+---@param rotationX number The rotation X
+---@param rotationY number The rotation Y
+---@param rotationZ number The rotation Z
+---@param lightEmission integer The light emission (0-15)
+---@param scaleX number The scale X
+---@param scaleY number The scale Y
+---@param scaleZ number The scale Z
+---@param renderInsideFaces boolean Should render the inside faces
+function gfx.geometryRender(model, texture, x, y, z, rotationX, rotationY, rotationZ, lightEmission, scaleX, scaleY, scaleZ, renderInsideFaces) end
 
 ---Pushes transformation(s)
 ---@param transformations table
