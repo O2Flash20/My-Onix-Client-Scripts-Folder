@@ -1,13 +1,26 @@
 {
     "modules": {
-        "Auto Exposure": {
+        "Better Visuals": {
+            "enabled": true
+        },
+        "Dev Block Leaker": {
+            "enabled": true,
+            "settings": {
+                "_setting__10410307581100957929": true,
+                "_setting__11714910769601064179": 10,
+                "_setting__17519911118033282550": true,
+                "_setting__902793383370320742": true,
+                "module.module.setting.key.name": 0
+            }
+        },
+        "Immersive First Person2": {
             "enabled": true
         },
         "Logger": {
             "settings": {
                 "": [
-                    500.0,
-                    25.0
+                    451.6884460449219,
+                    45.22327423095703
                 ],
                 "Background Color": {
                     "a": 1.0,
