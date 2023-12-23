@@ -1,33 +1,14 @@
 {
     "modules": {
-        "Better Visuals": {
-            "enabled": true
-        },
-        "Dev Block Leaker": {
+        "Logger": {
             "enabled": true,
             "settings": {
-                "_setting__10410307581100957929": true,
-                "_setting__11714910769601064179": 10,
-                "_setting__17519911118033282550": true,
-                "_setting__902793383370320742": true,
-                "module.module.setting.key.name": 0
-            }
-        },
-        "Immersive First Person2": {
-            "enabled": true
-        },
-        "Logger": {
-            "settings": {
-                "": [
-                    451.6884460449219,
-                    45.22327423095703
-                ],
                 "Background Color": {
                     "a": 1.0,
-                    "b": 0.20000001788139343,
+                    "b": 0.20000000298023224,
                     "chroma": false,
-                    "g": 0.20000001788139343,
-                    "r": 0.20000001788139343,
+                    "g": 0.20000000298023224,
+                    "r": 0.20000000298023224,
                     "rgb": false
                 },
                 "Foreground Color": {
@@ -39,11 +20,18 @@
                     "rgb": false
                 },
                 "module.module.setting.key.name": 0,
-                "module.visual.setting.scale.name": 0.6323529481887817,
+                "module.visual.setting.position.name": [
+                    400.4940185546875,
+                    26.59771728515625
+                ],
+                "module.visual.setting.scale.name": 0.8036331534385681,
                 "showNumber": true,
                 "tScale": 1.0,
-                "wRatio": 0.35409462451934814
+                "wRatio": 0.3310265839099884
             }
+        },
+        "Shadows": {
+            "enabled": true
         }
     }
 }
