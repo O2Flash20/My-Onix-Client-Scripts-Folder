@@ -1,0 +1,174 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="803px" height="401px" viewBox="-0.5 -0.5 803 401" content="&lt;mxfile&gt;&lt;diagram id=&quot;41dWIgOi-TXK1nFJP4I9&quot; name=&quot;Page-1&quot;&gt;zVhLc9s2EP41mjQHeyRSlOSjLcdpD+1kxp1Je4QIkMQYJBgQlMT++u7iwYdItUqsxLnYxGIBLL799gHNwm1+/KhImf0uKROzYE6Ps/BxFgSLxWYF/1DSWMl6fWcFqeLUKXWCZ/4Pc8K5k9acsmqgqKUUmpdDYSyLgsV6ICNKycNQLZFieGpJUjYSPMdEjKWfOdWZlW6ieSf/lfE08ycv5m4mJ17ZCaqMUHnoicIPs3CrpNT2Kz9umUDwPC523dOZ2dYwxQp9yYLQLtgTUbu7fc5YgXhmDDcSpGEKDZd7BPzeWa0bD4VmRzjoIdO5AMECPiut5AvbSiEVSApZgOZDwoU4ERHB0wKGMZgKZ4QPe6Y0B5Dv3UTOKcVjHg4Z1+y5JDGeeQBKgUzJuqAMbzGH0fjaDgnckx17IgfDRyZzplUDKm52c3cbbuwix8rQ+ejQuXjh/Zb13Ov1iGNV2u7dAQ8fDvszjgtHyDIKnHNDB1kPZbioav7C699Gfvi3Q8MMHo+DUfN/SFWyVrE72oWnJiplTssFKBr1n2gqJojm+2GgvAaZ1Yih95SagMeNjZU7wdz3l5rV+C0T+LMTMn6pvOoO5XHG4hdGTcwjrdmxlJUdA7uqkQ+GLJviYc8lVyDhenlKws0ECaMJEkZXIOFmBPUsWAkT3mD2KsWvT0oC3HnlZ2DPbtILSy/4LRmnEq3InonKeUxApgu2rZbxmS8EeGtj4I7FcBu3IqtT/Axp53tcD86Js/4S/EM6V+cslwiHtXCnTm2uSlIMnL/6UmMWtl6/qazb7/Emitl1TqG30ywI73p7Ajh2W6sQC0ZUe1XPW1nE+I8X7n5wHlrwdN5U2LY8C7mtKAhvXUIkFqk5ogdtnJEiRa4jagXCD/Oi8WpDP3BdMWGCqdbGNqaMsTiISaW9G10du8TAHwj4wdYycu72eAPMWe4isoRsAGe3KFR18Q4nKFfQRnCDT6Jk3iq4EuUSjs6I7h3Vg/N4Q468TUUsSXjMIUsY1BNeUK/tSdylLmtH69PcRDwEAcRQext6KVWuVrvROUit8DHqRn9KSIiPN8G5VAkthEqE6XYywA1c8x3KeHQ3H+TPYJw/24Ldz59tZX9VFQ++sopfVI2vXnrd0k+SF7pDLlwOkWubVr+FbQfcqhNQWjMuwuluXNORzBLYABkLiZ1KZukPojQzX1Coe5Gx9dUc1TJMPaNYcZUgIeafj8bcriUm6Ailoyh7N8M+gtA2XMlJtVmRHOlc7KpyKqp+dM+w2Nyuo6HnognSrxa3QfS9eL8cObRX+dtaUhliC6zsrftarVU/7REDoi801lfYinYZ0iVcs6dZZhK16+JgPW7Zdndv7KEwwia976HVhV3d5hrOiUbOebLNLzFIDntg65qq3lG+h0e2PRvqTm10zXcjazSduDTwpsiuTpg/BezUm211DWDHT5MBsLILgaVNbwVTLnVVzLRRTqNpKWu6QN9MzU078UtOmp3dJHx6jwt4bkhu9qekeXsvRMM3S7Cc8EI4kXzW1/DC5itr7rmXczv3mpfzYj37eZ7O3pgeQf9AXiEB7aPIJdCpFEBZYkuxae9N7jWE86UxJy/2cVGXJxXUF1ubu/VkQDgO/2TEDad+8gmXtxPU/YbMDMPuhz3bNXU/j4Yf/gU=&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <rect x="70.38" y="20" width="120" height="30" fill="none" stroke="none" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 35px; margin-left: 71px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                When the player moves:
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="130" y="39" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    When the player move...
+                </text>
+            </switch>
+        </g>
+        <path d="M 130.38 120 L 130.38 133.63" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 130.38 138.88 L 126.88 131.88 L 130.38 133.63 L 133.88 131.88 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="55.38" y="70" width="150" height="50" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 148px; height: 1px; padding-top: 95px; margin-left: 56px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                Add to a table a queue of blocks to be checked for exposed faces
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="130" y="99" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Add to a table a queue of...
+                </text>
+            </switch>
+        </g>
+        <rect x="571" y="10" width="230" height="120" fill="none" stroke="none" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 222px; height: 1px; padding-top: 0px; margin-left: 576px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left; max-height: 130px; overflow: hidden;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                <h1>
+                                    Problems
+                                </h1>
+                                <p>
+                                    If the player travels a lot, the block grid will become a huge 3d table, which will be bad for memory
+                                    <br/>
+                                    <span style="white-space: pre;">
+                                    </span>
+                                    clear the table once in a while?
+                                    <br/>
+                                </p>
+                                <p>
+                                    shadows upating on block changes, not only on the block itself but where it casts a shadow
+                                </p>
+                                <p>
+                                    <span style="white-space: pre;">
+                                    </span>
+                                    when a block changes, cast rasts opposite the sun's direction from the middle of that block on the x-axis to efficiently find on which blocks the shadows might have changed
+                                    <br/>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="576" y="12" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px">
+                    Problems...
+                </text>
+            </switch>
+        </g>
+        <path d="M 234.35 140 L 315.48 93.18" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 320.03 90.56 L 315.72 97.09 L 315.48 93.18 L 312.22 91.03 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="-0.25" y="140" width="261.25" height="120" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 259px; height: 1px; padding-top: 200px; margin-left: 1px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                A coroutine goes through those blocks, checks how the shadows will fall on them, and adds the shadows' quads to a 3d table
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="130" y="204" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    A coroutine goes through those blocks, chec...
+                </text>
+            </switch>
+        </g>
+        <rect x="331.5" y="50" width="150" height="80" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 148px; height: 1px; padding-top: 90px; margin-left: 333px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                If the block is solid, check the 6 blocks around it and get which of this block's faces are exposed
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="407" y="94" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    If the block is solid, ch...
+                </text>
+            </switch>
+        </g>
+        <rect x="346" y="150" width="120" height="60" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 180px; margin-left: 347px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                For each exposed face, subdivide as much as you want
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="406" y="184" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    For each exposed fac...
+                </text>
+            </switch>
+        </g>
+        <rect x="339" y="230" width="135" height="70" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 133px; height: 1px; padding-top: 265px; margin-left: 340px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                For each of the 4 corners, see if they are in shadow at (maybe 4?) times of day
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="407" y="269" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    For each of the 4 corn...
+                </text>
+            </switch>
+        </g>
+        <path d="M 339 335.62 L 136.36 262.17" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 131.43 260.38 L 139.2 259.48 L 136.36 262.17 L 136.81 266.06 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="339" y="320" width="134.5" height="80" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 133px; height: 1px; padding-top: 360px; margin-left: 340px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                Now, for this exposed face, define a set of quads making up the shadow on it at each of the times
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="406" y="364" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Now, for this exposed...
+                </text>
+            </switch>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Text is not SVG - cannot display
+            </text>
+        </a>
+    </switch>
+</svg>
