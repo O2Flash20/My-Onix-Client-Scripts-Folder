@@ -4,24 +4,11 @@ description = "Real Time Shadows?!??!"
 
 importLib("logger")
 
-blankTexture = gfx2.createCpuRenderTarget(1, 1)
-shouldUploadTexture = false
-shouldSetTexture = true
-function render2()
-    if shouldSetTexture then
-        gfx2.bindRenderTarget(blankTexture)
-        gfx2.color(255, 255, 255)
-        gfx2.fillRect(0, 0, 1, 1)
-
-        gfx2.bindRenderTarget(nil)
-        shouldUploadTexture = true
-        shouldSetTexture = false
-    end
-end
-
 radius = 10
 resolution = 2
 sunTimesToCheck = 4
+timeBetweenQuadUpdates = 0.1 --(seconds)
+blocksCheckedPerFrame = 200
 blocksGrid = {}
 
 -- ?
@@ -31,6 +18,7 @@ blockCheckQueue = {}
 function update()
     px, py, pz = player.position()
 
+    -- !rework all this
     if lastX then
         -- moved +x
         if lastX < px then
@@ -44,7 +32,7 @@ function update()
         end
         -- moved -x
         if lastX > px then
-            for x = lastX + radius - 1, px + radius, -1 do
+            for x = lastX - radius - 1, px - radius, -1 do
                 for y = -radius + py, radius + py, 1 do
                     for z = -radius + pz, radius + pz, 1 do
                         table.insert(blockCheckQueue, { x, y, z })
@@ -65,7 +53,7 @@ function update()
         end
         -- moved -y
         if lastY > py then
-            for y = lastY + radius - 1, py + radius, -1 do
+            for y = lastY - radius - 1, py - radius, -1 do
                 for x = -radius + px, radius + px, 1 do
                     for z = -radius + pz, radius + pz, 1 do
                         table.insert(blockCheckQueue, { x, y, z })
@@ -86,7 +74,7 @@ function update()
         end
         -- moved -z
         if lastZ > pz then
-            for z = lastZ + radius - 1, pz + radius, -1 do
+            for z = lastZ - radius - 1, pz - radius, -1 do
                 for x = -radius + px, radius + px, 1 do
                     for y = -radius + py, radius + py, 1 do
                         table.insert(blockCheckQueue, { x, y, z })
@@ -102,27 +90,22 @@ end
 t = 0
 quadsToRender = {}
 function render3d(dt)
-    if shouldUploadTexture then
-        gfx.uploadImage("blank", blankTexture.cpuTexture)
-        shouldUploadTexture = false
-    end
-
-    log(#blockCheckQueue)
+    -- log(#blockCheckQueue)
     if #blockCheckQueue > 0 then
         local blocksChecked = 0
-        while blocksChecked < 5 and #blockCheckQueue > 0 do
+        while blocksChecked < blocksCheckedPerFrame and #blockCheckQueue > 0 do
             local wasChecked = checkBlockFromQueue() --this also actually does the check, but returns if work was done
             if wasChecked then
                 blocksChecked = blocksChecked + 1
-            else --if it wasnt a block that had quads, do them way faster
-                blocksChecked = blocksChecked + 0.1
+            else
+                blocksChecked = blocksChecked + 0.01 --if it wasnt a block that had quads, do them way faster
             end
         end
     end
 
     -- update the quads to render list every so often
     t = t + dt
-    if t > 1 then
+    if t >= timeBetweenQuadUpdates then
         t = 0
         quadsToRender = getQuadsNeaby()
     end
@@ -131,26 +114,25 @@ function render3d(dt)
     gfx.tquadbatch(
         quadsToRender, "shadowTiles", false
     )
-
-    -- log(getQuadsNeaby())
 end
 
 raycastOffset = 0.01
 allQuads = {}
 function checkBlockFromQueue()
-    local bx = blockCheckQueue[1][1]
-    local by = blockCheckQueue[1][2]
-    local bz = blockCheckQueue[1][3]
+    -- *Start from the end!
+    local bx = blockCheckQueue[#blockCheckQueue][1]
+    local by = blockCheckQueue[#blockCheckQueue][2]
+    local bz = blockCheckQueue[#blockCheckQueue][3]
 
-    if blocksGrid[bx] ~= nil and blocksGrid[bx][by] ~= nil and blocksGrid[bx][by][bz] ~= nil then
-        table.remove(blockCheckQueue, 1)
+    if blocksGrid[bx] ~= nil and blocksGrid[bx][by] ~= nil and blocksGrid[bx][by][bz] ~= nil then --if this block has already been done, skip it
+        table.remove(blockCheckQueue)
         return false
-    end --if this block has already been done, skip it
+    end
 
     if isTransparent(bx, by, bz) then
         addToGrid(bx, by, bz, false)
-        table.remove(blockCheckQueue, 1)
-        return false --true says that this coordinate wasnt already filled in
+        table.remove(blockCheckQueue)
+        return false
     end
 
     -- now I know this is a block I have to check all the sides of
@@ -160,7 +142,7 @@ function checkBlockFromQueue()
 
     -- the block is new and is solid, so see which of its faces are exposed
     if isTransparent(bx + 1, by, bz) then
-        faceSampleInfo = {} --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
+        local faceSampleInfo = {} --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
         for i = 0, resolution, 1 do
             faceSampleInfo[i] = {}
             for j = 0, resolution, 1 do
@@ -203,7 +185,7 @@ function checkBlockFromQueue()
         end
     end
     if isTransparent(bx - 1, by, bz) then
-        faceSampleInfo = {} --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
+        local faceSampleInfo = {} --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
         for i = 0, resolution, 1 do
             faceSampleInfo[i] = {}
             for j = 0, resolution, 1 do
@@ -246,50 +228,81 @@ function checkBlockFromQueue()
         end
     end
     if isTransparent(bx, by + 1, bz) then
-        faceSampleInfo = {} --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
+        local faceSampleInfo = {} --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
+
+        local numQuadsInShadow = {}
+        for i = 1, sunTimesToCheck, 1 do
+            numQuadsInShadow[i] = 0 --fill it with 0 to avoid errors later on
+        end
+
+        -- get all the samples of where the shadows will fall
         for i = 0, resolution, 1 do
             faceSampleInfo[i] = {}
             for j = 0, resolution, 1 do
                 local sampleX = i / resolution
                 local sampleY = j / resolution
 
-                faceSampleInfo[i][j] = whenIsPointInShadow(sampleX + bx, by + 1 + raycastOffset, sampleY + bz, 3)
+                local sample = whenIsPointInShadow(sampleX + bx, by + 1 + raycastOffset, sampleY + bz, 3)
+                for k = 1, #sample, 1 do --for each time, count up how many of the sample points are in shadow
+                    if sample[k] then
+                        numQuadsInShadow[k] = numQuadsInShadow[k] + 1
+                    end
+                end
+
+                faceSampleInfo[i][j] = sample
             end
         end
 
-        -- now, make quads with faceSampleInfo
-        for i = 0, resolution - 1, 1 do
-            for j = 0, resolution - 1, 1 do
-                for k = 1, sunTimesToCheck, 1 do
-                    local topLeftIsShadow = faceSampleInfo[i][j + 1][k]
-                    local topRightIsShadow = faceSampleInfo[i + 1][j + 1][k]
-                    local bottomLeftIsShadow = faceSampleInfo[i][j][k]
-                    local bottomRightIsShadow = faceSampleInfo[i + 1][j][k]
+        -- Now, make quads with faceSampleInfo
+        for k = 1, sunTimesToCheck, 1 do
+            if thisBlockQuads[k] == nil then
+                thisBlockQuads[k] = {}
+            end
 
-                    local uvs = uvCoordsFromCornerShadows(
-                        topLeftIsShadow, topRightIsShadow, bottomLeftIsShadow, bottomRightIsShadow
-                    )
 
-                    if thisBlockQuads[k] == nil then
-                        thisBlockQuads[k] = {}
+            if numQuadsInShadow[k] == 0 then
+                -- do nothing (no shadow here)
+            elseif numQuadsInShadow[k] == (resolution + 1) * (resolution + 1) then --it's all shadow, so only render one quad for the whole face
+                table.insert(thisBlockQuads[k], {
+                    bx, by + 1 + raycastOffset, bz + 1,
+                    0, 0.5,
+                    bx + 1, by + 1 + raycastOffset, bz + 1,
+                    0, 0.5,
+                    bx + 1, by + 1 + raycastOffset, bz,
+                    0, 0.5,
+                    bx, by + 1 + raycastOffset, bz,
+                    0, 0.5
+                })
+            else
+                -- it's gonna require many different quads
+                for i = 0, resolution - 1, 1 do
+                    for j = 0, resolution - 1, 1 do
+                        local topLeftIsShadow = faceSampleInfo[i][j + 1][k]
+                        local topRightIsShadow = faceSampleInfo[i + 1][j + 1][k]
+                        local bottomLeftIsShadow = faceSampleInfo[i][j][k]
+                        local bottomRightIsShadow = faceSampleInfo[i + 1][j][k]
+
+                        local uvs = uvCoordsFromCornerShadows(
+                            topLeftIsShadow, topRightIsShadow, bottomLeftIsShadow, bottomRightIsShadow
+                        )
+
+                        table.insert(thisBlockQuads[k], {
+                            i / resolution + bx, by + 1 + raycastOffset, (j + 1) / resolution + bz,
+                            uvs["tl"][1], uvs["tl"][2],
+                            (i + 1) / resolution + bx, by + 1 + raycastOffset, (j + 1) / resolution + bz,
+                            uvs["tr"][1], uvs["tr"][2],
+                            (i + 1) / resolution + bx, by + 1 + raycastOffset, j / resolution + bz,
+                            uvs["br"][1], uvs["br"][2],
+                            i / resolution + bx, by + 1 + raycastOffset, j / resolution + bz,
+                            uvs["bl"][1], uvs["bl"][2],
+                        })
                     end
-
-                    table.insert(thisBlockQuads[k], {
-                        i / resolution + bx, by + 1 + raycastOffset, (j + 1) / resolution + bz,
-                        uvs["tl"][1], uvs["tl"][2],
-                        (i + 1) / resolution + bx, by + 1 + raycastOffset, (j + 1) / resolution + bz,
-                        uvs["tr"][1], uvs["tr"][2],
-                        (i + 1) / resolution + bx, by + 1 + raycastOffset, j / resolution + bz,
-                        uvs["br"][1], uvs["br"][2],
-                        i / resolution + bx, by + 1 + raycastOffset, j / resolution + bz,
-                        uvs["bl"][1], uvs["bl"][2],
-                    })
                 end
             end
         end
     end
     if isTransparent(bx, by - 1, bz) then --*this can only be in shadow
-        faceSampleInfo = {}               --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
+        local faceSampleInfo = {}         --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
         for i = 0, resolution, 1 do
             faceSampleInfo[i] = {}
             for j = 0, resolution, 1 do
@@ -332,7 +345,7 @@ function checkBlockFromQueue()
         end
     end
     if isTransparent(bx, by, bz + 1) then
-        faceSampleInfo = {} --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
+        local faceSampleInfo = {} --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
         for i = 0, resolution, 1 do
             faceSampleInfo[i] = {}
             for j = 0, resolution, 1 do
@@ -375,7 +388,7 @@ function checkBlockFromQueue()
         end
     end
     if isTransparent(bx, by, bz - 1) then
-        faceSampleInfo = {} --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
+        local faceSampleInfo = {} --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
         for i = 0, resolution, 1 do
             faceSampleInfo[i] = {}
             for j = 0, resolution, 1 do
@@ -419,7 +432,7 @@ function checkBlockFromQueue()
     end
 
     addToGrid(bx, by, bz, thisBlockQuads)
-    table.remove(blockCheckQueue, 1)
+    table.remove(blockCheckQueue)
     return true
 end
 
@@ -434,6 +447,7 @@ end
 ]]
 function whenIsPointInShadow(x, y, z, direction)
     local times = {}
+    -- log(x, y, z)
     for i = 1, sunTimesToCheck, 1 do
         local thisSunTime = ((i - 0.5) / sunTimesToCheck + 0.75) % 1
         local thisSunAngle = -2 * math.pi * thisSunTime
@@ -441,9 +455,37 @@ function whenIsPointInShadow(x, y, z, direction)
         local thisSunDirY = math.cos(thisSunAngle)
 
         if (direction == 1 and thisSunDirX < 0) or (direction == 2 and thisSunDirX > 0) or direction == 4 then
-            table.insert(times, true)
+            table.insert(times, true) --these must be in shadow, no need to check
         else
-            table.insert(times, dimension.raycast(x, y, z, x + thisSunDirX * 100, y + thisSunDirY * 100, z).isBlock)
+            -- if the x, y, or z coordinate is on an edge, you'll need to check twice, once on each side of the edge
+            local numXToCheck = 1
+            if x == math.floor(x) then numXToCheck = 2 end
+            local numYToCheck = 1
+            if y == math.floor(y) then numYToCheck = 2 end
+            local numZToCheck = 1
+            if z == math.floor(z) then numZToCheck = 2 end
+
+            local isInShadow = false
+            for j = 1, numXToCheck, 1 do
+                for k = 1, numYToCheck, 1 do
+                    for l = 1, numZToCheck, 1 do
+                        local xSamplePos = 0.1 * ((2 * numXToCheck - 2) * j - (3 * numXToCheck - 3)) + x
+                        local ySamplePos = 0.1 * ((2 * numYToCheck - 2) * k - (3 * numYToCheck - 3)) + y
+                        local zSamplePos = 0.1 * ((2 * numZToCheck - 2) * l - (3 * numZToCheck - 3)) + z
+                        -- log({ x, y, z }, { xSamplePos, ySamplePos, zSamplePos })
+                        if dimension.raycast(
+                                xSamplePos, ySamplePos, zSamplePos,
+                                xSamplePos + thisSunDirX * 100, ySamplePos + thisSunDirY * 100, zSamplePos
+                            ).isBlock == true then
+                            isInShadow = true
+                            goto skipCheck
+                        end
+                    end
+                end
+            end
+            ::skipCheck::
+
+            table.insert(times, isInShadow)
         end
     end
     return times
@@ -588,8 +630,6 @@ function isTransparent(x, y, z)
     return false
 end
 
--- ?make the raycasts inside the face a bit, so that they arent on the verge of hitting blocks in front of them
-
 --[[
     in the block grid:
         nil: not yet checked
@@ -597,10 +637,7 @@ end
         a table: the shadow quads at times
 
 TODO:
-    for edge sample points, check a bit to each side of the edge and only make it in shadow if all are in shadow, to have smooth shadows more realistically
-
-    better method of scanning when the player moves, becasue i think it skips things when moving diagonally
-        and if you teleport, it will try to fill in the area
+    make it remove the first however many blocks in the queue if there are too many
 
     do an initial scan of the volume when the player loads in
 
@@ -608,11 +645,12 @@ TODO:
 
     make the quads on the ends stretched out a bit to cover the area that's emptly from hovering them away from the block
 
-    when a lot of things in the queue give back false, it stutters when removing thousands of thing on the same frame
-        maybe instead, do a speed check, and only add blocks to the queue if you're going slow enough to appreciate them
-
     if all the quads on a face are black, just draw one black quad
         if they're all in light, draw nothing
+        *do this for all faces
 
     what if you're in a cave, or it's night?
+
+    blocks that should be transparent: glow lichen, sea grass
+    blocks that shouldnt be transparent: oak (and other?) leaves
 ]]
