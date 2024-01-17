@@ -5,10 +5,13 @@ description = "Real Time Shadows?!??!"
 importLib("logger")
 
 radius = 10
+continuousUpdateRadius = 2
+continuousUpdateDelay = 30
 resolution = 2
 sunTimesToCheck = 4
 timeBetweenQuadUpdates = 0.1 --(seconds)
-blocksCheckedPerFrame = 200
+blocksCheckedPerFrame = 50
+blockQueueMax = 30000
 blocksGrid = {}
 
 -- ?
@@ -16,10 +19,13 @@ edgeSampleOffset = 0
 
 blockCheckQueue = {}
 hasDoneInitialScan = false
+i = 0
 function update()
+    if dimension.time() > 0.25 and dimension.time() < 0.75 then return end
+
     px, py, pz = player.position()
 
-    if not hasDoneInitialScan then
+    if not hasDoneInitialScan then --for when the player first loads in
         hasDoneInitialScan = true
 
         for x = -radius, radius do
@@ -33,7 +39,7 @@ function update()
 
     if lastX then
         -- moved +x
-        if lastX < px then
+        if lastX < px and px - lastX < 20 then
             for x = lastX + radius + 1, px + radius, 1 do
                 for y = -radius + py, radius + py, 1 do
                     for z = -radius + pz, radius + pz, 1 do
@@ -43,7 +49,7 @@ function update()
             end
         end
         -- moved -x
-        if lastX > px then
+        if lastX > px and lastX - px < 20 then
             for x = lastX - radius - 1, px - radius, -1 do
                 for y = -radius + py, radius + py, 1 do
                     for z = -radius + pz, radius + pz, 1 do
@@ -54,7 +60,7 @@ function update()
         end
 
         -- moved +y
-        if lastY < py then
+        if lastY < py and py - lastY < 20 then
             for y = lastY + radius + 1, py + radius, 1 do
                 for x = -radius + px, radius + px, 1 do
                     for z = -radius + pz, radius + pz, 1 do
@@ -64,7 +70,7 @@ function update()
             end
         end
         -- moved -y
-        if lastY > py then
+        if lastY > py and lastY - py < 20 then
             for y = lastY - radius - 1, py - radius, -1 do
                 for x = -radius + px, radius + px, 1 do
                     for z = -radius + pz, radius + pz, 1 do
@@ -75,7 +81,7 @@ function update()
         end
 
         -- moved +z
-        if lastZ < pz then
+        if lastZ < pz and pz - lastZ < 20 then
             for z = lastZ + radius + 1, pz + radius, 1 do
                 for x = -radius + px, radius + px, 1 do
                     for y = -radius + py, radius + py, 1 do
@@ -85,7 +91,7 @@ function update()
             end
         end
         -- moved -z
-        if lastZ > pz then
+        if lastZ > pz and lastZ - pz < 20 then
             for z = lastZ - radius - 1, pz - radius, -1 do
                 for x = -radius + px, radius + px, 1 do
                     for y = -radius + py, radius + py, 1 do
@@ -97,20 +103,43 @@ function update()
     end
 
     lastX, lastY, lastZ = px, py, pz
+
+    -- always update a small radius around the player in case a block changed
+    if i % continuousUpdateDelay == 0 then
+        for x = px - continuousUpdateRadius, px + continuousUpdateRadius, 1 do
+            for y = py - continuousUpdateRadius, py + continuousUpdateRadius, 1 do
+                for z = pz - continuousUpdateRadius, pz + continuousUpdateRadius, 1 do
+                    table.insert(blockCheckQueue, { x, y, z, true })
+                end
+            end
+        end
+    end
+    i = i + 1
 end
 
 t = 0
 quadsToRender = {}
 function render3d(dt)
     -- log(#blockCheckQueue)
+
+    if dimension.time() > 0.25 and dimension.time() < 0.75 then return end
+
+    if #blockCheckQueue > blockQueueMax then
+        local newQueue = {}
+        for i = #blockCheckQueue - blockQueueMax / 2, blockQueueMax / 2 do
+            table.insert(newQueue, blockCheckQueue[i])
+        end
+        blockCheckQueue = newQueue
+    end
+
     if #blockCheckQueue > 0 then
         local blocksChecked = 0
         while blocksChecked < blocksCheckedPerFrame and #blockCheckQueue > 0 do
-            local wasChecked = checkBlockFromQueue() --this also actually does the check, but returns if work was done
+            local wasChecked = checkBlockFromQueue() --this also actually does the check, but returns "if work was done"
             if wasChecked then
                 blocksChecked = blocksChecked + 1
             else
-                blocksChecked = blocksChecked + 0.01 --if it wasnt a block that had quads, do them way faster
+                blocksChecked = blocksChecked + 0.005 --if it wasnt a block that had quads, do them way faster
             end
         end
     end
@@ -129,7 +158,7 @@ function render3d(dt)
     )
 end
 
-raycastOffset = 0.01
+raycastOffset = radius * 1e-3
 allQuads = {}
 function checkBlockFromQueue()
     -- *Starts from the end
@@ -137,7 +166,10 @@ function checkBlockFromQueue()
     local by = blockCheckQueue[#blockCheckQueue][2]
     local bz = blockCheckQueue[#blockCheckQueue][3]
 
-    if blocksGrid[bx] ~= nil and blocksGrid[bx][by] ~= nil and blocksGrid[bx][by][bz] ~= nil then --if this block has already been done, skip it
+    --if true, it will update the block even if it's already in the grid. this is for the continuous check to overwrite existing information
+    local ignoreCheckConditions = blockCheckQueue[#blockCheckQueue][4]
+
+    if not ignoreCheckConditions and blocksGrid[bx] ~= nil and blocksGrid[bx][by] ~= nil and blocksGrid[bx][by][bz] ~= nil then --if this block has already been done, skip it
         table.remove(blockCheckQueue)
         return false
     end
@@ -149,55 +181,124 @@ function checkBlockFromQueue()
     end
 
     -- now I know this is a block I have to check all the sides of
+    -- check all the blocks around to see which are transparent
+    local yPosBlock = isTransparent(bx, by + 1, bz)
+    local yNegBlock = isTransparent(bx, by - 1, bz)
+    local xPosBlock = isTransparent(bx + 1, by, bz)
+    local xNegBlock = isTransparent(bx - 1, by, bz)
+    local zPosBlock = isTransparent(bx, by, bz + 1)
+    local zNegBlock = isTransparent(bx, by, bz - 1)
+
     thisBlockQuads = {} -- this table will contain a few time indices, and within them, all the quads that belong to this block that should be drawn at this time
     -- later, this will be added to the grid
     -- then, it will go through all these grid entries and put all the quads for the time it wants into one long table
 
     -- the block is new and is solid, so see which of its faces are exposed
-    if isTransparent(bx + 1, by, bz) then
+    if xPosBlock then
         local faceSampleInfo = {} --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
+
+        local numQuadsInShadow = {}
+        for i = 1, sunTimesToCheck, 1 do
+            numQuadsInShadow[i] = 0 --fill it with 0 to avoid errors later on
+        end
+
         for i = 0, resolution, 1 do
             faceSampleInfo[i] = {}
             for j = 0, resolution, 1 do
                 local sampleX = i / resolution
                 local sampleY = j / resolution
 
-                faceSampleInfo[i][j] = whenIsPointInShadow(bx + 1 + raycastOffset, sampleX + by, sampleY + bz, 1)
+                local sample = whenIsPointInShadow(bx + 1 + raycastOffset, sampleX + by, sampleY + bz, 1)
+                for k = 1, #sample, 1 do --for each time, count up how many of the sample points are in shadow
+                    if sample[k] then
+                        numQuadsInShadow[k] = numQuadsInShadow[k] + 1
+                    end
+                end
+
+                faceSampleInfo[i][j] = sample
             end
         end
 
         -- now, make quads with faceSampleInfo
-        for i = 0, resolution - 1, 1 do
-            for j = 0, resolution - 1, 1 do
-                for k = 1, sunTimesToCheck, 1 do
-                    local topLeftIsShadow = faceSampleInfo[i][j + 1][k]
-                    local topRightIsShadow = faceSampleInfo[i + 1][j + 1][k]
-                    local bottomLeftIsShadow = faceSampleInfo[i][j][k]
-                    local bottomRightIsShadow = faceSampleInfo[i + 1][j][k]
+        for k = 1, sunTimesToCheck, 1 do
+            if thisBlockQuads[k] == nil then
+                thisBlockQuads[k] = {}
+            end
 
-                    local uvs = uvCoordsFromCornerShadows(
-                        topLeftIsShadow, topRightIsShadow, bottomLeftIsShadow, bottomRightIsShadow
-                    )
+            if numQuadsInShadow[k] == 0 then
+                -- there's no shadow
+            elseif numQuadsInShadow[k] == (resolution + 1) * (resolution + 1) then --it's all shadow, so only render one quad for the whole face
+                local rightEdgeOffset = 0
+                local leftEdgeOffset = 0
+                if zNegBlock then
+                    leftEdgeOffset = -raycastOffset
+                elseif zPosBlock then
+                    rightEdgeOffset = raycastOffset
+                end
+                local topEdgeOffset = 0
+                local bottomEdgeOffset = 0
+                if yNegBlock then
+                    bottomEdgeOffset = -raycastOffset
+                elseif yPosBlock then
+                    topEdgeOffset = raycastOffset
+                end
 
-                    if thisBlockQuads[k] == nil then
-                        thisBlockQuads[k] = {}
+                table.insert(thisBlockQuads[k], { --!THEY'RE INVISIBLE
+                    bx + 1 + raycastOffset, by + bottomEdgeOffset, bz + leftEdgeOffset,
+                    0, 0.5,
+                    bx + 1 + raycastOffset, by + topEdgeOffset, bz + leftEdgeOffset,
+                    0, 0.5,
+                    bx + 1 + raycastOffset, by + topEdgeOffset, bz + rightEdgeOffset,
+                    0, 0.5,
+                    bx + 1 + raycastOffset, by + bottomEdgeOffset, bz + rightEdgeOffset,
+                    0, 0.5
+                })
+            else
+                -- it's gonna require many different quads
+                for i = 0, resolution - 1, 1 do
+                    for j = 0, resolution - 1, 1 do
+                        local topLeftIsShadow = faceSampleInfo[i][j + 1][k]
+                        local topRightIsShadow = faceSampleInfo[i + 1][j + 1][k]
+                        local bottomLeftIsShadow = faceSampleInfo[i][j][k]
+                        local bottomRightIsShadow = faceSampleInfo[i + 1][j][k]
+
+                        local uvs = uvCoordsFromCornerShadows(
+                            topLeftIsShadow, topRightIsShadow, bottomLeftIsShadow, bottomRightIsShadow
+                        )
+
+                        local rightEdgeOffset = 0
+                        local leftEdgeOffset = 0
+                        if zNegBlock then
+                            leftEdgeOffset = -raycastOffset
+                        elseif zPosBlock then
+                            rightEdgeOffset = raycastOffset
+                        end
+                        local topEdgeOffset = 0
+                        local bottomEdgeOffset = 0
+                        if yNegBlock then
+                            bottomEdgeOffset = -raycastOffset
+                        elseif yPosBlock then
+                            topEdgeOffset = raycastOffset
+                        end
+
+                        -- !NOT DONE
+
+                        table.insert(thisBlockQuads[k], {
+                            bx + 1 + raycastOffset, i / resolution + by, j / resolution + bz,
+                            uvs["bl"][1], uvs["bl"][2],
+                            bx + 1 + raycastOffset, (i + 1) / resolution + by, j / resolution + bz,
+                            uvs["br"][1], uvs["br"][2],
+                            bx + 1 + raycastOffset, (i + 1) / resolution + by, (j + 1) / resolution + bz,
+                            uvs["tr"][1], uvs["tr"][2],
+                            bx + 1 + raycastOffset, i / resolution + by, (j + 1) / resolution + bz,
+                            uvs["tl"][1], uvs["tl"][2]
+                        })
                     end
-
-                    table.insert(thisBlockQuads[k], {
-                        bx + 1 + raycastOffset, i / resolution + by, j / resolution + bz,
-                        uvs["bl"][1], uvs["bl"][2],
-                        bx + 1 + raycastOffset, (i + 1) / resolution + by, j / resolution + bz,
-                        uvs["br"][1], uvs["br"][2],
-                        bx + 1 + raycastOffset, (i + 1) / resolution + by, (j + 1) / resolution + bz,
-                        uvs["tr"][1], uvs["tr"][2],
-                        bx + 1 + raycastOffset, i / resolution + by, (j + 1) / resolution + bz,
-                        uvs["tl"][1], uvs["tl"][2]
-                    })
                 end
             end
         end
     end
-    if isTransparent(bx - 1, by, bz) then
+    if xNegBlock then
         local faceSampleInfo = {} --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
         for i = 0, resolution, 1 do
             faceSampleInfo[i] = {}
@@ -240,7 +341,7 @@ function checkBlockFromQueue()
             end
         end
     end
-    if isTransparent(bx, by + 1, bz) then
+    if yPosBlock then             --****----------- Good one
         local faceSampleInfo = {} --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
 
         local numQuadsInShadow = {}
@@ -276,14 +377,29 @@ function checkBlockFromQueue()
             if numQuadsInShadow[k] == 0 then
                 -- do nothing (no shadow here)
             elseif numQuadsInShadow[k] == (resolution + 1) * (resolution + 1) then --it's all shadow, so only render one quad for the whole face
+                local rightEdgeOffset = 0
+                local leftEdgeOffset = 0
+                if xNegBlock then
+                    leftEdgeOffset = -raycastOffset
+                elseif xPosBlock then
+                    rightEdgeOffset = raycastOffset
+                end
+                local topEgdeOffset = 0
+                local bottomEdgeOffset = 0
+                if zNegBlock then
+                    bottomEdgeOffset = -raycastOffset
+                elseif zPosBlock then
+                    topEgdeOffset = raycastOffset
+                end
+
                 table.insert(thisBlockQuads[k], {
-                    bx, by + 1 + raycastOffset, bz + 1,
+                    bx + leftEdgeOffset, by + 1 + raycastOffset, bz + 1 + topEgdeOffset,
                     0, 0.5,
-                    bx + 1, by + 1 + raycastOffset, bz + 1,
+                    bx + 1 + rightEdgeOffset, by + 1 + raycastOffset, bz + 1 + topEgdeOffset,
                     0, 0.5,
-                    bx + 1, by + 1 + raycastOffset, bz,
+                    bx + 1 + rightEdgeOffset, by + 1 + raycastOffset, bz + bottomEdgeOffset,
                     0, 0.5,
-                    bx, by + 1 + raycastOffset, bz,
+                    bx + leftEdgeOffset, by + 1 + raycastOffset, bz + bottomEdgeOffset,
                     0, 0.5
                 })
             else
@@ -301,18 +417,18 @@ function checkBlockFromQueue()
 
                         local rightEdgeOffset = 0
                         local leftEdgeOffset = 0
-                        if i == 0 then
-                            leftEdgeOffset = -raycastOffset / 2
-                        elseif i == resolution - 1 then
-                            rightEdgeOffset = raycastOffset / 2
+                        if i == 0 and xNegBlock then
+                            leftEdgeOffset = -raycastOffset
+                        elseif i == resolution - 1 and xPosBlock then
+                            rightEdgeOffset = raycastOffset
                         end
 
                         local topEgdeOffset = 0
                         local bottomEdgeOffset = 0
-                        if j == 0 then
-                            bottomEdgeOffset = -raycastOffset / 2
-                        elseif j == resolution - 1 then
-                            topEgdeOffset = raycastOffset / 2
+                        if j == 0 and zNegBlock then
+                            bottomEdgeOffset = -raycastOffset
+                        elseif j == resolution - 1 and zPosBlock then
+                            topEgdeOffset = raycastOffset
                         end
 
                         table.insert(thisBlockQuads[k], {
@@ -338,8 +454,8 @@ function checkBlockFromQueue()
             end
         end
     end
-    if isTransparent(bx, by - 1, bz) then --*this can only be in shadow
-        local faceSampleInfo = {}         --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
+    if yNegBlock then             --*this can only be in shadow
+        local faceSampleInfo = {} --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
         for i = 0, resolution, 1 do
             faceSampleInfo[i] = {}
             for j = 0, resolution, 1 do
@@ -381,7 +497,7 @@ function checkBlockFromQueue()
             end
         end
     end
-    if isTransparent(bx, by, bz + 1) then
+    if zPosBlock then
         local faceSampleInfo = {} --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
         for i = 0, resolution, 1 do
             faceSampleInfo[i] = {}
@@ -424,7 +540,7 @@ function checkBlockFromQueue()
             end
         end
     end
-    if isTransparent(bx, by, bz - 1) then
+    if zNegBlock then
         local faceSampleInfo = {} --a 2d table, each element is a point that was sampled and contains {time: isInShadowAtThatTime}
         for i = 0, resolution, 1 do
             faceSampleInfo[i] = {}
@@ -628,8 +744,8 @@ end
 
 function getQuadsNeaby()
     -- getting the closest time sample to the current time:
-    local lowestSampleDist = 10000000
-    local lowestSampleIndex = -1
+    local lowestSampleDist = 10000000 --random big number
+    local lowestSampleIndex = -1      --random number < 0
     local thisTime = dimension.time()
     for i = 1, sunTimesToCheck do
         local thisSampleTime = ((i - 0.5) / (2 * sunTimesToCheck) + 0.75) % 1
@@ -640,14 +756,11 @@ function getQuadsNeaby()
         end
     end
 
-    -- lowestSampleIndex = 1
-
     local quads = {}
     for x = -radius + px, radius + px, 1 do
         for y = -radius + py, radius + py, 1 do
             for z = -radius + pz, radius + pz, 1 do
                 if blocksGrid[x] and blocksGrid[x][y] and blocksGrid[x][y][z] and blocksGrid[x][y][z][lowestSampleIndex] then
-                    -- log(blocksGrid[x][y][z])
                     for i = 1, #blocksGrid[x][y][z][lowestSampleIndex], 1 do
                         table.insert(quads, blocksGrid[x][y][z][lowestSampleIndex][i])
                     end
@@ -655,6 +768,7 @@ function getQuadsNeaby()
             end
         end
     end
+
     return quads
 end
 
@@ -665,7 +779,7 @@ function addToGrid(x, y, z, content)
 end
 
 function isTransparent(x, y, z)
-    local transparentTable = { 50, 523, 385, 20, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 79, 212, 213, 165, 9, 8, 415, 0, 102, 31, 175, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 106, 418, 127, 85, 188, 189, 190, 191, 192, 410, 411, 107, 183, 184, 185, 186, 187, 407, 408, 666 }
+    local transparentTable = { 0, 87, 131, 51, 140, 240, 200, 92, 111, 76, 72, 409, 406, 408, 405, 407, 66281, 66202, 66329, 66305, 66053, 66054, 70, 147, 148, 66086, 143, 399, 396, 398, 395, 397, 66278, 66321, 66302, 83, 77, 66051, 66052, 66087, 208, 66103, 151, 94, 150, 154, 66077, 66081, 464, 461, 412, 452, 120, 66, 27, 28, 126, 117, 449, 411, 66059, 450, 66342, 55, 393, 130, 146, 54, 217, 416, 66338, 6, 66358, 59, 104, 244, 105, 462, 145, 66126, 66129, 66128, 66022, 66078, 66113, 199, 66130, 66060, 463, 66219, 66218, 66217, 66216, 66215, 66214, 66213, 66212, 66211, 66210, 66209, 66208, 66207, 66206, 66205, 66204, 66203, 857, 853, 861, 26, 862, 854, 860, 864, 856, 855, 852, 865, 863, 866, 858, 859, 171, 66269, 66183, 66179, 66175, 66171, 66240, 66158, 66157, 66156, 66155, 66154, 66153, 66075, 66084, 66073, 66056, 66055, 182, 421, 44, 417, 66315, 66304, 66330, 66280, 158, 420, 903, 899, 907, 908, 900, 906, 910, 902, 898, 901, 911, 909, 32, 912, 904, 905, 160, 101, 66038, 66037, 167, 66311, 66334, 66287, 402, 400, 403, 401, 404, 96, 66036, 66035, 71, 66308, 66322, 66284, 197, 196, 195, 194, 193, 64, 66271, 66184, 66176, 66180, 66172, 66239, 66151, 66150, 66149, 66148, 66147, 66146, 66145, 66066, 66083, 66067, 66046, 66045, 259, 258, 257, 203, 440, 156, 433, 439, 114, 108, 429, 426, 428, 425, 427, 424, 431, 180, 432, 128, 430, 109, 66314, 66303, 66332, 66279, 164, 163, 136, 135, 134, 53, 434, 67, 435, 66050, 66049, 66307, 66324, 66283, 186, 187, 185, 184, 183, 107, 66048, 66047, 113, 66306, 66323, 66282, 832, 830, 833, 831, 834, 85, 66272, 66185, 66177, 66181, 66173, 66069, 66088, 66068, 139, 65, 142, 177, -257, -256, -515, -532, -491, -577, -575, -578, -576, -579, 50, 523, 385, 20, 241, 242, 243, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 79, 212, 213, 470, 165, 9, 8, 415, 102, 31, 175, 37, 38, 39, 40, 41, 42, 43, 45, 46, 106, 418, 127, 188, 189, 190, 191, 192, 410, 666 }
     local id = dimension.getBlock(x, y, z).id
 
     for i = 1, #transparentTable do
@@ -686,14 +800,12 @@ end
 TODO:
     make the quads on the ends stretched out a bit to cover the area that's emptly from hovering them away from the block
         kinda works, but if it's just always done, when blocks are flat next to eachother there will be a bit of overlap, and z-fighting between the blocks
+        make a 3d table of which blocks around this block are air/filled, and use that to check if its on a corner
+            use the same table to know which faces should have quads
 
     if all the quads on a face are black, just draw one black quad
         if they're all in light, draw nothing
         *do this for all faces (only +y is done right now)
 
-    what if you're in a cave, or it's night?
-        when gathering quads, check how many are in light
-            if very few are, dont draw any at all
-
-    things to make transparent: slabs, stairs, trapdoors, carpets, candles, snow, lanterns, item frame, cave vines, glass panes, azalea, fences, walls, fence gates, anvils, scaffolding, moss carpet, sweet berry bush
+    ?clear the grid once in a while?
 ]]
