@@ -35,12 +35,11 @@ timeMax = 20
 
 function render3d()
     shouldDrawTarget = false
+    local selectedItem = player.inventory().selectedItem()
+    if selectedItem == nil or not (selectedItem.id == 425 or selectedItem.id == 393 or selectedItem.id == 377 or selectedItem.id == 303 or selectedItem.id == 583) then return end
 
     local px, py, pz = player.forwardPosition(0.001)
     local pyaw, ppitch = player.rotation()
-
-    local selectedItem = player.inventory().selectedItem()
-    if selectedItem == nil then return end
 
     local points = {}
     if selectedItem.id == 377 or selectedItem.id == 393 then --smowball and eggs
