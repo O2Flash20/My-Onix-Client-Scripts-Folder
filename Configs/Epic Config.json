@@ -1,10 +1,82 @@
 {
     "modules": {
+        "Camera Animations": {
+            "settings": {
+                "CURVEALPHA": 0.0,
+                "CURVETENSION": 0.0,
+                "module.module.setting.key.name": 0,
+                "module.visual.setting.position.name": [
+                    251.00003051757813,
+                    11.333328247070313
+                ],
+                "module.visual.setting.scale.name": 1.0,
+                "selectKeyframeKey": 56,
+                "selectedFile": "test",
+                "setKeyframeKey": 48,
+                "teleportToKey": 55,
+                "togglePlayKey": 57
+            }
+        },
+        "Camera Effects": {
+            "enabled": true,
+            "settings": {
+                "_setting__13420524902249757457": 80.27681732177734,
+                "_setting__17830536295629240040": true,
+                "_setting__3926914038561162869": 0.7851210832595825,
+                "_setting__7013776478316566432": 25.374858856201172,
+                "_setting__8551922687022821873": true,
+                "module.module.setting.key.name": 0
+            }
+        },
+        "Daylight Cycle Speed Changer": {
+            "settings": {
+                "module.module.setting.key.name": 0,
+                "timeScale": 13.042152404785156
+            }
+        },
+        "FPS": {
+            "settings": {
+                "Background color": {
+                    "a": 0.49803924560546875,
+                    "b": 0.0,
+                    "chroma": false,
+                    "g": 0.0,
+                    "r": 0.0,
+                    "rgb": false
+                },
+                "Color": {
+                    "a": 1.0,
+                    "b": 1.0,
+                    "chroma": false,
+                    "g": 1.0,
+                    "r": 1.0,
+                    "rgb": false
+                },
+                "module.module.setting.key.name": 0,
+                "module.visual.setting.position.name": [
+                    64.5,
+                    162.49000549316406
+                ],
+                "module.visual.setting.scale.name": 1.0,
+                "multiplier": 1.0,
+                "refresh": 1.0
+            }
+        },
+        "Item Held Info": {
+            "settings": {
+                "module.module.setting.key.name": 0,
+                "module.visual.setting.position.name": [
+                    500.0,
+                    25.0
+                ],
+                "module.visual.setting.scale.name": 1.0
+            }
+        },
         "Logger": {
             "enabled": true,
             "settings": {
                 "Background Color": {
-                    "a": 1.0,
+                    "a": 0.8532277941703796,
                     "b": 0.20000000298023224,
                     "chroma": false,
                     "g": 0.20000000298023224,
@@ -21,8 +93,8 @@
                 },
                 "module.module.setting.key.name": 0,
                 "module.visual.setting.position.name": [
-                    400.4940185546875,
-                    26.59771728515625
+                    480.0,
+                    22.0
                 ],
                 "module.visual.setting.scale.name": 0.8036331534385681,
                 "showNumber": true,
@@ -30,7 +102,87 @@
                 "wRatio": 0.3310265839099884
             }
         },
+        "Mini Map": {
+            "settings": {
+                "checkLimit": 50,
+                "module.module.setting.key.name": 0,
+                "module.visual.setting.position.name": [
+                    27.5,
+                    117.0
+                ],
+                "module.visual.setting.scale.name": 1.0,
+                "radius": 50
+            }
+        },
+        "Onix SMP": {
+            "settings": {
+                "module.module.setting.key.name": 0,
+                "module.visual.setting.position.name": [
+                    100.0,
+                    100.0
+                ],
+                "module.visual.setting.scale.name": 1.0
+            }
+        },
+        "Projectile Trajectory": {
+            "enabled": true,
+            "settings": {
+                "Target Color": {
+                    "a": 1.0,
+                    "b": 1.0,
+                    "chroma": false,
+                    "g": 1.0,
+                    "r": 1.0,
+                    "rgb": false
+                },
+                "Trajectory Color": {
+                    "a": 1.0,
+                    "b": 0.0,
+                    "chroma": false,
+                    "g": 0.0,
+                    "r": 1.0,
+                    "rgb": false
+                },
+                "module.module.setting.key.name": 0
+            }
+        },
+        "Ray Tracing Test": {
+            "settings": {
+                "ResolutionW": 500,
+                "_clouds": false,
+                "_depth": false,
+                "_dof": false,
+                "_normal": false,
+                "_realWater": true,
+                "_setting__15600631067578966460": 34,
+                "_sunShadows": false,
+                "_textures": false,
+                "_waterReflections": false,
+                "_waterShadows": false,
+                "_waterShine": false,
+                "gameFov": 90.0,
+                "module.module.setting.key.name": 0
+            }
+        },
         "Shadows": {
+            "enabled": true,
+            "settings": {
+                "_setting__3628719537643214225": 1,
+                "_setting__8402839455088533851": 121,
+                "module.module.setting.key.name": 0
+            }
+        },
+        "ThreeD View": {
+            "settings": {
+                "module.module.setting.key.name": 0,
+                "module.visual.setting.position.name": [
+                    -22.5,
+                    67.0
+                ],
+                "module.visual.setting.scale.name": 1.0
+            }
+        },
+        "getid": {
             "enabled": true
         }
     }

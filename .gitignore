@@ -1,4 +1,6 @@
 Data/Skinstealer
 Data/quickwaypoints.txt
 Data/IFP_skin.png
-Configs/Epic Config.ocfg
+Configs/Epic Config.json
+Data/BlenderCam
+Data/projectileMotion.txt
