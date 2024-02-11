@@ -8,7 +8,7 @@ sizeY = 50
 positionX = 0
 positionY = 0
 
-importLib("logger")
+importLib("freecamHelper")
 
 if not fs.isdir("ReplayMod") then fs.mkdir("ReplayMod") end
 
@@ -132,10 +132,10 @@ function render3d(dt)
             )
 
             -- *MAYBE?
-            -- drawPlayerHead(
-            --     PATHPOINTS[i][1], PATHPOINTS[i][2], PATHPOINTS[i][3],
-            --     math.rad( -PATHPOINTS[i][5]), -math.rad(PATHPOINTS[i][4] + 180), 0.25
-            -- )
+            drawPlayerHead(
+                PATHPOINTS[i][1], PATHPOINTS[i][2], PATHPOINTS[i][3],
+                math.rad(-PATHPOINTS[i][5]), -math.rad(PATHPOINTS[i][4] + 180), 0.25
+            )
         end
 
         for i = 1, #keyframes do
@@ -147,14 +147,14 @@ function render3d(dt)
     else
         currentTime = currentTime + dt
 
-        if currentTime > keyframes[#keyframes].time then
-            -- log("done")
-            -- print("No more keyframes")
+        if currentTime >= keyframes[#keyframes].time then
             setStatus("Replay Over", 3)
+            freecam.enabled(false)
             playing = false
             currentTime = 0
             currentTime = 0.0
             lastKeyframe = 1
+            client.execute("execute /effect @s clear")
         end
 
         local lastPathPoint
@@ -201,14 +201,9 @@ function render3d(dt)
             PATHPOINTS[math.floor(smoothedTimeIndex)][5], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][5]
         )
 
-        client.execute(
-            "execute /tp @s "
-            .. currentX .. " "
-            .. currentY - 1.6 .. " "
-            .. currentZ .. " "
-            .. currentYaw .. " "
-            .. currentPitch
-        )
+        freecam["isOffsetMode"].value = false
+        freecam.setPosition(currentX, currentY, currentZ)
+        freecam.setRotation(-currentPitch, -currentYaw + 180, 0)
     end
 end
 
@@ -446,10 +441,15 @@ event.listen("KeyboardInput", function(key, down)
     -- start/stop playing
     if key == togglePlayKey and down then
         if not playing then
+            freecam.isOffsetMode.value = false
+            freecam.enabled(true)
             timeInReplay = currentTime
             setStatus("Playing")
+            client.execute("execute /effect @s invisibility 60 1 true")
         else
             setStatus("Playing Stopped", 2)
+            freecam.enabled(false)
+            client.execute("execute /effect @s clear")
         end
         playing = not playing
         currentTime = math.floor(currentTime * 10) / 10
@@ -511,6 +511,8 @@ event.listen("KeyboardInput", function(key, down)
             PATHPOINTS[math.floor(smoothedTimeIndex)][5], PATHPOINTS[math.floor(smoothedTimeIndex) + 1][5]
         )
 
+
+        -- teleport to that spot on the timeline
         client.execute(
             "execute /tp @s "
             .. currentX .. " "
@@ -519,10 +521,11 @@ event.listen("KeyboardInput", function(key, down)
             .. currentYaw .. " "
             .. currentPitch
         )
+
         if doTeleportStatus then setStatus("Teleported", 2) end
     end
 
-    -- move the cursor
+    -- move the timeline cursor
     local RIGHTARROW = 0x27
     local LEFTARROW = 0x25
     local UPARROW = 0x26
@@ -719,7 +722,6 @@ function render()
     end
 end
 
-local playerSkin
 function postInit()
     unload = true
     player.skin().save("skin.png")
@@ -744,8 +746,6 @@ function drawPlayerHead(x, y, z, pitch, yaw, scale)
         table.insert(verticesRotated, { vertexRotated[1] + x, vertexRotated[2] + y, vertexRotated[3] + z })
     end
     vertices = verticesRotated
-
-    -- log(verticesRotated)
 
     -- front
     gfx.tquad(
