@@ -1,7 +1,7 @@
 -- Made by O2Flash20 🙂
 
 name = "Camera Animations"
-description = "A camera animation system"
+description = "A camera animation system, only works in creative mode and is still buggy."
 
 sizeX = 300
 sizeY = 50
