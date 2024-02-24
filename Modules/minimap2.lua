@@ -1,5 +1,5 @@
-name = "Block Map"
-description = "A map of blocks around you"
+name = "Minimap v2"
+description = "A map of blocks around you. Slow but has a lot of features."
 
 positionX = 500
 positionY = 25
@@ -211,7 +211,7 @@ function render()
     -- A square on the player
     gfx.color(255, 0, 255)
     gfx.rect(((gridSize / 2) * sizeX / gridSize) - sizeX / gridSize, (gridSize / 2) * sizeX / gridSize - sizeX / gridSize
-        , sizeX / gridSize, sizeX / gridSize)
+    , sizeX / gridSize, sizeX / gridSize)
 
     -- Direction line
     yaw, pitch = player.rotation()
@@ -234,21 +234,16 @@ end
 function getRBG(name)
     if name == "grass" or name == "slime" then
         return 127, 178, 56
-
     elseif name == "sand" or name == "birch_trapdoor" or name == "birch_door" or name == "birch_fence_gate" or
         name == "birch_pressure_plate" or name == "sandstone" or name == "glowstone" or name == "end_stone" or
         name == "end_bricks" or name == "end_brick_stairs" or name == "bone_block" or name == "scaffolding" then
         return 247, 233, 163
-
     elseif name == "cobweb" or name == "bed" or name == "wool" then
         return 199, 199, 199
-
     elseif name == "lava" or name == "fire" or name == "flowing_lava" or name == "redstone_block" then
         return 255, 0, 0
-
     elseif name == "ice" or name == "blue_ice" or name == "packed_ice" then
         return 160, 160, 255
-
     elseif name == "iron_block" or name == "iron_bars" or name == "iron_trapdoor" or name == "iron_door" or
         name == "anvil" or name == "grindstone" or name == "lodestone" or name == "lantern" then
         return 167, 167, 167
@@ -258,39 +253,29 @@ function getRBG(name)
         name == "reeds" or name == "wheat" or name == "tallgrass" or name == "leaves" or name == "azalea_leaves" or
         name == "big_dripleaf" or name == "small_dripleaf_block" or name == "leaves2" then
         return 0, 124, 0
-
     elseif name == "snow" or name == "snow_layer" or name == "powder_snow" then
         return 255, 255, 255
-
     elseif name == "clay" or name == "monster_egg" then
         return 164, 168, 184
-
     elseif name == "dirt" or name == "dirt_with_roots" or name == "grass_path" or name == "farmland" or name == "jukebox" then
         return 151, 109, 77
-
     elseif name == "water" or name == "flowing_water" then
         return 64, 64, 255
-
     elseif name == "stone" or name == "normal_stone_stairs" or name == "stone_slab4" or name == "stone_slab3" or
         name == "gravel" then
         return 112, 112, 112
-
     elseif name == "air" then
         return 121, 166, 255
-
     elseif name == "deepslate" then
         return 100, 100, 100
-
     elseif name == "glow_lichen" then
         return 127, 167, 150
-
     elseif name == "tuff" then
         return 87, 92, 92
 
         -- not used
     elseif name == "player" then
         return 255, 0, 255
-
     else
         -- all blocks that i havent mentioned
         return 51, 51, 51
