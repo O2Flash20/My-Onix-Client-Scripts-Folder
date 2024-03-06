@@ -350,15 +350,15 @@ function _acp_AttributeListHolder.name(attribute_name) end
 ---3: Exhaustion
 ---4: Level
 ---5: Experience
----6: Health
----7: Follow Range
----8: Knockback Resistance
----9: Movement Speed
----10: Underwater Speed
----11: Lava Speed
----12: Attack Damage
----13: Absorption
----14: Luck
+---7: Health
+---8: Follow Range
+---9: Knockback Resistance
+---10: Movement Speed
+---11: Underwater Speed
+---12: Lava Speed
+---13: Attack Damage
+---14: Absorption
+---15: Luck
 ---@param attribute_id integer The attribute id
 ---@return Attribute|nil attribute Probably the attribute, but it could be nil.
 function _acp_AttributeListHolder.id(attribute_id) end
@@ -413,6 +413,93 @@ local _acp_Enchants = {}
 ---@field boots Item|nil the item on the feets
 
 
+---@class ModyfiableInventory
+---@field lastHoverSlotValue integer The last hover slot value
+---@field lastHoverSlotName string The last hover slot name
+local _acp__ModyfiableInventory = {}
+
+---If items can be placed and taken from the container (false for searchbar and stuff like that)
+---@param container string The container name
+---@return boolean shouldIgnore If the container should be ignored
+function _acp__ModyfiableInventory.shouldIgnore(container) end
+
+---Gets the item in the slot for a container
+---@param container string The container name
+---@param slot integer The slot to get from
+---@return Item|nil item The item in the slot
+function _acp__ModyfiableInventory.at(container, slot) end
+
+---Gets the position of the container block if any
+---@return integer|nil x The X position of the container block
+---@return integer|nil y The Y position of the container block
+---@return integer|nil z The Z position of the container block
+function _acp__ModyfiableInventory.blockpos() end
+
+---Gets the entity unique id if any
+---@return integer|nil entity The entity unique id
+function _acp__ModyfiableInventory.entity() end
+
+---Takes all the items from the selected slot (as if you left clicked an item)
+---@param container string The container name
+---@param slot integer The slot to take from
+function _acp__ModyfiableInventory.takeAll(container, slot) end
+
+---Takes half the items from the selected slot (as if you right clicked an item)
+---@param container string The container name
+---@param slot integer The slot to take from
+function _acp__ModyfiableInventory.takeHalf(container, slot) end
+
+---Sends the item somewhere else if possible (same as shift+click)
+---@param container string The container name
+---@param slot integer The slot to take from
+---@param amount integer|nil The amount to transfer (defaults to the whole stack)
+function _acp__ModyfiableInventory.autoPlace(container, slot, amount) end
+
+---Places all the items from the selected slot (as if you left clicked an item)
+---@param container string The container name
+---@param slot integer The slot to take from
+function _acp__ModyfiableInventory.placeAll(container, slot) end
+
+---Places one item from the selected slot (as if you right clicked an item)
+---@param container string The container name
+---@param slot integer The slot to take from
+function _acp__ModyfiableInventory.placeOne(container, slot) end
+
+---Drops all the items from the selected slot (as if you pressed ctrl+Q)
+---@param container string The container name
+---@param slot integer The slot to take from
+function _acp__ModyfiableInventory.dropAll(container, slot) end
+
+---Drops one item from the selected slot (as if you pressed Q)
+---@param container string The container name
+---@param slot integer The slot to take from
+function _acp__ModyfiableInventory.dropOne(container, slot) end
+
+---Sends an item flying from a slot to another
+---@param fromContainer string The container name to send from
+---@param fromSlot integer The slot to send from
+---@param toContainer string The container name to send to
+---@param toSlot integer The slot to send to
+function _acp__ModyfiableInventory.sendFlyingItem(fromContainer, fromSlot, toContainer, toSlot) end
+
+---Sends an item flying from a slot to another
+---@param fromContainer string The container name to send from
+---@param fromSlot integer The slot to send from
+---@param toContainer string The container name to send to
+---@param toSlot integer The slot to send to
+---@param item Item|integer The item to send flying
+function _acp__ModyfiableInventory.sendFlyingItem(fromContainer, fromSlot, toContainer, toSlot, item) end
+
+
+
+
+
+
+
+
+
+
+
 
 ---@class Inventory
 ---@field size integer The size of the inventory
@@ -430,6 +517,11 @@ function _acp_Inventory.offhand() end
 ---The item in the main hand
 ---@return Item|nil handItem The item in the main hand
 function _acp_Inventory.selectedItem() end
+
+---The item in the main hand
+---@return ModyfiableInventory|nil modify The item in the main hand
+function _acp_Inventory.modify() end
+
 
 
 ---The item in slot or nil
