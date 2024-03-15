@@ -1,68 +1,18 @@
 ---@meta
 
 
----@class dimension
-dimension = {}
+---@class ThreadingBlockGetter
+local __acp_ThreadingBlockGetter = {}
 
+---When going outside a world or changing dimension this will return false, it is important to :recreate() the blockGetter when this happens.
+---@return boolean isValid Tells you if this block getter needs to be re-created
+function __acp_ThreadingBlockGetter:isValid() end
 
----The numerical identifier of the dimension
----0 == Overworld
----1 == Nether
----2 == TheEnd
----@return number id The dimension id of the current dimension
-function dimension.id() end
-
-
----The name of the dimension
----The default dimensions are:
----"Overworld"
----"Nether"
----"TheEnd"
----@return string name
-function dimension.name() end
-
----The time in the dimension
----Ranges from 0 to 1, 0 is the start of the day 0.5 is night and 1 is the end of the day will wrap to 0
----@return number time The current time in the dimension
-function dimension.time() end
-
----Will return true if it is currently raining
----@return boolean isRaining Is it raining right now?
-function dimension.isRaining() end
-
----Plays a sound at these coordinates
----Will not work on 1.18.30+
----@param x integer | number The x position
----@param y integer | number The y position
----@param z integer | number The z position
----@param name string any minecraft sounds: https://www.digminecraft.com/lists/sound_list_pe.php
-function dimension.sound(x, y, z, name) end
-
----@class LightPair
----@field blockLight integer The light level caused by torches and stuff
----@field skyLight integer The light level of the environement (will not adapt to time)
-
-
----@class Block
----@field id integer The numerical identifier of the block (changes with versions)
----@field data integer The data of the block: example the color of the wool in a /setblock
----@field name string The name that would be used in /setblock
----@field state table The block state nbt
----@field statestr table the block state nbt that contains str/strf members at every level
----@field statenbtstr string The block state nbt as a string
----@field statenbtstrf string The block state nbt as a formatted string
----@field hash integer Unique hash for the block (not including state)
-
----@class Biome
----@field id integer The numerical identifier of the biome (might change with versions)
----@field name string The name of the biome
----@field temperature number The temperature of the biome
----@field snow boolean Can it snow in that biome
----@field canRain boolean Can it rain in that biome
-
----@class BiomeColorData
----@field grass ColorSetting The color of the grass
----@field water ColorSetting The color of the water 
+---Recreates the blockGetter, this is useful when you change dimension or go outside a world
+---You can probably spam this instead of asking isValid as it will return true if already valid
+---Which lets you do an if (:recreate) then ... end to make sure you are ready to use it
+---@return boolean success If the recreation was successful or if we arent ready to create one.
+function __acp_ThreadingBlockGetter:recreate() end
 
 ---Gets the light levels of these coordinates
 ---The highest between sky and block is the real brightness
@@ -71,27 +21,27 @@ function dimension.sound(x, y, z, name) end
 ---@param y integer | number The y position
 ---@param z integer | number The z position
 ---@return LightPair lightPair The light level
-function dimension.getBrightness(x, y, z) end
+function __acp_ThreadingBlockGetter:getBrightness(x, y, z) end
 
 ---Gets the block at these coordinates
 ---@param x integer | number The x position
 ---@param y integer | number The y position
 ---@param z integer | number The z position
 ---@return Block block The block information
-function dimension.getBlock(x, y, z) end
+function __acp_ThreadingBlockGetter:getBlock(x, y, z) end
 
 ---Finds a block among the world 
 ---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
 ---@param name string The name of the block
 ---@return integer[][] blockPositions The block information
-function dimension.findBlock(name) end
+function __acp_ThreadingBlockGetter:findBlock(name) end
 
 ---Finds a block among the world 
 ---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
 ---@param name string The name of the block
 ---@param blockData integer | number The data of the block
 ---@return integer[][] blockPositions The block information
-function dimension.findBlock(name, blockData) end
+function __acp_ThreadingBlockGetter:findBlock(name, blockData) end
 
 ---Finds a block among the world 
 ---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
@@ -99,7 +49,7 @@ function dimension.findBlock(name, blockData) end
 ---@param blockData integer | number The data of the block
 ---@param radius integer | number The radius to search in (will be chunk aligned to then center of the chunk
 ---@return integer[][] blockPositions The block information
-function dimension.findBlock(name, blockData, radius) end
+function __acp_ThreadingBlockGetter:findBlock(name, blockData, radius) end
 
 ---Finds a block among the world 
 ---local positons = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
@@ -110,14 +60,14 @@ function dimension.findBlock(name, blockData, radius) end
 ---@param y integer | number The y center position
 ---@param z integer | number The z center position
 ---@return integer[][] blockPositions The block information
-function dimension.findBlock(name, blockData, radius, x, y, z) end
+function __acp_ThreadingBlockGetter:findBlock(name, blockData, radius, x, y, z) end
 
 ---Gives you the height of the the block that would be chosen by the game to generate map data
 ---This is pretty much the height of the world but chests or glass or torches arent included
 ---@param x integer | number The x position
 ---@param z integer | number The z position
 ---@return integer y The height of the world
-function dimension.getMapHeight(x, z) end
+function __acp_ThreadingBlockGetter:getMapHeight(x, z) end
 
 ---Finds a block among the world 
 ---local x,y,z = result[1] change the 1 to whatever index you wish to use! you can use the # operator to get the size (#result)
@@ -125,14 +75,14 @@ function dimension.getMapHeight(x, z) end
 ---@param y integer | number The y center position
 ---@param z integer | number The z center position
 ---@return BiomeColorData colorData The color of the water and grass at this x,z
-function dimension.getBiomeColor(x, y, z) end
+function __acp_ThreadingBlockGetter:getBiomeColor(x, y, z) end
 
 ---Gets the block at these coordinates
 ---@param x integer | number The x position
 ---@param y integer | number The y position
 ---@param z integer | number The z position
 ---@return table blockEntity The NBT of the block entity
-function dimension.getBlockEntity(x, y, z) end
+function __acp_ThreadingBlockGetter:getBlockEntity(x, y, z) end
 
 ---Gets the block entity nbt at these coordinates
 ---@param x integer | number The x position
@@ -140,14 +90,14 @@ function dimension.getBlockEntity(x, y, z) end
 ---@param z integer | number The z position
 ---@param getServerSideEntity boolean Should we get the server one (unstable outside of the LocalServerUpdate event)
 ---@return table blockEntity The NBT of the block entity
-function dimension.getBlockEntity(x, y, z, getServerSideEntity) end
+function __acp_ThreadingBlockGetter:getBlockEntity(x, y, z, getServerSideEntity) end
 
 ---Gets the biome at these coordinates
 ---@param x integer | number The x position
 ---@param y integer | number The y position
 ---@param z integer | number The z position
 ---@return Biome biome The biome information
-function dimension.getBiome(x, y, z) end
+function __acp_ThreadingBlockGetter:getBiome(x, y, z) end
 
 
 ---Gets the color that would show on a minecraft map
@@ -158,8 +108,7 @@ function dimension.getBiome(x, y, z) end
 ---@return integer g The green part of the color
 ---@return integer b The blue part of the color
 ---@return integer a The opacity part of the color
-function dimension.getMapColor(x,y,z) end
-
+function __acp_ThreadingBlockGetter:getMapColor(x,y,z) end
 
 ---Gets the world as a mcstructure
 ---@param startX integer The x start position
@@ -169,20 +118,7 @@ function dimension.getMapColor(x,y,z) end
 ---@param endY integer The y end position
 ---@param endZ integer The z end position
 ---@return McStructure structure The structure built from the world
-function dimension.mcstructure(startX, startY, startZ, endX, endY, endZ) end
-
-
----@class RaycastInfo
----@field x integer The x position of the hit block
----@field y integer The y position of the hit block
----@field z integer The z position of the hit block
----@field px number The precise x position on the block where the hit happened
----@field py number The precise y position on the block where the hit happened
----@field pz number The precise z position on the block where the hit happened
----@field isEntity boolean If the raycast hit an entity
----@field isBlock boolean If the raycast hit a block
----@field blockFace integer What face of a block did the raycast hit
-
+function __acp_ThreadingBlockGetter:mcstructure(startX, startY, startZ, endX, endY, endZ) end
 
 
 ---Casts a ray in the world between two points
@@ -194,7 +130,7 @@ function dimension.mcstructure(startX, startY, startZ, endX, endY, endZ) end
 ---@param endY number the y end position, where are we going
 ---@param endZ number the z end position, where are we going
 ---@return RaycastInfo hit The result of the raycast
-function dimension.raycast(startX, startY, startZ, endX, endY, endZ) end
+function __acp_ThreadingBlockGetter:raycast(startX, startY, startZ, endX, endY, endZ) end
 
 ---Casts a ray in the world between two points
 ---Traces a line in the world hoping or not to hit a block
@@ -206,7 +142,7 @@ function dimension.raycast(startX, startY, startZ, endX, endY, endZ) end
 ---@param endZ number the z end position, where are we going
 ---@param maxDistance integer (default: distance between start and stop) Maximum distance to travel before giving up (lower values can make no hit waste less time)
 ---@return RaycastInfo hit The result of the raycast
-function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance) end
+function __acp_ThreadingBlockGetter:raycast(startX, startY, startZ, endX, endY, endZ, maxDistance) end
 
 ---Casts a ray in the world between two points
 ---Traces a line in the world hoping or not to hit a block
@@ -219,7 +155,7 @@ function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance
 ---@param maxDistance integer (default: distance between start and stop) Maximum distance to travel before giving up (lower values can make no hit waste less time)
 ---@param hitLiquid boolean (default: false) If don't want to go through liquid make this true
 ---@return RaycastInfo hit The result of the raycast
-function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance, hitLiquid) end
+function __acp_ThreadingBlockGetter:raycast(startX, startY, startZ, endX, endY, endZ, maxDistance, hitLiquid) end
 
 ---Casts a ray in the world between two points
 ---Traces a line in the world hoping or not to hit a block
@@ -233,7 +169,7 @@ function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance
 ---@param hitLiquid boolean (default: false) If don't want to go through liquid make this true
 ---@param solidBlocksOnly boolean (default: true) Will ignore things like grass, flowers, etc that you can walk through
 ---@return RaycastInfo hit The result of the raycast
-function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance, hitLiquid, solidBlocksOnly) end
+function __acp_ThreadingBlockGetter:raycast(startX, startY, startZ, endX, endY, endZ, maxDistance, hitLiquid, solidBlocksOnly) end
 
 ---Casts a ray in the world between two points
 ---Traces a line in the world hoping or not to hit a block
@@ -248,4 +184,68 @@ function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance
 ---@param solidBlocksOnly boolean (default: true) Will ignore things like grass, flowers, etc that you can walk through
 ---@param fullBlocksOnly boolean (default: false) not certain, probably wont go through opened trapdoors and that kindof stuff
 ---@return RaycastInfo hit The result of the raycast
-function dimension.raycast(startX, startY, startZ, endX, endY, endZ, maxDistance, hitLiquid, solidBlocksOnly, fullBlocksOnly) end
+function __acp_ThreadingBlockGetter:raycast(startX, startY, startZ, endX, endY, endZ, maxDistance, hitLiquid, solidBlocksOnly, fullBlocksOnly) end
+
+
+
+
+
+
+
+
+
+---@class Thread
+local __acp_Thread = {}
+
+---Creates a new thread, it is started as soon as created.
+---Only the function is sent over, not the environment or the global variables.
+---Make sure to send over the things you need either as params or messages
+---tableToJson and jsonToTable support sending lua functions
+---@param func fun(params: string, thread: Thread, blockGetter: ThreadingBlockGetter) The function to be executed by the thread.
+---@param arguments string|nil The optional arguments to be passed to the function.
+---@param createBlockGetter boolean|nil If true, a blockGetter will be created for the thread. (default: false)
+---@return Thread thread The newly created thread.
+function CreateThread(func, arguments, createBlockGetter) end
+
+---Waits for the thread to finish. (creator only)
+---Yous should probably never use this, as it will block the current thread.
+function __acp_Thread:join() end
+
+--- Makes the thread sleep for the specified amount of time. (thread only)
+---@param ms integer The amount of time to sleep in milliseconds.
+function __acp_Thread:sleep(ms) end
+
+---Returns true if the thread is alive, false otherwise. (creator only)
+function __acp_Thread:isAlive() end
+
+---Returns true if there a new message, false otherwise. (shared)
+---@return boolean hasMessage
+function __acp_Thread:hasMessage() end
+
+---Returns the next message in the queue and removes it from the queue. (shared)
+---@return string message
+function __acp_Thread:popMessage() end
+
+---Returns the last message clearing the queue. (shared)
+---@return string message
+function __acp_Thread:popAllMessages() end
+
+---Returns the next message in the queue without removing it (shared)
+---@return string message
+function __acp_Thread:peekMessage() end
+
+---Adds a message to the queue. (shared)
+---@param message string The message to add to the queue.
+function __acp_Thread:pushMessage(message) end
+
+---Adds a message to the queue. (shared)
+---@return boolean isInWorld Tells you if you are in a world, do not access inapropriate things when outside a world!
+function __acp_Thread:isInWorld() end
+
+
+
+
+
+
+
+
