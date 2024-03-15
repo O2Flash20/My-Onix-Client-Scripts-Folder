@@ -5,6 +5,7 @@ description = "A freecam script (what) (no way) (i made my own renderer in scrip
 
 importLib("logger")
 importLib("vectors")
+importLib("blockToTexture")
 
 testButton = 1
 client.settings.addKeybind("Test Button", "testButton")
@@ -402,7 +403,7 @@ function render3d(dt)
                 f[1] * blocksSizes + ppx - (cPos[1] * blocksSizes),
                 f[2] * blocksSizes + ppy - (cPos[2] * blocksSizes),
                 f[3] * blocksSizes + ppz - (cPos[3] * blocksSizes),
-                f[4], blocksSizes, f[5]
+                f[4], blocksSizes, "textures/blocks/dirt" --!!
             )
             -- gfx.color(f[5], f[5], f[5])
             -- renderFaceC(
