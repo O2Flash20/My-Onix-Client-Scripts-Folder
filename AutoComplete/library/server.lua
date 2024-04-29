@@ -16,6 +16,15 @@ function server.ip() end
 ---@return integer port The current server port
 function server.port() end
 
+---If the server is the integrated server (when you host a world in singleplayer)
+---@return boolean isIntegrated If the server is integrated
+function server.isIntegrated() end
+
+---The server's ping
+---@param average boolean|nil If you want the average ping (defaults to false)
+---@return integer ping The server's ping
+function server.ping(average) end
+
 ---The name of the world (whats in top right in pause screen)
 ---@return string name The world name
 function server.worldName() end

@@ -15,10 +15,10 @@ function fs.exist(path) end
 ---@return boolean showed If the folder was showed
 function fs.showFolder(path) end
 
----Opens a file to read/write data
+---Hashes a file using md5.
 ---@param path string The path from Scripts/Data
----@return string|nil hash The file hash or nil if the file does not exist
-function fs.hash(path, openmode) end
+---@return string|nil hash The file md5 hash or nil if the file does not exist
+function fs.hash(path) end
 
 ---Checks if a path is a directory
 ---@param path string The path from Scripts/Data
@@ -50,12 +50,12 @@ function fs.rename(pathFrom, pathTo) end
 
 ---Give you a list of all files in a directory
 ---@param path string The path from Scripts/Data
----@return string[] files The filepath o every file in the directory
+---@return string[] files The filepath of every file in the directory
 function fs.files(path) end
 
 ---Give you a list of all directories in a directory
 ---@param path string The path from Scripts/Data
----@return string[] directories The filepath o every directory in the directory
+---@return string[] directories The filepath of every directory in the directory
 function fs.directories(path) end
 
 
@@ -124,9 +124,9 @@ function _acp_BinaryFile:setLittleEndian(isLittleEndian) end
 ---@param byteCount integer how many bytes we taking from your string
 function _acp_BinaryFile:write(content, byteCount) end
 
----Writes content to the file, make sure not to screw up the byteCount
+---Writes content to the file
 ---@param content string What to take the bytes from, will take everything
-function _acp_BinaryFile:write(content, byteCount) end
+function _acp_BinaryFile:write(content) end
 
 ---Writes a byte to the file
 ---@param Byte integer a number in the range of -128 to 127
@@ -177,6 +177,15 @@ function _acp_BinaryFile:writeString(Text) end
 ---@param Text string the text to put in the file
 function _acp_BinaryFile:writeBigString(Text) end
 
+---Writes text to the file and includes the null character at the end
+---@param Text string the text to put in the file
+function _acp_BinaryFile:writeUtf8StringWithNull(Text) end
+
+---Writes text to the file and includes the null character at the end
+---Note: This is affected by the current endianness (:setLittleEndian)
+---@param Text string the text to put in the file
+function _acp_BinaryFile:writeUtf16StringWithNull(Text) end
+
 ---Writes Data to the file
 ---@param Data userdata the data to put in the file
 function _acp_BinaryFile:writeRaw(Data) end
@@ -192,12 +201,21 @@ function _acp_BinaryFile:writeStream(Stream) end
 ---@param End integer|nil Where to stop reading from the stream, nil will be the end of the stream
 function _acp_BinaryFile:writeStream(Stream, Begin, End) end
 
----Writes part of a stream to the file
----If the stream you write is compressed it will write the compressed data to this stream you can use :readRaw or :writeRaw to not compress it
----@param Stream BinaryFile the data to put in the file
----@param Begin integer|nil Where to start reading from the stream, nil will be 0 you can use :tell() to get the current position
----@param End integer|nil Where to stop reading from the stream, nil will be the end of the stream
-function _acp_BinaryFile:writeStream(Stream, Begin, End) end
+---Writes an image inside a file
+---@param Image Gfx2Texture the image to put in the file
+function _acp_BinaryFile:writeImage(Image) end
+
+---Writes an image inside a file potentially jpg
+---@param Image Gfx2Texture the image to put in the file
+---@param isJpg boolean|nil If the image should be written as a jpg, if nil or false it will be written as a png
+function _acp_BinaryFile:writeImage(Image, isJpg) end
+
+---Writes an image inside a file with jpg quality
+---@param Image Gfx2Texture the image to put in the file
+---@param isJpg boolean|nil If the image should be written as a jpg, if nil or false it will be written as a png
+---@param jpgQuality integer|nil The quality of the jpg, 1 is the worst quality and 100 is the best quality
+function _acp_BinaryFile:writeImage(Image, isJpg, jpgQuality) end
+
 
 
 
@@ -261,6 +279,15 @@ function _acp_BinaryFile:readString() end
 ---@return string Text The text that was read
 function _acp_BinaryFile:readBigString() end
 
+---Reads text from the file until a null character is found (0)
+---@return string Text The text that was read
+function _acp_BinaryFile:readStringUtf8UntilNull() end
+
+---Reads text from the file until a null character is found (0)
+---Note: This is affected by the current endianness (:setLittleEndian)
+---@return string Text The text that was read
+function _acp_BinaryFile:readStringUtf16UntilNull() end
+
 ---Reads Data from the file
 ---@param bytesToRead integer How many bytes to read
 ---@return userdata Data The data that was read
@@ -281,6 +308,11 @@ function _acp_BinaryFile:readStream(bytesToRead) end
 function _acp_BinaryFile:readStream(bytesToRead, compressionType, compressionLevel, compressionHeader, isOutputStream) end
 
 
+---Parses an image from the stream and returns the image data in a Gfx2Texture
+---@param bytesToRead integer|nil How many bytes to read, nil would be everything ahead (:size() - :tell())
+---@return Gfx2Texture|nil Texture The texture that was read
+function _acp_BinaryFile:parseImage(bytesToRead) end
+
 ---Opens a file to read/write data
 ---@param path string The path from Scripts/Data
 ---@param openmode string | "'w'" | "'r'" | "'a'" how to open the file, w is write mode, r is read mode, a is append(and it will add to an existing file or start)
@@ -288,14 +320,8 @@ function _acp_BinaryFile:readStream(bytesToRead, compressionType, compressionLev
 function fs.open(path, openmode) end
 
 ---Opens a memory stream to write data to (you can then write that stream to a file stream using :writeStream)
----@return BinaryFile|nil file The (hopefully) opened file
+---@return BinaryFile|nil file The (hopefully) opened stream
 function fs.open() end
-
----Opens a memory stream to write data to (you can then write that stream to a file stream using :writeStream)
----@param path nil Leave nil to open a memory stream
----@param openmode nil|string | "'w'" You can only write to this memory stream, you can create a "r" memory stream from it using :readStream
----@return BinaryFile|nil file The (hopefully) opened file
-function fs.open(path, openmode) end
 
 ---Opens a file to read/write data that can also be compressed
 ---If you dont skip the header putting anything that isn't 'store' or 'none' will ignore what you supply and read the header, otherwise it will trust you
