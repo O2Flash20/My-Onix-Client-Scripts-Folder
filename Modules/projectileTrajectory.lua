@@ -70,7 +70,7 @@ function render3d()
         end
     elseif selectedItem.name == "ender_pearl" then --ender pearls
         INITIALVEL = 45
-        GRAVACC = 22
+        GRAVACC = 22.26
         local lastX, lastY, lastZ = nil, nil, nil
         for i = 0, timeMax, timeIncrement do
             local deltaX = calculateDeltaX(INITIALVEL, -math.rad(ppitch), i) --BUT, this is split between x and z, depending on pyaw
