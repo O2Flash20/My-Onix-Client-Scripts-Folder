@@ -49,6 +49,18 @@ function render()
     ox = 640 * (ox - math.tan(fovH / 2)) / (-2 * math.tan(fovH / 2))
     oy = 360 * (oy - math.tan(fovV / 2)) / (-2 * math.tan(fovV / 2))
 
+    --[[
+        fx, fy = game.getFOV()
+
+        -- project to given projection plane
+        ox = ox / fx
+        oy = oy / fy
+
+        -- map to screen
+        ox = (ox+1)/2 * gui.width()
+        oy = (oy+1)/2 * gui.height()
+    ]]
+
     -- draw the point to the screen
     gfx.color(0, 255, 255)
     gfx.rect(ox - 5, oy - 5, 10, 10)
