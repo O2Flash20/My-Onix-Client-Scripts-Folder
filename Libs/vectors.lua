@@ -528,6 +528,7 @@ Modifying a Vector:
         For a 2d vector, only use the yaw parameter.
 
     __:rotate(yaw, pitch) --> self
+        !IT'S SOMETIMES BUGGY, USE THE ROTATION FUNCTIONS BELOW INSTEAD
         Rotates a vector.
         For a 2d vector, only use the yaw parameter.
 
