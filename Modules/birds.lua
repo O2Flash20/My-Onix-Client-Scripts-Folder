@@ -26,23 +26,29 @@ CLOSESTSPAWNDIST = 20
 FURTHESTSPAWNDIST = 100
 KEYFRAMESPACING = 40
 FLYHEIGHT = 30
-LANDDIST = 120
+MAXTURNANGLE = 90
+DISAPPEARDIST = 100
 
 birds = {}
 
 function update(dt)
     if #birds < MAXBIRDS then --pick a spot for a bird to spawn
-        -- log("hi")
         local offset = vec:fromAngle(1, math.random() * math.pi * 2)
         offset:setMag(math.random(CLOSESTSPAWNDIST, FURTHESTSPAWNDIST))
-        local spawnPos = vec:new(
-            offset.x + px,
-            dimension.getMapHeight(math.floor(offset.x + px), math.floor(offset.y + pz))+1.2,
-            offset.y + pz
-        )
 
-        if not posIsVisible(spawnPos, pPos, 1) then
-            table.insert(birds, { t, { spawnPos } })
+        local mapHeight = dimension.getMapHeight(math.floor(offset.x + px), math.floor(offset.y + pz))
+        if mapHeight then
+
+            local spawnPos = vec:new(
+                offset.x + px,
+                mapHeight + 1.2,
+                offset.y + pz
+            )
+
+            if not posIsVisible(spawnPos, pPos, 1) then
+                table.insert(birds, { t, { spawnPos } })
+            end
+
         end
     end
 
@@ -71,7 +77,11 @@ function updateBirdsKeyframes() --finds the birds new positions to go to if they
 
         local nextKeyframe = thisBirdKeyframes[#thisBirdKeyframes-2]
 
-        if nextKeyframe and (nextKeyframe.x-px)^2 + (nextKeyframe.z-pz)^2 >= LANDDIST^2 and not posIsVisible(nextKeyframe, pPos, 1) then --far and not visible, remove it
+        if 
+        nextKeyframe and (nextKeyframe.x-px)^2 + (nextKeyframe.z-pz)^2 >= DISAPPEARDIST^2 and not posIsVisible(nextKeyframe, pPos, 1) --far and not on screen
+        or
+        nextKeyframe and (nextKeyframe.x-px)^2 + (nextKeyframe.z-pz)^2 >= 200^2 --far enough that it's not visible
+        then --remove it
             table.insert(birdsToRemove, i)
 
         else
@@ -83,11 +93,11 @@ function updateBirdsKeyframes() --finds the birds new positions to go to if they
                 if j > 10 then --it has tried too many times to find a spot, give up because this bird is stuck
                     table.insert(birdsToRemove, i)
                     break
-                end
-
-                local newPos = findNewPosition(thisBirdKeyframes[#thisBirdKeyframes])
-                if not newPos==false then
-                    table.insert(thisBirdKeyframes, newPos)
+                else
+                    local newPos = findNewPosition(thisBirdKeyframes[#thisBirdKeyframes], thisBirdKeyframes[#thisBirdKeyframes-1])
+                    if not newPos == false then
+                        table.insert(thisBirdKeyframes, newPos)
+                    end
                 end
 
                 j=j+1
@@ -100,13 +110,19 @@ function updateBirdsKeyframes() --finds the birds new positions to go to if they
     end
 end
 
--- !make the new position be restricted to a certain angle in front of where it already is (vector from previous to current keyframe)
-function findNewPosition(lastPos)
-    local offset = vec:fromAngle(1, math.random() * math.pi * 2)
-    offset:setMag(KEYFRAMESPACING)
+function findNewPosition(lastPos, beforeLastPos)
+    local offset
+    if beforeLastPos == nil then
+        offset = vec:fromAngle(KEYFRAMESPACING, math.random() * math.pi * 2)
+    else
+        offset = vec:fromAngle(KEYFRAMESPACING, lastPos:copy():sub(beforeLastPos):dir()[1] + 2*math.rad(MAXTURNANGLE)*(math.random() - 0.5))
+    end
+
+    local mapHeight = dimension.getMapHeight(math.floor(offset.x + lastPos.x), math.floor(offset.y + lastPos.z))
+    if not mapHeight then return false end
     local newPos = vec:new(
         offset.x + lastPos.x,
-        dimension.getMapHeight(math.floor(offset.x + lastPos.x), math.floor(offset.y + lastPos.z))+FLYHEIGHT,
+        mapHeight + FLYHEIGHT,
         offset.y + lastPos.z
     )
 
@@ -125,7 +141,6 @@ function postInit()
     birdWingRMesh = gfx.objLoad("Birds/wingR.obj")
 end
 
--- lastVelocity = vec:new(0, 0, 0)
 function render3d(dt)
     t = t + dt
 
@@ -138,35 +153,25 @@ function render3d(dt)
         local thisBirdSpawnTime = thisBird[1]
         local thisBirdKeyframes = thisBird[2]
 
-        -- for j = 1, #thisBirdKeyframes-1, 1 do
-        --     gfx.line(
-        --         thisBirdKeyframes[j].x, thisBirdKeyframes[j].y, thisBirdKeyframes[j].z,
-        --         thisBirdKeyframes[j+1].x, thisBirdKeyframes[j+1].y, thisBirdKeyframes[j+1].z
-        --     )
-        -- end
-
         local timeSinceSpawn = t - thisBirdSpawnTime
-        local keyframeMix = (timeSinceSpawn/TIMEPERKEYFRAME)-math.floor(timeSinceSpawn/TIMEPERKEYFRAME)
-        local currentKeyframe = thisBirdKeyframes[math.ceil(timeSinceSpawn / TIMEPERKEYFRAME)]
-        local nextKeyframe = thisBirdKeyframes[math.ceil(timeSinceSpawn / TIMEPERKEYFRAME)+1]
 
         local currentPos = catmullRomSpline3D(thisBirdKeyframes, timeSinceSpawn/TIMEPERKEYFRAME, 0, 0)
         local nextPos = catmullRomSpline3D(thisBirdKeyframes, timeSinceSpawn/TIMEPERKEYFRAME+0.01, 0, 0)
         local velocity = nextPos:copy():sub(currentPos):div(0.01)
         local facingDir = velocity:dir()
-        
+
         local nextNextPos = catmullRomSpline3D(thisBirdKeyframes, timeSinceSpawn/TIMEPERKEYFRAME+0.02, 0, 0)
         local nextVelocity = nextNextPos:copy():sub(nextPos):div(0.01)
         local acceleration = nextVelocity:copy():sub(velocity):div(0.01)
 
         lastVelocity = velocity:copy()
         local turnDir = acceleration:copy():set(-acceleration.x, acceleration.y, acceleration.z):rotateYaw(-facingDir[1]):rotatePitch(-facingDir[2])
-        -- log(turnDir.components)
 
-        renderBird(currentPos, facingDir[1], facingDir[2], math.clamp(velocity.y+0.2, 0, 1), turnDir.z/200, t)
+        renderBird(currentPos, facingDir[1], facingDir[2], math.clamp(velocity.y/10 + 1, 0, 1.5), turnDir.z/200, t)
 
-        -- gfx.color(255, 0, 0)
-        -- gfx.line(currentPos.x, currentPos.y, currentPos.z, currentPos.x+acceleration.x, currentPos.y+acceleration.y, currentPos.z+acceleration.z)
+        if math.random() < 0.001 then
+            dimension.sound("mob.parrot.idle", currentPos.x, currentPos.y, currentPos.z)
+        end
     end
 end
 
@@ -230,12 +235,13 @@ function catmullRomSpline3D(points, t, alpha, tension)
 end
 
 function renderBird(position, yaw, pitch, flapStrength, roll, t)
+    -- local shakeAmount = 0.02*(flapStrength+0.5)*math.cos(t*20)
+    local shakeAmount =0
     gfx.pushTransformation(
         { 3, math.rad(90), 0, 0, 1 },
         { 3, roll, 0, 1, 0 }, --apply turning roll
         { 3, math.rad(-90), 0, 0, 1 },
-        { 2, 0, 0.03*(flapStrength+0.5)*math.cos(t*10+math.cos(t)), 0}, --add random shake to the body ?not perfect?
-        { 4, 2, 2, 2 },
+        { 2, 0, shakeAmount, 0},
         { 3, -pitch, 0, 1, 0 },
         { 3, math.pi/2-yaw, 0, 0, 1 },
         { 2, position.x, position.y, position.z }
@@ -244,18 +250,17 @@ function renderBird(position, yaw, pitch, flapStrength, roll, t)
     gfx.popTransformation()
 
     gfx.pushTransformation(
+        { 3, -flapStrength*0.5*math.cos(20*t), 0, 1, 0 }, --two directions of flap animation
         { 3, math.rad(90), 0, 0, 1 },
-        { 3, roll, 0, 1, 0 }, --apply turing roll !the pivot should be the body pivot, not the origin
-        { 3, math.rad(-90), 0, 0, 1 },
-        { 2, 0, 0.03*(flapStrength+0.5)*math.cos(t*10+math.cos(t)), 0 }, --add random shake to the body ?not perfect?
-        { 3, -flapStrength*0.5*math.cos(10*t), 0, 1, 0 }, --two directions of flap animation
-        { 3, math.rad(90), 0, 0, 1 },
-        { 3, flapStrength*math.sin(10*t), 0, 1, 0 }, --two directions of flap animation
+        { 3, flapStrength*math.sin(20*t), 0, 1, 0 }, --two directions of flap animation
         { 3, math.rad(-90), 0, 0, 1 },
         { 2, 0.06, 0, 0 },
+        { 3, math.rad(90), 0, 0, 1 },
+        { 3, roll, 0, 1, 0 }, --apply turing roll
+        { 3, math.rad(-90), 0, 0, 1 },
+        { 2, 0, shakeAmount, 0 },
 
         -- align with body
-        { 4, 2, 2, 2 },
         { 3, -pitch, 0, 1, 0 },
         { 3, math.pi/2-yaw, 0, 0, 1 },
         { 2, position.x, position.y, position.z }
@@ -264,18 +269,17 @@ function renderBird(position, yaw, pitch, flapStrength, roll, t)
     gfx.popTransformation()
 
     gfx.pushTransformation(
+        { 3, -flapStrength*0.5*math.cos(20*t), 0, 1, 0 }, --two directions of flap animation
         { 3, math.rad(90), 0, 0, 1 },
-        { 3, roll, 0, 1, 0 }, --apply turing roll !the pivot should be the body pivot, not the origin
-        { 3, math.rad(-90), 0, 0, 1 },
-        { 2, 0, 0.03*(flapStrength+0.5)*math.cos(t*10+math.cos(t)), 0 }, --add random shake to the body ?not perfect?
-        { 3, -flapStrength*0.5*math.cos(10*t), 0, 1, 0 }, --two directions of flap animation
-        { 3, math.rad(90), 0, 0, 1 },
-        { 3, -flapStrength*math.sin(10*t), 0, 1, 0 }, --two directions of flap animation
+        { 3, -flapStrength*math.sin(20*t), 0, 1, 0 }, --two directions of flap animation
         { 3, math.rad(-90), 0, 0, 1 },
         { 2, -0.06, 0, 0 },
+        { 3, math.rad(90), 0, 0, 1 },
+        { 3, roll, 0, 1, 0 }, --apply turing roll
+        { 3, math.rad(-90), 0, 0, 1 },
+        { 2, 0, shakeAmount, 0 },
 
         -- align with body
-        { 4, 2, 2, 2 },
         { 3, -pitch, 0, 1, 0 },
         { 3, math.pi/2-yaw, 0, 0, 1 },
         { 2, position.x, position.y, position.z }
