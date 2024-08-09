@@ -27,6 +27,9 @@ function gfx.tcolor(r, g, b) end
 ---@param a number Opacity
 function gfx.tcolor(r, g, b, a) end
 
+---Sets if you want the color symbol to be visible (§ and its color character, by default you do not see it
+function gfx.setShowColorSymbols(showColorSymbols) end
+
 ---Sets if the 3D rendering should render trough blocks
 ---@param phaseTroughBlocks boolean red
 ---@return nil
@@ -46,6 +49,16 @@ function gfx.color(r, g, b, a) end
 ---@return number y
 ---@return number z
 function gfx.origin() end
+
+---The distance to the projection plane if it was 2 units long in that dimension
+---@return number x
+---@return number y
+function gfx.projectionDistances() end
+
+---The current horizontal and vertical field of view. With no zoom or other effects on the camera, fovY (vertical) should be the same as the fov in setting and game effects.
+---@return number fovX
+---@return number fovY
+function gfx.fov() end
 
 ---Gets screen position from world position
 ---Getting nil means that the position is not on screen
@@ -224,7 +237,8 @@ function gfx.unloadimage(filepath) end
 ---@param width number The Width of the rectangle to render the image in
 ---@param height number The Height of the rectangle to render the image in
 ---@param effectId integer you can get it from player.effects()'s effects
-function gfx.effect(x, y, width, height, effectId) end
+---@param useLegacyIcons boolean|nil Should use the old icons (defaults to false).
+function gfx.effect(x, y, width, height, effectId, useLegacyIcons) end
 
 
 

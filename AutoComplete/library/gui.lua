@@ -42,17 +42,23 @@ function gui.showScreen(name) end
 ---@return string screenName The name of the current screen
 function gui.screen() end
 
+---Closes the current minecraft screen if it is not the hud as that would be problematic
+function gui.closeNonHud() end
+
+---Tells you if the hide hud game setting is enabled
+---@return boolean hudHidden If the hud is hidden
+function gui.hudHidden() end
+
 ---Plays the click sound (the one in minecraft when u clicc button)
----Will not work on 1.18.30+
 function gui.clickSound() end
 
 ---Plays a sound on the ui (will not go away if you move)
----Will not work on 1.18.30+
 ---@param name string any minecraft sounds: https://www.digminecraft.com/lists/sound_list_pe.php
-function gui.sound(name) end
+---@param volume number|nil The volume of the sound
+---@param pitch number|nil The pitch of the sound
+function gui.sound(name, volume, pitch) end
 
 ---Stops all sound that are playing
----Will not work on 1.18.30+
 function gui.stopallsound() end
 
 
@@ -80,6 +86,16 @@ function gui.newTextbox(text, placeholder, maxLength) end
 ---@return Setting colorSetting The setting the user is currently picking
 function gui.showColorPicker(setting, positionX, positionY, yOffset) end
 
+
+---@class KeyPickingDialogData
+---@field key integer The key picked by the user
+---@field picked boolean If the user is done picking
+---@field canceled boolean If the user canceled the picking (aka pressed escape)
+
+---Shows a key picker (you can use the KeyPickingDialogData to get the result if not giving a setting)
+---@param setting Setting|nil The setting to show the key picker for, if none provided the value will only be in the KeyPickingDialogData
+---@return KeyPickingDialogData keyData The data of the key picking
+function gui.showKeyPicker(setting) end
 
 ---@class iColor
 ---@field r integer
